@@ -26,12 +26,25 @@ readonly class AccountController
 
         $accountData = $this->accountService->findAccountById($account->getId());
 
+        if($request->getMethod() === "POST")
+        {
+            $this->update($account);
+        }
+
         return new HtmlResponse($this->template->render(
             'account/account',
             [
                 'accountData' => $accountData
             ]
         ));
+    }
+
+    public function update(Account $account): void
+    {
+
+        $account = clone $account;
+
+
     }
 
 }

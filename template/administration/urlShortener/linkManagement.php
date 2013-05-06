@@ -124,7 +124,6 @@
                             </div>
                         </div>
                         <?php if($tracking !== NULL): ?>
-
                             <div class="tab-pane fade" id="link-management-tracking" role="tabpanel" aria-labelledby="link-management-tracking-tab" tabindex="0">
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
@@ -177,7 +176,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         <?php endif; ?>
                     </div>
 
