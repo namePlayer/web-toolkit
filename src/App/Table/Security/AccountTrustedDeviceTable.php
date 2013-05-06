@@ -12,7 +12,7 @@ class AccountTrustedDeviceTable extends AbstractTable
     {
         $values = [
             'account' => $accountTrustedDevice->getAccount(),
-            'ip' => $accountTrustedDevice->getIpAddress()
+            'ipAddress' => $accountTrustedDevice->getIpAddress()
         ];
 
         return $this->query->insertInto($this->getTableName())->values($values)->executeWithoutId();
@@ -20,7 +20,7 @@ class AccountTrustedDeviceTable extends AbstractTable
 
     public function findByAccountAndTrustedIp(int $account, string $ip): array|bool
     {
-        return $this->query->from($this->getTableName())->where(['account' => $account, 'ip' => $ip])->fetch();
+        return $this->query->from($this->getTableName())->where(['account' => $account, 'ipAddress' => $ip])->fetch();
     }
 
     public function findAllByAccount(int $account): array|bool

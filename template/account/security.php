@@ -142,7 +142,7 @@
                             <?php foreach ($allowedAddresses as $allowedAddress): ?>
 
                                 <tr>
-                                    <th scope="row"><?= $allowedAddress['ip'] ?></th>
+                                    <th scope="row"><?= $allowedAddress['ipAddress'] ?></th>
                                     <td><?= (new DateTime($allowedAddress['allowed']))->format($this->translate('dateTime-format')); ?></td>
                                     <td>
                                         <a href="#" class="text-danger text-decoration-none"><?= $this->e($this->translate('remove-button')) ?></a>

@@ -37,9 +37,9 @@ class AccountTrustedDeviceService
             $censored = [];
             foreach ($trustedDevices as $trustedDevice) {
 
-                $charCount = strlen($trustedDevice['ip']) - 3;
-                $ip = substr_replace($trustedDevice['ip'], str_repeat('*', $charCount), $charCount - 1, $charCount);
-                $trustedDevice['ip'] = $ip;
+                $charCount = strlen($trustedDevice['ipAddress']) - 3;
+                $ip = substr_replace($trustedDevice['ipAddress'], str_repeat('*', $charCount), $charCount - 1, $charCount);
+                $trustedDevice['ipAddress'] = $ip;
                 $censored[] = $trustedDevice;
 
             }
