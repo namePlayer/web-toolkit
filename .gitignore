@@ -1,0 +1,11 @@
+/vendor/
+/.ddev/
+/.idea/
+**/.env
+/public/test.php
+/data/log/*
+!/data/log/.gitkeep
+/data/cache/*
+!/data/cache/.gitkeep
+/data/persistent/*
+!/data/persistent/.gitkeep
