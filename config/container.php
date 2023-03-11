@@ -14,6 +14,10 @@ $container->add(\App\Controller\Authentication\RegistrationController::class)
     ->addArgument(League\Plates\Engine::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
 
+$container->add(\App\Controller\Authentication\LoginController::class)
+    ->addArgument(League\Plates\Engine::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
+
 #
 # Services
 #

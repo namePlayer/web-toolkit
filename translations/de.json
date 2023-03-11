@@ -1,6 +1,7 @@
 {
 
-  "login-account-title": "Neues Konto erstellen",
+  "create-account-title": "Neues Konto erstellen",
+  "login-account-title": "Anmelden",
   "create-account-for": "Ich erstelle das Konto für...",
   "for-private-account": "mich selbst",
   "for-company-account": "meine Organisation",
@@ -8,6 +9,7 @@
   "email": "E-Mail",
   "password": "Passwort",
   "register-button-text": "Registrieren",
+  "login-button-text": "Anmelden",
   "invalid-email": "Die angegebene E-Mail Adresse ist ungültig",
   "email-invalid": "Die angegebene E-Mail Adresse ist ungültig",
   "account-name-empty": "Der Kontoname darf nicht leer sein",
