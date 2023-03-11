@@ -23,6 +23,8 @@ class Software
     public const LOG_FILENAME = 'app.log';
     public const CONSOLE_LOG_FILENAME = 'console.log';
 
+    public const DATABASE_TIME_FORMAT = 'Y-m-d H:i:s';
+
     /**
      * @throws EnvironmentException
      */

@@ -21,6 +21,14 @@ class AccountService
     {
     }
 
+    public function updateLastUserLogin(Account $account): void
+    {
+        $account->setLastLogin(new \DateTime());
+
+        $this->accountTable->updateLastLogin($account);
+
+    }
+
     public function create(Account $account)
     {
         if($this->registerValidation->verify($account) === FALSE)
@@ -51,12 +59,12 @@ class AccountService
 
     }
 
-    private function findAccountByEmail(string $email): array|false
+    public function findAccountByEmail(string $email): array|false
     {
         return $this->accountTable->findByEmail($email);
     }
 
-    private function findAccountById(int $id): array|false
+    public function findAccountById(int $id): array|false
     {
         return $this->accountTable->findById($id);
     }
