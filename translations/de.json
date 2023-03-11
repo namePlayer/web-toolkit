@@ -1,0 +1,17 @@
+{
+
+  "login-account-title": "Neues Konto erstellen",
+  "create-account-for": "Ich erstelle das Konto für...",
+  "for-private-account": "mich selbst",
+  "for-company-account": "meine Organisation",
+  "account-name": "Name",
+  "email": "E-Mail",
+  "password": "Passwort",
+  "register-button-text": "Registrieren",
+  "invalid-email": "Die angegebene E-Mail Adresse ist ungültig",
+  "email-invalid": "Die angegebene E-Mail Adresse ist ungültig",
+  "account-name-empty": "Der Kontoname darf nicht leer sein",
+  "password-empty": "Das Passwort darf nicht leer sein",
+  "account-created": "Konto wurde angelegt"
+
+}

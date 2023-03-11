@@ -4,10 +4,8 @@ namespace App\Factory;
 
 use App\Software;
 use Monolog\Formatter\LineFormatter;
-use Monolog\Formatter\NormalizerFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
-use Monolog\Logger;
 
 class LoggerFactory
 {
