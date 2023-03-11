@@ -11,5 +11,4 @@ define("MESSAGES", new \App\PlatesExtension\Message\MessageList(
     $container->get(\Monolog\Logger::class))
 );
 
-
 require_once __DIR__.'/../config/routes.php';

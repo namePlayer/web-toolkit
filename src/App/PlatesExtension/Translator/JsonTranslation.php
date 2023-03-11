@@ -5,11 +5,19 @@ namespace App\PlatesExtension\Translator;
 class JsonTranslation implements TranslationInterface
 {
 
-    private array $translationList;
+    private array $translationList = [];
 
     public function __construct(private readonly string $translationFile = 'de')
     {
         $this->translationList = json_decode(file_get_contents(__DIR__.'/../../../../translations/' . $this->translationFile . '.json'), true);
+    }
+
+    public function loadTranslationFile(string $location)
+    {
+        array_merge(
+            $this->translationList,
+            json_decode(file_get_contents($location, true))
+        );
     }
 
     /**

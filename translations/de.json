@@ -17,6 +17,30 @@
   "account-created": "Konto wurde angelegt",
   "login-account-disabled": "Dieses Konto ist deaktiviert",
   "login-wrong-combination": "Die Kombination aus E-Mail und Passwort konnte nicht gefunden werden",
-  "login-account-successful": "Die Anmeldung war erfolgreich"
+  "login-account-successful": "Die Anmeldung war erfolgreich",
+
+  "user-greeting-morning": "Guten Morgen",
+  "user-greeting-day": "Guten Tag",
+  "user-greeting-evening": "Guten Abend",
+  "user-greeting-night": "Gute Nacht",
+  "user-greeting-hello": "Hallo",
+
+  "managed-by-organisation": "Ihr Profil wird von Ihrer Organisation verwaltet.",
+  "learn-more": "Weitere Informationen",
+  "your-products-list-title": "Ihre Produkte",
+
+  "navigation-startpage": "Startseite",
+  "navigation-dashboard": "Übersicht",
+  "navigation-products": "Produkte",
+  "navigation-login": "Anmelden",
+  "navigation-register": "Registrieren",
+  "navigation-logged-in-as": "Angemeldet als",
+  "navigation-account-settings": "Kontoeinstellungen",
+  "navigation-account-licenses": "Lizenzübersicht",
+  "navigation-account-logout": "Abmelden",
+
+  "products-user-license-status-inclusive": "Inklusive",
+  "products-user-license-status-licensed": "Lizenziert",
+  "products-user-license-status-expired": "Abgelaufen"
 
 }

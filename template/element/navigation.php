@@ -10,36 +10,36 @@
             <ul class="navbar-nav me-auto">
                 <?php if($this->getAccountInformation() === FALSE): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Startseite</a>
+                        <a class="nav-link" href="/"><?= $this->e($this->translate('navigation-startpage')) ?></a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/overview">Dashboard</a>
+                        <a class="nav-link" href="/overview"><?= $this->e($this->translate('navigation-dashboard')) ?></a>
                     </li>
                 <?php endif; ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Produkte</a>
+                    <a class="nav-link" href="#"><?= $this->e($this->translate('navigation-products')) ?></a>
                 </li>
             </ul>
 
             <ul class="navbar-nav ms-start">
                 <?php if($this->getAccountInformation() === FALSE): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/authentication/login">Anmelden</a>
+                        <a class="nav-link" href="/authentication/login"><?= $this->e($this->translate('navigation-login')) ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="/authentication/registration">Registrieren</a>
+                        <a class="nav-link btn btn-primary" href="/authentication/registration"><?= $this->e($this->translate('navigation-register')) ?></a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Angemeldet als <b><?= $this->getAccountInformation()['name'] ?></b>
+                            <?= $this->e($this->translate('navigation-logged-in-as')) ?> <b><?= $this->getAccountInformation()['name'] ?></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Kontoeinstellungen</a></li>
-                            <li><a class="dropdown-item" href="#">Lizenzierungen</a></li>
+                            <li><a class="dropdown-item" href="#"><?= $this->e($this->translate('navigation-account-settings')) ?></a></li>
+                            <li><a class="dropdown-item" href="#"><?= $this->e($this->translate('navigation-account-licenses')) ?></a></li>
                             <hr>
-                            <li><a class="dropdown-item" href="/authentication/logout">Abmelden</a></li>
+                            <li><a class="dropdown-item" href="/authentication/logout"><?= $this->e($this->translate('navigation-logout')) ?></a></li>
                         </ul>
                     </li>
                     <a class="nav-link">

@@ -54,6 +54,8 @@ class Software
         if (!isset($_ENV['SOFTWARE_PRODUCTION'])) {
             $_ENV['SOFTWARE_PRODUCTION'] = false;
         }
+
+        date_default_timezone_set($_ENV['SOFTWARE_TIMEZONE']);
     }
 
 }
