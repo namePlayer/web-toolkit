@@ -29,7 +29,7 @@ class AccountService
             return;
         }
 
-        if($this->emailIsUsed($account->getEmail()))
+        if($this->findAccountByEmail($account->getEmail()) === FALSE)
         {
             MESSAGES->add('danger', 'email-invalid');
             $this->logger->log(Level::Info, 'Registration Email is already used');
@@ -51,9 +51,14 @@ class AccountService
 
     }
 
-    private function emailIsUsed(string $email): bool
+    private function findAccountByEmail(string $email): array|false
     {
-        return $this->accountTable->findByEmail($email) !== FALSE;
+        return $this->accountTable->findByEmail($email);
+    }
+
+    private function findAccountById(int $id): array|false
+    {
+        return $this->accountTable->findById($id);
     }
 
 }
