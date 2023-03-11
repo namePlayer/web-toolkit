@@ -24,6 +24,7 @@ class Software
     public const CONSOLE_LOG_FILENAME = 'console.log';
 
     public const DATABASE_TIME_FORMAT = 'Y-m-d H:i:s';
+    public const SESSION_USERID_NAME = 'webtoolkit_login_id';
 
     /**
      * @throws EnvironmentException

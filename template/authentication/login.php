@@ -1,5 +1,7 @@
 <?php $this->layout('basetemplate'); ?>
 
+<?php $this->insert('element/navigation') ?>
+
 <div class="container mt-3">
 
     <?php foreach (MESSAGES->getAll() as $alert): ?>
@@ -13,11 +15,10 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-header text-center">
-                    <h3><?= $_ENV['SOFTWARE_TITLE'] ?></h3>
+                    <h4><?= $this->e($this->translate('login-account-title')) ?></h4>
                 </div>
                 <div class="card-body">
                     <form action="" method="post">
-                        <h4><?= $this->e($this->translate('login-account-title')) ?></h4>
                         <div class="mb-3">
                             <label for="email" class="form-text"><?= $this->e($this->translate('email')) ?></label>
                             <input type="email" class="form-control" name="email" id="email" required>

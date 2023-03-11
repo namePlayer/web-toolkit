@@ -16,6 +16,7 @@ class Account
     private bool $business;
     private bool $active;
     private bool $setupComplete;
+    private bool $admin;
 
     public function getId(): int
     {
@@ -105,6 +106,16 @@ class Account
     public function setSetupComplete(bool $setupComplete): void
     {
         $this->setupComplete = $setupComplete;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->admin;
+    }
+
+    public function setAdmin(bool $admin): void
+    {
+        $this->admin = $admin;
     }
 
 }

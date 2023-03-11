@@ -19,6 +19,9 @@ $container->add(\App\Controller\Authentication\LoginController::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Service\Authentication\PasswordService::class);
 
+$container->add(\App\Controller\Login\OverviewController::class)
+    ->addArgument(League\Plates\Engine::class);
+
 #
 # Services
 #
@@ -45,6 +48,12 @@ $container->add(\App\Table\Authentication\AccountTable::class)
 $container->add(\App\Validation\Authentication\RegisterValidation::class);
 
 #
+# Middlewares
+#
+$container->add(\App\Middleware\AuthenticationMiddleware::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
+
+#
 # Dependencies
 #
 $container->add(PDO::class)
@@ -63,7 +72,8 @@ $container->add(\Monolog\Logger::class)
 
 $container->add(League\Plates\Engine::class)
     ->addArgument(__DIR__.'/../template')
-    ->addMethodCall('loadExtension', [\App\PlatesExtension\Translator\TranslationExtension::class]);
+    ->addMethodCall('loadExtension', [\App\PlatesExtension\Translator\TranslationExtension::class])
+    ->addMethodCall('loadExtension', [\App\PlatesExtension\Authentication\AuthenticationExtension::class]);
 
 $container->add(\App\PlatesExtension\Translator\TranslationExtension::class)
     ->addArgument(\App\PlatesExtension\Translator\Translation::class);
@@ -73,6 +83,9 @@ $container->add(\App\PlatesExtension\Translator\Translation::class)
     ->addArgument(\Monolog\Logger::class);
 
 $container->add(\App\PlatesExtension\Translator\JsonTranslation::class);
+
+$container->add(\App\PlatesExtension\Authentication\AuthenticationExtension::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
 
 $responseFactory = (new \Laminas\Diactoros\ResponseFactory());
 $jsonStrategy = (new \League\Route\Strategy\JsonStrategy($responseFactory))->setContainer($container);

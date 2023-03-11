@@ -19,5 +19,9 @@ $router->post('/authentication/registration', 'App\Controller\Authentication\Reg
 $router->get('/authentication/login', 'App\Controller\Authentication\LoginController::load');
 $router->post('/authentication/login', 'App\Controller\Authentication\LoginController::load');
 
+$router->get('/authentication/logout', 'App\Controller\Authentication\LogoutController::load');
+
+$router->get('/overview', 'App\Controller\Login\OverviewController::load')->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
+
 $response = $router->dispatch($request);
 (new \Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);

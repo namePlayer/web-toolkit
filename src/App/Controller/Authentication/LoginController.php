@@ -6,6 +6,7 @@ use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\PasswordService;
+use App\Software;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -62,6 +63,7 @@ class LoginController
             {
                 MESSAGES->add('success', 'login-account-successful');
                 $this->accountService->updateLastUserLogin($account);
+                $_SESSION[Software::SESSION_USERID_NAME] = $account->getId();
                 if(!$account->isSetupComplete()) {
                     header("Location: /authentication/setup");
                     return;
