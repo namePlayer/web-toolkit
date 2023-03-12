@@ -49,6 +49,7 @@
   "products-user-license-status-expired": "Abgelaufen",
 
   "url-shortener-title": "URL Kürzer",
-  "url-shortener-description": "Hiermit kannst du deine URLs verkürzen, damit du sie schnell und einfach weitergeben kannst."
+  "url-shortener-description": "Hiermit kannst du deine URLs verkürzen, damit du sie schnell und einfach weitergeben kannst.",
+  "link-successfully-shortened": "Der Link wurde erfolgreich verkürzt!"
 
 }

@@ -22,4 +22,9 @@ class ToolTable extends AbstractTable
             ->fetchAll();
     }
 
+    public function findByPath(string $path): array|false
+    {
+        return $this->query->from($this->getTableName())->where('path', $path)->fetch();
+    }
+
 }

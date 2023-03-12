@@ -5,15 +5,15 @@ namespace App\Model\Tool;
 class Tool
 {
 
-    public const TOOL_URL_SHORTNER = 1;
+    public const TOOL_URL_SHORTENER = 1;
 
     private int $id;
-    private ?int $userLevel;
-    private ?int $businessLevel;
+    private ?int $level;
     private string $title;
     private string $description;
     private string $path;
     private bool $active;
+    private bool $public;
 
     public function getId(): int
     {
@@ -25,24 +25,24 @@ class Tool
         $this->id = $id;
     }
 
-    public function getUserLevel(): ?int
+    public function getLevel(): ?int
     {
-        return $this->userLevel;
+        return $this->level;
     }
 
-    public function setUserLevel(?int $userLevel): void
+    public function setLevel(?int $level): void
     {
-        $this->userLevel = $userLevel;
+        $this->level = $level;
     }
 
-    public function getBusinessLevel(): ?int
+    public function isPublic(): bool
     {
-        return $this->businessLevel;
+        return $this->public;
     }
 
-    public function setBusinessLevel(?int $businessLevel): void
+    public function setPublic(bool $public): void
     {
-        $this->businessLevel = $businessLevel;
+        $this->public = $public;
     }
 
     public function getTitle(): string
