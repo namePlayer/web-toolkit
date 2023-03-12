@@ -14,7 +14,7 @@ class Account
     private string $password;
     private DateTime $registered;
     private ?DateTime $lastLogin;
-    private bool $business;
+    private ?int $business;
     private bool $active;
     private bool $setupComplete;
     private bool $admin;
@@ -89,12 +89,12 @@ class Account
         $this->lastLogin = $lastLogin;
     }
 
-    public function isBusiness(): ?bool
+    public function getBusiness(): ?bool
     {
         return $this->business;
     }
 
-    public function setBusiness(bool $business): void
+    public function setBusiness(?bool $business): void
     {
         $this->business = $business;
     }
