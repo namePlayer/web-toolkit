@@ -39,7 +39,7 @@
                             <li><a class="dropdown-item" href="#"><?= $this->e($this->translate('navigation-account-settings')) ?></a></li>
                             <li><a class="dropdown-item" href="#"><?= $this->e($this->translate('navigation-account-licenses')) ?></a></li>
                             <hr>
-                            <li><a class="dropdown-item" href="/authentication/logout"><?= $this->e($this->translate('navigation-logout')) ?></a></li>
+                            <li><a class="dropdown-item" href="/authentication/logout"><?= $this->e($this->translate('navigation-account-logout')) ?></a></li>
                         </ul>
                     </li>
                     <a class="nav-link">
