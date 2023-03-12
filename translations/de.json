@@ -50,6 +50,7 @@
 
   "url-shortener-title": "URL Kürzer",
   "url-shortener-description": "Hiermit kannst du deine URLs verkürzen, damit du sie schnell und einfach weitergeben kannst.",
-  "link-successfully-shortened": "Der Link wurde erfolgreich verkürzt!"
+  "link-successfully-shortened": "Der Link wurde erfolgreich verkürzt!",
+  "shortlink-destination-invalid": "Die Zieladresse ist ungültig!"
 
 }

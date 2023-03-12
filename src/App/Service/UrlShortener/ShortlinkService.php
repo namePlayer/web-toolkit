@@ -50,6 +50,7 @@ class ShortlinkService
             return;
         }
 
+        $shortlink->setId($shortlinkData['id']);
         $shortlink->setDestination($shortlinkData['destination']);
         return;
 
