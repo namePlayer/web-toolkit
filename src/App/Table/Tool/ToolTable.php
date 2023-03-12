@@ -18,6 +18,7 @@ class ToolTable extends AbstractTable
 
         return $this->query->from($this->getTableName())
             ->where('level <= ?', $level)
+            ->where('active', 1)
             ->fetchAll();
     }
 
