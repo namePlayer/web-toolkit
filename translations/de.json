@@ -22,9 +22,6 @@
   "basic-private": "Standard",
   "premium-private": "Premium",
   "premium-plus-private": "Premium+",
-  "business-basic": "Business Standard",
-  "business-premium": "Premium Business",
-  "business-premium-plus": "Premium+ Business",
   "business-enterprise": "Enterprise",
 
   "user-greeting-morning": "Guten Morgen",

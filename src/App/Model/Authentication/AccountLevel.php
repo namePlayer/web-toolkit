@@ -8,10 +8,7 @@ class AccountLevel
     public const BASIC_LEVEL = 1;
     public const PREMIUM_LEVEL = 2;
     public const PREMIUM_PLUS_LEVEL = 3;
-    public const BUSINESS_BASIC_LEVEL = 10;
-    public const BUSINESS_PREMIUM_LEVEL = 11;
-    public const BUSINESS_PREMIUM_PLUS_LEVEL = 12;
-    public const BUSINESS_ENTERPRISE_LEVEL = 13;
+    public const ENTERPRISE_LEVEL = 4;
 
     private int $id;
     private string $title;

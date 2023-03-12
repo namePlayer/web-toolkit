@@ -22,7 +22,7 @@ class DynamicTextExtension implements ExtensionInterface
 
         if ($currentTime >= 22) {
             return 'user-greeting-night';
-        } else if (($currentTime >= 18)) {
+        } else if (($currentTime >= 17)) {
             return 'user-greeting-evening';
         } else if (($currentTime >= 12)) {
             return 'user-greeting-day';

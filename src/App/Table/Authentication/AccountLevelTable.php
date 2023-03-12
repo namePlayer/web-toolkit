@@ -7,6 +7,4 @@ use App\Table\AbstractTable;
 class AccountLevelTable extends AbstractTable
 {
 
-
-
 }

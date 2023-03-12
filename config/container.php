@@ -20,7 +20,8 @@ $container->add(\App\Controller\Authentication\LoginController::class)
     ->addArgument(\App\Service\Authentication\PasswordService::class);
 
 $container->add(\App\Controller\Login\OverviewController::class)
-    ->addArgument(League\Plates\Engine::class);
+    ->addArgument(League\Plates\Engine::class)
+    ->addArgument(\App\Service\Tool\ToolService::class);
 
 #
 # Services
@@ -36,6 +37,11 @@ $container->add(\App\Service\Authentication\AccountService::class)
 
 $container->add(\App\Service\Authentication\PasswordService::class);
 
+$container->add(\App\Service\Tool\ToolService::class)
+    ->addArgument(\App\Table\Tool\ToolTable::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\Monolog\Logger::class);
+
 #
 # Repositories
 #
@@ -43,6 +49,9 @@ $container->add(\App\Table\Authentication\AccountTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\Authentication\AccountLevelTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\Tool\ToolTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #

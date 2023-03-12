@@ -41,6 +41,7 @@ class AuthenticationMiddleware implements MiddlewareInterface
         $account->setEmail($accountData['email']);
         $account->setBusiness($accountData['business']);
         $account->setAdmin($accountData['isAdmin']);
+        $account->setLevel($accountData['level']);
 
         return $handler->handle($request->withAttribute(Account::class, $account));
 

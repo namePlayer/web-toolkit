@@ -4,6 +4,7 @@ namespace App\PlatesExtension\Authentication;
 
 use App\Model\Authentication\AccountLevel;
 use App\Service\Authentication\AccountService;
+use App\Service\Tool\ToolService;
 use App\Software;
 use App\Table\Authentication\AccountLevelTable;
 use App\Table\Authentication\AccountTable;
@@ -51,10 +52,10 @@ class AuthenticationExtension implements ExtensionInterface
 
         return match ($accountLevel)
         {
-            AccountLevel::BASIC_LEVEL, AccountLevel::BUSINESS_BASIC_LEVEL => ['label' => $levelBadge['title'], 'color' => 'secondary'],
-            AccountLevel::PREMIUM_LEVEL, AccountLevel::BUSINESS_PREMIUM_LEVEL => ['label' => $levelBadge['title'], 'color' => 'warning'],
-            AccountLevel::PREMIUM_PLUS_LEVEL, AccountLevel::BUSINESS_PREMIUM_PLUS_LEVEL => ['label' => $levelBadge['title'], 'color' => 'success'],
-            AccountLevel::BUSINESS_ENTERPRISE_LEVEL => ['label' => $levelBadge['title'], 'color' => 'info'],
+            AccountLevel::BASIC_LEVEL => ['label' => $levelBadge['title'], 'color' => 'secondary'],
+            AccountLevel::PREMIUM_LEVEL => ['label' => $levelBadge['title'], 'color' => 'warning'],
+            AccountLevel::PREMIUM_PLUS_LEVEL => ['label' => $levelBadge['title'], 'color' => 'success'],
+            AccountLevel::ENTERPRISE_LEVEL => ['label' => $levelBadge['title'], 'color' => 'info'],
         };
     }
 
