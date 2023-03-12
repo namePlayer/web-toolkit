@@ -62,4 +62,9 @@ class ShortlinkService
         return substr($link, 0, strpos($link, "-"));
     }
 
+    private function shortlinkExists(string $shortlink): bool
+    {
+
+    }
+
 }
