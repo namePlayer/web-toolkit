@@ -19,6 +19,14 @@
   "login-wrong-combination": "Die Kombination aus E-Mail und Passwort konnte nicht gefunden werden",
   "login-account-successful": "Die Anmeldung war erfolgreich",
 
+  "basic-private": "Standard",
+  "premium-private": "Premium",
+  "premium-plus-private": "Premium+",
+  "business-basic": "Business Standard",
+  "business-premium": "Premium Business",
+  "business-premium-plus": "Premium+ Business",
+  "business-enterprise": "Enterprise",
+
   "user-greeting-morning": "Guten Morgen",
   "user-greeting-day": "Guten Tag",
   "user-greeting-evening": "Guten Abend",

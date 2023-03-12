@@ -42,6 +42,9 @@ $container->add(\App\Service\Authentication\PasswordService::class);
 $container->add(\App\Table\Authentication\AccountTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
+$container->add(\App\Table\Authentication\AccountLevelTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
 #
 # Validations
 #
@@ -86,7 +89,8 @@ $container->add(\App\PlatesExtension\Translator\Translation::class)
 $container->add(\App\PlatesExtension\Translator\JsonTranslation::class);
 
 $container->add(\App\PlatesExtension\Authentication\AuthenticationExtension::class)
-    ->addArgument(\App\Service\Authentication\AccountService::class);
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Table\Authentication\AccountLevelTable::class);
 
 $container->add(\App\PlatesExtension\Dynamics\DynamicTextExtension::class);
 

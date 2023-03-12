@@ -8,6 +8,7 @@ class Account
 {
 
     private int $id;
+    private int $level;
     private string $name;
     private string $email;
     private string $password;
@@ -26,6 +27,16 @@ class Account
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function getLevel(): int
+    {
+        return $this->level;
+    }
+
+    public function setLevel(int $level): void
+    {
+        $this->level = $level;
     }
 
     public function getName(): string

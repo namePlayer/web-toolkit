@@ -43,7 +43,7 @@
                         </ul>
                     </li>
                     <a class="nav-link">
-                        <span class="badge rounded-pill text-bg-secondary">Basic</span>
+                        <span class="badge rounded-pill text-bg-<?= $this->getLevelBadge()['color'] ?>"><?= $this->translate($this->getLevelBadge()['label']) ?></span>
                     </a>
                     <?php if($this->getAccountInformation()['isAdmin'] === 1): ?>
                         <a class="nav-link text-danger" href="/admin/dashboard">

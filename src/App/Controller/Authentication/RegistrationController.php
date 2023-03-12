@@ -4,6 +4,7 @@ namespace App\Controller\Authentication;
 
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
+use App\Model\Authentication\AccountLevel;
 use App\Service\Authentication\AccountService;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
@@ -44,6 +45,10 @@ class RegistrationController
                 return;
             }
             $account->setBusiness($_POST['account-type'] === 'business');
+            if($account->isBusiness())
+            {
+                $account->setLevel(AccountLevel::BUSINESS_BASIC_LEVEL);
+            }
 
             $this->accountService->create($account);
 
