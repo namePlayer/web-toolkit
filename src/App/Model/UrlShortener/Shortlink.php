@@ -11,6 +11,7 @@ class Shortlink
     private int $account;
     private \DateTime $dateTime;
     private string $destination;
+    private ?\DateTime $expiryDate = null;
 
     public function getId(): int
     {
@@ -70,6 +71,16 @@ class Shortlink
     public function setDestination(string $destination): void
     {
         $this->destination = $destination;
+    }
+
+    public function getExpiryDate(): ?\DateTime
+    {
+        return $this->expiryDate;
+    }
+
+    public function setExpiryDate(?\DateTime $expiryDate): void
+    {
+        $this->expiryDate = $expiryDate;
     }
 
 }

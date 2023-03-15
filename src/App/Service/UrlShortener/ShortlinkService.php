@@ -6,6 +6,7 @@ use App\Model\UrlShortener\Shortlink;
 use App\Table\UrlShortener\ShortlinkTable;
 use App\Validation\UrlShortener\ShortlinkValidation;
 use Ramsey\Uuid\Uuid;
+use function Sodium\add;
 
 class ShortlinkService
 {
@@ -26,14 +27,18 @@ class ShortlinkService
 
         $this->correctDestinationLinkFormat($shortlink);
 
+        if(!empty($shortlink->getUuid()) && $this->shortlinkExists($shortlink))
+        {
+            MESSAGES->add('danger', 'shortlink-already-exists');
+            return null;
+        }
+
         if(empty($shortlink->getUuid()))
         {
             $shortlink->setUuid($this->generateShortLink());
-        }
-
-        if($this->shortlinkExists($shortlink))
-        {
-                
+            do {
+                $shortlink->setUuid($this->generateShortLink());
+            } while($this->shortlinkExists($shortlink));
         }
 
         $this->shortlinkTable->insert($shortlink);
@@ -54,6 +59,11 @@ class ShortlinkService
 
         $shortlink->setId($shortlinkData['id']);
         $shortlink->setDestination($shortlinkData['destination']);
+        if($shortlinkData['expiryDate'] !== NULL)
+        {
+            $shortlink->setExpiryDate(new \DateTime($shortlinkData['expiryDate']));
+        }
+
         return;
 
     }

@@ -48,6 +48,8 @@
   "products-user-license-status-licensed": "Lizenziert",
   "products-user-license-status-expired": "Abgelaufen",
 
+  "administration-information": "Sie befinden sich aktuell in der globalen Administration. Bitte gehen Sie mit Vorsicht vor und achten Sie darauf, dass Sie keine datenschutzrelevanten Informationen veröffentlichen.",
+
   "url-shortener-title": "URL Kürzer",
   "url-shortener-description": "Hiermit kannst du deine URLs verkürzen, damit du sie schnell und einfach weitergeben kannst.",
   "link-successfully-shortened": "Der Link wurde erfolgreich verkürzt!",

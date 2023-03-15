@@ -5,7 +5,7 @@
 <div class="container mt-3">
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <h2><?= $this->e($this->translate($this->timeOfDayGreeting())) ?>, <?= $this->getAccountInformation()['name'] ?></h2>
             <small class="text-muted">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
@@ -17,10 +17,5 @@
         </div>
     </div>
     <hr>
-
-    <h4><?= $this->e($this->translate('your-products-list-title')) ?></h4>
-    <div class="row mt-3">
-
-    </div>
 
 </div>

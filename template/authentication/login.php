@@ -19,13 +19,13 @@
                 </div>
                 <div class="card-body">
                     <form action="" method="post">
-                        <div class="mb-3">
-                            <label for="email" class="form-text"><?= $this->e($this->translate('email')) ?></label>
+                        <div class="form-floating mb-3">
                             <input type="email" class="form-control" name="email" id="email" required>
+                            <label for="email" class="form-text"><?= $this->e($this->translate('email')) ?></label>
                         </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-text"><?= $this->e($this->translate('password')) ?></label>
+                        <div class="form-floating mb-3">
                             <input type="password" class="form-control" name="password" id="password" required>
+                            <label for="password" class="form-text"><?= $this->e($this->translate('password')) ?></label>
                         </div>
                         <div class="row">
                             <div class="col-8">

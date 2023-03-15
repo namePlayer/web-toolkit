@@ -3,6 +3,7 @@
 namespace App\Table\UrlShortener;
 
 use App\Model\UrlShortener\Shortlink;
+use App\Software;
 use App\Table\AbstractTable;
 
 class ShortlinkTable extends AbstractTable
@@ -14,7 +15,8 @@ class ShortlinkTable extends AbstractTable
         $values = [
             'uuid' => $shortlink->getUuid(),
             'destination' => $shortlink->getDestination(),
-            'account' => $shortlink->getAccount()
+            'account' => $shortlink->getAccount(),
+            'expiryDate' => $shortlink->getExpiryDate()->format(Software::DATABASE_TIME_FORMAT)
         ];
 
         return $this->query->insertInto($this->getTableName())->values($values)->execute();

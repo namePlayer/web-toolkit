@@ -30,6 +30,9 @@ $container->add(\App\Controller\URLShortener\CreateController::class)
 $container->add(\App\Controller\URLShortener\LinkController::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkService::class);
 
+$container->add(\App\Controller\Administration\DashboardController::class)
+    ->addArgument(\League\Plates\Engine::class);
+
 #
 # Services
 #

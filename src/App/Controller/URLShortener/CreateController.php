@@ -46,7 +46,7 @@ class CreateController
     }
 
     public function create(ServerRequestInterface $request, Account $account): ?string
-    { 
+    {
         if(isset($_POST['urlShortenerLink']))
         {
 
@@ -57,6 +57,11 @@ class CreateController
             if(!empty($_POST['urlShortenerCustomShortcode']))
             {
                 $shortlink->setUuid($_POST['urlShortenerCustomShortcode']);
+            }
+
+            if(!empty($_POST['urlShortenerExpiryDate']))
+            {
+                $shortlink->setExpiryDate(new \DateTime($_POST['urlShortenerExpiryDate']));
             }
 
             $shortenedLink = $this->shortlinkService->create($shortlink);
