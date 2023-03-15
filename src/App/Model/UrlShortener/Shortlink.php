@@ -6,8 +6,8 @@ class Shortlink
 {
 
     private int $id;
-    private int $domain;
-    private string $uuid;
+    private ?int $domain = null;
+    private string $uuid = '';
     private int $account;
     private \DateTime $dateTime;
     private string $destination;
@@ -20,6 +20,16 @@ class Shortlink
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function getDomain(): ?int
+    {
+        return $this->domain;
+    }
+
+    public function setDomain(?int $domain): void
+    {
+        $this->domain = $domain;
     }
 
     public function getUuid(): string

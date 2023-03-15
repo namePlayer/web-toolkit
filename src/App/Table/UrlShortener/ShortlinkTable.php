@@ -25,4 +25,14 @@ class ShortlinkTable extends AbstractTable
         return $this->query->from($this->getTableName())->where('uuid', $uuid)->fetch();
     }
 
+    public function findByUUIDAndDomain(Shortlink $shortlink): array|false
+    {
+        $where = [
+            'domain' => $shortlink->getDomain(),
+            'uuid' => $shortlink->getUuid()
+        ];
+
+        return $this->query->from($this->getTableName())->where($where)->fetch();
+    }
+
 }

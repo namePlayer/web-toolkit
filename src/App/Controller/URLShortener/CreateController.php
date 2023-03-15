@@ -46,13 +46,18 @@ class CreateController
     }
 
     public function create(ServerRequestInterface $request, Account $account): ?string
-    {
+    { 
         if(isset($_POST['urlShortenerLink']))
         {
 
             $shortlink = new Shortlink();
             $shortlink->setDestination($_POST['urlShortenerLink']);
             $shortlink->setAccount($account->getId());
+
+            if(!empty($_POST['urlShortenerCustomShortcode']))
+            {
+                $shortlink->setUuid($_POST['urlShortenerCustomShortcode']);
+            }
 
             $shortenedLink = $this->shortlinkService->create($shortlink);
 

@@ -51,6 +51,13 @@
   "url-shortener-title": "URL Kürzer",
   "url-shortener-description": "Hiermit kannst du deine URLs verkürzen, damit du sie schnell und einfach weitergeben kannst.",
   "link-successfully-shortened": "Der Link wurde erfolgreich verkürzt!",
-  "shortlink-destination-invalid": "Die Zieladresse ist ungültig!"
+  "shortlink-destination-invalid": "Die Zieladresse ist ungültig!",
+  "url-shortener-creation-pane-title": "URL Verkürzen",
+  "url-shortener-long-format-link-title": "URL in Langform",
+  "url-shortener-shorten-button": "URL Verkürzen",
+  "url-shortener-customization-pane-title": "Kurzlink anpassen",
+  "url-shortener-customization-pane-custom-shortcode": "Eigener Kurzcode",
+  "url-shortener-customization-pane-expiry-date": "Link läuft ab",
+  "url-shortener-tracking-pane-title": "Kurzlink Tracking"
 
 }

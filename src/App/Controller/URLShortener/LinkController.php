@@ -26,6 +26,7 @@ class LinkController
         }
 
         $shortlink = new Shortlink();
+        $shortlink->setDomain(null);
         $shortlink->setUuid($args['shortcode']);
 
         $this->shortlinkService->openShortlink($shortlink);
