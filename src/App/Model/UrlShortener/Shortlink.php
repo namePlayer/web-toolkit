@@ -12,6 +12,7 @@ class Shortlink
     private \DateTime $dateTime;
     private string $destination;
     private ?\DateTime $expiryDate = null;
+    private ?string $password = null;
 
     public function getId(): int
     {
@@ -81,6 +82,16 @@ class Shortlink
     public function setExpiryDate(?\DateTime $expiryDate): void
     {
         $this->expiryDate = $expiryDate;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(?string $password): void
+    {
+        $this->password = $password;
     }
 
 }

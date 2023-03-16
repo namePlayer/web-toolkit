@@ -25,10 +25,13 @@ $container->add(\App\Controller\Login\OverviewController::class)
 
 $container->add(\App\Controller\URLShortener\CreateController::class)
     ->addArgument(League\Plates\Engine::class)
-    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class);
+    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkPasswordService::class);
 
 $container->add(\App\Controller\URLShortener\LinkController::class)
-    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class);
+    ->addArgument(League\Plates\Engine::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkPasswordService::class);
 
 $container->add(\App\Controller\Administration\DashboardController::class)
     ->addArgument(\League\Plates\Engine::class);
@@ -55,6 +58,8 @@ $container->add(\App\Service\Tool\ToolService::class)
 $container->add(\App\Service\UrlShortener\ShortlinkService::class)
     ->addArgument(\App\Table\UrlShortener\ShortlinkTable::class)
     ->addArgument(\App\Validation\UrlShortener\ShortlinkValidation::class);
+
+$container->add(\App\Service\UrlShortener\ShortlinkPasswordService::class);
 
 #
 # Repositories

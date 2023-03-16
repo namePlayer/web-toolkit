@@ -6,8 +6,10 @@ use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Tool\Tool;
 use App\Model\UrlShortener\Shortlink;
+use App\Service\UrlShortener\ShortlinkPasswordService;
 use App\Service\UrlShortener\ShortlinkService;
 use League\Plates\Engine;
+use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -16,7 +18,8 @@ class CreateController
 
     public function __construct(
         private readonly Engine $template,
-        private readonly ShortlinkService $shortlinkService
+        private readonly ShortlinkService $shortlinkService,
+        private readonly ShortlinkPasswordService $passwordService
     )
     {
     }
@@ -62,6 +65,11 @@ class CreateController
             if(!empty($_POST['urlShortenerExpiryDate']))
             {
                 $shortlink->setExpiryDate(new \DateTime($_POST['urlShortenerExpiryDate']));
+            }
+
+            if(!empty($_POST['urlShortenerPassword']))
+            {
+                $shortlink->setPassword($this->passwordService->generatePassword($_POST['urlShortenerPassword']));
             }
 
             $shortenedLink = $this->shortlinkService->create($shortlink);

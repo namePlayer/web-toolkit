@@ -59,10 +59,12 @@ class ShortlinkService
 
         $shortlink->setId($shortlinkData['id']);
         $shortlink->setDestination($shortlinkData['destination']);
+        $shortlink->setPassword($shortlinkData['password']);
         if($shortlinkData['expiryDate'] !== NULL)
         {
             $shortlink->setExpiryDate(new \DateTime($shortlinkData['expiryDate']));
         }
+
 
         return;
 

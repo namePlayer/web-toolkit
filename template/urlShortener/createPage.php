@@ -57,6 +57,13 @@
 
                                 </div>
 
+                                <div class="mb-3 col-md-6">
+
+                                    <label for="urlShortenerPassword" class="form-label"><?= $this->e($this->translate('url-shortener-customization-pane-password')) ?></label>
+                                    <input type="password" id="urlShortenerPassword" name="urlShortenerPassword" class="form-control">
+
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -16,8 +16,13 @@ class ShortlinkTable extends AbstractTable
             'uuid' => $shortlink->getUuid(),
             'destination' => $shortlink->getDestination(),
             'account' => $shortlink->getAccount(),
-            'expiryDate' => $shortlink->getExpiryDate()->format(Software::DATABASE_TIME_FORMAT)
+            'password' => $shortlink->getPassword()
         ];
+
+        if($shortlink->getExpiryDate() !== NULL)
+        {
+            $values['expiryDate'] = $shortlink->getExpiryDate()->format(Software::DATABASE_TIME_FORMAT);
+        }
 
         return $this->query->insertInto($this->getTableName())->values($values)->execute();
     }

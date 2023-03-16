@@ -31,6 +31,8 @@ $router->get('/tool/url-shortener', 'App\Controller\URLShortener\CreateControlle
 
 $router->get('/aka/{shortcode}', 'App\Controller\URLShortener\LinkController::load');
 
+$router->post('/aka/{shortcode}', 'App\Controller\URLShortener\LinkController::load');
+
 $router->post('/tool/url-shortener', 'App\Controller\URLShortener\CreateController::load')
     ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class]);
 
