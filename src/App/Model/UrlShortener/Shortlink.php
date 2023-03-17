@@ -13,6 +13,7 @@ class Shortlink
     private string $destination;
     private ?\DateTime $expiryDate = null;
     private ?string $password = null;
+    private bool $tracking = false;
 
     public function getId(): int
     {
@@ -92,6 +93,16 @@ class Shortlink
     public function setPassword(?string $password): void
     {
         $this->password = $password;
+    }
+
+    public function isTracking(): bool
+    {
+        return $this->tracking;
+    }
+
+    public function setTracking(bool $tracking): void
+    {
+        $this->tracking = $tracking;
     }
 
 }

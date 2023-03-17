@@ -4,8 +4,10 @@ namespace App\Controller\URLShortener;
 
 use App\Http\HtmlResponse;
 use App\Model\UrlShortener\Shortlink;
+use App\Model\UrlShortener\ShortlinkTracking;
 use App\Service\UrlShortener\ShortlinkPasswordService;
 use App\Service\UrlShortener\ShortlinkService;
+use App\Service\UrlShortener\ShortlinkTrackingService;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
@@ -17,7 +19,8 @@ class LinkController
     public function __construct(
         private readonly Engine $template,
         private readonly ShortlinkService $shortlinkService,
-        private readonly ShortlinkPasswordService $passwordService
+        private readonly ShortlinkPasswordService $passwordService,
+        private readonly ShortlinkTrackingService $shortlinkTrackingService
     )
     {
     }
@@ -38,6 +41,7 @@ class LinkController
 
         if(empty($shortlink->getDestination()))
         {
+            MESSAGES->add('danger', 'url-shortener-link-not-found');
             return new HtmlResponse($this->template->render('urlShortener/linkInformation'));
         }
 
@@ -56,6 +60,16 @@ class LinkController
         {
             MESSAGES->add('danger', 'url-shortener-link-already-expired');
             return new HtmlResponse($this->template->render('urlShortener/linkInformation'));
+        }
+
+        if($shortlink->isTracking())
+        {
+            $tracking = new ShortlinkTracking();
+            $tracking->setLink($shortlink->getId());
+            $tracking->setUserIp($_SERVER['REMOTE_ADDR']);
+            $tracking->setUseragent($_SERVER['HTTP_USER_AGENT']);
+            $tracking->setAccessed(new \DateTime());
+            $this->shortlinkTrackingService->track($tracking);
         }
 
         return new RedirectResponse($shortlink->getDestination());

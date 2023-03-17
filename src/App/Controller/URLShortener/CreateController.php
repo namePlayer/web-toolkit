@@ -9,7 +9,6 @@ use App\Model\UrlShortener\Shortlink;
 use App\Service\UrlShortener\ShortlinkPasswordService;
 use App\Service\UrlShortener\ShortlinkService;
 use League\Plates\Engine;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 

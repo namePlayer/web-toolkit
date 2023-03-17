@@ -31,7 +31,8 @@ $container->add(\App\Controller\URLShortener\CreateController::class)
 $container->add(\App\Controller\URLShortener\LinkController::class)
     ->addArgument(League\Plates\Engine::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
-    ->addArgument(\App\Service\UrlShortener\ShortlinkPasswordService::class);
+    ->addArgument(\App\Service\UrlShortener\ShortlinkPasswordService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class);
 
 $container->add(\App\Controller\Administration\DashboardController::class)
     ->addArgument(\League\Plates\Engine::class);
@@ -61,6 +62,9 @@ $container->add(\App\Service\UrlShortener\ShortlinkService::class)
 
 $container->add(\App\Service\UrlShortener\ShortlinkPasswordService::class);
 
+$container->add(\App\Service\UrlShortener\ShortlinkTrackingService::class)
+    ->addArgument(\App\Table\UrlShortener\ShortlinkTrackingTable::class);
+
 #
 # Repositories
 #
@@ -74,6 +78,9 @@ $container->add(\App\Table\Tool\ToolTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\UrlShortener\ShortlinkTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\UrlShortener\ShortlinkTrackingTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #
