@@ -3,13 +3,6 @@
 <div class="container">
 
     <div class="row">
-
-        <?php if($shortenedLink !== NULL): ?>
-
-        <?php $this->insert('urlShortener/linkPane', ['link' => $shortenedLink]) ?>
-
-        <?php endif; ?>
-
         <div class="col">
             <form method="post">
                 <div class="card mb-3">
@@ -33,14 +26,14 @@
                     </div>
                 </div>
 
-                <div class="accordion" id="accordionFlushExample">
+                <div class="accordion" id="urlShortenerCustomization">
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <h2 class="accordion-header" id="flush-urlShortenerCustomizationPaneBasicHeader">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-urlShortenerCustomizationPaneBasic" aria-expanded="false" aria-controls="flush-urlShortenerCustomizationPaneBasic">
                                 <?= $this->e($this->translate('url-shortener-customization-pane-title')) ?>
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-urlShortenerCustomizationPaneBasic" class="accordion-collapse collapse" aria-labelledby="flush-urlShortenerCustomizationPaneBasicHeader">
                             <div class="accordion-body row">
 
                                 <div class="mb-3 col-md-6">
@@ -68,13 +61,20 @@
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <h2 class="accordion-header" id="flush-urlShortenerCustomizationPaneTrackingHeader">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-urlShortenerCustomizationPaneTracking" aria-expanded="false" aria-controls="flush-urlShortenerCustomizationPaneTracking">
                                 <?= $this->e($this->translate('url-shortener-tracking-pane-title')) ?>
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-urlShortenerCustomizationPaneTracking" class="accordion-collapse collapse" aria-labelledby="flush-urlShortenerCustomizationPaneTrackingHeader">
                             <div class="accordion-body">
+
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="urlShortenerEnableTracking" name="urlShortenerEnableTracking">
+                                    <label class="form-check-label" for="urlShortenerEnableTracking">
+                                        Enable Tracking
+                                    </label>
+                                </div>
 
                             </div>
                         </div>

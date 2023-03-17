@@ -55,6 +55,7 @@ class CreateController
             $shortlink = new Shortlink();
             $shortlink->setDestination($_POST['urlShortenerLink']);
             $shortlink->setAccount($account->getId());
+            $shortlink->setTracking(isset($_POST['urlShortenerEnableTracking']));
 
             if(!empty($_POST['urlShortenerCustomShortcode']))
             {
@@ -75,7 +76,7 @@ class CreateController
 
             if($shortenedLink !== NULL)
             {
-                MESSAGES->add('success', 'link-successfully-shortened');
+                MESSAGES->add('success', 'link-successfully-shortened', '<a href="'.$shortenedLink.'">'.$shortenedLink.'</a>');
                 return $shortenedLink;
             }
 

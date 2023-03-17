@@ -16,7 +16,8 @@ class ShortlinkTable extends AbstractTable
             'uuid' => $shortlink->getUuid(),
             'destination' => $shortlink->getDestination(),
             'account' => $shortlink->getAccount(),
-            'password' => $shortlink->getPassword()
+            'password' => $shortlink->getPassword(),
+            'tracking' => $shortlink->isTracking() ? 1 : 0
         ];
 
         if($shortlink->getExpiryDate() !== NULL)

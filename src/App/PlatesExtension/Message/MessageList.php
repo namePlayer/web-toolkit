@@ -13,12 +13,13 @@ class MessageList
     {
     }
 
-    public function add(string $type, string $message): void
+    public function add(string $type, string $message, string $additionalData = ''): void
     {
 
         $messageArray = [
             'type' => $type,
-            'message' => $message
+            'message' => $message,
+            'additionalData' => $additionalData
         ];
 
         $this->logger->debug("Added new Message (MessageList.php)", $messageArray);
