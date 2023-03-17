@@ -10,6 +10,9 @@ class ShortlinkTracking
     private string $useragent;
     private string $userIp;
     private \DateTime $accessed;
+    private string $browser;
+    private string $operatingSystem;
+    private string $country;
 
     public function getId(): int
     {
@@ -59,6 +62,36 @@ class ShortlinkTracking
     public function setAccessed(\DateTime $accessed): void
     {
         $this->accessed = $accessed;
+    }
+
+    public function getBrowser(): string
+    {
+        return $this->browser;
+    }
+
+    public function setBrowser(string $browser): void
+    {
+        $this->browser = $browser;
+    }
+
+    public function getOperatingSystem(): string
+    {
+        return $this->operatingSystem;
+    }
+
+    public function setOperatingSystem(string $operatingSystem): void
+    {
+        $this->operatingSystem = $operatingSystem;
+    }
+
+    public function getCountry(): string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): void
+    {
+        $this->country = $country;
     }
 
 }
