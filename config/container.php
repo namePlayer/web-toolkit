@@ -41,6 +41,11 @@ $container->add(\App\Controller\URLShortener\ListController::class)
     ->addArgument(League\Plates\Engine::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkService::class);
 
+$container->add(App\Controller\URLShortener\LinkViewController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class);
+
 $container->add(\App\Controller\Administration\DashboardController::class)
     ->addArgument(\League\Plates\Engine::class);
 

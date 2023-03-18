@@ -40,6 +40,13 @@ class ShortlinkTrackingService
 
     }
 
+    public function getLastClicksForLink(int $link, int $amount): array
+    {
+
+        return $this->shortlinkTrackingTable->getTracksByLinkIdAndLimit($link, $amount);
+
+    }
+
     public function getClickCountForLink(int $link): ?int
     {
         return $this->shortlinkTrackingTable->countAllByLink($link);

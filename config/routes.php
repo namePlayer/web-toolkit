@@ -29,6 +29,9 @@ $router->get('/overview', 'App\Controller\Login\OverviewController::load')
 $router->get('/tool/url-shortener/list', 'App\Controller\URLShortener\ListController::load')
     ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class]);
 
+$router->get('/tool/url-shortener/view/{linkId}', 'App\Controller\URLShortener\LinkViewController::load')
+    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class]);
+
 $router->get('/tool/url-shortener/domains', 'App\Controller\URLShortener\DomainController::load')
     ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class]);
 

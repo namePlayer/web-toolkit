@@ -26,6 +26,17 @@ class ShortlinkTrackingTable extends AbstractTable
 
     }
 
+    public function getTracksByLinkIdAndLimit(int $link, int $limit): array
+    {
+
+        $where = [
+            'link' => $link
+        ];
+
+        return $this->query->from($this->getTableName())->where($where)->limit($limit)->orderBy('accessed DESC')->fetchAll();
+
+    }
+
     public function countAllByLink(int $link): bool|array|int
     {
 

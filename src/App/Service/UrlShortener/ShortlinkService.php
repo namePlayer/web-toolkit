@@ -94,6 +94,28 @@ class ShortlinkService
 
     }
 
+    public function getShortlinkById(int $id): ?Shortlink
+    {
+        $shortlinkData = $this->shortlinkTable->findById($id);
+        if($shortlinkData === FALSE)
+        {
+            return null;
+        }
+
+        $shortlink = new Shortlink();
+        $shortlink->setId($id);
+        $shortlink->setDomain($shortlinkData['domain']);
+        $shortlink->setUuid($shortlinkData['uuid']);
+        $shortlink->setAccount($shortlinkData['account']);
+        $shortlink->setDateTime(new \DateTime($shortlinkData['created']));
+        $shortlink->setDestination($shortlinkData['destination']);
+        $shortlink->setExpiryDate($shortlinkData['expiryDate'] !== NULL ? new \DateTime($shortlinkData['expiryDate']) : null);
+        $shortlink->setPassword($shortlinkData['password']);
+        $shortlink->setTracking($shortlinkData['tracking'] === 1);
+
+        return $shortlink;
+    }
+
     private function generateShortLink(): string
     {
         $link = Uuid::uuid4();
