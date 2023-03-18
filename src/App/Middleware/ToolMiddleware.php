@@ -22,6 +22,11 @@ class ToolMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $path = $request->getRequestTarget();
+        $pathArray = explode('/', $path);
+        if(count($pathArray) > 2)
+        {
+            $path = '/' . $pathArray[1] . '/' . $pathArray[2];
+        }
         $toolData = $this->toolTable->findByPath($path);
 
         if($toolData === FALSE) {

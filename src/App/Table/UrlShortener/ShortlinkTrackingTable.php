@@ -26,4 +26,11 @@ class ShortlinkTrackingTable extends AbstractTable
 
     }
 
+    public function countAllByLink(int $link): bool|array|int
+    {
+
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(id)')->where('link', $link)->fetchColumn();
+
+    }
+
 }

@@ -9,7 +9,6 @@ class RegisterValidation
 
     public function verify(Account $account): bool
     {
-
         if(filter_var($account->getEmail(), FILTER_VALIDATE_EMAIL) === FALSE)
         {
             MESSAGES->add('danger', 'invalid-email');

@@ -4,6 +4,19 @@
 
     <div class="row">
         <div class="col">
+
+            <ul class="nav justify-content-center mb-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $toolInformation['tool-path'] ?>">Kurzlink erstellen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $toolInformation['tool-path'] ?>/list">Kurzlink Liste</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $toolInformation['tool-path'] ?>/domains">Domains verwalten</a>
+                </li>
+            </ul>
+
             <form method="post">
                 <div class="card mb-3">
                     <div class="card-header">

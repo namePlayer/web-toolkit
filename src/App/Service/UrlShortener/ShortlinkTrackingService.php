@@ -2,6 +2,7 @@
 
 namespace App\Service\UrlShortener;
 
+use App\Model\UrlShortener\Shortlink;
 use App\Model\UrlShortener\ShortlinkTracking;
 use App\Table\UrlShortener\ShortlinkTrackingTable;
 use DeviceDetector\DeviceDetector;
@@ -23,7 +24,7 @@ class ShortlinkTrackingService
         $userAgent = new DeviceDetector($tracking->getUseragent());
         $userAgent->parse();
 
-        $locationReader = new Reader(__DIR__ . '/../../../../data/countrydatabase.mmdb');
+        $locationReader = new Reader(__DIR__ . '/../../../../data/persistent/countrydatabase.mmdb');
         try {
             $record = $locationReader->country($tracking->getUserIp());
             $tracking->setCountry($record->country->name);
@@ -36,6 +37,12 @@ class ShortlinkTrackingService
         $tracking->setOperatingSystem($userAgent->getOs('name'));
 
         $this->shortlinkTrackingTable->create($tracking);
+
+    }
+
+    public function getClickCountForLink(int $link): ?int
+    {
+        return $this->shortlinkTrackingTable->countAllByLink($link);
 
     }
 

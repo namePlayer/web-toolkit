@@ -34,6 +34,13 @@ $container->add(\App\Controller\URLShortener\LinkController::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkPasswordService::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class);
 
+$container->add(\App\Controller\URLShortener\DomainController::class)
+    ->addArgument(\League\Plates\Engine::class);
+
+$container->add(\App\Controller\URLShortener\ListController::class)
+    ->addArgument(League\Plates\Engine::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class);
+
 $container->add(\App\Controller\Administration\DashboardController::class)
     ->addArgument(\League\Plates\Engine::class);
 
@@ -58,7 +65,8 @@ $container->add(\App\Service\Tool\ToolService::class)
 
 $container->add(\App\Service\UrlShortener\ShortlinkService::class)
     ->addArgument(\App\Table\UrlShortener\ShortlinkTable::class)
-    ->addArgument(\App\Validation\UrlShortener\ShortlinkValidation::class);
+    ->addArgument(\App\Validation\UrlShortener\ShortlinkValidation::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class);
 
 $container->add(\App\Service\UrlShortener\ShortlinkPasswordService::class);
 

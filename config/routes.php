@@ -26,14 +26,20 @@ $router->get('/admin/dashboard', 'App\Controller\Administration\DashboardControl
 $router->get('/overview', 'App\Controller\Login\OverviewController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
 
+$router->get('/tool/url-shortener/list', 'App\Controller\URLShortener\ListController::load')
+    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class]);
+
+$router->get('/tool/url-shortener/domains', 'App\Controller\URLShortener\DomainController::load')
+    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class]);
+
 $router->get('/tool/url-shortener', 'App\Controller\URLShortener\CreateController::load')
     ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class]);
+$router->post('/tool/url-shortener', 'App\Controller\URLShortener\CreateController::load')
+    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class]);
+
 
 $router->get('/aka/{shortcode}', 'App\Controller\URLShortener\LinkController::load');
 $router->post('/aka/{shortcode}', 'App\Controller\URLShortener\LinkController::load');
-
-$router->post('/tool/url-shortener', 'App\Controller\URLShortener\CreateController::load')
-    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class]);
 
 $response = $router->dispatch($request);
 (new \Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);

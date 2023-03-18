@@ -44,10 +44,10 @@ class RegistrationController
             {
                 return;
             }
-            $account->setBusiness($_POST['account-type'] === 'business');
-            if($account->isBusiness())
+            if($_POST['account-type'] === 'business')
             {
-                $account->setLevel(AccountLevel::BUSINESS_BASIC_LEVEL);
+                $account->setBusiness(0);
+                $account->setLevel(AccountLevel::BASIC_LEVEL);
             }
 
             $this->accountService->create($account);

@@ -40,7 +40,7 @@ class CreateController
             $this->template->render(
                 'urlShortener/createPage',
                 [
-                    'toolInformation' => ['tool-title' => $tool->getTitle(), 'tool-description' => $tool->getDescription()],
+                    'toolInformation' => ['tool-title' => $tool->getTitle(), 'tool-description' => $tool->getDescription(), 'tool-path' => $tool->getPath()],
                     'shortenedLink' => $shortenedLink ?? null
                 ]
             )

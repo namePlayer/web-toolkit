@@ -2,6 +2,7 @@
 
 namespace App\Service\UrlShortener;
 
+use App\Model\Authentication\Account;
 use App\Model\UrlShortener\Shortlink;
 use App\Table\UrlShortener\ShortlinkTable;
 use App\Validation\UrlShortener\ShortlinkValidation;
@@ -13,7 +14,8 @@ class ShortlinkService
 
     public function __construct(
         private readonly ShortlinkTable $shortlinkTable,
-        private readonly ShortlinkValidation $validation
+        private readonly ShortlinkValidation $validation,
+        private readonly ShortlinkTrackingService $shortlinkTrackingService
     )
     {
     }
@@ -66,8 +68,29 @@ class ShortlinkService
             $shortlink->setExpiryDate(new \DateTime($shortlinkData['expiryDate']));
         }
 
-
         return;
+
+    }
+
+    public function listShortlinkForUser(Account $account): array
+    {
+
+        $shortlinkTable = [];
+        foreach ($this->shortlinkTable->findAllByAccountId($account->getId()) as $shortlink)
+        {
+            $shortlinkTable[] =
+                [
+                    'id' => $shortlink['id'],
+                    'uuid' => $shortlink['uuid'],
+                    'domain' => empty($domain) ? $_SERVER['SERVER_NAME'] . '/aka' : $domain,
+                    'created' => (new \DateTime($shortlink['created']))->format('d.m.Y H:i'),
+                    'account' => $shortlink['account'],
+                    'openShortlinkAddress' => empty($domain) ? 'http://' . $_SERVER['SERVER_NAME'] . '/aka' . '/' . $shortlink['uuid'] : 'http://' . $domain . '/' . $shortlink['uuid'],
+                    'clicks' => $shortlink['tracking'] === 1 ? $this->shortlinkTrackingService->getClickCountForLink($shortlink['id']) : null
+                ];
+        }
+
+        return $shortlinkTable;
 
     }
 

@@ -43,4 +43,11 @@ class ShortlinkTable extends AbstractTable
         return $this->query->from($this->getTableName())->where($where)->fetch();
     }
 
+    public function findAllByAccountId(int $userId): array|false
+    {
+
+        return $this->query->from($this->getTableName())->where('account', $userId)->fetchAll();
+
+    }
+
 }

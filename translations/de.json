@@ -65,6 +65,9 @@
   "url-shortener-link-password-is-invalid": "Das Passwort konnte nicht bestätigt werden.",
   "url-shortener-link-not-found": "Der gewünschte Link konnte nicht gefunden werden.",
   "url-shortener-link-already-expired": "Der gewünschte Link ist nicht mehr verfügbar.",
-  "url-shortener-link-password-required": "Dieser Link benötigt eine Passworteingabe."
+  "url-shortener-link-password-required": "Dieser Link benötigt eine Passworteingabe.",
+  "url-shortener-link-list-title": "Link Übersicht",
+  "url-shortener-link-list-tracking-disabled": "Tracking ist deaktiviert",
+  "url-shortener-domain-list": "Domain Übersicht"
 
 }
