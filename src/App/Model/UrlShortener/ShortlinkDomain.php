@@ -9,6 +9,9 @@ class ShortlinkDomain
     private int $user;
     private string $uuid;
     private string $address;
+    private bool $public;
+    private bool $verified;
+    private bool $disabled;
 
     public function getId(): int
     {
@@ -48,6 +51,36 @@ class ShortlinkDomain
     public function setAddress(string $address): void
     {
         $this->address = $address;
+    }
+
+    public function isPublic(): bool
+    {
+        return $this->public;
+    }
+
+    public function setPublic(bool $public): void
+    {
+        $this->public = $public;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->verified;
+    }
+
+    public function setVerified(bool $verified): void
+    {
+        $this->verified = $verified;
+    }
+
+    public function isDisabled(): bool
+    {
+        return $this->disabled;
+    }
+
+    public function setDisabled(bool $disabled): void
+    {
+        $this->disabled = $disabled;
     }
 
 }

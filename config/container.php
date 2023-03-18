@@ -35,7 +35,8 @@ $container->add(\App\Controller\URLShortener\LinkController::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class);
 
 $container->add(\App\Controller\URLShortener\DomainController::class)
-    ->addArgument(\League\Plates\Engine::class);
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class);
 
 $container->add(\App\Controller\URLShortener\ListController::class)
     ->addArgument(League\Plates\Engine::class)
@@ -78,6 +79,10 @@ $container->add(\App\Service\UrlShortener\ShortlinkPasswordService::class);
 $container->add(\App\Service\UrlShortener\ShortlinkTrackingService::class)
     ->addArgument(\App\Table\UrlShortener\ShortlinkTrackingTable::class);
 
+$container->add(\App\Service\UrlShortener\ShortlinkDomainService::class)
+    ->addArgument(\App\Table\UrlShortener\ShortlinkDomainTable::class)
+    ->addArgument(\App\Validation\UrlShortener\ShortlinkDomainValidation::class);
+
 #
 # Repositories
 #
@@ -96,12 +101,17 @@ $container->add(\App\Table\UrlShortener\ShortlinkTable::class)
 $container->add(\App\Table\UrlShortener\ShortlinkTrackingTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
+$container->add(\App\Table\UrlShortener\ShortlinkDomainTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
 #
 # Validations
 #
 $container->add(\App\Validation\Authentication\RegisterValidation::class);
 
 $container->add(\App\Validation\UrlShortener\ShortlinkValidation::class);
+
+$container->add(\App\Validation\UrlShortener\ShortlinkDomainValidation::class);
 
 #
 # Middlewares
