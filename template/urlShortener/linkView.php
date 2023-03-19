@@ -94,7 +94,8 @@ $this->layout('tooltemplate', ['toolInformation' => $toolInformation]);
                             </thead>
                             <tbody>
 
-                                <?php foreach ($trackingData as $data): ?>
+                            <?php foreach ($trackingData as $data): ?>
+
 
                                     <tr>
                                         <th scope="row"><?= $data['accessed'] ?></th>
