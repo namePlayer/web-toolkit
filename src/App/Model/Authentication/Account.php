@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace App\Model\Authentication;
 
@@ -95,7 +94,7 @@ class Account
         return $this->business;
     }
 
-    public function setBusiness(?bool $business): void
+    public function setBusiness(?int $business): void
     {
         $this->business = $business;
     }
