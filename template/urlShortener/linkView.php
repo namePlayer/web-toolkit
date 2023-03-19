@@ -12,7 +12,7 @@ $this->layout('tooltemplate', ['toolInformation' => $toolInformation]);
 
     <div class="row">
         <div class="col-md-3 mb-3">
-            <h5 class="mb-3">Übersicht</h5>
+            <h5 class="mb-3"><?= $this->e($this->translate('url-shortener-link-information-title')) ?></h5>
             <ol class="list-group list-group-flush">
                 <li class="list-group-item text-center">
 
@@ -22,18 +22,20 @@ $this->layout('tooltemplate', ['toolInformation' => $toolInformation]);
 
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
-                        <div class="fw-bold">Erstellt</div>
+                        <div class="fw-bold">
+                            <?= $this->e($this->translate('url-shortener-link-information-created')) ?>
+                        </div>
                     </div>
                     <span><?= $shortlink->getDateTime()->format('d.m.Y H:i') ?></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
-                        <div class="fw-bold">Ablauf</div>
+                        <div class="fw-bold"><?= $this->e($this->translate('url-shortener-link-information-expiry')) ?></div>
                     </div>
                     <span class="badge bg-secondary rounded-pill">
 
                         <?= $shortlink->getExpiryDate() === NULL
-                            ? 'Nie'
+                            ? $this->e($this->translate('url-shortener-link-information-never-string'))
                             : $shortlink->getExpiryDate()->format('d.m.Y H:i')
                         ?>
 
@@ -41,20 +43,20 @@ $this->layout('tooltemplate', ['toolInformation' => $toolInformation]);
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
-                        <div class="fw-bold">Passwort</div>
+                        <div class="fw-bold"><?= $this->e($this->translate('url-shortener-link-information-password')) ?></div>
                     </div>
                     <?= $shortlink->getPassword() === NULL
-                        ? '<span class="badge bg-danger rounded-pill">Deaktiviert</span>'
-                        : '<span class="badge bg-success rounded-pill">Aktiviert</span>'
+                        ? '<span class="badge bg-danger rounded-pill">'. $this->e($this->translate('url-shortener-link-information-disabled-string')) .'</span>'
+                        : '<span class="badge bg-success rounded-pill">'. $this->e($this->translate('url-shortener-link-information-enabled-string')) .'</span>'
                     ?>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
-                        <div class="fw-bold">Tracking</div>
+                        <div class="fw-bold"><?= $this->e($this->translate('url-shortener-link-information-tracking')) ?></div>
                     </div>
                     <?= $shortlink->isTracking()
-                        ? '<span class="badge bg-success rounded-pill">Aktiviert</span>'
-                        : '<span class="badge bg-danger rounded-pill">Deaktiviert</span>'
+                        ? '<span class="badge bg-success rounded-pill">'. $this->e($this->translate('url-shortener-link-information-enabled-string')) .'</span>'
+                        : '<span class="badge bg-danger rounded-pill">'. $this->e($this->translate('url-shortener-link-information-disabled-string')) .'</span>'
                     ?>
                 </li>
             </ol>
@@ -72,22 +74,41 @@ $this->layout('tooltemplate', ['toolInformation' => $toolInformation]);
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">Datum</th>
-                                <th scope="col">Browser</th>
-                                <th scope="col">Betriebssystem</th>
-                                <th scope="col">Land</th>
+                                <th scope="col">
+                                    <?= $this->e($this->translate('url-shortener-link-information-tracking-table-date-title')) ?>
+                                </th>
+                                <th scope="col">
+                                    <?= $this->e($this->translate('url-shortener-link-information-tracking-table-browser-title')) ?>
+                                </th>
+                                <th scope="col">
+                                    <?= $this->e($this->translate('url-shortener-link-information-tracking-table-os-title')) ?>
+                                </th>
+                                <th scope="col">
+                                    <?= $this->e($this->translate('url-shortener-link-information-tracking-table-country-title')) ?>
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
 
                             <?php foreach ($trackingData as $data): ?>
 
-
                                     <tr>
                                         <th scope="row"><?= $data['accessed'] ?></th>
-                                        <td><?= $data['browser'] ?></td>
-                                        <td><?= $data['operatingSystem'] ?></td>
-                                        <td><?= empty($data['country']) ? 'UNK' : $data['country'] ?></td>
+                                        <td>
+                                            <?= empty($data['browser'])
+                                                ? $this->e($this->translate('url-shortener-link-information-tracking-table-unknown-string'))
+                                                : $data['browser'] ?>
+                                        </td>
+                                        <td>
+                                            <?= empty($data['operatingSystem'])
+                                                ? $this->e($this->translate('url-shortener-link-information-tracking-table-unknown-string'))
+                                                : $data['operatingSystem'] ?>
+                                        </td>
+                                        <td>
+                                            <?= empty($data['country'])
+                                                ? $this->e($this->translate('url-shortener-link-information-tracking-table-unknown-string'))
+                                                : $data['country'] ?>
+                                        </td>
                                     </tr>
 
                                 <?php endforeach; ?>
@@ -97,7 +118,9 @@ $this->layout('tooltemplate', ['toolInformation' => $toolInformation]);
 
                     <?php else: ?>
 
-                        <span class="text-center">Tracking ist für diesen Kurzlink deaktiviert</span>
+                        <span class="text-center">
+                            <?= $this->e($this->translate('url-shortener-link-information-tracking-table-tracking-disabled')) ?>
+                        </span>
 
                     <?php endif; ?>
 

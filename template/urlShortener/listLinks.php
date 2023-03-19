@@ -4,7 +4,7 @@
 
     <?= $this->insert('urlShortener/navigation', ['path' => $toolInformation['tool-path']]) ?>
 
-    <h3 class="mt-4"><?= $this->e($this->translate('url-shortener-link-list-title')) ?></h3>
+    <h4 class="mt-4"><?= $this->e($this->translate('url-shortener-link-list-title')) ?></h4>
 
     <div class="card mt-4">
         <div class="card-body">
