@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Service\UrlShortener;
 
@@ -118,7 +119,7 @@ class ShortlinkService
 
     private function generateShortLink(): string
     {
-        $link = Uuid::uuid4();
+        $link = Uuid::uuid4()->toString();
 
         return substr($link, 0, strpos($link, "-"));
     }

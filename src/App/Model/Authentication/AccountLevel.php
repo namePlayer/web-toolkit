@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Authentication;
 
@@ -41,7 +42,7 @@ class AccountLevel
 
     public function setBusiness(bool $business): void
     {
-        $this->business = $businessPlan;
+        $this->business = $business;
     }
 
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Table\UrlShortener;
 
@@ -37,7 +38,7 @@ class ShortlinkTrackingTable extends AbstractTable
 
     }
 
-    public function countAllByLink(int $link): bool|array|int
+    public function countAllByLink(int $link): bool|array|int|string
     {
 
         return $this->query->from($this->getTableName())->select(null)->select('COUNT(id)')->where('link', $link)->fetchColumn();
