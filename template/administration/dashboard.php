@@ -17,5 +17,24 @@
         </div>
     </div>
     <hr>
+    <div class="row">
+
+        <div class="col-3">
+            <div class="list-group mb-3">
+                <a href="#" class="list-group-item list-group-item-action disabled">
+                    <b>General</b>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">User Management<a>
+                <a href="#" class="list-group-item list-group-item-action">License Management</a>
+            </div>
+            <div class="list-group mb-3">
+                <a href="#" class="list-group-item list-group-item-action disabled">
+                    <b>Tools</b>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">URL Shortener<a>
+            </div>
+        </div>
+
+    </div>
 
 </div>
