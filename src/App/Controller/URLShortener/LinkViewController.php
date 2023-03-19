@@ -36,7 +36,7 @@ class LinkViewController
             return new RedirectResponse('/');
         }
 
-        $link = $this->shortlinkService->getShortlinkById($args['linkId']);
+        $link = $this->shortlinkService->getShortlinkById((int)$args['linkId']);
 
         return new HtmlResponse(
             $this->template->render(
@@ -44,7 +44,7 @@ class LinkViewController
                 [
                     'toolInformation' => ['tool-title' => $tool->getTitle(), 'tool-description' => $tool->getDescription(), 'tool-path' => $tool->getPath()],
                     'shortlink' => $link,
-                    'trackingData' => $link->isTracking() ? $this->shortlinkTrackingService->getLastClicksForLink($link->getId(), '10') : []
+                    'trackingData' => $link->isTracking() ? (int)$this->shortlinkTrackingService->getLastClicksForLink($link->getId(), 10) : []
                 ]
             )
         );

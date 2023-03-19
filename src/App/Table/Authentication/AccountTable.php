@@ -33,7 +33,7 @@ class AccountTable extends AbstractTable
             'lastLogin' => $account->getLastLogin()->format(Software::DATABASE_TIME_FORMAT)
         ];
 
-        return $this->query->update($this->getTableName())->where('id', $account->getId())->set($value)->execute();
+        return $this->query->update($this->getTableName())->where('id', $account->getId())->set($value)->execute() === 1;
 
     }
 

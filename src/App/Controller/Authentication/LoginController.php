@@ -51,8 +51,8 @@ class LoginController
             }
 
             $account->setId($login['id']);
-            $account->setActive($login['active']);
-            $account->setSetupComplete($login['setupComplete']);
+            $account->setActive((int)$login['active'] === 1);
+            $account->setSetupComplete((int)$login['setupComplete'] === 1);
 
             if($account->isActive() === FALSE)
             {
