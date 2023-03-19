@@ -40,15 +40,12 @@ class RegistrationController
             $account->setName($_POST['account-name']);
             $account->setEmail($_POST['email']);
             $account->setPassword($_POST['password']);
+            $account->setLevel(AccountLevel::BASIC_LEVEL);
             if($_POST['account-type'] !== 'private' && $_POST['account-type'] !== 'business')
             {
                 return;
             }
-            if($_POST['account-type'] === 'business')
-            {
-                $account->setBusiness(0);
-                $account->setLevel(AccountLevel::BASIC_LEVEL);
-            }
+            $account->setBusiness($_POST['account-type'] === 'business' ? 0 : null);
 
             $this->accountService->create($account);
 

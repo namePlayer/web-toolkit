@@ -47,11 +47,18 @@ class AccountService
         $account->setPassword($this->passwordService->hashPassword($account->getPassword()));
         if($this->accountTable->insert($account) !== FALSE)
         {
+            if($account->getBusiness() !== NULL)
+            {
+                $accountId = $this->findAccountByEmail($account->getEmail())['id'];
+                $this->accountTable->setAccountBusinessByAccountId($accountId, $accountId);
+                $account->setBusiness($accountId);
+            }
+
             MESSAGES->add('success', 'account-created');
             $this->logger->log(Level::Info, 'Account creation was successful', [
                     'name' => $account->getName(),
                     'email' => $account->getEmail(),
-                    'business-account' => $account->isBusiness()
+                    'business-account' => $account->getBusiness()
                 ]
             );
             return;

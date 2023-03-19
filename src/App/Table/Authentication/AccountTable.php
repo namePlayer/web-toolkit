@@ -9,14 +9,13 @@ use App\Table\AbstractTable;
 class AccountTable extends AbstractTable
 {
 
-    public function insert(Account $account): bool|array
+    public function insert(Account $account): bool|array|int
     {
 
         $values = [
             'name' => $account->getName(),
             'email' => $account->getEmail(),
-            'password' => $account->getPassword(),
-            'business' => $account->isBusiness() ? 1 : 0
+            'password' => $account->getPassword()
         ];
 
         return $this->query->insertInto($this->getTableName())->values($values)->executeWithoutId();
@@ -34,6 +33,13 @@ class AccountTable extends AbstractTable
         ];
 
         return $this->query->update($this->getTableName())->where('id', $account->getId())->set($value)->execute();
+
+    }
+
+    public function setAccountBusinessByAccountId(?int $business, int $account): array|false|int
+    {
+
+        return $this->query->update($this->getTableName())->where('id', $account)->set('business', $business)->execute();
 
     }
 
