@@ -2,18 +2,7 @@
 
 <div class="container">
 
-
-    <ul class="nav justify-content-center mb-3">
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $toolInformation['tool-path'] ?>">Kurzlink erstellen</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $toolInformation['tool-path'] ?>/list">Kurzlink Liste</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $toolInformation['tool-path'] ?>/domains">Domains verwalten</a>
-        </li>
-    </ul>
+    <?= $this->insert('urlShortener/navigation', ['path' => $toolInformation['tool-path']]) ?>
 
     <div class="row mt-4">
         <div class="col-9">

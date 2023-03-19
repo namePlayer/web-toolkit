@@ -8,21 +8,7 @@ $this->layout('tooltemplate', ['toolInformation' => $toolInformation]);
 
 <div class="container">
 
-    <div class="row">
-        <div class="col-12">
-            <ul class="nav justify-content-center mb-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $toolInformation['tool-path'] ?>">Kurzlink erstellen</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $toolInformation['tool-path'] ?>/list">Kurzlink Liste</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $toolInformation['tool-path'] ?>/domains">Domains verwalten</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <?= $this->insert('urlShortener/navigation', ['path' => $toolInformation['tool-path']]) ?>
 
     <div class="row">
         <div class="col-md-3 mb-3">
