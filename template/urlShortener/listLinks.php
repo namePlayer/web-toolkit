@@ -11,11 +11,21 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">UUID</th>
-                    <th scope="col">Domain</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">Clicks</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('url-shortener-link-list-table-uuid-title')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('url-shortener-link-list-table-domain-title')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('url-shortener-link-list-table-created-title')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('url-shortener-link-list-table-clicks-title')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('url-shortener-link-list-table-actions-title')) ?>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>

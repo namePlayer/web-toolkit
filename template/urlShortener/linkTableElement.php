@@ -6,7 +6,7 @@
         <small class="text-muted">
             <?= $clicks !== NULL
                 ? $clicks
-                : '<small class="text-muted">'  . $this->e($this->translate('url-shortener-link-list-tracking-disabled')) . '</small>'
+                : '<small class="text-muted">'  . $this->e($this->translate('url-shortener-link-list-table-tracking-disabled-string')) . '</small>'
             ?>
     </td>
     <td>
