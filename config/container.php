@@ -19,6 +19,10 @@ $container->add(\App\Controller\Authentication\LoginController::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Service\Authentication\PasswordService::class);
 
+$container->add(\App\Controller\Authentication\AccountController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
+
 $container->add(\App\Controller\Login\OverviewController::class)
     ->addArgument(League\Plates\Engine::class)
     ->addArgument(\App\Service\Tool\ToolService::class);
@@ -49,7 +53,8 @@ $container->add(App\Controller\URLShortener\LinkViewController::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class);
 
 $container->add(\App\Controller\Administration\DashboardController::class)
-    ->addArgument(\League\Plates\Engine::class);
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
 
 #
 # Services

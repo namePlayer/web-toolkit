@@ -3,8 +3,8 @@
 <?php $this->insert('element/navigation') ?>
 
 <div class="container mt-3">
-
     <div class="row">
+
         <div class="col-12">
             <h2><?= $this->e($this->translate($this->timeOfDayGreeting())) ?>, <?= $this->getAccountInformation()['name'] ?></h2>
             <small class="text-muted">
@@ -15,23 +15,49 @@
                 <?= $this->e($this->translate('administration-information')) ?>
             </small>
         </div>
-    </div>
-    <hr>
-    <div class="row">
 
-        <div class="col-3">
-            <div class="list-group mb-3">
-                <a href="#" class="list-group-item list-group-item-action disabled">
-                    <b>General</b>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">User Management<a>
-                <a href="#" class="list-group-item list-group-item-action">License Management</a>
-            </div>
-            <div class="list-group mb-3">
-                <a href="#" class="list-group-item list-group-item-action disabled">
-                    <b>Tools</b>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">URL Shortener<a>
+        <hr class="mt-3 mb-3">
+
+        <?= $this->insert('element/adminNavigation') ?>
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="text-start">
+                                <?= $this->e($this->translate('administration-dashboard-registered-accounts-card-title')) ?>
+                            </span>
+                            <span class="text-end">
+                                <h4><?= $accountCount ?></h4>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="text-start">
+                                <?= $this->e($this->translate('administration-dashboard-active-licenses-card-title')) ?>
+                            </span>
+                            <span class="text-end">
+                                <h4>0</h4>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="text-start">
+                                <?= $this->e($this->translate('administration-dashboard-open-support-tickets-card-title')) ?>
+                            </span>
+                            <span class="text-end">
+                                <h4>0</h4>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

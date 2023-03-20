@@ -1,15 +1,15 @@
 <?php
-declare(strict_types=1);
 
-namespace App\Controller\Administration;
+namespace App\Controller\Authentication;
 
 use App\Http\HtmlResponse;
+use App\Model\Authentication\Account;
 use App\Service\Authentication\AccountService;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class DashboardController
+class AccountController
 {
 
     public function __construct(
@@ -21,10 +21,10 @@ class DashboardController
 
     public function load(ServerRequestInterface $request): ResponseInterface
     {
-        return new HtmlResponse($this->template->render(
-            'administration/dashboard',
-            ['accountCount' => $this->accountService->getAllAccountsCount()]
-        ));
+        /* @var $account Account */
+        $account = $request->getAttribute(Account::class);
+
+        return new HtmlResponse();
     }
 
 }

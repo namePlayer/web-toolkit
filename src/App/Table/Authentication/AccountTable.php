@@ -44,4 +44,11 @@ class AccountTable extends AbstractTable
 
     }
 
+    public function countAllUsers(array $filters = []): int|string
+    {
+
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->where($filters)->fetchColumn();
+
+    }
+
 }

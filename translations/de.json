@@ -42,7 +42,21 @@
   "navigation-logged-in-as": "Angemeldet als",
   "navigation-account-settings": "Kontoeinstellungen",
   "navigation-account-licenses": "Lizenzübersicht",
+  "navigation-account-support": "Support",
   "navigation-account-logout": "Abmelden",
+
+  "admin-navigation-general-tab-title": "Allgemein",
+  "admin-navigation-general-tab-user-management-title": "Kontoverwaltung",
+  "admin-navigation-general-tab-license-management-title": "Lizenzverwaltung",
+  "admin-navigation-general-tab-api-key-management-title": "API-Key Verwaltung",
+  "admin-navigation-general-tab-support-interface-title": "Support Oberfläche",
+  "admin-navigation-tools-tab-title": "Tools",
+  "admin-navigation-tools-tab-url-shortener-title": "URL-Kürzer",
+  "admin-navigation-tools-tab-qrcode-generator-title": "QR-Code Generator",
+
+  "administration-dashboard-registered-accounts-card-title": "Registrierte Konten",
+  "administration-dashboard-active-licenses-card-title": "Aktive Lizenzen",
+  "administration-dashboard-open-support-tickets-card-title": "Offene Support-Tickets",
 
   "products-user-license-status-inclusive": "Inklusive",
   "products-user-license-status-licensed": "Lizenziert",

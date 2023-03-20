@@ -77,4 +77,9 @@ class AccountService
         return $this->accountTable->findById($id);
     }
 
+    public function getAllAccountsCount(): int
+    {
+        return (int)$this->accountTable->countAllUsers();
+    }
+
 }

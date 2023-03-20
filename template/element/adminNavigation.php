@@ -1,9 +1,30 @@
-<div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-        The current link item
-    </a>
-    <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-    <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-    <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-    <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+<div class="col-md-3">
+    <div class="list-group mb-3">
+        <a href="/admin/dashboard" class="list-group-item list-group-item-action disabled">
+            <b><?= $this->e($this->translate('admin-navigation-general-tab-title')) ?></b>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <?= $this->e($this->translate('admin-navigation-general-tab-user-management-title')) ?>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <?= $this->e($this->translate('admin-navigation-general-tab-license-management-title')) ?>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <?= $this->e($this->translate('admin-navigation-general-tab-api-key-management-title')) ?>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <?= $this->e($this->translate('admin-navigation-general-tab-support-interface-title')) ?>
+        </a>
+    </div>
+    <div class="list-group mb-3">
+        <a href="#" class="list-group-item list-group-item-action disabled">
+            <b><?= $this->e($this->translate('admin-navigation-tools-tab-title')) ?></b>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <?= $this->e($this->translate('admin-navigation-tools-tab-url-shortener-title')) ?>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+            <?= $this->e($this->translate('admin-navigation-tools-tab-qrcode-generator-title')) ?>
+        </a>
+    </div>
 </div>
