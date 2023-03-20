@@ -26,7 +26,13 @@ class ShortlinkDomainService
             return;
         }
 
-        $shortlinkDomain->setUuid(Uuid::uuid4());
+        $shortlinkDomain->setUuid(Uuid::uuid4()->toString());
+
+        if($this->shortlinkDomainTable->findByAddress($shortlinkDomain->getAddress()) !== FALSE)
+        {
+            MESSAGES->add('danger', 'url-shortener-domain-exists-creation');
+            return;
+        }
 
         $id = $this->shortlinkDomainTable->insert($shortlinkDomain);
 
@@ -37,6 +43,13 @@ class ShortlinkDomainService
         }
 
         MESSAGES->add('success', 'url-shortener-domain-created');
+
+    }
+
+    public function getDomainListForUser(int $user): array
+    {
+
+        return $this->shortlinkDomainTable->getAllDomainsForUser($user);
 
     }
 

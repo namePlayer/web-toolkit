@@ -27,8 +27,8 @@ class CreateController
     public function load(ServerRequestInterface $request): ResponseInterface
     {
         /* @var $account Account */
-        $account = $request->getAttribute(Account::class);
         /* @var $tool Tool*/
+        $account = $request->getAttribute(Account::class);
         $tool = $request->getAttribute(Tool::class);
 
         if($request->getMethod() === 'POST')

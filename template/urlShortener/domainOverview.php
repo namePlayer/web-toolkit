@@ -24,13 +24,17 @@
                     <th scope="col">Domain</th>
                     <th scope="col">Created</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Private</th>
+                    <th scope="col">Access</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
 
+                    <?php foreach($domainList as $domain): ?>
 
+                        <?php $this->insert('urlShortener/domainTableElement', ['domain' => $domain]); ?>
+
+                    <?php endforeach; ?>
 
                 </tbody>
             </table>
