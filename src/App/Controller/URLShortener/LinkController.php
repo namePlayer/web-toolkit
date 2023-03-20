@@ -52,7 +52,8 @@ class LinkController
             {
                 return new HtmlResponse(
                     $this->template->render(
-                        'urlShortener/linkInformation'
+                        'urlShortener/linkInformation',
+                        ['passwordRequired' => true]
                     ));
             }
         }
