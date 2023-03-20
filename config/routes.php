@@ -27,6 +27,9 @@ $router->get('/authentication/account', 'App\Controller\Authentication\AccountCo
 $router->get('/admin/dashboard', 'App\Controller\Administration\DashboardController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
+$router->get('/admin/apikeys', 'App\Controller\Administration\ApiKeyController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+
 $router->get('/overview', 'App\Controller\Login\OverviewController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
 
