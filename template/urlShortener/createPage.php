@@ -13,8 +13,16 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-
-                            <div class="col-md-9 mb-3">
+                            <div class="col-md-3">
+                                <label for="urlShortenerLinkAddress" class="form-label">Adresse</label>
+                                <select class="form-select" id="urlShortenerLinkAddress" name="urlShortenerLinkAddress">
+                                    <option value="" selected></option>
+                                    <?php foreach($domains as $domain): ?>
+                                        <option value="<?= $domain['uuid'] ?>"><?= $domain['address'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
                                 <label for="urlShortenerLink" class="form-label"><?= $this->e($this->translate('url-shortener-long-format-link-title')) ?></label>
                                 <input type="text" class="form-control" id="urlShortenerLink" name="urlShortenerLink">
                             </div>

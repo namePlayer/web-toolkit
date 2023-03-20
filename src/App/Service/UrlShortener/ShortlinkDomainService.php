@@ -18,7 +18,7 @@ class ShortlinkDomainService
     {
     }
 
-    public function create(ShortlinkDomain $shortlinkDomain)
+    public function create(ShortlinkDomain $shortlinkDomain): void
     {
 
         if($this->shortlinkDomainValidation->validate($shortlinkDomain) === FALSE)
@@ -46,10 +46,33 @@ class ShortlinkDomainService
 
     }
 
+    public function accountIsAllowedToUseDomain(int $account, int $domain): bool
+    {
+        $result = $this->shortlinkDomainTable->findById($domain);
+
+        return $result['user'] === $account;
+    }
+
     public function getDomainListForUser(int $user): array
     {
 
         return $this->shortlinkDomainTable->getAllDomainsForUser($user);
+
+    }
+
+    public function getByUUID(string $uuid): array
+    {
+        $result = $this->shortlinkDomainTable->findByUUID($uuid);
+
+        return $result === FALSE ? [] : $result;
+    }
+
+    public function getById(int $id): array
+    {
+
+        $result = $this->shortlinkDomainTable->findById($id);
+
+        return $result === FALSE ? [] : $result;
 
     }
 

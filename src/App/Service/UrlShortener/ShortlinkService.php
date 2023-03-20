@@ -53,7 +53,7 @@ class ShortlinkService
     public function openShortlink(Shortlink $shortlink): void
     {
 
-        $shortlinkData = $this->shortlinkTable->findByUUID($shortlink->getUuid());
+        $shortlinkData = $this->shortlinkTable->findByUUIDAndDomain($shortlink);
         if($shortlinkData === FALSE)
         {
             $shortlink->setDestination('');

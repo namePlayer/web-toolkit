@@ -26,7 +26,8 @@ $container->add(\App\Controller\Login\OverviewController::class)
 $container->add(\App\Controller\URLShortener\CreateController::class)
     ->addArgument(League\Plates\Engine::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
-    ->addArgument(\App\Service\UrlShortener\ShortlinkPasswordService::class);
+    ->addArgument(\App\Service\UrlShortener\ShortlinkPasswordService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class);
 
 $container->add(\App\Controller\URLShortener\LinkController::class)
     ->addArgument(League\Plates\Engine::class)
