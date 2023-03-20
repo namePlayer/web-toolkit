@@ -128,6 +128,8 @@ $container->add(\App\Middleware\AuthenticationMiddleware::class)
 $container->add(\App\Middleware\ToolMiddleware::class)
     ->addArgument(\App\Table\Tool\ToolTable::class);
 
+$container->add(\App\Middleware\AdminCheckMiddleware::class);
+
 #
 # Dependencies
 #

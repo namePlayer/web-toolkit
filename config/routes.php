@@ -24,7 +24,8 @@ $router->get('/authentication/logout', 'App\Controller\Authentication\LogoutCont
 $router->get('/authentication/account', 'App\Controller\Authentication\AccountController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
 
-$router->get('/admin/dashboard', 'App\Controller\Administration\DashboardController::load');
+$router->get('/admin/dashboard', 'App\Controller\Administration\DashboardController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
 $router->get('/overview', 'App\Controller\Login\OverviewController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
