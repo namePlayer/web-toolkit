@@ -21,11 +21,11 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Domain</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Access</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col"><?= $this->translate('url-shortener-domains-table-domain-name-title') ?></th>
+                    <th scope="col"><?= $this->translate('url-shortener-domains-table-created-date-title') ?></th>
+                    <th scope="col"><?= $this->translate('url-shortener-domains-table-status-title') ?></th>
+                    <th scope="col"><?= $this->translate('url-shortener-domains-table-privacy-title') ?></th>
+                    <th scope="col"><?= $this->translate('url-shortener-domains-table-actions-title') ?></th>
                 </tr>
                 </thead>
                 <tbody>
