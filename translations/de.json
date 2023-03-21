@@ -112,6 +112,7 @@
   "url-shortener-domains-table-privacy-title": "Verfügbarkeit",
   "url-shortener-domains-table-actions-title": "Aktionen",
   "url-shortener-domains-add-domain-modal-title": "Domain hinzufügen",
+  "url-shortener-domains-add-domain-modal-domain-name-field": "Adresse",
   "url-shortener-domains-add-domain-modal-domain-availability-select-public": "Öffentlich",
   "url-shortener-domains-add-domain-modal-domain-availability-select-private": "Privat",
   "url-shortener-domains-add-domain-modal-domain-cancel-button": "Abbrechen",

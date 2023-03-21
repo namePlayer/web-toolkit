@@ -1,6 +1,6 @@
 <div class="col-md-3">
     <div class="list-group mb-3">
-        <a href="/admin/dashboard" class="list-group-item list-group-item-action disabled">
+        <a href="/admin/dashboard" class="list-group-item list-group-item-action">
             <b><?= $this->e($this->translate('admin-navigation-general-tab-title')) ?></b>
         </a>
         <a href="#" class="list-group-item list-group-item-action">

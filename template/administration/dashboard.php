@@ -21,6 +21,8 @@
         <?= $this->insert('element/adminNavigation') ?>
 
         <div class="col-md-9">
+            <h4 class="mb-3">Dashboard</h4>
+
             <div class="row">
                 <div class="col-4">
                     <div class="card">
