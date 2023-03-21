@@ -56,10 +56,12 @@
   "admin-navigation-tools-tab-url-shortener-title": "URL-Kürzer",
   "admin-navigation-tools-tab-qrcode-generator-title": "QR-Code Generator",
 
-  "administration-dashboard-registered-accounts-card-title": "Registrierte Konten",
   "administration-dashboard-active-licenses-card-title": "Aktive Lizenzen",
   "administration-dashboard-open-support-tickets-card-title": "Offene Support-Tickets",
 
+  "admin-apikey-create-user-not-found": "Der gewünschte Benutzer wurde nicht gefunden.",
+
+  "administration-dashboard-registered-accounts-card-title": "Registrierte Konten",
   "products-user-license-status-inclusive": "Inklusive",
   "products-user-license-status-licensed": "Lizenziert",
   "products-user-license-status-expired": "Abgelaufen",

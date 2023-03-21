@@ -94,7 +94,8 @@ $container->add(\App\Service\UrlShortener\ShortlinkDomainService::class)
     ->addArgument(\App\Validation\UrlShortener\ShortlinkDomainValidation::class);
 
 $container->add(\App\Service\ApiKey\ApiKeyService::class)
-    ->addArgument(\App\Table\ApiKey\ApiKeyTable::class);
+    ->addArgument(\App\Table\ApiKey\ApiKeyTable::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
 
 #
 # Repositories
