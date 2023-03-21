@@ -115,6 +115,11 @@
   "url-shortener-domains-add-domain-modal-domain-availability-select-public": "Öffentlich",
   "url-shortener-domains-add-domain-modal-domain-availability-select-private": "Privat",
   "url-shortener-domains-add-domain-modal-domain-cancel-button": "Abbrechen",
-  "url-shortener-domains-add-domain-modal-domain-submit-button": "Erstellen"
+  "url-shortener-domains-add-domain-modal-domain-submit-button": "Erstellen",
+  "url-shortener-domains-table-element-status-verified-title": "Verifiziert",
+  "url-shortener-domains-table-element-status-verification-outstanding-title": "Verifizierung ausstehend",
+  "url-shortener-domains-table-element-privacy-public-title": "Öffentlich",
+  "url-shortener-domains-table-element-privacy-private-title": "Privat",
+  "url-shortener-domains-table-element-manage-button-title": "Verwalten"
 
 }
