@@ -105,6 +105,21 @@
   "url-shortener-link-information-tracking-table-country-title": "Land",
   "url-shortener-link-information-tracking-table-unknown-string": "Unbekannt",
   "url-shortener-link-information-tracking-table-tracking-disabled": "Tracking ist für diesen Link deaktiviert",
-  "url-shortener-domain-list": "Domain Übersicht"
+  "url-shortener-domain-list": "Domain Übersicht",
+  "url-shortener-domains-table-domain-name-title": "Adresse",
+  "url-shortener-domains-table-created-date-title": "Erstellt",
+  "url-shortener-domains-table-status-title": "Status",
+  "url-shortener-domains-table-privacy-title": "Verfügbarkeit",
+  "url-shortener-domains-table-actions-title": "Aktionen",
+  "url-shortener-domains-add-domain-modal-title": "Domain hinzufügen",
+  "url-shortener-domains-add-domain-modal-domain-availability-select-public": "Öffentlich",
+  "url-shortener-domains-add-domain-modal-domain-availability-select-private": "Privat",
+  "url-shortener-domains-add-domain-modal-domain-cancel-button": "Abbrechen",
+  "url-shortener-domains-add-domain-modal-domain-submit-button": "Erstellen",
+  "url-shortener-domains-table-element-status-verified-title": "Verifiziert",
+  "url-shortener-domains-table-element-status-verification-outstanding-title": "Verifizierung ausstehend",
+  "url-shortener-domains-table-element-privacy-public-title": "Öffentlich",
+  "url-shortener-domains-table-element-privacy-private-title": "Privat",
+  "url-shortener-domains-table-element-manage-button-title": "Verwalten"
 
 }

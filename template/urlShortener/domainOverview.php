@@ -21,11 +21,11 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Domain</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Access</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col"><?= $this->translate('url-shortener-domains-table-domain-name-title') ?></th>
+                    <th scope="col"><?= $this->translate('url-shortener-domains-table-created-date-title') ?></th>
+                    <th scope="col"><?= $this->translate('url-shortener-domains-table-status-title') ?></th>
+                    <th scope="col"><?= $this->translate('url-shortener-domains-table-privacy-title') ?></th>
+                    <th scope="col"><?= $this->translate('url-shortener-domains-table-actions-title') ?></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -63,32 +63,44 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="urlShortenerAddNewDomainLabel">Domain hinzufügen</h1>
+                    <h1 class="modal-title fs-5" id="urlShortenerAddNewDomainLabel">
+                        <?= $this->translate('url-shortener-domains-add-domain-modal-title') ?>
+                    </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
 
                         <div class="col-12 mb-3">
-                            <label for="urlShortenerAddNewDomainName" class="form-label">Adresse</label>
+                            <label for="urlShortenerAddNewDomainName" class="form-label">
+                            <?= $this->translate('url-shortener-domains-add-domain-modal-domain-name-field') ?>
+                            </label>
                             <input type="text" class="form-control" id="urlShortenerAddNewDomainName" name="urlShortenerAddNewDomainName" placeholder="examp.le/aka">
                         </div>
                         <div class="col-12 mb-3 text-center">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="urlShortenerAddNewDomainLabelRadio" id="urlShortenerAddNewDomainLabelRadioGlobal" value="global">
-                                <label class="form-check-label" for="urlShortenerAddNewDomainLabelRadioGlobal">Global</label>
+                                <label class="form-check-label" for="urlShortenerAddNewDomainLabelRadioGlobal">
+                                <?= $this->translate('url-shortener-domains-add-domain-modal-domain-availability-select-public') ?>
+                                </label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="urlShortenerAddNewDomainLabelRadio" id="urlShortenerAddNewDomainLabelRadioPrivate" value="private">
-                                <label class="form-check-label" for="inlineRadio3">Privat</label>
+                                <label class="form-check-label" for="inlineRadio3">
+                                <?= $this->translate('url-shortener-domains-add-domain-modal-domain-availability-select-private') ?>
+                                </label>
                             </div>
                         </div>
 
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
-                    <button type="submit" class="btn btn-primary">Erstellen</button>
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <?= $this->translate('url-shortener-domains-add-domain-modal-domain-cancel-button') ?>
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <?= $this->translate('url-shortener-domains-add-domain-modal-domain-submit-button') ?>
+                    </button>
                 </div>
             </div>
         </div>
