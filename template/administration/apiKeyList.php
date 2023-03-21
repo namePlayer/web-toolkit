@@ -1,4 +1,6 @@
-<?php $this->layout('basetemplate') ?>
+<?php use App\Model\ApiKey\ApiKey;
+
+$this->layout('basetemplate') ?>
 
 <?php $this->insert('element/navigation') ?>
 
@@ -36,12 +38,30 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php
+                foreach ($apiKeys as $apiKey):
+                ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Robert Habeck <small class="text-muted">(ID: 42)</small></td>
-                        <td>20.03.2022 21:33</td>
-                        <td>Never</td>
-                        <th><span class="badge text-bg-success">Active</span></th>
+                        <th scope="row"><?= $apiKey['id'] ?></th>
+                        <td>
+                            <?= $apiKey['account'] === NULL
+                                ? '<small class="text-muted">Not Assigned</small>'
+                                : '<a href="/admin/account/'.$apiKey['id'].'" class="text-decoration-none">' . $apiKey['name'] . '</a><small> (ID: ' . $apiKey['account'] . ')</small>'
+                            ?>
+                        </td>
+                        <td><?= (new DateTime($apiKey['created']))->format($this->translate('dateTime-format')) ?></td>
+                        <td>
+                            <?= $apiKey['expires'] !== NULL
+                                ? (new DateTime($apiKey['expires']))->format($this->translate('dateTime-format'))
+                                : 'Never'
+                            ?>
+                        </td>
+                        <th>
+                            <?= $apiKey['active'] === 1
+                                ? '<span class="badge text-bg-success">Active</span>'
+                                : '<span class="badge text-bg-danger">Disabled</span>'
+                            ?>
+                        </th>
                         <td>
                             <a href="#" class="text-decoration-none">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
@@ -51,6 +71,7 @@
                             </a>
                         </td>
                     </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
 

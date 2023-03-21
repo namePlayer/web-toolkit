@@ -1,5 +1,7 @@
 {
 
+  "dateTime-format": "d.m.Y H:i",
+
   "create-account-title": "Neues Konto erstellen",
   "login-account-title": "Anmelden",
   "create-account-for": "Ich erstelle das Konto für...",

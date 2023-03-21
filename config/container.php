@@ -57,7 +57,8 @@ $container->add(\App\Controller\Administration\DashboardController::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
 
 $container->add(\App\Controller\Administration\ApiKeyController::class)
-    ->addArgument(\League\Plates\Engine::class);
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\ApiKey\ApiKeyService::class);
 
 #
 # Services
@@ -92,6 +93,9 @@ $container->add(\App\Service\UrlShortener\ShortlinkDomainService::class)
     ->addArgument(\App\Table\UrlShortener\ShortlinkDomainTable::class)
     ->addArgument(\App\Validation\UrlShortener\ShortlinkDomainValidation::class);
 
+$container->add(\App\Service\ApiKey\ApiKeyService::class)
+    ->addArgument(\App\Table\ApiKey\ApiKeyTable::class);
+
 #
 # Repositories
 #
@@ -111,6 +115,9 @@ $container->add(\App\Table\UrlShortener\ShortlinkTrackingTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\UrlShortener\ShortlinkDomainTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\ApiKey\ApiKeyTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #
