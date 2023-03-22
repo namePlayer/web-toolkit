@@ -39,4 +39,25 @@ class ApiKeyService
         return $this->apiKeyTable->getAllApiKeysWithUsername();
     }
 
+    public function getApiKeyById(int $id): ApiKey|false
+    {
+
+        $data = $this->apiKeyTable->findById($id);
+        if($data === FALSE)
+        {
+            return false;
+        }
+
+        $apiKey = new ApiKey();
+        $apiKey->setId($id);
+        $apiKey->setAccount($data['account']);
+        $apiKey->setPassword($data['password']);
+        $apiKey->setCreated(new \DateTime($data['created']));
+        $apiKey->setExpires($data['expires'] !== NULL ? new \DateTime($data['expires']) : null);
+        $apiKey->setActive($data['active'] === 1);
+
+        return $apiKey;
+
+    }
+
 }

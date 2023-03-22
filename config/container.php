@@ -97,6 +97,11 @@ $container->add(\App\Service\ApiKey\ApiKeyService::class)
     ->addArgument(\App\Table\ApiKey\ApiKeyTable::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
 
+$container->add(\App\Controller\Administration\ApiKeyDetailController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\ApiKey\ApiKeyService::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
+
 #
 # Repositories
 #
