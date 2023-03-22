@@ -54,9 +54,12 @@ $router->get('/tool/url-shortener', 'App\Controller\URLShortener\CreateControlle
 $router->post('/tool/url-shortener', 'App\Controller\URLShortener\CreateController::load')
     ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class]);
 
-
 $router->get('/aka/{shortcode}', 'App\Controller\URLShortener\LinkController::load');
 $router->post('/aka/{shortcode}', 'App\Controller\URLShortener\LinkController::load');
+
+$router->get('/api/shortlink', 'Api\UrlShortener\OpenLinkApiController::access')
+    ->lazyMiddlewares([\App\Middleware\ApiAuthenticationMiddleware::class])
+    ->setStrategy($jsonStrategy);
 
 $response = $router->dispatch($request);
 (new \Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);

@@ -93,6 +93,11 @@ $container->add(\App\Service\UrlShortener\ShortlinkDomainService::class)
     ->addArgument(\App\Table\UrlShortener\ShortlinkDomainTable::class)
     ->addArgument(\App\Validation\UrlShortener\ShortlinkDomainValidation::class);
 
+$container->add(\Api\UrlShortener\OpenLinkApiController::class)
+    ->addArgument(\App\Service\ApiKey\ApiKeyService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class);
+
 $container->add(\App\Service\ApiKey\ApiKeyService::class)
     ->addArgument(\App\Table\ApiKey\ApiKeyTable::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
@@ -145,6 +150,9 @@ $container->add(\App\Middleware\ToolMiddleware::class)
     ->addArgument(\App\Table\Tool\ToolTable::class);
 
 $container->add(\App\Middleware\AdminCheckMiddleware::class);
+
+$container->add(\App\Middleware\ApiAuthenticationMiddleware::class)
+    ->addArgument(\App\Service\ApiKey\ApiKeyService::class);
 
 #
 # Dependencies

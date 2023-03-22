@@ -5,7 +5,8 @@
     "keywords": ["template", "skeleton", "npcorenet"],
     "autoload": {
         "psr-4": {
-            "App\\": "src/App/"
+            "App\\": "src/App/",
+            "Api\\": "src/Api/"
         }
     },
     "authors": [

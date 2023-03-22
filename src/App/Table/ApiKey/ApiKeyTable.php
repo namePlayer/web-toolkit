@@ -5,6 +5,7 @@ namespace App\Table\ApiKey;
 use App\Model\ApiKey\ApiKey;
 use App\Software;
 use App\Table\AbstractTable;
+use http\Params;
 
 class ApiKeyTable extends AbstractTable
 {
@@ -34,6 +35,11 @@ class ApiKeyTable extends AbstractTable
                 ->select('Account.name')
                 ->fetchAll();
 
+    }
+
+    public function findByPassword(string $password): array|false
+    {
+        return $this->query->from($this->getTableName())->where('password', $password)->fetch();
     }
 
 }

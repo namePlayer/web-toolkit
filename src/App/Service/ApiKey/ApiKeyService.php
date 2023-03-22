@@ -60,4 +60,17 @@ class ApiKeyService
 
     }
 
+    public function getApiKeyByPassword(string $password): array
+    {
+
+        $key = $this->apiKeyTable->findByPassword($password);
+        if($key === FALSE)
+        {
+            return [];
+        }
+
+        return $key;
+
+    }
+
 }
