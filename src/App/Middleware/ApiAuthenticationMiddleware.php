@@ -41,6 +41,16 @@ class ApiAuthenticationMiddleware implements MiddlewareInterface
             $key->setExpires(new \DateTime($keyInformation['expires']));
         }
 
+        if($key->getExpires() !== NULL && $key->getExpires() <= new \DateTime())
+        {
+            return new JsonResponse('401', [], 'apikey-expired');
+        }
+
+        if($key->isActive() === FALSE)
+        {
+            return new JsonResponse('401', [], 'apikey-disabled');
+        }
+
         return $handler->handle($request->withAttribute(ApiKey::class, $key));
     }
 

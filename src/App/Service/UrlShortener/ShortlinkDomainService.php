@@ -76,4 +76,11 @@ class ShortlinkDomainService
 
     }
 
+    public function getByDomain(string $domain): array|false
+    {
+
+        return $this->shortlinkDomainTable->findByAddress($domain);
+
+    }
+
 }

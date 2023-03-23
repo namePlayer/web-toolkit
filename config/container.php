@@ -96,7 +96,9 @@ $container->add(\App\Service\UrlShortener\ShortlinkDomainService::class)
 $container->add(\Api\UrlShortener\OpenLinkApiController::class)
     ->addArgument(\App\Service\ApiKey\ApiKeyService::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class)
-    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class);
+    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkPasswordService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class);
 
 $container->add(\App\Service\ApiKey\ApiKeyService::class)
     ->addArgument(\App\Table\ApiKey\ApiKeyTable::class)
