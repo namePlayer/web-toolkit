@@ -6,6 +6,7 @@ namespace App\Controller\URLShortener;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Tool\Tool;
+use App\Service\UrlShortener\ShortlinkDomainService;
 use App\Service\UrlShortener\ShortlinkService;
 use App\Service\UrlShortener\ShortlinkTrackingService;
 use Laminas\Diactoros\Response\RedirectResponse;
@@ -19,7 +20,8 @@ class LinkViewController
     public function __construct(
         private readonly Engine $template,
         private readonly ShortlinkService $shortlinkService,
-        private readonly ShortlinkTrackingService $shortlinkTrackingService
+        private readonly ShortlinkTrackingService $shortlinkTrackingService,
+        private readonly ShortlinkDomainService $shortlinkDomainService
     )
     {
     }
@@ -44,7 +46,8 @@ class LinkViewController
                 [
                     'toolInformation' => ['tool-title' => $tool->getTitle(), 'tool-description' => $tool->getDescription(), 'tool-path' => $tool->getPath()],
                     'shortlink' => $link,
-                    'trackingData' => $link->isTracking() ? $this->shortlinkTrackingService->getLastClicksForLink((int)$link->getId(), 10) : []
+                    'trackingData' => $link->isTracking() ? $this->shortlinkTrackingService->getLastClicksForLink((int)$link->getId(), 10) : [],
+                    'shortlinkDomain' => $link->getDomain() === NULL ? $_SERVER['HTTP_HOST'] . '/aka' : $this->shortlinkDomainService->getById($link->getDomain())['address']
                 ]
             )
         );

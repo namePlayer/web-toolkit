@@ -16,7 +16,9 @@ $this->layout('tooltemplate', ['toolInformation' => $toolInformation]);
             <ol class="list-group list-group-flush">
                 <li class="list-group-item text-center">
 
-                    <?= $shortlink->getUuid() ?>
+                    <a href="http://<?= $shortlinkDomain . '/' . $shortlink->getUuid()?>">
+                        <?= $shortlinkDomain . '/' . $shortlink->getUuid()?>
+                    </a>
 
                 </li>
 
