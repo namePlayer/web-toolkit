@@ -82,4 +82,9 @@ class AccountService
         return (int)$this->accountTable->countAllUsers();
     }
 
+    public function getAccountList(): array
+    {
+        return $this->accountTable->findAll();
+    }
+
 }

@@ -3,7 +3,7 @@
         <a href="/admin/dashboard" class="list-group-item list-group-item-action">
             <b><?= $this->e($this->translate('admin-navigation-general-tab-title')) ?></b>
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="/admin/accounts" class="list-group-item list-group-item-action">
             <?= $this->e($this->translate('admin-navigation-general-tab-user-management-title')) ?>
         </a>
         <a href="#" class="list-group-item list-group-item-action">

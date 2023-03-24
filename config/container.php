@@ -61,6 +61,10 @@ $container->add(\App\Controller\Administration\ApiKeyController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\ApiKey\ApiKeyService::class);
 
+$container->add(\App\Controller\Administration\AccountListController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
+
 #
 # Services
 #
