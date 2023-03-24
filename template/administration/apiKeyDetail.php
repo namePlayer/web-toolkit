@@ -62,7 +62,9 @@
                             <form method="post">
                                 <h4>
                                     <?= $apiKey->isActive()
-                                        ? 'Active'
+                                        ? $apiKey->getExpires() !== NULL && $apiKey->getExpires() <= new DateTime()
+                                            ? 'Expired'
+                                            : 'Active'
                                         : 'Disabled'
                                     ?>
                                     <?= $apiKey->isActive()

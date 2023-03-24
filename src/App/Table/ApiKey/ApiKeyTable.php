@@ -54,7 +54,7 @@ class ApiKeyTable extends AbstractTable
 
         $set = [
             'password' => $apiKey->getPassword(),
-            'expires' => $apiKey->getExpires()->format(Software::DATABASE_TIME_FORMAT)
+            'expires' => $apiKey->getExpires()?->format(Software::DATABASE_TIME_FORMAT)
         ];
 
         return $this->query->update($this->getTableName())->where('id', $apiKey->getId())->set($set)->execute();
