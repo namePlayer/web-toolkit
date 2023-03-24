@@ -56,6 +56,11 @@
   "admin-navigation-tools-tab-url-shortener-title": "URL-Kürzer",
   "admin-navigation-tools-tab-qrcode-generator-title": "QR-Code Generator",
 
+  "admin-apikey-management-key-is-active-updated": "Der API-Key wurde (de-)aktiviert",
+  "admin-apikey-management-key-is-empty": "Der API-Key darf nicht leer sein",
+  "admin-apikey-management-key-update-successful": "Der API-Key wurde erfolgreich aktualisiert.",
+  "admin-apikey-management-key-update-error": "Ein Fehler ist beim Update des API-Keys aufgetreten.",
+
   "administration-dashboard-active-licenses-card-title": "Aktive Lizenzen",
   "administration-dashboard-open-support-tickets-card-title": "Offene Support-Tickets",
 

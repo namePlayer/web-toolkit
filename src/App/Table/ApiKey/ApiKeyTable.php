@@ -42,4 +42,23 @@ class ApiKeyTable extends AbstractTable
         return $this->query->from($this->getTableName())->where('password', $password)->fetch();
     }
 
+    public function updateActive(int $key, bool $active): string|int|bool
+    {
+
+        return $this->query->update($this->getTableName())->where('id', $key)->set('active', $active ? 1 : 0)->execute();
+
+    }
+
+    public function updateKey(ApiKey $apiKey): string|int|bool
+    {
+
+        $set = [
+            'password' => $apiKey->getPassword(),
+            'expires' => $apiKey->getExpires()->format(Software::DATABASE_TIME_FORMAT)
+        ];
+
+        return $this->query->update($this->getTableName())->where('id', $apiKey->getId())->set($set)->execute();
+
+    }
+
 }

@@ -73,4 +73,20 @@ class ApiKeyService
 
     }
 
+    public function setActive(int $id, bool $active)
+    {
+        $this->apiKeyTable->updateActive($id, $active);
+    }
+
+    public function updateKey(ApiKey $apiKey)
+    {
+        if($this->apiKeyTable->updateKey($apiKey) >= 1)
+        {
+            MESSAGES->add('success', 'admin-apikey-management-key-update-successful');
+            return;
+        }
+
+        MESSAGES->add('danger', 'admin-apikey-management-key-update-error');
+    }
+
 }
