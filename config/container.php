@@ -53,6 +53,18 @@ $container->add(App\Controller\URLShortener\LinkViewController::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class);
 
+$container->add(\Api\UrlShortener\OpenLinkApiController::class)
+    ->addArgument(\App\Service\ApiKey\ApiKeyService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkPasswordService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class);
+
+$container->add(\App\Controller\Administration\ApiKeyDetailController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\ApiKey\ApiKeyService::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
+
 $container->add(\App\Controller\Administration\DashboardController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
@@ -79,6 +91,7 @@ $container->add(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Table\Authentication\AccountTable::class)
     ->addArgument(\App\Service\Authentication\PasswordService::class)
     ->addArgument(\App\Validation\Authentication\RegisterValidation::class)
+    ->addArgument(\App\Table\Authentication\AccountLevelTable::class)
     ->addArgument(\Monolog\Logger::class);
 
 $container->add(\App\Service\Authentication\PasswordService::class);
@@ -102,20 +115,8 @@ $container->add(\App\Service\UrlShortener\ShortlinkDomainService::class)
     ->addArgument(\App\Table\UrlShortener\ShortlinkDomainTable::class)
     ->addArgument(\App\Validation\UrlShortener\ShortlinkDomainValidation::class);
 
-$container->add(\Api\UrlShortener\OpenLinkApiController::class)
-    ->addArgument(\App\Service\ApiKey\ApiKeyService::class)
-    ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class)
-    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
-    ->addArgument(\App\Service\UrlShortener\ShortlinkPasswordService::class)
-    ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class);
-
 $container->add(\App\Service\ApiKey\ApiKeyService::class)
     ->addArgument(\App\Table\ApiKey\ApiKeyTable::class)
-    ->addArgument(\App\Service\Authentication\AccountService::class);
-
-$container->add(\App\Controller\Administration\ApiKeyDetailController::class)
-    ->addArgument(\League\Plates\Engine::class)
-    ->addArgument(\App\Service\ApiKey\ApiKeyService::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
 
 #

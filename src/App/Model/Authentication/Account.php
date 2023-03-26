@@ -79,12 +79,12 @@ class Account
         $this->registered = $registered;
     }
 
-    public function getLastLogin(): DateTime
+    public function getLastLogin(): ?DateTime
     {
         return $this->lastLogin;
     }
 
-    public function setLastLogin(DateTime $lastLogin): void
+    public function setLastLogin(?DateTime $lastLogin): void
     {
         $this->lastLogin = $lastLogin;
     }

@@ -68,7 +68,7 @@ $this->layout('basetemplate') ?>
 
             <hr>
             <div class="tab-content" id="adminAccountViewTabContent">
-                <div class="tab-pane fade" id="adminAccountViewTabInformationPane" role="tabpanel" aria-labelledby="adminAccountViewTabInformation" tabindex="0">
+                <div class="tab-pane fade show active" id="adminAccountViewTabInformationPane" role="tabpanel" aria-labelledby="adminAccountViewTabInformation" tabindex="0">
 
                     <div class="card">
                         <div class="card-body row">
@@ -76,19 +76,22 @@ $this->layout('basetemplate') ?>
                             <div class="col-md-4 text-center mb-4">
                                 <span>Account Name</span>
                                 <h4>
-                                    Christian Lindner
+                                    <?= $account->getName(); ?>
                                 </h4>
                             </div>
                             <div class="col-md-4 text-center mb-4">
                                 <span>Subscription</span>
                                 <h4>
-                                    Enterprise
+                                    <?= $this->e($this->translate($level['title'])) ?>
                                 </h4>
                             </div>
                             <div class="col-md-4 text-center mb-4">
                                 <span>Status</span>
                                 <h4>
-                                    Active
+                                    <?= $account->isActive()
+                                        ? 'Active'
+                                        : 'Inactive'
+                                    ?>
                                 </h4>
                             </div>
                             <div class="col-md-4 text-center mb-3">
@@ -100,13 +103,16 @@ $this->layout('basetemplate') ?>
                             <div class="col-md-4 text-center mb-3">
                                 <span>Registered</span>
                                 <h4>
-                                    22.01.1968 12:24
+                                    <?= $account->getRegistered()->format($this->translate('dateTime-format')) ?>
                                 </h4>
                             </div>
                             <div class="col-md-4 text-center mb-3">
                                 <span>Last Login</span>
                                 <h4>
-                                    Never
+                                    <?= $account->getLastLogin() === NULL
+                                        ? 'Never'
+                                        : $account->getLastLogin()->format($this->translate('dateTime-format'))
+                                    ?>
                                 </h4>
                             </div>
 
@@ -114,12 +120,16 @@ $this->layout('basetemplate') ?>
                     </div>
 
                 </div>
-                <div class="tab-pane fade show active" id="adminAccountViewTabSettingsPane" role="tabpanel" aria-labelledby="adminAccountViewTabSettings" tabindex="0">
+                <div class="tab-pane fade" id="adminAccountViewTabSettingsPane" role="tabpanel" aria-labelledby="adminAccountViewTabSettings" tabindex="0">
                     <form method="post">
                         <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="adminAccountTabSettingsAccountName" class="form-label">Account or Organisation Name</label>
+                                <input type="text" class="form-control" id="adminAccountTabSettingsAccountName" name="adminAccountTabSettingsAccountName" value="<?= $account->getName(); ?>">
+                            </div>
                             <div class="col-md-6 mb-3">
                                 <label for="adminAccountTabSettingsFirstname" class="form-label">Firstname</label>
-                                <input type="text" class="form-control" id="adminAccountTabSettingsFirstname" name="adminAccountTabSettingsFirstname">
+                                <input type="text" class="form-control" id="adminAccountTabSettingsFirstname" name="adminAccountTabSettingsFirstname" >
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="adminAccountTabSettingsSurname" class="form-label">Surname</label>
@@ -127,32 +137,32 @@ $this->layout('basetemplate') ?>
                             </div>
                             <div class="col-md-8 mb-3">
                                 <label for="adminAccountTabSettingsEmail" class="form-label">E-Mail Address</label>
-                                <input type="email" class="form-control" id="adminAccountTabSettingsEmail" name="adminAccountTabSettingsEmail">
+                                <input type="email" class="form-control" id="adminAccountTabSettingsEmail" name="adminAccountTabSettingsEmail" value="<?= $account->getEmail(); ?>">
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="adminAccountTabSettingsLevel" class="form-label"><Level></Level></label>
+                                <label for="adminAccountTabSettingsLevel" class="form-label">Level</label>
                                 <select class="form-select" aria-label="Default select example">
-                                    <option selected>Basic</option>
-                                    <option value="1">Premium</option>
-                                    <option value="2">Premium+</option>
-                                    <option value="3">Enterprise</option>
+                                    <option <?= $account->getLevel() === 1 ? 'selected' : '' ?>>Basic</option>
+                                    <option value="1" <?= $account->getLevel() === 2 ? 'selected' : '' ?>>Premium</option>
+                                    <option value="2" <?= $account->getLevel() === 3 ? 'selected' : '' ?>>Premium+</option>
+                                    <option value="3" <?= $account->getLevel() === 4 ? 'selected' : '' ?>>Enterprise</option>
                                 </select>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <?= $account->isActive() ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Enable Account</label>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" disabled>
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Support Permissions</label>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <?= $account->isAdmin() ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Admin Permissions</label>
                                 </div>
                             </div>

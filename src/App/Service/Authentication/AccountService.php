@@ -5,6 +5,7 @@ namespace App\Service\Authentication;
 
 use App\Model\Authentication\Account;
 use App\PlatesExtension\Message\MessageList;
+use App\Table\Authentication\AccountLevelTable;
 use App\Table\Authentication\AccountTable;
 use App\Validation\Authentication\RegisterValidation;
 use Monolog\Level;
@@ -17,6 +18,7 @@ class AccountService
         private readonly AccountTable $accountTable,
         private readonly PasswordService $passwordService,
         private readonly RegisterValidation $registerValidation,
+        private readonly AccountLevelTable $accountLevelTable,
         private readonly Logger $logger
     )
     {
@@ -65,6 +67,11 @@ class AccountService
             return;
         }
 
+    }
+
+    public function getLevelById(int $level): array
+    {
+        return $this->accountLevelTable->findById($level);
     }
 
     public function findAccountByEmail(string $email): array|false
