@@ -37,11 +37,14 @@ class AccountViewController
         }
 
         $viewAccount->setName($viewAccountData['name']);
+        $viewAccount->setFirstname($viewAccountData['firstname']);
+        $viewAccount->setSurname($viewAccountData['surname']);
         $viewAccount->setEmail($viewAccountData['email']);
         $viewAccount->setRegistered(new \DateTime($viewAccountData['registered']));
         $viewAccount->setActive($viewAccountData['active'] === 1);
         $viewAccount->setLastLogin($viewAccountData['lastLogin'] !== NULL ? new \DateTime($viewAccountData['lastLogin']) : null);
         $viewAccount->setLevel($viewAccountData['level']);
+        $viewAccount->setSupport($viewAccountData['isSupport'] === 1);
         $viewAccount->setAdmin($viewAccountData['isAdmin'] === 1);
 
         return new HtmlResponse(

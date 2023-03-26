@@ -10,6 +10,8 @@ class Account
     private int $id;
     private int $level;
     private string $name;
+    private string $firstname;
+    private string $surname;
     private string $email;
     private string $password;
     private DateTime $registered;
@@ -17,6 +19,7 @@ class Account
     private ?int $business;
     private bool $active;
     private bool $setupComplete;
+    private bool $support;
     private bool $admin;
 
     public function getId(): int
@@ -47,6 +50,26 @@ class Account
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getFirstname(): string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): void
+    {
+        $this->firstname = $firstname;
+    }
+
+    public function getSurname(): string
+    {
+        return $this->surname;
+    }
+
+    public function setSurname(string $surname): void
+    {
+        $this->surname = $surname;
     }
 
     public function getEmail(): string
@@ -117,6 +140,16 @@ class Account
     public function setSetupComplete(bool $setupComplete): void
     {
         $this->setupComplete = $setupComplete;
+    }
+
+    public function isSupport(): bool
+    {
+        return $this->support;
+    }
+
+    public function setSupport(bool $support): void
+    {
+        $this->support = $support;
     }
 
     public function isAdmin(): bool

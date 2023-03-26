@@ -156,7 +156,7 @@ $this->layout('basetemplate') ?>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" disabled>
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  <?= $account->isSupport() ? 'checked' : '' ?> disabled>
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Support Permissions</label>
                                 </div>
                             </div>
