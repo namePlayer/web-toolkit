@@ -129,11 +129,11 @@ $this->layout('basetemplate') ?>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="adminAccountTabSettingsFirstname" class="form-label">Firstname</label>
-                                <input type="text" class="form-control" id="adminAccountTabSettingsFirstname" name="adminAccountTabSettingsFirstname" >
+                                <input type="text" class="form-control" id="adminAccountTabSettingsFirstname" name="adminAccountTabSettingsFirstname" value="<?= $account->getFirstname(); ?>">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="adminAccountTabSettingsSurname" class="form-label">Surname</label>
-                                <input type="text" class="form-control" id="adminAccountTabSettingsSurname" name="adminAccountTabSettingsFirstname">
+                                <input type="text" class="form-control" id="adminAccountTabSettingsSurname" name="adminAccountTabSettingsSurname" value="<?= $account->getSurname(); ?>">
                             </div>
                             <div class="col-md-8 mb-3">
                                 <label for="adminAccountTabSettingsEmail" class="form-label">E-Mail Address</label>
@@ -141,28 +141,32 @@ $this->layout('basetemplate') ?>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="adminAccountTabSettingsLevel" class="form-label">Level</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option <?= $account->getLevel() === 1 ? 'selected' : '' ?>>Basic</option>
-                                    <option value="1" <?= $account->getLevel() === 2 ? 'selected' : '' ?>>Premium</option>
-                                    <option value="2" <?= $account->getLevel() === 3 ? 'selected' : '' ?>>Premium+</option>
-                                    <option value="3" <?= $account->getLevel() === 4 ? 'selected' : '' ?>>Enterprise</option>
+                                <select class="form-select" aria-label="Default select example" name="adminAccountTabSettingsAccountLevel">
+                                    <?php foreach($levels as $item): ?>
+                                        <option value="<?= $item['id'] ?>" <?= $account->getLevel() === $item['id'] ? 'selected' : '' ?>>
+                                            <?= $this->e($this->translate($item['title'])) ?>
+                                        </option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <?= $account->isActive() ? 'checked' : '' ?>>
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="adminAccountTabSettingsActive"
+                                        <?= $account->isActive() ? 'checked' : '' ?> <?= $account->isAdmin() ? 'disabled' : '' ?>>
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Enable Account</label>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  <?= $account->isSupport() ? 'checked' : '' ?> disabled>
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="adminAccountTabSettingsSupport"
+                                        <?= $account->isSupport() || $account->isAdmin() ? 'checked' : '' ?> disabled>
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Support Permissions</label>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <?= $account->isAdmin() ? 'checked' : '' ?>>
+                                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="adminAccountTabSettingsAdmin"
+                                        <?= $account->isAdmin() ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Admin Permissions</label>
                                 </div>
                             </div>
@@ -195,7 +199,7 @@ $this->layout('basetemplate') ?>
                         </div>
                         <div class="col-3">
 
-                            <button type="submit" class="w-100 btn btn-danger" name="adminAccountTabSettingsDeleteAccountButton">
+                            <button type="submit" class="w-100 btn btn-danger" name="adminAccountTabSettingsDeleteAccountButton" <?= $account->isAdmin() ? 'disabled' : '' ?>>
                                 Delete Account
                             </button>
 

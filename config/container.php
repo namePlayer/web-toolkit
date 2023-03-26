@@ -79,7 +79,8 @@ $container->add(\App\Controller\Administration\AccountListController::class)
 
 $container->add(\App\Controller\Administration\AccountViewController::class)
     ->addArgument(\League\Plates\Engine::class)
-    ->addArgument(\App\Service\Authentication\AccountService::class);
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Table\Authentication\AccountLevelTable::class);
 
 #
 # Services

@@ -42,6 +42,8 @@ $router->get('/admin/accounts', 'App\Controller\Administration\AccountListContro
 
 $router->get('/admin/account/{id}', 'App\Controller\Administration\AccountViewController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+$router->post('/admin/account/{id}', 'App\Controller\Administration\AccountViewController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
 $router->get('/overview', 'App\Controller\Login\OverviewController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);

@@ -5,6 +5,7 @@ namespace App\Controller\Administration;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Service\Authentication\AccountService;
+use App\Table\Authentication\AccountLevelTable;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
@@ -15,7 +16,8 @@ class AccountViewController
 
     public function __construct(
         private readonly Engine $template,
-        private readonly AccountService $accountService
+        private readonly AccountService $accountService,
+        private readonly AccountLevelTable $accountLevelTable
     )
     {
     }
@@ -47,14 +49,39 @@ class AccountViewController
         $viewAccount->setSupport($viewAccountData['isSupport'] === 1);
         $viewAccount->setAdmin($viewAccountData['isAdmin'] === 1);
 
+        if($request->getMethod() === 'POST')
+        {
+            $this->manage($request, $viewAccount);
+        }
+
         return new HtmlResponse(
             $this->template->render(
                 'administration/accountView', [
                     'account' => $viewAccount,
+                    'levels' => $this->accountLevelTable->findAll(),
                     'level' => $this->accountService->getLevelById($viewAccount->getLevel())
                 ]
             )
         );
+    }
+
+    public function manage(ServerRequestInterface $request, Account $account)
+    {
+
+        if(isset($_POST['adminAccountTabSettingsSaveButton'], $_POST['adminAccountTabSettingsFirstname'], $_POST['adminAccountTabSettingsSurname']) &&
+            !empty($_POST['adminAccountTabSettingsAccountName'])&&
+            !empty($_POST['adminAccountTabSettingsEmail']) &&
+            !empty($_POST['adminAccountTabSettingsAccountLevel'])
+            )
+        {
+
+            $account->setFirstname($_POST['adminAccountTabSettingsFirstname']);
+            $account->setSurname($_POST['adminAccountTabSettingsSurname']);
+            $account->setEmail($_POST['adminAccountTabSettingsEmail']);
+            $account->setLevel((int)$_POST['adminAccountTabSettingsAccountLevel']);
+
+        }
+
     }
 
 }
