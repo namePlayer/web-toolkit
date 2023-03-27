@@ -41,6 +41,7 @@ class AccountTable extends AbstractTable
     {
 
         $value = [
+            'level' => $account->getLevel(),
             'name' => $account->getName(),
             'firstname' => $account->getFirstname(),
             'surname' => $account->getSurname(),

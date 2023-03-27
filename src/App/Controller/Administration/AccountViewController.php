@@ -76,11 +76,12 @@ class AccountViewController
             )
         {
 
+            $account->setName($_POST['adminAccountTabSettingsAccountName']);
             $account->setFirstname($_POST['adminAccountTabSettingsFirstname']);
             $account->setSurname($_POST['adminAccountTabSettingsSurname']);
             $account->setEmail($_POST['adminAccountTabSettingsEmail']);
             $account->setLevel((int)$_POST['adminAccountTabSettingsAccountLevel']);
-            $account->setActive(isset($_POST['adminAccountTabSettingsActive']));
+            $account->setActive(isset($_POST['adminAccountTabSettingsActive']) );
             $account->setSupport(isset($_POST['adminAccountTabSettingsSupport']));
             $account->setAdmin(isset($_POST['adminAccountTabSettingsAdmin']));
 
