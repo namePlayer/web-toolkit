@@ -37,6 +37,24 @@ class AccountTable extends AbstractTable
 
     }
 
+    public function updateAccountInformation(Account $account): string|int|bool
+    {
+
+        $value = [
+            'name' => $account->getName(),
+            'firstname' => $account->getFirstname(),
+            'surname' => $account->getSurname(),
+            'email' => $account->getEmail(),
+            'business' => $account->getBusiness(),
+            'active' => $account->isActive() ? 1 : 0,
+            'isSupport' => $account->isSupport() ? 1 : 0,
+            'isAdmin' => $account->isAdmin() ? 1 : 0
+        ];
+
+        return $this->query->update($this->getTableName())->where('id', $account->getId())->set($value)->execute();
+
+    }
+
     public function setAccountBusinessByAccountId(?int $business, int $account): array|false|int
     {
 

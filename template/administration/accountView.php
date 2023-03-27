@@ -152,7 +152,8 @@ $this->layout('basetemplate') ?>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="adminAccountTabSettingsActive"
-                                        <?= $account->isActive() ? 'checked' : '' ?> <?= $account->isAdmin() ? 'disabled' : '' ?>>
+                                        <?= $account->isAdmin() ? 'onclick="this.checked=!this.checked;" ' : '' ?>
+                                        <?= $account->isActive() ? 'checked' : '' ?>>
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Enable Account</label>
                                 </div>
                             </div>

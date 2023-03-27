@@ -69,6 +69,19 @@ class AccountService
 
     }
 
+    public function updateAccount(Account $account): void
+    {
+
+        if($this->accountTable->updateAccountInformation($account) > 0)
+        {
+            MESSAGES->add('success', 'admin-account-update-successful');
+            return;
+        }
+
+        MESSAGES->add('danger', 'admin-account-update-failed');
+        return;
+    }
+
     public function getLevelById(int $level): array
     {
         return $this->accountLevelTable->findById($level);

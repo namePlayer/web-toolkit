@@ -45,6 +45,7 @@ class AccountViewController
         $viewAccount->setRegistered(new \DateTime($viewAccountData['registered']));
         $viewAccount->setActive($viewAccountData['active'] === 1);
         $viewAccount->setLastLogin($viewAccountData['lastLogin'] !== NULL ? new \DateTime($viewAccountData['lastLogin']) : null);
+        $viewAccount->setBusiness($viewAccountData['business']);
         $viewAccount->setLevel($viewAccountData['level']);
         $viewAccount->setSupport($viewAccountData['isSupport'] === 1);
         $viewAccount->setAdmin($viewAccountData['isAdmin'] === 1);
@@ -79,6 +80,11 @@ class AccountViewController
             $account->setSurname($_POST['adminAccountTabSettingsSurname']);
             $account->setEmail($_POST['adminAccountTabSettingsEmail']);
             $account->setLevel((int)$_POST['adminAccountTabSettingsAccountLevel']);
+            $account->setActive(isset($_POST['adminAccountTabSettingsActive']));
+            $account->setSupport(isset($_POST['adminAccountTabSettingsSupport']));
+            $account->setAdmin(isset($_POST['adminAccountTabSettingsAdmin']));
+
+            $this->accountService->updateAccount($account);
 
         }
 
