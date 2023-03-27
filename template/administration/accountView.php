@@ -32,7 +32,7 @@ $this->layout('basetemplate') ?>
                 </div>
             </div>
 
-            <ul class="nav nav-pills" id="adminAccountViewTab" role="tablist">
+            <ul class="nav nav-pills mb-3" id="adminAccountViewTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="adminAccountViewTabInformation" data-bs-toggle="tab" data-bs-target="#adminAccountViewTabInformationPane" type="button" role="tab" aria-controls="adminAccountViewTabInformationPane" aria-selected="true">
                         Information
@@ -66,7 +66,7 @@ $this->layout('basetemplate') ?>
 
             <?php endforeach; ?>
 
-            <hr>
+            <hr >
             <div class="tab-content" id="adminAccountViewTabContent">
                 <div class="tab-pane fade show active" id="adminAccountViewTabInformationPane" role="tabpanel" aria-labelledby="adminAccountViewTabInformation" tabindex="0">
 
