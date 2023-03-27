@@ -4,7 +4,8 @@
             <div class="w-100">
                 <div class="row mb-1">
                     <div class="col-9">
-                        <h5 class="mb-1"><?= $this->e($this->translate($tool['title'])) ?></h5>
+                        <h5 class="mb-1 float-start"><?= $this->e($this->translate($tool['title'])) ?></h5>
+                        <?= $tool['beta'] === 1 ? '<span class="badge text-bg-warning ms-2">Beta</span>' : '' ?>
                     </div>
                     <div class="col-3">
                         <?php if($tool['level'] === 1): ?>

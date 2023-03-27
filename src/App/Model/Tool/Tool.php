@@ -13,7 +13,7 @@ class Tool
     private string $description;
     private string $path;
     private bool $active;
-    private bool $public;
+    private bool $beta;
 
     public function getId(): int
     {
@@ -33,16 +33,6 @@ class Tool
     public function setLevel(?int $level): void
     {
         $this->level = $level;
-    }
-
-    public function isPublic(): bool
-    {
-        return $this->public;
-    }
-
-    public function setPublic(bool $public): void
-    {
-        $this->public = $public;
     }
 
     public function getTitle(): string
@@ -83,6 +73,16 @@ class Tool
     public function setActive(bool $active): void
     {
         $this->active = $active;
+    }
+
+    public function isBeta(): bool
+    {
+        return $this->beta;
+    }
+
+    public function setBeta(bool $beta): void
+    {
+        $this->beta = $beta;
     }
 
 }

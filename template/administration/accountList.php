@@ -26,7 +26,7 @@ $this->layout('basetemplate') ?>
 
             <div class="row mb-3">
                 <div class="col-9">
-                    <h4>Registered Accounts</h4>
+                    <h4><?= $this->e($this->translate('admin-account-list-title')) ?></h4>
                 </div>
             </div>
 
@@ -40,12 +40,24 @@ $this->layout('basetemplate') ?>
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Organisation</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">Last Login</th>
-                    <th scope="col">Active</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-account-list-table-name-heading')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-account-list-table-organisation-heading')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-account-list-table-created-heading')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-account-list-table-last-login-heading')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-account-list-table-active-heading')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-account-list-table-actions-heading')) ?>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,26 +68,29 @@ $this->layout('basetemplate') ?>
                         <td><?= $account['name'] ?></td>
                         <td>
                             <?= $account['business'] === NULL
-                                ? 'None'
-                                : '<a href="/admin/account/'.$account['business'].'">'.$account['business'].'</a>'
+                                ? $this->e($this->translate('admin-account-list-table-organisation-field-none'))
+                                : ($account['business'] === $account['id']
+                                    ? $this->e($this->translate('admin-account-list-table-organisation-field-is-same'))
+                                    : '<a href="/admin/account/'.$account['business'].'">'.$account['business'].'</a>'
+                                )
                             ?>
                         </td>
                         <td><?= (new DateTime($account['registered']))->format($this->translate('dateTime-format')) ?></td>
                         <td>
                             <?= $account['lastLogin'] === NULL
-                                ? 'Never'
+                                ? $this->e($this->translate('admin-account-list-table-last-login-field-never'))
                                 : (new DateTime($account['lastLogin']))->format($this->translate('dateTime-format'))
                             ?>
                         </td>
                         <td>
                             <?= $account['active'] === 1
-                                ? 'Active'
-                                : 'Disabled'
+                                ? $this->e($this->translate('admin-account-list-table-active-status-active'))
+                                : $this->e($this->translate('admin-account-list-table-active-status-disabled'))
                             ?>
                         </td>
                         <td>
                             <a href="/admin/account/<?= $account['id'] ?>" class="text-decoration-none">
-                                Manage
+                                <?= $this->e($this->translate('admin-account-list-table-actions-manage-button')) ?>
                             </a>
                         </td>
                     </tr>

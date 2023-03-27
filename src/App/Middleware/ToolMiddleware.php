@@ -40,6 +40,7 @@ class ToolMiddleware implements MiddlewareInterface
         $tool->setActive($toolData['active'] === 1);
         $tool->setTitle($toolData['title']);
         $tool->setDescription($toolData['description']);
+        $tool->setBeta($toolData['beta'] === 1);
 
         return $handler->handle($request->withAttribute(Tool::class, $tool));
     }
