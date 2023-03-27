@@ -26,11 +26,11 @@ $this->layout('basetemplate') ?>
 
             <div class="row mb-3">
                 <div class="col-9">
-                    <h4>API-Keys</h4>
+                    <h4><?= $this->e($this->translate('admin-apikey-list-title')) ?></h4>
                 </div>
                 <div class="col-3">
                     <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#adminApiKeyCreateNewModal">
-                        Create API-Key
+                        <?= $this->e($this->translate('admin-apikey-list-create-key-button-title')) ?>
                     </button>
                 </div>
             </div>
@@ -45,11 +45,21 @@ $this->layout('basetemplate') ?>
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Account</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">Expires</th>
-                    <th scope="col">Active</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-apikey-list-table-account-heading')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-apikey-list-table-created-heading')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-apikey-list-table-expires-heading')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-apikey-list-table-active-heading')) ?>
+                    </th>
+                    <th scope="col">
+                        <?= $this->e($this->translate('admin-apikey-list-table-actions-heading')) ?>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -73,8 +83,8 @@ $this->layout('basetemplate') ?>
                         </td>
                         <th>
                             <?= $apiKey['active'] === 1
-                                ? '<span class="badge text-bg-success">Active</span>'
-                                : '<span class="badge text-bg-danger">Disabled</span>'
+                                ? '<span class="badge text-bg-success">'.$this->e($this->translate('admin-apikey-management-key-overview-status-active')).'</span>'
+                                : '<span class="badge text-bg-danger">'.$this->e($this->translate('admin-apikey-management-key-overview-status-disabled')).'</span>'
                             ?>
                         </th>
                         <td>
@@ -82,7 +92,7 @@ $this->layout('basetemplate') ?>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
                                     <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
                                 </svg>
-                                Manage
+                                <?= $this->e($this->translate('admin-apikey-list-table-actions-manage-button')) ?>
                             </a>
                         </td>
                     </tr>
@@ -98,32 +108,46 @@ $this->layout('basetemplate') ?>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="adminApiKeyCreateNewModalLabel">Create a new API-Key</h1>
+                    <h1 class="modal-title fs-5" id="adminApiKeyCreateNewModalLabel">
+                        <?= $this->e($this->translate('admin-apikey-list-create-key-modal-title')) ?>
+                    </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="adminApiKeyCreateNewModalUserId" class="form-label">User ID</label>
+                        <label for="adminApiKeyCreateNewModalUserId" class="form-label">
+                            <?= $this->e($this->translate('admin-apikey-list-create-key-accountId-field')) ?>
+                        </label>
                         <input type="text" class="form-control" id="adminApiKeyCreateNewModalUserId" name="adminApiKeyCreateNewModalUserId">
-                        <div id="emailHelp" class="form-text">Leave this Field Empty to create a System Key</div>
+                        <div id="emailHelp" class="form-text">
+                            <?= $this->e($this->translate('admin-apikey-list-create-key-accountId-field-notice')) ?>
+                        </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="adminApiKeyCreateNewModalExpiryDate" class="form-label">Expiry</label>
+                        <label for="adminApiKeyCreateNewModalExpiryDate" class="form-label">
+                            <?= $this->e($this->translate('admin-apikey-list-create-key-expiry-field')) ?>
+                        </label>
                         <input type="datetime-local" class="form-control" id="adminApiKeyCreateNewModalExpiryDate" name="adminApiKeyCreateNewModalExpiryDate">
                     </div>
 
                     <div class="mb-3">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="adminApiKeyCreateNewModalActivate" name="adminApiKeyCreateNewModalActivate">
-                            <label class="form-check-label" for="adminApiKeyCreateNewModalActivate">Immediately Activate</label>
+                            <label class="form-check-label" for="adminApiKeyCreateNewModalActivate">
+                                <?= $this->e($this->translate('admin-apikey-list-create-key-immediately-active-field')) ?>
+                            </label>
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Abort</button>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <?= $this->e($this->translate('admin-apikey-list-create-key-abort-button')) ?>
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <?= $this->e($this->translate('admin-apikey-list-create-key-create-button')) ?>
+                    </button>
                 </div>
             </div>
         </div>

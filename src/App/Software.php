@@ -26,6 +26,8 @@ class Software
     public const DATABASE_TIME_FORMAT = 'Y-m-d H:i:s';
     public const SESSION_USERID_NAME = 'webtoolkit_login_id';
 
+    public const DISCORD_INVITE = 'https://discord.gg/RwxEQ7Gcmm';
+
     /**
      * @throws EnvironmentException
      */
