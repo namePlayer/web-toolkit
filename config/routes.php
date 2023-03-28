@@ -12,6 +12,7 @@ $request = \Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 
 /* @var Router $router */
 $router->get('/', 'App\Controller\IndexController::load');
+$router->post('/', 'App\Controller\IndexController::load');
 
 $router->get('/authentication/registration', 'App\Controller\Authentication\RegistrationController::load');
 $router->post('/authentication/registration', 'App\Controller\Authentication\RegistrationController::load');

@@ -8,7 +8,9 @@ $container = new Container();
 # Controllers
 #
 $container->add(\App\Controller\IndexController::class)
-    ->addArgument(League\Plates\Engine::class);
+    ->addArgument(League\Plates\Engine::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class);
 
 $container->add(\App\Controller\Authentication\RegistrationController::class)
     ->addArgument(League\Plates\Engine::class)

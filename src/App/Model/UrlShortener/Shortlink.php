@@ -8,7 +8,7 @@ class Shortlink
     private int $id;
     private ?int $domain = null;
     private string $uuid = '';
-    private int $account;
+    private ?int $account;
     private \DateTime $dateTime;
     private string $destination;
     private ?\DateTime $expiryDate = null;
@@ -45,12 +45,12 @@ class Shortlink
         $this->uuid = $uuid;
     }
 
-    public function getAccount(): int
+    public function getAccount(): ?int
     {
         return $this->account;
     }
 
-    public function setAccount(int $account): void
+    public function setAccount(?int $account): void
     {
         $this->account = $account;
     }
