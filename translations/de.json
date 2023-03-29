@@ -2,6 +2,15 @@
 
   "dateTime-format": "d.m.Y H:i",
 
+  "homepage-content-create-shortlink-title": "Kurzlink erstellen",
+  "homepage-content-create-shortlink-description": "Erstelle einen Kurzen Link, welcher einfach zu teilen ist. Dieser ist Beispielsweise Sinnvoll, solltest du auf deinem SmartTV eine Webseite öffnen wollen, welche eine Lange URL hat.",
+  "homepage-content-create-shortlink-explore-features-button": "Entdecke weitere Funktionen",
+  "homepage-content-create-shortlink-create-button": "Kurzlink erstellen",
+  "homepage-content-create-shortlink-created-notification-header": "Kurzlink wurde erstellt",
+  "homepage-content-create-shortlink-created-notification-domain-link-text": "Dein gekürzter Link lautet wie folgt:",
+  "homepage-content-create-shortlink-created-notification-register-link-text": "Du möchtest weitere Funktionen nutzen können? Dann erstelle jetzt ein Konto: ",
+  "homepage-content-create-shortlink-created-notification-register-url-content": "Registrieren",
+
   "homepage-footer-imprint-title": "Impressum",
   "homepage-footer-privacy-title": "Datenschutz",
   "homepage-footer-terms-title": "Nutzungsbedingungen",
