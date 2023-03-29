@@ -43,6 +43,13 @@ class IndexController
 
         if(isset($_POST['indexPageShortlinkCreateDestination']))
         {
+
+            if(empty($_POST['indexPageShortlinkCreateDestination']))
+            {
+                MESSAGES->add('danger', 'homepage-content-create-shortlink-empty-error');
+                return null;
+            }
+
             $shortlink = new Shortlink();
             $shortlink->setDomain(1);
             $shortlink->setDestination($_POST['indexPageShortlinkCreateDestination']);
@@ -57,6 +64,9 @@ class IndexController
             }
 
         }
+
+        MESSAGES->add('danger', 'homepage-content-create-shortlink-unknown-error');
+        return null;
 
     }
 

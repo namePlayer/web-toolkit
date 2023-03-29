@@ -10,6 +10,8 @@
   "homepage-content-create-shortlink-created-notification-domain-link-text": "Dein gekürzter Link lautet wie folgt:",
   "homepage-content-create-shortlink-created-notification-register-link-text": "Du möchtest weitere Funktionen nutzen können? Dann erstelle jetzt ein Konto: ",
   "homepage-content-create-shortlink-created-notification-register-url-content": "Registrieren",
+  "homepage-content-create-shortlink-empty-error": "Das Ziel des Kurzlinks darf nicht leer sein",
+  "homepage-content-create-shortlink-unknown-error": "Beim erstellen eines Kurzlinks ist ein Fehler aufgetreten. Bitte versuche es erneut!",
 
   "homepage-footer-imprint-title": "Impressum",
   "homepage-footer-privacy-title": "Datenschutz",

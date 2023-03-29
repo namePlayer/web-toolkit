@@ -24,6 +24,12 @@
 
     <?php endif; ?>
 
+    <?php foreach (MESSAGES->getAll() as $alert): ?>
+
+        <?php $this->insert('element/alert', $alert) ?>
+
+    <?php endforeach; ?>
+
    <form method="post">
        <div class="bg-dark text-secondary px-4 py-5 text-center">
            <div class="py-5">
