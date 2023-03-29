@@ -28,9 +28,9 @@
                     <h6><label for="password" class="form-text"><?= $this->e($this->translate('password')) ?></label></h6>
                     <input type="password" class="form-control form-control-md" name="password" id="password" required>
                 </div>
-                <div class="row mt-5">
-                    <div class="col-8">
-                        <a href="/authentication/lost-password" class="align-bottom align-text-bottom link-secondary text-decoration-none">
+                <div class="row" style="margin-top: 40px;">
+                    <div class="col-8 d-flex align-items-center">
+                        <a href="/authentication/lost-password" class="align-bottom align-text-bottom link-secondary text-decoration-dotted">
                             <?= $this->e($this->translate('login-forgot-password-link-text')) ?>
                         </a>
                     </div>
