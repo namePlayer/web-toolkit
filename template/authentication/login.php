@@ -10,36 +10,35 @@
 
     <?php endforeach; ?>
 
-    <div class="row mt-5">
+    <div class="row mt-5 mb-5">
         <div class="col-4"></div>
         <div class="col-4">
-            <div class="card">
-                <div class="card-header text-center">
-                    <h4><?= $this->e($this->translate('login-account-title')) ?></h4>
-                </div>
-                <div class="card-body">
-                    <form action="" method="post">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" name="email" id="email" required>
-                            <label for="email" class="form-text"><?= $this->e($this->translate('email')) ?></label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" name="password" id="password" required>
-                            <label for="password" class="form-text"><?= $this->e($this->translate('password')) ?></label>
-                        </div>
-                        <div class="row">
-                            <div class="col-8">
-                                <a href="/authentication/registration">Noch kein Konto?</a> <br>
-                                <a href="/authentication/lost-password">Passwort vergessen?</a>
-                            </div>
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-primary w-100"><?= $this->e($this->translate('login-button-text')) ?></button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
+            <div class="mb-4 text-center">
+                <h3 class="mb-3"><?= $this->e($this->translate('login-account-title')) ?></h3>
+                <span><?= $this->e($this->translate('login-account-header-text')) ?></span> <br>
+                <span><?= $this->e($this->translate('login-account-header-no-account-text')) ?> <a href="/authentication/registration"><?= $this->e($this->translate('register-button-text')) ?></a></span>
             </div>
+
+            <form action="" method="post">
+                <div class="mb-4">
+                    <h6><label for="email" class="form-text"><?= $this->e($this->translate('email')) ?></label></h6>
+                    <input type="email" class="form-control form-control-md" name="email" id="email" required>
+                </div>
+                <div class="mb-4">
+                    <h6><label for="password" class="form-text"><?= $this->e($this->translate('password')) ?></label></h6>
+                    <input type="password" class="form-control form-control-md" name="password" id="password" required>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-8">
+                        <a href="/authentication/lost-password" class="align-bottom align-text-bottom link-secondary text-decoration-none">
+                            <?= $this->e($this->translate('login-forgot-password-link-text')) ?>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary w-100"><?= $this->e($this->translate('login-button-text')) ?></button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="col-4"></div>
     </div>

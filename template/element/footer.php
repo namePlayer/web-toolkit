@@ -13,7 +13,7 @@
         </div>
         <div class="col-4 text-center">
             Web-Toolkit v<?= \App\Software::VERSION ?> Build <?= \App\Software::BUILD . '-' . \App\Software::TYPE?> <br>
-            <span>Github: <a href="https://github.com/namePlayer/web-toolkit">namePlayer/web-toolkit</a></span>
+            <span>Github: <a href="https://github.com/namePlayer/web-toolkit" class="link-secondary text-decoration-none">namePlayer/web-toolkit</a></span>
         </div>
         <div class="col-2 text-center">
             <a href="#" class="text-center"><?= $this->e($this->translate('homepage-footer-support-title')) ?></a> <br>

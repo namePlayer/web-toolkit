@@ -24,11 +24,11 @@
 
             <ul class="navbar-nav ms-start">
                 <?php if($this->getAccountInformation() === FALSE): ?>
-                    <li class="nav-item">
+                    <li class="nav-item me-3">
                         <a class="nav-link" href="/authentication/login"><?= $this->e($this->translate('navigation-login')) ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="/authentication/registration"><?= $this->e($this->translate('navigation-register')) ?></a>
+                        <a class="nav-link btn btn-primary text-light" href="/authentication/registration"><?= $this->e($this->translate('navigation-register')) ?></a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item dropdown">
