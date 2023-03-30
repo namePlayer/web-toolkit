@@ -16,14 +16,14 @@
             <div class="mb-4 text-center">
                 <h3 class="mb-3"><?= $this->e($this->translate('create-account-title')) ?></h3>
                 <span><?= $this->e($this->translate('create-account-text')) ?></span> <br>
-                <span><?= $this->e($this->translate('create-account-header-already-account-text')) ?> <a href="/authentication/registration"><?= $this->e($this->translate('login-button-text')) ?></a></span>
+                <span><?= $this->e($this->translate('create-account-header-already-account-text')) ?> <a href="/authentication/login"><?= $this->e($this->translate('login-button-text')) ?></a></span>
             </div>
             <form action="" method="post">
                 <div class="mb-4 mt-4">
-                    <h6><span class="text-muted"><?= $this->e($this->translate('create-account-for')) ?></span></h6>
+                    <h6><label for="account-type" class="form-text"><?= $this->e($this->translate('create-account-for')) ?></label></h6>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="account-type" id="account-type-1" value="private" checked>
-                        <label class="form-check-label" for="account-type-1"><?= $this->e($this->translate('for-private-account')) ?></label>
+                        <input class="form-check-input" type="radio" name="account-type" id="account-type-1 account-type" value="private" checked>
+                        <label class="form-check-label" for="account-type-1 account-type"><?= $this->e($this->translate('for-private-account')) ?></label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="account-type" id="account-type-2" value="business">
