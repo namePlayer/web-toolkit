@@ -7,8 +7,8 @@
     <?php $this->insert('element/alert') ?>
 
     <div class="row mt-5">
-        <div class="col-4"></div>
-        <div class="col-4">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
             <div class="mb-4 text-center">
                 <h3 class="mb-3"><?= $this->e($this->translate('create-account-title')) ?></h3>
                 <span><?= $this->e($this->translate('create-account-text')) ?></span> <br>
@@ -48,7 +48,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-4"></div>
+        <div class="col-lg-4"></div>
     </div>
 
 </div>

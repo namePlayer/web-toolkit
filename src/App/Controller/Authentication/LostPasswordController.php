@@ -33,6 +33,12 @@ class LostPasswordController
     public function resetPassword(ServerRequestInterface $request)
     {
 
+        if(!isset($_POST['resetPasswordEmail'])) {
+            return;
+        }
+
+        MESSAGES->add('success', 'reset-password-success');
+
     }
 
 }

@@ -7,8 +7,8 @@
     <?php $this->insert('element/alert') ?>
 
     <div class="row mt-5 mb-5">
-        <div class="col-4"></div>
-        <div class="col-4">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
             <div class="mb-4 text-center">
                 <h3 class="mb-3"><?= $this->e($this->translate('lost-password-title')) ?></h3>
                 <span><?= $this->e($this->translate('lost-password-header-text')) ?></span>
@@ -17,7 +17,7 @@
             <form action="" method="post">
                 <div class="mb-4">
                     <h6><label for="email" class="form-text"><?= $this->e($this->translate('email')) ?></label></h6>
-                    <input type="email" class="form-control form-control-md" name="email" id="email" required>
+                    <input type="email" class="form-control form-control-md" name="resetPasswordEmail" id="resetPasswordEmail" required>
                 </div>
                 <div class="row" style="margin-top: 40px;">
                     <div class="col-6 d-flex align-items-center">
@@ -34,7 +34,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-4"></div>
+        <div class="col-lg-4"></div>
     </div>
 
 </div>
