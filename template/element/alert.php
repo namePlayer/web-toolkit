@@ -1,3 +1,7 @@
-<div class="alert alert-<?= $this->e($type) ?>">
-    <?= $this->e($this->translate($message)) ?> <?= $additionalData ?>
-</div>
+<?php foreach (MESSAGES->getAll() as $alert): ?>
+
+    <div class="alert alert-<?= $this->e($alert['type']) ?>">
+        <?= $this->e($this->translate($alert['message'])) ?> <?= $alert['additionalData'] ?>
+    </div>
+
+<?php endforeach; ?>

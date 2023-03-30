@@ -14,11 +14,7 @@
     <small><?= $this->e($this->translate($toolInformation['tool-description'])) ?></small>
     <hr>
 
-    <?php foreach (MESSAGES->getAll() as $alert): ?>
-
-        <?php $this->insert('element/alert', $alert) ?>
-
-    <?php endforeach; ?>
+    <?php $this->insert('element/alert') ?>
 
 </div>
 

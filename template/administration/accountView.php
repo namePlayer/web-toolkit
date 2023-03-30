@@ -22,8 +22,6 @@ $this->layout('basetemplate') ?>
 
         <?= $this->insert('element/adminNavigation') ?>
 
-
-
         <div class="col-md-9">
 
             <div class="row mb-3">
@@ -60,11 +58,7 @@ $this->layout('basetemplate') ?>
                 </li>
             </ul>
 
-            <?php foreach (MESSAGES->getAll() as $alert): ?>
-
-                <?php $this->insert('element/alert', $alert) ?>
-
-            <?php endforeach; ?>
+            <?php $this->insert('element/alert') ?>
 
             <hr >
             <div class="tab-content" id="adminAccountViewTabContent">

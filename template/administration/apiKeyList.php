@@ -35,11 +35,7 @@ $this->layout('basetemplate') ?>
                 </div>
             </div>
 
-            <?php foreach (MESSAGES->getAll() as $alert): ?>
-
-                <?php $this->insert('element/alert', $alert) ?>
-
-            <?php endforeach; ?>
+            <?php $this->insert('element/alert') ?>
 
             <table class="table">
                 <thead>

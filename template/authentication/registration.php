@@ -4,11 +4,7 @@
 
 <div class="container mt-3">
 
-    <?php foreach (MESSAGES->getAll() as $alert): ?>
-
-        <?php $this->insert('element/alert', $alert) ?>
-
-    <?php endforeach; ?>
+    <?php $this->insert('element/alert') ?>
 
     <div class="row mt-5">
         <div class="col-4"></div>
