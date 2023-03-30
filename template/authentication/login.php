@@ -30,7 +30,7 @@
                 </div>
                 <div class="row" style="margin-top: 40px;">
                     <div class="col-8 d-flex align-items-center">
-                        <a href="/authentication/lost-password" class="align-bottom align-text-bottom link-secondary text-decoration-dotted">
+                        <a href="/authentication/lost-password" class="align-bottom align-text-bottom link-secondary text-decoration-none">
                             <?= $this->e($this->translate('login-forgot-password-link-text')) ?>
                         </a>
                     </div>

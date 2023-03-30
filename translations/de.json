@@ -21,6 +21,8 @@
   "homepage-footer-discord-title": "Discord",
 
   "create-account-title": "Neues Konto erstellen",
+  "create-account-text": "Erstelle ein kostenloses Konto um Zugriff auf alle Funktionen zu erhalten!",
+  "create-account-header-already-account-text": "Bereits ein Konto?",
   "login-account-title": "Anmelden",
   "create-account-for": "Ich erstelle das Konto für...",
   "for-private-account": "mich selbst",
