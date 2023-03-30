@@ -43,6 +43,10 @@
   "login-account-disabled": "Dieses Konto ist deaktiviert",
   "login-wrong-combination": "Die Kombination aus E-Mail und Passwort konnte nicht gefunden werden",
   "login-account-successful": "Die Anmeldung war erfolgreich",
+  "lost-password-title": "Passwort vergessen",
+  "lost-password-header-text": "Du hast dein Passwort vergessen und möchtest ein neues anfordern?",
+  "lost-password-back-to-login-text": "Zurück zur Anmeldung",
+  "reset-password-button-text": "Passwort zurücksetzen",
 
   "basic-private": "Standard",
   "premium-private": "Premium",

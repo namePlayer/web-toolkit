@@ -20,6 +20,9 @@ $router->post('/authentication/registration', 'App\Controller\Authentication\Reg
 $router->get('/authentication/login', 'App\Controller\Authentication\LoginController::load');
 $router->post('/authentication/login', 'App\Controller\Authentication\LoginController::load');
 
+$router->get('/authentication/lost-password', 'App\Controller\Authentication\LostPasswordController::load');
+$router->post('/authentication/lost-password', 'App\Controller\Authentication\LostPasswordController::load');
+
 $router->get('/authentication/logout', 'App\Controller\Authentication\LogoutController::load');
 
 $router->get('/authentication/account', 'App\Controller\Authentication\AccountController::load')

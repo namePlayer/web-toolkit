@@ -21,6 +21,11 @@ $container->add(\App\Controller\Authentication\LoginController::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Service\Authentication\PasswordService::class);
 
+$container->add(\App\Controller\Authentication\LostPasswordController::class)
+    ->addArgument(League\Plates\Engine::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Service\Authentication\PasswordService::class);
+
 $container->add(\App\Controller\Authentication\AccountController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
