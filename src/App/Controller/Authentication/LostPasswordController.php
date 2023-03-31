@@ -4,6 +4,7 @@ namespace App\Controller\Authentication;
 
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
+use App\Model\Authentication\Token;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\PasswordService;
 use League\Plates\Engine;

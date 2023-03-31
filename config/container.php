@@ -30,6 +30,11 @@ $container->add(\App\Controller\Authentication\AccountController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
 
+$container->add(\App\Controller\Authentication\ResetPasswordController::class)
+    ->addArgument(\App\Service\Authentication\TokenService::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\League\Plates\Engine::class);
+
 $container->add(\App\Controller\Login\OverviewController::class)
     ->addArgument(League\Plates\Engine::class)
     ->addArgument(\App\Service\Tool\ToolService::class);
@@ -101,6 +106,8 @@ $container->add(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Validation\Authentication\RegisterValidation::class)
     ->addArgument(\App\Table\Authentication\AccountLevelTable::class)
     ->addArgument(\App\Validation\Authentication\PasswordResetValidation::class)
+    ->addArgument(\App\Validation\Authentication\SetNewPasswordValidation::class)
+    ->addArgument(\App\Service\Authentication\TokenService::class)
     ->addArgument(\Monolog\Logger::class);
 
 $container->add(\App\Service\Authentication\PasswordService::class);
@@ -128,6 +135,9 @@ $container->add(\App\Service\ApiKey\ApiKeyService::class)
     ->addArgument(\App\Table\ApiKey\ApiKeyTable::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
 
+$container->add(\App\Service\Authentication\TokenService::class)
+    ->addArgument(\App\Table\Authentication\TokenTable::class);
+
 #
 # Repositories
 #
@@ -152,6 +162,9 @@ $container->add(\App\Table\UrlShortener\ShortlinkDomainTable::class)
 $container->add(\App\Table\ApiKey\ApiKeyTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
+$container->add(\App\Table\Authentication\TokenTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
 #
 # Validations
 #
@@ -162,6 +175,11 @@ $container->add(\App\Validation\UrlShortener\ShortlinkValidation::class);
 $container->add(\App\Validation\UrlShortener\ShortlinkDomainValidation::class);
 
 $container->add(\App\Validation\Authentication\PasswordResetValidation::class);
+
+$container->add(\App\Validation\Authentication\PasswordValidation::class);
+
+$container->add(\App\Validation\Authentication\SetNewPasswordValidation::class)
+    ->addArgument(\App\Validation\Authentication\PasswordValidation::class);
 
 #
 # Middlewares

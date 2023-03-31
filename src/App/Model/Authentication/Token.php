@@ -9,8 +9,9 @@ class Token
     private int $type;
     private int $account;
     private string $token;
-    private \DateTime $expiry;
+    private ?\DateTime $expiry;
     private \DateTime $created;
+    private bool $used;
 
     public function getId(): int
     {
@@ -20,6 +21,16 @@ class Token
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function getType(): int
+    {
+        return $this->type;
+    }
+
+    public function setType(int $type): void
+    {
+        $this->type = $type;
     }
 
     public function getAccount(): int
@@ -42,12 +53,12 @@ class Token
         $this->token = $token;
     }
 
-    public function getExpiry(): \DateTime
+    public function getExpiry(): ?\DateTime
     {
         return $this->expiry;
     }
 
-    public function setExpiry(\DateTime $expiry): void
+    public function setExpiry(?\DateTime $expiry): void
     {
         $this->expiry = $expiry;
     }
@@ -60,6 +71,16 @@ class Token
     public function setCreated(\DateTime $created): void
     {
         $this->created = $created;
+    }
+
+    public function isUsed(): bool
+    {
+        return $this->used;
+    }
+
+    public function setUsed(bool $used): void
+    {
+        $this->used = $used;
     }
 
 }

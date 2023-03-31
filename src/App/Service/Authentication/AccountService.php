@@ -4,11 +4,14 @@ declare(strict_types=1);
 namespace App\Service\Authentication;
 
 use App\Model\Authentication\Account;
+use App\Model\Authentication\Token;
+use App\Model\Authentication\TokenType;
 use App\PlatesExtension\Message\MessageList;
 use App\Table\Authentication\AccountLevelTable;
 use App\Table\Authentication\AccountTable;
 use App\Validation\Authentication\PasswordResetValidation;
 use App\Validation\Authentication\RegisterValidation;
+use App\Validation\Authentication\SetNewPasswordValidation;
 use Monolog\Level;
 use Monolog\Logger;
 
@@ -21,6 +24,8 @@ class AccountService
         private readonly RegisterValidation $registerValidation,
         private readonly AccountLevelTable $accountLevelTable,
         private readonly PasswordResetValidation $passwordResetValidation,
+        private readonly SetNewPasswordValidation $setNewPasswordValidation,
+        private readonly TokenService $tokenService,
         private readonly Logger $logger
     )
     {
@@ -99,9 +104,33 @@ class AccountService
             return true;
         }
 
+        $token = new Token();
+        $token->setAccount($accountData['id']);
+        $token->setExpiry((new \DateTime())->add(new \DateInterval('PT1H')));
+        $token->setType(TokenType::RESET_PASSWORD_TOKEN);
 
+        $this->tokenService->create($token);
 
         return true;
+    }
+
+    public function setNewPassword(Account $account, string $passwordCheck): bool
+    {
+
+        if($this->setNewPasswordValidation->verify($account, $passwordCheck) === FALSE)
+        {
+            return false;
+        }
+
+        $account->setPassword($this->passwordService->hashPassword($account->getPassword()));
+
+        if($this->accountTable->updateAccountPassword($account->getId(), $account->getPassword()) > 0)
+        {
+            return true;
+        }
+
+        return false;
+
     }
 
     public function getLevelById(int $level): array

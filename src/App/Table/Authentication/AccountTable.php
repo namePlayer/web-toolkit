@@ -70,4 +70,11 @@ class AccountTable extends AbstractTable
 
     }
 
+    public function updateAccountPassword(int $account, string $passwordHash): int|string|bool
+    {
+
+        return $this->query->update($this->getTableName())->where('id', $account)->set(['password' => $passwordHash])->execute();
+
+    }
+
 }
