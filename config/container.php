@@ -100,6 +100,7 @@ $container->add(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Service\Authentication\PasswordService::class)
     ->addArgument(\App\Validation\Authentication\RegisterValidation::class)
     ->addArgument(\App\Table\Authentication\AccountLevelTable::class)
+    ->addArgument(\App\Validation\Authentication\PasswordResetValidation::class)
     ->addArgument(\Monolog\Logger::class);
 
 $container->add(\App\Service\Authentication\PasswordService::class);
@@ -159,6 +160,8 @@ $container->add(\App\Validation\Authentication\RegisterValidation::class);
 $container->add(\App\Validation\UrlShortener\ShortlinkValidation::class);
 
 $container->add(\App\Validation\UrlShortener\ShortlinkDomainValidation::class);
+
+$container->add(\App\Validation\Authentication\PasswordResetValidation::class);
 
 #
 # Middlewares

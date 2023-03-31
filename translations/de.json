@@ -47,6 +47,7 @@
   "lost-password-header-text": "Du hast dein Passwort vergessen und möchtest ein neues anfordern?",
   "lost-password-back-to-login-text": "Zurück zur Anmeldung",
   "reset-password-button-text": "Passwort zurücksetzen",
+  "reset-password-invalid-email-provided": "Die angegebene E-Mail ist ungültig!",
   "reset-password-success": "Sollte ein Konto mit dieser E-Mail gefunden werden, senden wir dir eine E-Mail mit einen Link zum zurücksetzen des Passwortes zu.",
 
   "basic-private": "Standard",

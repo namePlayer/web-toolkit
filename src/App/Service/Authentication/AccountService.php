@@ -7,6 +7,7 @@ use App\Model\Authentication\Account;
 use App\PlatesExtension\Message\MessageList;
 use App\Table\Authentication\AccountLevelTable;
 use App\Table\Authentication\AccountTable;
+use App\Validation\Authentication\PasswordResetValidation;
 use App\Validation\Authentication\RegisterValidation;
 use Monolog\Level;
 use Monolog\Logger;
@@ -19,6 +20,7 @@ class AccountService
         private readonly PasswordService $passwordService,
         private readonly RegisterValidation $registerValidation,
         private readonly AccountLevelTable $accountLevelTable,
+        private readonly PasswordResetValidation $passwordResetValidation,
         private readonly Logger $logger
     )
     {
@@ -80,6 +82,26 @@ class AccountService
 
         MESSAGES->add('danger', 'admin-account-update-failed');
         return;
+    }
+
+    public function resetPassword(Account $account): bool
+    {
+
+        if($this->passwordResetValidation->verify($account) === FALSE)
+        {
+            return false;
+        }
+
+        $accountData = $this->findAccountByEmail($account->getEmail());
+
+        if($accountData === FALSE)
+        {
+            return true;
+        }
+
+
+
+        return true;
     }
 
     public function getLevelById(int $level): array

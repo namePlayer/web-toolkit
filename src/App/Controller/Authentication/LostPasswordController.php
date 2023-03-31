@@ -3,6 +3,7 @@
 namespace App\Controller\Authentication;
 
 use App\Http\HtmlResponse;
+use App\Model\Authentication\Account;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\PasswordService;
 use League\Plates\Engine;
@@ -34,6 +35,14 @@ class LostPasswordController
     {
 
         if(!isset($_POST['resetPasswordEmail'])) {
+            return;
+        }
+
+        $account = new Account();
+        $account->setEmail($_POST['resetPasswordEmail']);
+
+        if($this->accountService->resetPassword($account) === FALSE)
+        {
             return;
         }
 
