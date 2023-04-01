@@ -41,7 +41,7 @@
   "email-invalid": "Die angegebene E-Mail Adresse ist ungültig",
   "account-name-empty": "Der Kontoname darf nicht leer sein",
   "password-empty": "Das Passwort darf nicht leer sein",
-  "account-created": "Konto wurde angelegt",
+  "account-created": "Konto wurde angelegt. Bitte prüfe dein E-Mail Postfach auf einen Aktivierungslink.",
   "login-account-disabled": "Dieses Konto ist deaktiviert",
   "login-wrong-combination": "Die Kombination aus E-Mail und Passwort konnte nicht gefunden werden",
   "login-account-successful": "Die Anmeldung war erfolgreich",

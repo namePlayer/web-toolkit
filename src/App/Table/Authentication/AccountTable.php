@@ -77,4 +77,9 @@ class AccountTable extends AbstractTable
 
     }
 
+    public function updateAccountActive(int $account, bool $active): int|string|bool
+    {
+        return $this->query->update($this->getTableName())->where('id', $account)->set(['active' => $active ? 1 : 0])->execute();
+    }
+
 }

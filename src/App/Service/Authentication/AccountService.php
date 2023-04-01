@@ -7,6 +7,7 @@ use App\Model\Authentication\Account;
 use App\Model\Authentication\Token;
 use App\Model\Authentication\TokenType;
 use App\PlatesExtension\Message\MessageList;
+use App\Service\MailerService;
 use App\Table\Authentication\AccountLevelTable;
 use App\Table\Authentication\AccountTable;
 use App\Validation\Authentication\PasswordResetValidation;
@@ -39,29 +40,30 @@ class AccountService
 
     }
 
-    public function create(Account $account)
+    public function create(Account $account): bool
     {
         if($this->registerValidation->verify($account) === FALSE)
         {
             $this->logger->log(Level::Info, 'Registration Data Validation failed', MESSAGES->getAll());
-            return;
+            return false;
         }
 
         if($this->findAccountByEmail($account->getEmail()) !== FALSE)
         {
             MESSAGES->add('danger', 'email-invalid');
             $this->logger->log(Level::Info, 'Registration Email is already used');
-            return;
+            return false;
         }
 
         $account->setPassword($this->passwordService->hashPassword($account->getPassword()));
         if($this->accountTable->insert($account) !== FALSE)
         {
+            $account->setId($this->findAccountByEmail($account->getEmail())['id']);
+
             if($account->getBusiness() !== NULL)
             {
-                $accountId = $this->findAccountByEmail($account->getEmail())['id'];
-                $this->accountTable->setAccountBusinessByAccountId($accountId, $accountId);
-                $account->setBusiness($accountId);
+                $this->accountTable->setAccountBusinessByAccountId($account->getId(), $account->getId());
+                $account->setBusiness($account->getId());
             }
 
             MESSAGES->add('success', 'account-created');
@@ -71,9 +73,10 @@ class AccountService
                     'business-account' => $account->getBusiness()
                 ]
             );
-            return;
+            return true;
         }
 
+        return false;
     }
 
     public function updateAccount(Account $account): void
@@ -131,6 +134,11 @@ class AccountService
 
         return false;
 
+    }
+
+    public function setAccountActive(int $account, bool $active): void
+    {
+        $this->accountTable->updateAccountActive($account, $active);
     }
 
     public function getLevelById(int $level): array

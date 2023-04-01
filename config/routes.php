@@ -26,6 +26,8 @@ $router->post('/authentication/lost-password', 'App\Controller\Authentication\Lo
 $router->get('/authentication/reset-password', 'App\Controller\Authentication\ResetPasswordController::load');
 $router->post('/authentication/reset-password', 'App\Controller\Authentication\ResetPasswordController::load');
 
+$router->get('/authentication/activate-account', 'App\Controller\Authentication\ActivateAccountController::load');
+
 $router->get('/authentication/logout', 'App\Controller\Authentication\LogoutController::load');
 
 $router->get('/authentication/account', 'App\Controller\Authentication\AccountController::load')

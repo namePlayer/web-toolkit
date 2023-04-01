@@ -6,7 +6,11 @@ namespace App\Controller\Authentication;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Authentication\AccountLevel;
+use App\Model\Authentication\Token;
+use App\Model\Authentication\TokenType;
 use App\Service\Authentication\AccountService;
+use App\Service\Authentication\TokenService;
+use App\Service\MailerService;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -16,7 +20,9 @@ class RegistrationController
 
     public function __construct(
         private readonly Engine $template,
-        private readonly AccountService $accountService
+        private readonly AccountService $accountService,
+        private readonly TokenService $tokenService,
+        private readonly MailerService $mailerService
     )
     {
     }
@@ -48,7 +54,22 @@ class RegistrationController
             }
             $account->setBusiness($_POST['account-type'] === 'business' ? 0 : null);
 
-            $this->accountService->create($account);
+            if($this->accountService->create($account) === FALSE)
+            {
+                return;
+            }
+
+            $token = new Token();
+            $token->setAccount($account->getId());
+            $token->setType(TokenType::ACTIVATION_TOKEN);
+            $token->setExpiry((new \DateTime())->add(new \DateInterval('PT1H')));
+
+            $this->tokenService->create($token);
+            $this->mailerService->configureMail(
+                $account->getEmail(),
+                'Account aktivieren',
+                'activateAccount',
+                ['token' => $token->getToken(), 'name' => $account->getName()])->send();
 
         }
 
