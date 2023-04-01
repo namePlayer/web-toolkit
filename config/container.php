@@ -24,7 +24,7 @@ $container->add(\App\Controller\Authentication\LoginController::class)
 $container->add(\App\Controller\Authentication\LostPasswordController::class)
     ->addArgument(League\Plates\Engine::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
-    ->addArgument(\App\Service\Authentication\PasswordService::class);
+    ->addArgument(\App\Service\MailerService::class);
 
 $container->add(\App\Controller\Authentication\AccountController::class)
     ->addArgument(\League\Plates\Engine::class)
@@ -138,6 +138,11 @@ $container->add(\App\Service\ApiKey\ApiKeyService::class)
 $container->add(\App\Service\Authentication\TokenService::class)
     ->addArgument(\App\Table\Authentication\TokenTable::class);
 
+$container->add(\App\Service\MailerService::class)
+    ->addArgument(\App\Factory\MailerFactory::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\Monolog\Logger::class);
+
 #
 # Repositories
 #
@@ -232,6 +237,12 @@ $container->add(\App\PlatesExtension\Authentication\AuthenticationExtension::cla
     ->addArgument(\App\Table\Authentication\AccountLevelTable::class);
 
 $container->add(\App\PlatesExtension\Dynamics\DynamicTextExtension::class);
+
+$container->add(\App\Factory\MailerFactory::class)
+    ->addArgument(\PHPMailer\PHPMailer\PHPMailer::class);
+
+$container->add(\PHPMailer\PHPMailer\PHPMailer::class)
+    ->addArgument(true);
 
 $responseFactory = (new \Laminas\Diactoros\ResponseFactory());
 $jsonStrategy = (new \League\Route\Strategy\JsonStrategy($responseFactory))->setContainer($container);

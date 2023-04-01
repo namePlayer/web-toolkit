@@ -7,6 +7,7 @@ use App\Model\Authentication\Account;
 use App\Model\Authentication\Token;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\PasswordService;
+use App\Service\MailerService;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -17,7 +18,7 @@ class LostPasswordController
     public function __construct(
         private readonly Engine $template,
         private readonly AccountService $accountService,
-        private readonly PasswordService $passwordService
+        private readonly MailerService $mailerService
     )
     {
     }
@@ -42,9 +43,16 @@ class LostPasswordController
         $account = new Account();
         $account->setEmail($_POST['resetPasswordEmail']);
 
-        if($this->accountService->resetPassword($account) === FALSE)
+        $token = $this->accountService->resetPassword($account);
+
+        if(!$token instanceof Token)
         {
             return;
+        }
+
+        if(!empty($token->getToken()))
+        {
+            $this->mailerService->configureMail($account->getEmail(), 'Reset Password', 'resetPassword', ['token' => $token->getToken()])->send();
         }
 
         MESSAGES->add('success', 'reset-password-success');

@@ -89,7 +89,7 @@ class AccountService
         return;
     }
 
-    public function resetPassword(Account $account): bool
+    public function resetPassword(Account $account): bool|Token
     {
 
         if($this->passwordResetValidation->verify($account) === FALSE)
@@ -99,19 +99,19 @@ class AccountService
 
         $accountData = $this->findAccountByEmail($account->getEmail());
 
+        $token = new Token();
         if($accountData === FALSE)
         {
-            return true;
+            return $token;
         }
 
-        $token = new Token();
         $token->setAccount($accountData['id']);
         $token->setExpiry((new \DateTime())->add(new \DateInterval('PT1H')));
         $token->setType(TokenType::RESET_PASSWORD_TOKEN);
 
         $this->tokenService->create($token);
 
-        return true;
+        return $token;
     }
 
     public function setNewPassword(Account $account, string $passwordCheck): bool
