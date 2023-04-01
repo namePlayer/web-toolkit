@@ -80,6 +80,8 @@
   "navigation-account-settings": "Kontoeinstellungen",
   "navigation-account-licenses": "Lizenzübersicht",
   "navigation-account-support": "Support",
+  "navigation-support-dashboard": "Support Panel",
+  "navigation-admin-dashboard": "Administration",
   "navigation-account-logout": "Abmelden",
 
   "admin-navigation-general-tab-title": "Allgemein",
@@ -142,6 +144,8 @@
   "admin-account-list-table-active-status-disabled": "Deaktiviert",
   "admin-account-list-table-actions-heading": "Aktionen",
   "admin-account-list-table-actions-manage-button": "Verwalten",
+
+  "admin-account-update-successful": "Das Konto wurde erfolgreich aktualisert.",
 
   "administration-dashboard-registered-accounts-card-title": "Registrierte Konten",
   "administration-dashboard-active-licenses-card-title": "Aktive Lizenzen",
