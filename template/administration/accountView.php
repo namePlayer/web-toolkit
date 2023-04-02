@@ -26,34 +26,34 @@ $this->layout('basetemplate') ?>
 
             <div class="row mb-3">
                 <div class="col-9">
-                    <h4>Account Information</h4>
+                    <h4><?= $this->e($this->translate('admin-account-view-title')) ?></h4>
                 </div>
             </div>
 
             <ul class="nav nav-pills mb-3" id="adminAccountViewTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="adminAccountViewTabInformation" data-bs-toggle="tab" data-bs-target="#adminAccountViewTabInformationPane" type="button" role="tab" aria-controls="adminAccountViewTabInformationPane" aria-selected="true">
-                        Information
+                        <?= $this->e($this->translate('admin-account-view-navigation-info-tab-title')) ?>
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="adminAccountViewTabSettings" data-bs-toggle="tab" data-bs-target="#adminAccountViewTabSettingsPane" type="button" role="tab" aria-controls="adminAccountViewTabSettingsPane" aria-selected="false">
-                        Settings
+                        <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-title')) ?>
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button disabled class="nav-link" id="adminAccountViewTabSettings" data-bs-toggle="tab" data-bs-target="#adminAccountViewTabSettingsPane" type="button" role="tab" aria-controls="adminAccountViewTabSettingsPane" aria-selected="false">
-                        Licenses
+                        <?= $this->e($this->translate('admin-account-view-navigation-licenses-tab-title')) ?>
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button disabled class="nav-link" id="adminAccountViewTabSettings" data-bs-toggle="tab" data-bs-target="#adminAccountViewTabSettingsPane" type="button" role="tab" aria-controls="adminAccountViewTabSettingsPane" aria-selected="false">
-                        Support
+                        <?= $this->e($this->translate('admin-account-view-navigation-support-tab-title')) ?>
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="adminAccountViewTabOrganisation" data-bs-toggle="tab" data-bs-target="#adminAccountViewTabOrganisationPane" type="button" role="tab" aria-controls="adminAccountViewTabOrganisationPane" aria-selected="false">
-                        Organisation
+                        <?= $this->e($this->translate('admin-account-view-navigation-organisation-tab-title')) ?>
                     </button>
                 </li>
             </ul>
@@ -68,43 +68,43 @@ $this->layout('basetemplate') ?>
                         <div class="card-body row">
 
                             <div class="col-md-4 text-center mb-4">
-                                <span>Account Name</span>
+                                <span><?= $this->e($this->translate('admin-account-view-info-tab-account-title')) ?></span>
                                 <h4>
                                     <?= $account->getName(); ?>
                                 </h4>
                             </div>
                             <div class="col-md-4 text-center mb-4">
-                                <span>Subscription</span>
+                                <span><?= $this->e($this->translate('admin-account-view-info-tab-subscription-title')) ?></span>
                                 <h4>
                                     <?= $this->e($this->translate($level['title'])) ?>
                                 </h4>
                             </div>
                             <div class="col-md-4 text-center mb-4">
-                                <span>Status</span>
+                                <span><?= $this->e($this->translate('admin-account-view-info-tab-status-title')) ?></span>
                                 <h4>
                                     <?= $account->isActive()
-                                        ? 'Active'
-                                        : 'Inactive'
+                                        ? $this->e($this->translate('admin-account-view-info-tab-status-active'))
+                                        : $this->e($this->translate('admin-account-view-info-tab-status-disabled'))
                                     ?>
                                 </h4>
                             </div>
                             <div class="col-md-4 text-center mb-3">
-                                <span>Member of Organisation</span>
+                                <span><?= $this->e($this->translate('admin-account-view-info-tab-organisation-title')) ?></span>
                                 <h4>
-                                    None
+                                    <?= $this->e($this->translate('admin-account-view-info-tab-organisation-none')) ?>
                                 </h4>
                             </div>
                             <div class="col-md-4 text-center mb-3">
-                                <span>Registered</span>
+                                <span><?= $this->e($this->translate('admin-account-view-info-tab-registered-title')) ?></span>
                                 <h4>
                                     <?= $account->getRegistered()->format($this->translate('dateTime-format')) ?>
                                 </h4>
                             </div>
                             <div class="col-md-4 text-center mb-3">
-                                <span>Last Login</span>
+                                <span><?= $this->e($this->translate('admin-account-view-info-tab-last-login-title')) ?></span>
                                 <h4>
                                     <?= $account->getLastLogin() === NULL
-                                        ? 'Never'
+                                        ? $this->e($this->translate('admin-account-view-info-tab-last-login-never'))
                                         : $account->getLastLogin()->format($this->translate('dateTime-format'))
                                     ?>
                                 </h4>
@@ -118,23 +118,33 @@ $this->layout('basetemplate') ?>
                     <form method="post">
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <label for="adminAccountTabSettingsAccountName" class="form-label">Account or Organisation Name</label>
+                                <label for="adminAccountTabSettingsAccountName" class="form-label">
+                                    <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-account-name')) ?>
+                                </label>
                                 <input type="text" class="form-control" id="adminAccountTabSettingsAccountName" name="adminAccountTabSettingsAccountName" value="<?= $account->getName(); ?>">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="adminAccountTabSettingsFirstname" class="form-label">Firstname</label>
+                                <label for="adminAccountTabSettingsFirstname" class="form-label">
+                                    <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-firstname')) ?>
+                                </label>
                                 <input type="text" class="form-control" id="adminAccountTabSettingsFirstname" name="adminAccountTabSettingsFirstname" value="<?= $account->getFirstname(); ?>">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="adminAccountTabSettingsSurname" class="form-label">Surname</label>
+                                <label for="adminAccountTabSettingsSurname" class="form-label">
+                                    <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-lastname')) ?>
+                                </label>
                                 <input type="text" class="form-control" id="adminAccountTabSettingsSurname" name="adminAccountTabSettingsSurname" value="<?= $account->getSurname(); ?>">
                             </div>
                             <div class="col-md-8 mb-3">
-                                <label for="adminAccountTabSettingsEmail" class="form-label">E-Mail Address</label>
+                                <label for="adminAccountTabSettingsEmail" class="form-label">
+                                    <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-email')) ?>
+                                </label>
                                 <input type="email" class="form-control" id="adminAccountTabSettingsEmail" name="adminAccountTabSettingsEmail" value="<?= $account->getEmail(); ?>">
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="adminAccountTabSettingsLevel" class="form-label">Level</label>
+                                <label for="adminAccountTabSettingsLevel" class="form-label">
+                                    <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-level')) ?>
+                                </label>
                                 <select class="form-select" aria-label="Default select example" name="adminAccountTabSettingsAccountLevel">
                                     <?php foreach($levels as $item): ?>
                                         <option value="<?= $item['id'] ?>" <?= $account->getLevel() === $item['id'] ? 'selected' : '' ?>>
@@ -148,27 +158,33 @@ $this->layout('basetemplate') ?>
                                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="adminAccountTabSettingsActive"
                                         <?= $account->isAdmin() ? 'onclick="this.checked=!this.checked;" ' : '' ?>
                                         <?= $account->isActive() ? 'checked' : '' ?>>
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Enable Account</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">
+                                        <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-enable-account')) ?>
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="adminAccountTabSettingsSupport"
                                         <?= $account->isSupport() || $account->isAdmin() ? 'checked' : '' ?> disabled>
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Support Permissions</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">
+                                        <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-enable-support')) ?>
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="adminAccountTabSettingsAdmin"
                                         <?= $account->isAdmin() ? 'checked' : '' ?>>
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Admin Permissions</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">
+                                        <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-enable-admin')) ?>
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-2">
 
                                 <button type="submit" class="w-100 btn btn-primary" name="adminAccountTabSettingsSaveButton">
-                                    Save
+                                    <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-save-button')) ?>
                                 </button>
 
                             </div>
@@ -181,21 +197,21 @@ $this->layout('basetemplate') ?>
                         <div class="col-3">
 
                             <button type="submit" class="w-100 btn btn-primary" name="adminAccountTabSettingsResendActivationMailButton">
-                                Resend Activation Email
+                                <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-resend-activation-mail-button')) ?>
                             </button>
 
                         </div>
                         <div class="col-3">
 
                             <button type="submit" class="w-100 btn btn-danger" name="adminAccountTabSettingsResetPasswordMailButton">
-                                Reset Password
+                                <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-send-password-mail-button')) ?>
                             </button>
 
                         </div>
                         <div class="col-3">
 
                             <button type="submit" class="w-100 btn btn-danger" name="adminAccountTabSettingsDeleteAccountButton" <?= $account->isAdmin() ? 'disabled' : '' ?>>
-                                Delete Account
+                                <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-delete-account-button')) ?>
                             </button>
 
                         </div>
