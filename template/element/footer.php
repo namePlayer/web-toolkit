@@ -2,27 +2,31 @@
 
     <hr>
 
-    <div class="row">
+    <div class="d-flex align-items-center flex-wrap text-center">
 
-        <div class="col-2 text-center">
-            <a href="#" class="text-center"><?= $this->e($this->translate('homepage-footer-imprint-title')) ?></a>
-        </div>
-        <div class="col-2 text-center">
-            <a href="#" class="text-center"><?= $this->e($this->translate('homepage-footer-privacy-title')) ?></a> <br>
-            <a href="#" class="text-center"><?= $this->e($this->translate('homepage-footer-terms-title')) ?></a>
-        </div>
-        <div class="col-4 text-center">
+        <div class="p-2 flex-fill order-1">
             Web-Toolkit v<?= \App\Software::VERSION ?> Build <?= \App\Software::BUILD . '-' . \App\Software::TYPE?> <br>
             <span>Github: <a href="https://github.com/namePlayer/web-toolkit" class="link-secondary text-decoration-none">namePlayer/web-toolkit</a></span>
         </div>
-        <div class="col-2 text-center">
-            <a href="#" class="text-center"><?= $this->e($this->translate('homepage-footer-support-title')) ?></a> <br>
-            <a href="#" class="text-center"><?= $this->e($this->translate('homepage-footer-status-title')) ?></a>
+        <div class="p-2 flex-fill order-3">
+            <a href="#" class="text-center text-decoration-none"><?= $this->e($this->translate('homepage-footer-imprint-title')) ?></a>
         </div>
-        <div class="col-2 text-center">
-            <a href="<?= \App\Software::DISCORD_INVITE ?>" class="text-center">
+        <div class="p-2 flex-fill order-3">
+            <a href="#" class="text-center text-decoration-none"><?= $this->e($this->translate('homepage-footer-privacy-title')) ?></a> <br>
+        </div>
+        <div class="p-2 flex-fill order-3">
+            <a href="#" class="text-center text-decoration-none"><?= $this->e($this->translate('homepage-footer-support-title')) ?></a> <br>
+        </div>
+        <div class="p-2 flex-fill order-3">
+            <a href="#" class="text-center text-decoration-none"><?= $this->e($this->translate('homepage-footer-status-title')) ?></a>
+        </div>
+        <div class="p-2 flex-fill order-3">
+            <a href="<?= \App\Software::DISCORD_INVITE ?>" class="text-center text-decoration-none">
                 <?= $this->e($this->translate('homepage-footer-discord-title')) ?>
             </a>
+        </div>
+        <div class="p-2 flex-fill order-3">
+            <a href="#" class="text-center text-decoration-none"><?= $this->e($this->translate('homepage-footer-terms-title')) ?></a>
         </div>
     </div>
 
