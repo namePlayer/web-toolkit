@@ -8,6 +8,7 @@ use App\Model\Authentication\Account;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\PasswordService;
 use App\Software;
+use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -27,13 +28,17 @@ class LoginController
     {
         if($request->getMethod() === "POST")
         {
-            $this->login($request);
+            $login = $this->login($request);
+            if($login instanceof ResponseInterface)
+            {
+                return $login;
+            }
         }
 
         return new HtmlResponse($this->template->render('authentication/login'));
     }
 
-    public function login(ServerRequestInterface $request)
+    public function login(ServerRequestInterface $request): ResponseInterface|false
     {
 
         if(isset($_POST['email'], $_POST['password']))
@@ -47,7 +52,7 @@ class LoginController
             if($login === FALSE)
             {
                 MESSAGES->add('danger', 'login-wrong-combination');
-                return;
+                return false;
             }
 
             $account->setId($login['id']);
@@ -57,7 +62,7 @@ class LoginController
             if($account->isActive() === FALSE)
             {
                 MESSAGES->add('danger', 'login-account-disabled');
-                return;
+                return false;
             }
 
             if($this->passwordService->verifyPassword($account->getPassword(), $login['password']))
@@ -66,18 +71,20 @@ class LoginController
                 $this->accountService->updateLastUserLogin($account);
                 $_SESSION[Software::SESSION_USERID_NAME] = $account->getId();
                 if(!$account->isSetupComplete()) {
-                    header("Location: /authentication/setup");
-                    return;
+                    return new RedirectResponse("/authentication/setup");
                 }
-                header("Location: /overview");
-                return;
+                if(!empty($_GET['redirect']))
+                {
+                    return new RedirectResponse($_GET['redirect']);
+                }
+                return new RedirectResponse("/overview");
             }
 
             MESSAGES->add('danger', 'login-wrong-combination');
-            return;
 
         }
 
+        return false;
     }
 
 }

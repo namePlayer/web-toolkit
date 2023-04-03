@@ -24,9 +24,12 @@ class AuthenticationMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
 
-        if(empty($_SESSION[Software::SESSION_USERID_NAME]))
+        if(
+            empty($_SESSION[Software::SESSION_USERID_NAME]) &&
+            $request->getMethod() === "GET"
+        )
         {
-            return new RedirectResponse('/authentication/login');
+            return new RedirectResponse('/authentication/login?redirect='.$request->getUri());
         }
 
         $account = new Account();
