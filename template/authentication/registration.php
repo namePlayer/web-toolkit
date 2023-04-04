@@ -41,8 +41,12 @@
                 <div class="row" style="margin-top: 40px;">
                     <div class="col-8 d-flex align-items-center">
 
+                        <small class="text-muted">
+                            <?= $this->e($this->translate('create-account-tos-privacy-information')) ?>
+                        </small>
+                        
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 d-flex align-items-center">
                         <button type="submit" class="btn btn-primary w-100"><?= $this->e($this->translate('register-button-text')) ?></button>
                     </div>
                 </div>
