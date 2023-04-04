@@ -1,4 +1,4 @@
-<div class="container mb-5 mt-5">
+<div class="container mb-5 mt-5 position-absolute bottom-0 start-50 translate-middle-x">
 
     <hr>
 

@@ -70,9 +70,10 @@ class CreateController
                 }
             }
 
-            if(!empty($_POST['urlShortenerCustomShortcode']))
+            $shortlinkUUID = trim($_POST['urlShortenerCustomShortcode']);
+            if(!empty($shortlinkUUID))
             {
-                $shortlink->setUuid($_POST['urlShortenerCustomShortcode']);
+                $shortlink->setUuid($shortlinkUUID);
             }
 
             if(!empty($_POST['urlShortenerExpiryDate']))
