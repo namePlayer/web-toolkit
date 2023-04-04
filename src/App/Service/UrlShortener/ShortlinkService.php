@@ -8,46 +8,37 @@ use App\Model\UrlShortener\Shortlink;
 use App\Table\UrlShortener\ShortlinkTable;
 use App\Validation\UrlShortener\ShortlinkValidation;
 use Ramsey\Uuid\Uuid;
-use function Sodium\add;
 
-class ShortlinkService
+readonly class ShortlinkService
 {
 
     public function __construct(
-        private readonly ShortlinkTable $shortlinkTable,
-        private readonly ShortlinkValidation $validation,
-        private readonly ShortlinkTrackingService $shortlinkTrackingService
+        private ShortlinkTable           $shortlinkTable,
+        private ShortlinkValidation      $validation,
+        private ShortlinkTrackingService $shortlinkTrackingService
     )
     {
     }
 
     public function create(Shortlink $shortlink): ?string
     {
-        if($this->validation->validate($shortlink) === FALSE)
-        {
-            return null;
+        if($this->validation->validate($shortlink) !== FALSE) {
+            $this->correctDestinationLinkFormat($shortlink);
+
+            if (!empty($shortlink->getUuid()) && $this->shortlinkExists($shortlink)) {
+                MESSAGES->add('danger', 'shortlink-already-exists');
+                return null;
+            }
+
+            if (empty($shortlink->getUuid()))
+                $this->generateShortLink($shortlink);
+
+            $this->shortlinkTable->insert($shortlink);
+
+            return $shortlink->getUuid();
         }
 
-        $this->correctDestinationLinkFormat($shortlink);
-
-        if(!empty($shortlink->getUuid()) && $this->shortlinkExists($shortlink))
-        {
-            MESSAGES->add('danger', 'shortlink-already-exists');
-            return null;
-        }
-
-        if(empty($shortlink->getUuid()))
-        {
-            $shortlink->setUuid($this->generateShortLink());
-            do {
-                $shortlink->setUuid($this->generateShortLink());
-            } while($this->shortlinkExists($shortlink));
-        }
-
-        $this->shortlinkTable->insert($shortlink);
-
-        return $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].'/aka/' . $shortlink->getUuid();
-
+        return null;
     }
 
     public function openShortlink(Shortlink $shortlink): void
@@ -68,8 +59,6 @@ class ShortlinkService
         {
             $shortlink->setExpiryDate(new \DateTime($shortlinkData['expiryDate']));
         }
-
-        return;
 
     }
 
@@ -117,11 +106,13 @@ class ShortlinkService
         return $shortlink;
     }
 
-    private function generateShortLink(): string
+    private function generateShortLink(Shortlink $shortlink): void
     {
-        $link = Uuid::uuid4()->toString();
+        do {
+            $shortlink->setUuid(Uuid::uuid4()->toString());
+            $shortlink->setUuid(substr($shortlink->getUuid(), 0, strpos($shortlink->getUuid(), "-")));
+        } while($this->shortlinkExists($shortlink));
 
-        return substr($link, 0, strpos($link, "-"));
     }
 
     private function shortlinkExists(Shortlink $shortlink): bool

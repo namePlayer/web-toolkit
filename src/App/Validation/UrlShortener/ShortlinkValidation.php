@@ -11,7 +11,7 @@ class ShortlinkValidation
     public function validate(Shortlink $shortlink): bool
     {
 
-        if(!filter_var($shortlink->getDestination(), FILTER_VALIDATE_DOMAIN))
+        if(!filter_var($shortlink->getDestination(), FILTER_VALIDATE_URL))
         {
             MESSAGES->add('danger', 'shortlink-destination-invalid');
         }
