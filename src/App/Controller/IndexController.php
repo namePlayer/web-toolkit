@@ -10,17 +10,15 @@ use App\Service\UrlShortener\ShortlinkService;
 use App\Software;
 use Laminas\Diactoros\Response;
 use League\Plates\Engine;
-use Monolog\Logger;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class IndexController
+readonly class IndexController
 {
 
     public function __construct(
-        private readonly Engine $template,
-        private readonly ShortlinkService $shortlinkService,
-        private readonly ShortlinkDomainService $shortlinkDomainService
+        private Engine                 $template,
+        private ShortlinkService       $shortlinkService,
+        private ShortlinkDomainService $shortlinkDomainService
     )
     {
     }

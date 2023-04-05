@@ -1,6 +1,6 @@
 <div class="col-md-4 mb-3">
     <div class="list-group">
-        <a href="<?= $tool['path'] ?>" class="list-group-item list-group-item-action p-3    ">
+        <a href="<?= $tool['path'] ?>" class="list-group-item list-group-item-action p-3">
             <div class="w-100">
                 <div class="row mb-1">
                     <div class="col-9">
@@ -25,4 +25,3 @@
         </a>
     </div>
 </div>
-
