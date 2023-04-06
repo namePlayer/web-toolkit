@@ -55,10 +55,15 @@ class ShortlinkTable extends AbstractTable
         return $this->query->from($this->getTableName())->where('account', $userId)->fetchAll();
     }
 
-
     public function countAll(): string|int|bool
     {
         return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->fetchColumn();
+    }
+
+    public function countAllInLastDays(int $days): int|string|bool
+    {
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->where('created between date_sub(now(),INTERVAL '.$days.' day) and now()')->fetchColumn();
+
     }
 
 }

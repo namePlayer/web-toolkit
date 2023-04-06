@@ -28,6 +28,7 @@ class ShortlinkDashboardController
                 'administration/urlShortener/shortlinkDashboard',
                 [
                     'shortlinkAmount' => $this->shortlinkService->getShortlinkCount(),
+                    'shortlinkAmountLastSevenDays' => $this->shortlinkService->getShortlinkCountForLastDays(7),
                     'shortlinkDomainAmount' => $this->shortlinkDomainService->getCount(),
                     'lastShortlinkList' => $this->shortlinkService->getAllShortlinksByLimit(10),
                     'lastDomainList' => $this->shortlinkDomainService->getAllByLimitDescending(10),

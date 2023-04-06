@@ -116,6 +116,11 @@ readonly class ShortlinkService
         return (int)$this->shortlinkTable->countAll();
     }
 
+    public function getShortlinkCountForLastDays(int $days): int
+    {
+        return (int)$this->shortlinkTable->countAllInLastDays($days);
+    }
+
     public function defaultShortlinkDomain(): string
     {
         return $_SERVER['SERVER_NAME'] . '/aka';

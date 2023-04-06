@@ -43,7 +43,7 @@
                                 <?= $this->e($this->translate('administration-url-shortener-dashboard-link-last-seven-days-count-title')) ?>
                             </span>
                             <span class="text-end">
-                                <h4>0</h4>
+                                <h4><?= $shortlinkAmountLastSevenDays ?></h4>
                             </span>
                         </div>
                     </div>
