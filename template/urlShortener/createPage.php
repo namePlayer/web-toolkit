@@ -2,37 +2,35 @@
 
 <div class="container">
 
-    <?= $this->insert('urlShortener/navigation', ['path' => $toolInformation['tool-path']]) ?>
-
     <div class="row">
         <div class="col">
             <form method="post">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <?= $this->e($this->translate('url-shortener-creation-pane-title')) ?>
+                <div class="row mb-3 mt-3">
+                    <div class="col-4">
+                        <h3 class="mb-4"><?= $this->e($this->translate('url-shortener-creation-pane-title')) ?></h3>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="urlShortenerLinkAddress" class="form-label">Adresse</label>
-                                <select class="form-select" id="urlShortenerLinkAddress" name="urlShortenerLinkAddress">
-                                    <option value="" selected></option>
-                                    <?php foreach($domains as $domain): ?>
-                                        <option value="<?= $domain['uuid'] ?>"><?= $domain['address'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="urlShortenerLink" class="form-label"><?= $this->e($this->translate('url-shortener-long-format-link-title')) ?></label>
-                                <input type="text" class="form-control" id="urlShortenerLink" name="urlShortenerLink">
-                            </div>
-                            <div class="col-md-3">
-                                <button type="submit" class="btn btn-primary w-100 h-100">
-                                    <?= $this->e($this->translate('url-shortener-shorten-button')) ?>
-                                </button>
-                            </div>
-
-                        </div>
+                    <div class="col-8">
+                        <?= $this->insert('urlShortener/navigation', ['path' => $toolInformation['tool-path']]) ?>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md-3">
+                        <h6 class="text-muted"><label for="urlShortenerLinkAddress" class="form-label">Adresse</label></h6>
+                        <select class="form-select" id="urlShortenerLinkAddress" name="urlShortenerLinkAddress">
+                            <option value="" selected></option>
+                            <?php foreach($domains as $domain): ?>
+                                <option value="<?= $domain['uuid'] ?>"><?= $domain['address'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        <h6 class="text-muted"><label for="urlShortenerLink" class="form-label"><?= $this->e($this->translate('url-shortener-long-format-link-title')) ?></label></h6>
+                        <input type="text" class="form-control" id="urlShortenerLink" name="urlShortenerLink">
+                    </div>
+                    <div class="col-md-2 d-flex align-items-center">
+                        <button type="submit" class="btn btn-primary w-100 h-75">
+                            <?= $this->e($this->translate('url-shortener-shorten-button')) ?>
+                        </button>
                     </div>
                 </div>
 
