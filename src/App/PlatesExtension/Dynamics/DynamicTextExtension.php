@@ -21,19 +21,13 @@ class DynamicTextExtension implements ExtensionInterface
 
         $currentTime = (int)(new \DateTime())->format('H');
 
-        if ($currentTime >= 22) {
-            return 'user-greeting-night';
-        } else if (($currentTime >= 17)) {
-            return 'user-greeting-evening';
-        } else if (($currentTime >= 12)) {
-            return 'user-greeting-day';
-        } else if ($currentTime >= 5) {
-            return 'user-greeting-morning';
-        } else if ($currentTime >= 0) {
-            return 'user-greeting-night';
-        } else {
-            return 'user-greeting-hello';
-        }
+        return match(true) {
+            $currentTime >= 22, $currentTime >= 0 => 'user-greeting-night',
+            $currentTime >= 17 => 'user-greeting-evening',
+            $currentTime >= 12 => 'user-greeting-day',
+            $currentTime >= 5 => 'user-greeting-morning',
+            default => 'user-greeting-hello'
+        };
 
     }
 
