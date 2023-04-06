@@ -138,6 +138,11 @@ $container->add(\App\Service\UrlShortener\ShortlinkDomainService::class)
     ->addArgument(\App\Table\UrlShortener\ShortlinkDomainTable::class)
     ->addArgument(\App\Validation\UrlShortener\ShortlinkDomainValidation::class);
 
+$container->add(\App\Controller\Administration\UrlShortener\ShortlinkDashboardController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class);
+
 $container->add(\App\Service\ApiKey\ApiKeyService::class)
     ->addArgument(\App\Table\ApiKey\ApiKeyTable::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);

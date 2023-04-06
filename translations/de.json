@@ -244,6 +244,13 @@
   "url-shortener-domains-table-element-status-verification-outstanding-title": "Verifizierung ausstehend",
   "url-shortener-domains-table-element-privacy-public-title": "Öffentlich",
   "url-shortener-domains-table-element-privacy-private-title": "Privat",
-  "url-shortener-domains-table-element-manage-button-title": "Verwalten"
+  "url-shortener-domains-table-element-manage-button-title": "Verwalten",
+
+  "administration-url-shortener-dashboard-title": "Kurzlink Dashboard",
+  "administration-url-shortener-dashboard-total-link-count-title": "Anzahl gesamt",
+  "administration-url-shortener-dashboard-link-last-seven-days-count-title": "Anzahl Letzte 7 Tage",
+  "administration-url-shortener-dashboard-total-domain-count-title": "Domains gesamt",
+  "administration-url-shortener-dashboard-recent-links-title": "Zuletzt hinzugefügte Links",
+  "administration-url-shortener-dashboard-recent-domains-title": "Zuletzt hinzugefügte Domains"
 
 }

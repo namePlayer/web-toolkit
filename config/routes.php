@@ -54,6 +54,9 @@ $router->get('/admin/account/{id}', 'App\Controller\Administration\AccountViewCo
 $router->post('/admin/account/{id}', 'App\Controller\Administration\AccountViewController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
+$router->get('/admin/urlshortener', 'App\Controller\Administration\UrlShortener\ShortlinkDashboardController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+
 $router->get('/overview', 'App\Controller\Login\OverviewController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
 

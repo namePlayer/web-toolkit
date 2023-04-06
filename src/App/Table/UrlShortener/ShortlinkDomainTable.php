@@ -46,4 +46,14 @@ class ShortlinkDomainTable extends AbstractTable
         return $this->query->from($this->getTableName())->where('uuid', $uuid)->fetch();
     }
 
+    public function findAllWithLimitDescending(int $limit): array
+    {
+        return $this->query->from($this->getTableName())->order('id DESC')->limit($limit)->fetchAll();
+    }
+
+    public function countAll(): int|string|bool
+    {
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->fetchColumn();
+    }
+
 }

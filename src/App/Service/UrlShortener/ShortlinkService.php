@@ -75,7 +75,7 @@ readonly class ShortlinkService
                     'domain' => empty($domain) ? $_SERVER['SERVER_NAME'] . '/aka' : $domain,
                     'created' => (new \DateTime($shortlink['created']))->format('d.m.Y H:i'),
                     'account' => $shortlink['account'],
-                    'openShortlinkAddress' => empty($domain) ? 'http://' . $_SERVER['SERVER_NAME'] . '/aka' . '/' . $shortlink['uuid'] : 'http://' . $domain . '/' . $shortlink['uuid'],
+                    'openShortlinkAddress' => empty($domain) ? 'http://' . $_SERVER['SERVER_NAME'] . '/aka/' . $shortlink['uuid'] : 'http://' . $domain . '/' . $shortlink['uuid'],
                     'clicks' => $shortlink['tracking'] === 1 ? $this->shortlinkTrackingService->getClickCountForLink($shortlink['id']) : null
                 ];
         }
@@ -104,6 +104,21 @@ readonly class ShortlinkService
         $shortlink->setTracking($shortlinkData['tracking'] === 1);
 
         return $shortlink;
+    }
+
+    public function getAllShortlinksByLimit(int $limit): array
+    {
+        return $this->shortlinkTable->findALlLimitResults($limit);
+    }
+
+    public function getShortlinkCount(): int
+    {
+        return (int)$this->shortlinkTable->countAll();
+    }
+
+    public function defaultShortlinkDomain(): string
+    {
+        return $_SERVER['SERVER_NAME'] . '/aka';
     }
 
     private function generateShortLink(Shortlink $shortlink): void

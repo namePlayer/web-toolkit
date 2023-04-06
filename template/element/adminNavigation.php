@@ -20,7 +20,7 @@
         <a href="#" class="list-group-item list-group-item-action disabled">
             <b><?= $this->e($this->translate('admin-navigation-tools-tab-title')) ?></b>
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="/admin/urlshortener" class="list-group-item list-group-item-action">
             <?= $this->e($this->translate('admin-navigation-tools-tab-url-shortener-title')) ?>
         </a>
         <a href="#" class="list-group-item list-group-item-action">

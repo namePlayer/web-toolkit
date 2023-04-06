@@ -69,18 +69,24 @@ class ShortlinkDomainService
 
     public function getById(int $id): array
     {
-
         $result = $this->shortlinkDomainTable->findById($id);
 
         return $result === FALSE ? [] : $result;
-
     }
 
     public function getByDomain(string $domain): array|false
     {
-
         return $this->shortlinkDomainTable->findByAddress($domain);
+    }
 
+    public function getAllByLimitDescending(int $limit): array|false
+    {
+        return $this->shortlinkDomainTable->findAllWithLimitDescending($limit);
+    }
+
+    public function getCount(): int
+    {
+        return (int)$this->shortlinkDomainTable->countAll();
     }
 
 }

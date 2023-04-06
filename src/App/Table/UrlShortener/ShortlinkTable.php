@@ -12,7 +12,6 @@ class ShortlinkTable extends AbstractTable
 
     public function insert(Shortlink $shortlink)
     {
-
         $values = [
             'uuid' => $shortlink->getUuid(),
             'destination' => $shortlink->getDestination(),
@@ -45,11 +44,21 @@ class ShortlinkTable extends AbstractTable
         return $this->query->from($this->getTableName())->where($where)->fetch();
     }
 
+    public function findALlLimitResults(int $maximum): array|false
+    {
+        return $this->query->from($this->getTableName())->select('ShortlinkDomain.address')->leftJoin('ShortlinkDomain on ShortlinkDomain.id = Shortlink.domain')
+            ->orderBy('id DESC')->limit($maximum)->fetchAll();
+    }
+
     public function findAllByAccountId(int $userId): array|false
     {
-
         return $this->query->from($this->getTableName())->where('account', $userId)->fetchAll();
+    }
 
+
+    public function countAll(): string|int|bool
+    {
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->fetchColumn();
     }
 
 }
