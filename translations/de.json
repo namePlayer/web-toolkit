@@ -251,6 +251,16 @@
   "administration-url-shortener-dashboard-link-last-seven-days-count-title": "Anzahl Letzte 7 Tage",
   "administration-url-shortener-dashboard-total-domain-count-title": "Domains gesamt",
   "administration-url-shortener-dashboard-recent-links-title": "Zuletzt hinzugefügte Links",
-  "administration-url-shortener-dashboard-recent-domains-title": "Zuletzt hinzugefügte Domains"
+  "administration-url-shortener-dashboard-link-table-id-header": "ID",
+  "administration-url-shortener-dashboard-link-table-domain-header": "Domain",
+  "administration-url-shortener-dashboard-link-table-uuid-header": "Shortcode",
+  "administration-url-shortener-dashboard-domain-table-id-header": "ID",
+  "administration-url-shortener-dashboard-domain-table-address-header": "Domain",
+  "administration-url-shortener-dashboard-domain-table-status-header": "Status",
+  "administration-url-shortener-dashboard-domain-table-status-verified": "Verifiziert",
+  "administration-url-shortener-dashboard-domain-table-status-verification": "Verifizierung",
+  "administration-url-shortener-dashboard-recent-domains-title": "Zuletzt hinzugefügte Domains",
+  "administration-url-shortener-dashboard-all-links-title": "Alle Links",
+  "administration-url-shortener-dashboard-all-domains-title": "Alle Domains"
 
 }
