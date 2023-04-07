@@ -5,14 +5,16 @@ namespace App\Service\ApiKey;
 use App\Model\ApiKey\ApiKey;
 use App\Service\Authentication\AccountService;
 use App\Table\ApiKey\ApiKeyTable;
+use DateTime;
+use Exception;
 use Ramsey\Uuid\Uuid;
 
-class ApiKeyService
+readonly class ApiKeyService
 {
 
     public function __construct(
-        private readonly ApiKeyTable $apiKeyTable,
-        private readonly AccountService $accountService
+        private ApiKeyTable    $apiKeyTable,
+        private AccountService $accountService
     )
     {
     }
@@ -39,6 +41,9 @@ class ApiKeyService
         return $this->apiKeyTable->getAllApiKeysWithUsername();
     }
 
+    /**
+     * @throws Exception
+     */
     public function getApiKeyById(int $id): ApiKey|false
     {
 
@@ -52,8 +57,8 @@ class ApiKeyService
         $apiKey->setId($id);
         $apiKey->setAccount($data['account']);
         $apiKey->setPassword($data['password']);
-        $apiKey->setCreated(new \DateTime($data['created']));
-        $apiKey->setExpires($data['expires'] !== NULL ? new \DateTime($data['expires']) : null);
+        $apiKey->setCreated(new DateTime($data['created']));
+        $apiKey->setExpires($data['expires'] !== NULL ? new DateTime($data['expires']) : null);
         $apiKey->setActive($data['active'] === 1);
 
         return $apiKey;
@@ -73,12 +78,12 @@ class ApiKeyService
 
     }
 
-    public function setActive(int $id, bool $active)
+    public function setActive(int $id, bool $active): void
     {
         $this->apiKeyTable->updateActive($id, $active);
     }
 
-    public function updateKey(ApiKey $apiKey)
+    public function updateKey(ApiKey $apiKey): void
     {
         if($this->apiKeyTable->updateKey($apiKey) >= 1)
         {

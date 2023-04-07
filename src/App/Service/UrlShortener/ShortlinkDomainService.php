@@ -8,12 +8,12 @@ use App\Table\UrlShortener\ShortlinkDomainTable;
 use App\Validation\UrlShortener\ShortlinkDomainValidation;
 use Ramsey\Uuid\Uuid;
 
-class ShortlinkDomainService
+readonly class ShortlinkDomainService
 {
 
     public function __construct(
-        private readonly ShortlinkDomainTable $shortlinkDomainTable,
-        private readonly ShortlinkDomainValidation $shortlinkDomainValidation
+        private ShortlinkDomainTable      $shortlinkDomainTable,
+        private ShortlinkDomainValidation $shortlinkDomainValidation
     )
     {
     }

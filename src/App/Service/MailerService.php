@@ -7,13 +7,13 @@ use League\Plates\Engine;
 use Monolog\Logger;
 use PHPMailer\PHPMailer\Exception;
 
-class MailerService
+readonly class MailerService
 {
 
     public function __construct(
-        private readonly MailerFactory $mailer,
-        private readonly Engine $template,
-        private readonly Logger $logger
+        private MailerFactory $mailer,
+        private Engine        $template,
+        private Logger        $logger
     )
     {
     }
@@ -23,7 +23,7 @@ class MailerService
 
         $this->mailer->getMailer()->addAddress($to);
 
-        $this->mailer->getMailer()->isHTML(true);
+        $this->mailer->getMailer()->isHTML();
 
         $this->mailer->getMailer()->Subject = $subject;
         $this->mailer->getMailer()->Body = $this->template->render('mail/' . $template, $content);
@@ -38,7 +38,7 @@ class MailerService
         try {
             $this->mailer->getMailer()->send();
             return true;
-        } catch (Exception $exception)
+        } catch (Exception)
         {
             $this->logger->error($this->mailer->getMailer()->ErrorInfo);
             return false;

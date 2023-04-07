@@ -19,6 +19,7 @@ class Software
 
     public const CACHE_DIR = __DIR__ . '/../../data/cache';
     public const LOG_DIR = __DIR__ . '/../../data/log';
+    public const PERSISTENT_DIR = __DIR__ . '/../../data/persistent';
 
     public const LOG_FILENAME = 'app.log';
     public const CONSOLE_LOG_FILENAME = 'console.log';

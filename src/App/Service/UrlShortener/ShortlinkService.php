@@ -7,6 +7,8 @@ use App\Model\Authentication\Account;
 use App\Model\UrlShortener\Shortlink;
 use App\Table\UrlShortener\ShortlinkTable;
 use App\Validation\UrlShortener\ShortlinkValidation;
+use DateTime;
+use Exception;
 use Ramsey\Uuid\Uuid;
 
 readonly class ShortlinkService
@@ -41,6 +43,9 @@ readonly class ShortlinkService
         return null;
     }
 
+    /**
+     * @throws Exception
+     */
     public function openShortlink(Shortlink $shortlink): void
     {
 
@@ -57,11 +62,14 @@ readonly class ShortlinkService
         $shortlink->setTracking($shortlinkData['tracking'] == 1);
         if($shortlinkData['expiryDate'] !== NULL)
         {
-            $shortlink->setExpiryDate(new \DateTime($shortlinkData['expiryDate']));
+            $shortlink->setExpiryDate(new DateTime($shortlinkData['expiryDate']));
         }
 
     }
 
+    /**
+     * @throws Exception
+     */
     public function listShortlinkForUser(Account $account): array
     {
 
@@ -73,7 +81,7 @@ readonly class ShortlinkService
                     'id' => $shortlink['id'],
                     'uuid' => $shortlink['uuid'],
                     'domain' => empty($domain) ? $_SERVER['SERVER_NAME'] . '/aka' : $domain,
-                    'created' => (new \DateTime($shortlink['created']))->format('d.m.Y H:i'),
+                    'created' => (new DateTime($shortlink['created']))->format('d.m.Y H:i'),
                     'account' => $shortlink['account'],
                     'openShortlinkAddress' => empty($domain) ? 'http://' . $_SERVER['SERVER_NAME'] . '/aka/' . $shortlink['uuid'] : 'http://' . $domain . '/' . $shortlink['uuid'],
                     'clicks' => $shortlink['tracking'] === 1 ? $this->shortlinkTrackingService->getClickCountForLink($shortlink['id']) : null
@@ -84,6 +92,9 @@ readonly class ShortlinkService
 
     }
 
+    /**
+     * @throws Exception
+     */
     public function getShortlinkById(int $id): ?Shortlink
     {
         $shortlinkData = $this->shortlinkTable->findById($id);
@@ -97,9 +108,9 @@ readonly class ShortlinkService
         $shortlink->setDomain($shortlinkData['domain']);
         $shortlink->setUuid($shortlinkData['uuid']);
         $shortlink->setAccount($shortlinkData['account']);
-        $shortlink->setDateTime(new \DateTime($shortlinkData['created']));
+        $shortlink->setDateTime(new DateTime($shortlinkData['created']));
         $shortlink->setDestination($shortlinkData['destination']);
-        $shortlink->setExpiryDate($shortlinkData['expiryDate'] !== NULL ? new \DateTime($shortlinkData['expiryDate']) : null);
+        $shortlink->setExpiryDate($shortlinkData['expiryDate'] !== NULL ? new DateTime($shortlinkData['expiryDate']) : null);
         $shortlink->setPassword($shortlinkData['password']);
         $shortlink->setTracking($shortlinkData['tracking'] === 1);
 

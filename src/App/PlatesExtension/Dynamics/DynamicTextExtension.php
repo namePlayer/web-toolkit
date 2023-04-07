@@ -22,10 +22,11 @@ class DynamicTextExtension implements ExtensionInterface
         $currentTime = (int)(new \DateTime())->format('H');
 
         return match(true) {
-            $currentTime >= 22, $currentTime >= 0 => 'user-greeting-night',
+            $currentTime >= 22 => 'user-greeting-night',
             $currentTime >= 17 => 'user-greeting-evening',
             $currentTime >= 12 => 'user-greeting-day',
             $currentTime >= 5 => 'user-greeting-morning',
+            $currentTime >= 0 => 'user-greeting-night',
             default => 'user-greeting-hello'
         };
 

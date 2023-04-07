@@ -6,35 +6,35 @@ namespace App\Service\Authentication;
 use App\Model\Authentication\Account;
 use App\Model\Authentication\Token;
 use App\Model\Authentication\TokenType;
-use App\PlatesExtension\Message\MessageList;
-use App\Service\MailerService;
 use App\Table\Authentication\AccountLevelTable;
 use App\Table\Authentication\AccountTable;
 use App\Validation\Authentication\PasswordResetValidation;
 use App\Validation\Authentication\RegisterValidation;
 use App\Validation\Authentication\SetNewPasswordValidation;
+use DateInterval;
+use DateTime;
 use Monolog\Level;
 use Monolog\Logger;
 
-class AccountService
+readonly class AccountService
 {
 
     public function __construct(
-        private readonly AccountTable $accountTable,
-        private readonly PasswordService $passwordService,
-        private readonly RegisterValidation $registerValidation,
-        private readonly AccountLevelTable $accountLevelTable,
-        private readonly PasswordResetValidation $passwordResetValidation,
-        private readonly SetNewPasswordValidation $setNewPasswordValidation,
-        private readonly TokenService $tokenService,
-        private readonly Logger $logger
+        private AccountTable             $accountTable,
+        private PasswordService          $passwordService,
+        private RegisterValidation       $registerValidation,
+        private AccountLevelTable        $accountLevelTable,
+        private PasswordResetValidation  $passwordResetValidation,
+        private SetNewPasswordValidation $setNewPasswordValidation,
+        private TokenService             $tokenService,
+        private Logger                   $logger
     )
     {
     }
 
     public function updateLastUserLogin(Account $account): void
     {
-        $account->setLastLogin(new \DateTime());
+        $account->setLastLogin(new DateTime());
 
         $this->accountTable->updateLastLogin($account);
 
@@ -89,7 +89,6 @@ class AccountService
         }
 
         MESSAGES->add('danger', 'admin-account-update-failed');
-        return;
     }
 
     public function resetPassword(Account $account): bool|Token
@@ -109,7 +108,7 @@ class AccountService
         }
 
         $token->setAccount($accountData['id']);
-        $token->setExpiry((new \DateTime())->add(new \DateInterval('PT1H')));
+        $token->setExpiry((new DateTime())->add(new DateInterval('PT1H')));
         $token->setType(TokenType::RESET_PASSWORD_TOKEN);
 
         $this->tokenService->create($token);
@@ -119,7 +118,6 @@ class AccountService
 
     public function setNewPassword(Account $account, string $passwordCheck): bool
     {
-
         if($this->setNewPasswordValidation->verify($account, $passwordCheck) === FALSE)
         {
             return false;

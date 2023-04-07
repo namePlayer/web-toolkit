@@ -8,13 +8,13 @@ use App\Service\Authentication\AccountService;
 use App\Table\Tool\ToolTable;
 use Monolog\Logger;
 
-class ToolService
+readonly class ToolService
 {
 
     public function __construct(
-        private readonly ToolTable $toolTable,
-        private readonly AccountService $accountService,
-        private readonly Logger $logger
+        private ToolTable      $toolTable,
+        private AccountService $accountService,
+        private Logger         $logger
     )
     {
     }

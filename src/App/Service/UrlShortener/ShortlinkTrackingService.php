@@ -3,33 +3,33 @@ declare(strict_types=1);
 
 namespace App\Service\UrlShortener;
 
-use App\Model\UrlShortener\Shortlink;
 use App\Model\UrlShortener\ShortlinkTracking;
+use App\Software;
 use App\Table\UrlShortener\ShortlinkTrackingTable;
 use DeviceDetector\DeviceDetector;
 use GeoIp2\Database\Reader;
 use GeoIp2\Exception\AddressNotFoundException;
 
-class ShortlinkTrackingService
+readonly class ShortlinkTrackingService
 {
 
     public function __construct(
-        private readonly ShortlinkTrackingTable $shortlinkTrackingTable
+        private ShortlinkTrackingTable $shortlinkTrackingTable
     )
     {
     }
 
-    public function track(ShortlinkTracking $tracking)
+    public function track(ShortlinkTracking $tracking): void
     {
 
         $userAgent = new DeviceDetector($tracking->getUseragent());
         $userAgent->parse();
 
-        $locationReader = new Reader(__DIR__ . '/../../../../data/persistent/countrydatabase.mmdb');
+        $locationReader = new Reader(Software::PERSISTENT_DIR . '/country-database.mmdb');
         try {
             $record = $locationReader->country($tracking->getUserIp());
             $tracking->setCountry($record->country->name);
-        } catch (AddressNotFoundException $addressNotFoundException)
+        } catch (AddressNotFoundException)
         {
             $tracking->setCountry('');
         }

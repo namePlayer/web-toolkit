@@ -7,10 +7,10 @@ use App\Exception\CacheException;
 use App\Software;
 use Monolog\Logger;
 
-class CacheService
+readonly class CacheService
 {
 
-    public function __construct(private readonly Logger $logger)
+    public function __construct(private Logger $logger)
     {
     }
 

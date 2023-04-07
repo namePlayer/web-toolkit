@@ -37,7 +37,7 @@ class RegistrationController
         return new HtmlResponse($this->template->render('authentication/registration'));
     }
 
-    private function register(ServerRequestInterface $request)
+    private function register(ServerRequestInterface $request): void
     {
 
         if(isset($_POST['account-type'], $_POST['account-name'], $_POST['email'], $_POST['password']))
@@ -69,7 +69,8 @@ class RegistrationController
                 $account->getEmail(),
                 'Account aktivieren',
                 'activateAccount',
-                ['token' => $token->getToken(), 'name' => $account->getName()])->send();
+                ['token' => $token->getToken(), 'name' => $account->getName()]
+            )->send();
 
         }
 
