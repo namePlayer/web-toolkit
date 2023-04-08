@@ -127,7 +127,8 @@ $container->add(\App\Service\Tool\ToolService::class)
 $container->add(\App\Service\UrlShortener\ShortlinkService::class)
     ->addArgument(\App\Table\UrlShortener\ShortlinkTable::class)
     ->addArgument(\App\Validation\UrlShortener\ShortlinkValidation::class)
-    ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class);
+    ->addArgument(\App\Service\UrlShortener\ShortlinkTrackingService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class);
 
 $container->add(\App\Service\UrlShortener\ShortlinkPasswordService::class);
 

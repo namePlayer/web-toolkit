@@ -9,6 +9,7 @@ use App\Model\Tool\Tool;
 use App\Service\UrlShortener\ShortlinkDomainService;
 use App\Service\UrlShortener\ShortlinkService;
 use App\Service\UrlShortener\ShortlinkTrackingService;
+use App\Tool\ShortlinkTool;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
@@ -40,6 +41,11 @@ class LinkViewController
 
         $link = $this->shortlinkService->getShortlinkById((int)$args['linkId']);
 
+        if($link->getAccount() !== $account->getId())
+        {
+            return new RedirectResponse(ShortlinkTool::TOOL_URL . '/list');
+        }
+
         return new HtmlResponse(
             $this->template->render(
                 'urlShortener/linkView',
@@ -47,7 +53,7 @@ class LinkViewController
                     'toolInformation' => ['tool-title' => $tool->getTitle(), 'tool-description' => $tool->getDescription(), 'tool-path' => $tool->getPath()],
                     'shortlink' => $link,
                     'trackingData' => $link->isTracking() ? $this->shortlinkTrackingService->getLastClicksForLink((int)$link->getId(), 10) : [],
-                    'shortlinkDomain' => $link->getDomain() === NULL ? $_SERVER['HTTP_HOST'] . '/aka' : $this->shortlinkDomainService->getById($link->getDomain())['address']
+                    'shortlinkDomain' => $link->getDomain() === NULL ? ShortlinkTool::getDefaultUrl() : $this->shortlinkDomainService->getById($link->getDomain())['address']
                 ]
             )
         );

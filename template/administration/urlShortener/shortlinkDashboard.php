@@ -88,7 +88,7 @@
                                 <tr>
                                     <th scope="row"><?= $link['id'] ?></th>
                                     <td>
-                                        <?= $link['domain'] === NULL ? $defaultShortlinkDomain : $link['address'] ?>
+                                        <?= $link['domain'] === NULL ? \App\Tool\ShortlinkTool::getDefaultUrl() : $link['address'] ?>
                                     </td>
                                     <td><?= $link['uuid'] ?></td>
                                 </tr>

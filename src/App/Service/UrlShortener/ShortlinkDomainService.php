@@ -55,9 +55,7 @@ readonly class ShortlinkDomainService
 
     public function getDomainListForUser(int $user): array
     {
-
         return $this->shortlinkDomainTable->getAllDomainsForUser($user);
-
     }
 
     public function getByUUID(string $uuid): array
@@ -82,6 +80,12 @@ readonly class ShortlinkDomainService
     public function getAllByLimitDescending(int $limit): array|false
     {
         return $this->shortlinkDomainTable->findAllWithLimitDescending($limit);
+    }
+
+    public function getDomainNameByID(int $id): ?string
+    {
+        $domain = $this->getById($id);
+        return !empty($domain) ? $domain['address'] : null;
     }
 
     public function getCount(): int

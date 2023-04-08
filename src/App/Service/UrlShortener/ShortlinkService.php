@@ -6,6 +6,7 @@ namespace App\Service\UrlShortener;
 use App\Model\Authentication\Account;
 use App\Model\UrlShortener\Shortlink;
 use App\Table\UrlShortener\ShortlinkTable;
+use App\Tool\ShortlinkTool;
 use App\Validation\UrlShortener\ShortlinkValidation;
 use DateTime;
 use Exception;
@@ -17,7 +18,8 @@ readonly class ShortlinkService
     public function __construct(
         private ShortlinkTable           $shortlinkTable,
         private ShortlinkValidation      $validation,
-        private ShortlinkTrackingService $shortlinkTrackingService
+        private ShortlinkTrackingService $shortlinkTrackingService,
+        private ShortlinkDomainService   $shortlinkDomainService
     )
     {
     }
@@ -80,10 +82,10 @@ readonly class ShortlinkService
                 [
                     'id' => $shortlink['id'],
                     'uuid' => $shortlink['uuid'],
-                    'domain' => empty($domain) ? $_SERVER['SERVER_NAME'] . '/aka' : $domain,
+                    'domain' => empty($shortlink['domain']) ? ShortlinkTool::getDefaultUrl() : $this->shortlinkDomainService->getDomainNameByID($shortlink['domain']),
                     'created' => (new DateTime($shortlink['created']))->format('d.m.Y H:i'),
                     'account' => $shortlink['account'],
-                    'openShortlinkAddress' => empty($domain) ? 'http://' . $_SERVER['SERVER_NAME'] . '/aka/' . $shortlink['uuid'] : 'http://' . $domain . '/' . $shortlink['uuid'],
+                    'openShortlinkAddress' => empty($domain) ? \App\Tool\ShortlinkTool::getDefaultUrl() . $shortlink['uuid'] : 'http://' . $domain . '/' . $shortlink['uuid'],
                     'clicks' => $shortlink['tracking'] === 1 ? $this->shortlinkTrackingService->getClickCountForLink($shortlink['id']) : null
                 ];
         }
@@ -130,11 +132,6 @@ readonly class ShortlinkService
     public function getShortlinkCountForLastDays(int $days): int
     {
         return (int)$this->shortlinkTable->countAllInLastDays($days);
-    }
-
-    public function defaultShortlinkDomain(): string
-    {
-        return $_SERVER['SERVER_NAME'] . '/aka';
     }
 
     private function generateShortLink(Shortlink $shortlink): void

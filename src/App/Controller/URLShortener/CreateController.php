@@ -10,6 +10,7 @@ use App\Model\UrlShortener\Shortlink;
 use App\Service\UrlShortener\ShortlinkDomainService;
 use App\Service\UrlShortener\ShortlinkPasswordService;
 use App\Service\UrlShortener\ShortlinkService;
+use App\Software;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -92,7 +93,7 @@ class CreateController
             {
                 $shortenedLink =
                     [
-                        'domain' => 'http://' . $_SERVER['SERVER_NAME'] . '/aka',
+                        'domain' => \App\Tool\ShortlinkTool::getDefaultUrl(),
                         'code' => $shortlink->getUuid()
                     ];
                 if($shortlink->getDomain() !== NULL)
