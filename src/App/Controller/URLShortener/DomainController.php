@@ -38,7 +38,7 @@ class DomainController
             $this->template->render(
                 'urlShortener/domainOverview',
                 [
-                    'toolInformation' => ['tool-title' => $tool->getTitle(), 'tool-description' => $tool->getDescription(), 'tool-path' => $tool->getPath()],
+                    'tool' => $tool,
                     'domainList' => $this->shortlinkDomainService->getDomainListForUser($account->getId())
                 ]
             )

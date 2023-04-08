@@ -1,10 +1,15 @@
-<?php $this->layout('tooltemplate', ['toolInformation' => $toolInformation]); ?>
+<?php $this->layout('tooltemplate', ['tool' => $tool]); ?>
 
 <div class="container">
 
-    <?= $this->insert('urlShortener/navigation', ['path' => $toolInformation['tool-path']]) ?>
-
-    <h4 class="mt-4"><?= $this->e($this->translate('url-shortener-link-list-title')) ?></h4>
+    <div class="row mb-3 mt-3 d-flex align-items-center">
+        <div class="col-4">
+            <h4 class="mt-4"><?= $this->e($this->translate('url-shortener-link-list-title')) ?></h4>
+        </div>
+        <div class="col-8">
+            <?= $this->insert('urlShortener/navigation', ['tool' => $tool]) ?>
+        </div>
+    </div>
 
     <div class="card mt-4">
         <div class="card-body">
@@ -32,7 +37,7 @@
 
                     <?php foreach($shortlinkList as $shortlink): ?>
 
-                        <?php $this->insert('urlShortener/linkTableElement', array_merge($shortlink, ['path' => $toolInformation['tool-path']])) ?>
+                        <?php $this->insert('urlShortener/linkTableElement', array_merge($shortlink, ['tool' => $tool])) ?>
 
                     <?php endforeach;?>
 

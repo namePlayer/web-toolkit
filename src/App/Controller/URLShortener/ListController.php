@@ -29,7 +29,7 @@ class ListController
         $tool = $request->getAttribute(Tool::class);
 
         return new HtmlResponse($this->template->render('urlShortener/listLinks', [
-            'toolInformation' => ['tool-title' => $tool->getTitle(), 'tool-description' => $tool->getDescription(), 'tool-path' => $tool->getPath()],
+            'tool' => $tool,
             'shortlinkList' => $this->shortlinkService->listShortlinkForUser($account)
             ],
         ));

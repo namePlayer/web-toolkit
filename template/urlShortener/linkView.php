@@ -2,15 +2,21 @@
 
 use App\Model\UrlShortener\Shortlink;
 
-$this->layout('tooltemplate', ['toolInformation' => $toolInformation]);
+$this->layout('tooltemplate', ['tool' => $tool]);
 /* @var $shortlink Shortlink */
 ?>
 
 <div class="container">
 
-    <?= $this->insert('urlShortener/navigation', ['path' => $toolInformation['tool-path']]) ?>
-
     <div class="row">
+        <div class="row mb-3 mt-3">
+            <div class="col-4">
+                <h4 class="mb-4"><?= $this->e($this->translate('url-shortener-creation-pane-title')) ?></h4>
+            </div>
+            <div class="col-8">
+                <?= $this->insert('urlShortener/navigation', ['tool' => $tool]) ?>
+            </div>
+        </div>
         <div class="col-md-3 mb-3">
             <h5 class="mb-3"><?= $this->e($this->translate('url-shortener-link-information-title')) ?></h5>
             <ol class="list-group list-group-flush">

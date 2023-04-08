@@ -1,8 +1,8 @@
-<?php $this->layout('tooltemplate', ['toolInformation' => $toolInformation]); ?>
+<?php $this->layout('tooltemplate', ['tool' => $tool]); ?>
 
 <div class="container">
 
-    <?= $this->insert('urlShortener/navigation', ['path' => $toolInformation['tool-path']]) ?>
+    <?= $this->insert('urlShortener/navigation', ['tool' => $tool]) ?>
 
     <div class="row mt-4">
         <div class="col-9">

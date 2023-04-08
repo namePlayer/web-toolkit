@@ -50,7 +50,7 @@ class LinkViewController
             $this->template->render(
                 'urlShortener/linkView',
                 [
-                    'toolInformation' => ['tool-title' => $tool->getTitle(), 'tool-description' => $tool->getDescription(), 'tool-path' => $tool->getPath()],
+                    'tool' => $tool,
                     'shortlink' => $link,
                     'trackingData' => $link->isTracking() ? $this->shortlinkTrackingService->getLastClicksForLink((int)$link->getId(), 10) : [],
                     'shortlinkDomain' => $link->getDomain() === NULL ? ShortlinkTool::getDefaultUrl() : $this->shortlinkDomainService->getById($link->getDomain())['address']

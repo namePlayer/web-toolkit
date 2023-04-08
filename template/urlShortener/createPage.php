@@ -1,4 +1,4 @@
-<?php $this->layout('tooltemplate', ['toolInformation' => $toolInformation]); ?>
+<?php $this->layout('tooltemplate', ['tool' => $tool]); ?>
 
 <div class="container">
 
@@ -10,7 +10,7 @@
                         <h3 class="mb-4"><?= $this->e($this->translate('url-shortener-creation-pane-title')) ?></h3>
                     </div>
                     <div class="col-8">
-                        <?= $this->insert('urlShortener/navigation', ['path' => $toolInformation['tool-path']]) ?>
+                        <?= $this->insert('urlShortener/navigation', ['tool' => $tool]) ?>
                     </div>
                 </div>
                 <div class="row mb-5">
