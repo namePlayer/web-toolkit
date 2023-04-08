@@ -13,7 +13,7 @@ use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 
 #[AllowDynamicProperties]
-readonly class AuthenticationExtension implements ExtensionInterface
+class AuthenticationExtension implements ExtensionInterface
 {
 
     public function __construct(

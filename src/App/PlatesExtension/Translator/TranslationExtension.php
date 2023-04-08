@@ -10,7 +10,7 @@ use League\Plates\Extension\ExtensionInterface;
 
 
 #[AllowDynamicProperties]
-readonly class TranslationExtension implements ExtensionInterface
+class TranslationExtension implements ExtensionInterface
 {
 
     public function __construct(private Translation $translation)
