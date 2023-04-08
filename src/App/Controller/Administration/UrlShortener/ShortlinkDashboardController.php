@@ -1,24 +1,23 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Controller\Administration\UrlShortener;
 
 use App\Http\HtmlResponse;
-use App\Service\Authentication\AccountService;
 use App\Service\UrlShortener\ShortlinkDomainService;
 use App\Service\UrlShortener\ShortlinkService;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class ShortlinkDashboardController
+readonly class ShortlinkDashboardController
 {
 
     public function __construct(
-        private readonly Engine $template,
-        private readonly ShortlinkService $shortlinkService,
-        private readonly ShortlinkDomainService $shortlinkDomainService
-    )
-    {
+        private Engine $template,
+        private ShortlinkService $shortlinkService,
+        private ShortlinkDomainService $shortlinkDomainService
+    ) {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

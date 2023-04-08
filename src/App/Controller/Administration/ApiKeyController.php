@@ -1,67 +1,61 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Controller\Administration;
 
 use App\Http\HtmlResponse;
 use App\Model\ApiKey\ApiKey;
 use App\Service\ApiKey\ApiKeyService;
-use App\Service\Authentication\AccountService;
+use DateTime;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class ApiKeyController
+readonly class ApiKeyController
 {
 
     public function __construct(
-        private readonly Engine $template,
-        private readonly ApiKeyService $apiKeyService
-    )
-    {
+        private Engine $template,
+        private ApiKeyService $apiKeyService
+    ) {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface
     {
-
-        if($request->getMethod() === 'POST')
-        {
+        if ($request->getMethod() === 'POST') {
             $create = $this->create($request);
-            if($create instanceof RedirectResponse)
-            {
+            if ($create instanceof RedirectResponse) {
                 return $create;
             }
         }
 
-        return new HtmlResponse($this->template->render(
-            'administration/apiKeyList',
-            [
-                'apiKeys' => $this->apiKeyService->getAllApiKeys()
-            ]
-        ));
+        return new HtmlResponse(
+            $this->template->render(
+                'administration/apiKeyList',
+                [
+                    'apiKeys' => $this->apiKeyService->getAllApiKeys()
+                ]
+            )
+        );
     }
 
     public function create(ServerRequestInterface $request)
     {
-
-        if(isset($_POST['adminApiKeyCreateNewModalUserId'], $_POST['adminApiKeyCreateNewModalExpiryDate']))
-        {
-
+        if (isset($_POST['adminApiKeyCreateNewModalUserId'], $_POST['adminApiKeyCreateNewModalExpiryDate'])) {
             $apiKey = new ApiKey();
-            $apiKey->setAccount(empty($_POST['adminApiKeyCreateNewModalUserId']) ? null : (int)$_POST['adminApiKeyCreateNewModalUserId']);
-            if(!empty($_POST['adminApiKeyCreateNewModalExpiryDate']))
-            {
-                $apiKey->setExpires(new \DateTime($_POST['adminApiKeyCreateNewModalExpiryDate']));
+            $apiKey->setAccount(
+                empty($_POST['adminApiKeyCreateNewModalUserId']) ? null : (int)$_POST['adminApiKeyCreateNewModalUserId']
+            );
+            if (!empty($_POST['adminApiKeyCreateNewModalExpiryDate'])) {
+                $apiKey->setExpires(new DateTime($_POST['adminApiKeyCreateNewModalExpiryDate']));
             }
             $apiKey->setActive(isset($_POST['adminApiKeyCreateNewModalActivate']));
 
-            if($this->apiKeyService->create($apiKey) !== NULL)
-            {
-                return new RedirectResponse('/admin/apikey/'.$apiKey->getId());
+            if ($this->apiKeyService->create($apiKey) !== null) {
+                return new RedirectResponse('/admin/apikey/' . $apiKey->getId());
             }
-
         }
-
     }
 
 }

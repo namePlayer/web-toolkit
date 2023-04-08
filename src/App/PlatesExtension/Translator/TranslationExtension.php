@@ -1,17 +1,19 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\PlatesExtension\Translator;
 
+use AllowDynamicProperties;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 
 
-#[\AllowDynamicProperties]
-class TranslationExtension implements ExtensionInterface
+#[AllowDynamicProperties]
+readonly class TranslationExtension implements ExtensionInterface
 {
 
-    public function __construct(private readonly Translation $translation)
+    public function __construct(private Translation $translation)
     {
     }
 

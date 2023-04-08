@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Table\UrlShortener;
@@ -11,7 +12,6 @@ class ShortlinkDomainTable extends AbstractTable
 
     public function insert(ShortlinkDomain $shortlinkDomain): int|bool|string
     {
-
         $values = [
             'user' => $shortlinkDomain->getUser(),
             'uuid' => $shortlinkDomain->getUuid(),
@@ -20,12 +20,10 @@ class ShortlinkDomainTable extends AbstractTable
         ];
 
         return $this->query->insertInto($this->getTableName())->values($values)->execute();
-
     }
 
     public function getAllDomainsForUser(int $userId): array|false
     {
-
         return $this->query->from($this->getTableName())
             ->where('user', $userId)
             ->whereOr('user', null)
@@ -33,7 +31,6 @@ class ShortlinkDomainTable extends AbstractTable
             ->whereOr('public', 1)
             ->where('verified', 1)
             ->fetchAll();
-
     }
 
     public function findByAddress(string $address): array|false

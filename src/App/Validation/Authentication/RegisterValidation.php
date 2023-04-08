@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Validation\Authentication;
@@ -10,28 +11,23 @@ class RegisterValidation
 
     public function verify(Account $account): bool
     {
-        if(filter_var($account->getEmail(), FILTER_VALIDATE_EMAIL) === FALSE)
-        {
+        if (filter_var($account->getEmail(), FILTER_VALIDATE_EMAIL) === false) {
             MESSAGES->add('danger', 'invalid-email');
         }
 
-        if(empty($account->getPassword()))
-        {
+        if (empty($account->getPassword())) {
             MESSAGES->add('danger', 'password-empty');
         }
 
-        if(empty($account->getName()))
-        {
+        if (empty($account->getName())) {
             MESSAGES->add('danger', 'account-name-empty');
         }
 
-        if(mb_strlen($account->getName()) >= 100)
-        {
+        if (mb_strlen($account->getName()) >= 100) {
             MESSAGES->add('danger', 'account-name-max-length');
         }
 
         return MESSAGES->countByType('danger') === 0;
-
     }
 
 }

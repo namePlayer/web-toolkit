@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Table\Authentication;
@@ -12,7 +13,6 @@ class AccountTable extends AbstractTable
 
     public function insert(Account $account): bool|array|int
     {
-
         $values = [
             'name' => $account->getName(),
             'email' => $account->getEmail(),
@@ -33,13 +33,12 @@ class AccountTable extends AbstractTable
             'lastLogin' => $account->getLastLogin()->format(Software::DATABASE_TIME_FORMAT)
         ];
 
-        return $this->query->update($this->getTableName())->where('id', $account->getId())->set($value)->execute() === 1;
-
+        return $this->query->update($this->getTableName())->where('id', $account->getId())->set($value)->execute(
+            ) === 1;
     }
 
     public function updateAccountInformation(Account $account): string|int|bool
     {
-
         $value = [
             'level' => $account->getLevel(),
             'name' => $account->getName(),
@@ -53,33 +52,31 @@ class AccountTable extends AbstractTable
         ];
 
         return $this->query->update($this->getTableName())->where('id', $account->getId())->set($value)->execute();
-
     }
 
     public function setAccountBusinessByAccountId(?int $business, int $account): array|false|int
     {
-
-        return $this->query->update($this->getTableName())->where('id', $account)->set('business', $business)->execute();
-
+        return $this->query->update($this->getTableName())->where('id', $account)->set('business', $business)->execute(
+        );
     }
 
     public function countAllUsers(array $filters = []): int|string
     {
-
-        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->where($filters)->fetchColumn();
-
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->where(
+            $filters
+        )->fetchColumn();
     }
 
     public function updateAccountPassword(int $account, string $passwordHash): int|string|bool
     {
-
-        return $this->query->update($this->getTableName())->where('id', $account)->set(['password' => $passwordHash])->execute();
-
+        return $this->query->update($this->getTableName())->where('id', $account)->set(['password' => $passwordHash]
+        )->execute();
     }
 
     public function updateAccountActive(int $account, bool $active): int|string|bool
     {
-        return $this->query->update($this->getTableName())->where('id', $account)->set(['active' => $active ? 1 : 0])->execute();
+        return $this->query->update($this->getTableName())->where('id', $account)->set(['active' => $active ? 1 : 0]
+        )->execute();
     }
 
 }

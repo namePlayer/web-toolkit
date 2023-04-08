@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Service\UrlShortener;
@@ -15,13 +16,11 @@ readonly class ShortlinkTrackingService
 
     public function __construct(
         private ShortlinkTrackingTable $shortlinkTrackingTable
-    )
-    {
+    ) {
     }
 
     public function track(ShortlinkTracking $tracking): void
     {
-
         $userAgent = new DeviceDetector($tracking->getUseragent());
         $userAgent->parse();
 
@@ -29,8 +28,7 @@ readonly class ShortlinkTrackingService
         try {
             $record = $locationReader->country($tracking->getUserIp());
             $tracking->setCountry($record->country->name);
-        } catch (AddressNotFoundException)
-        {
+        } catch (AddressNotFoundException) {
             $tracking->setCountry('');
         }
 
@@ -38,20 +36,16 @@ readonly class ShortlinkTrackingService
         $tracking->setOperatingSystem($userAgent->getOs('name'));
 
         $this->shortlinkTrackingTable->create($tracking);
-
     }
 
     public function getLastClicksForLink(int $link, int $amount): array
     {
-
         return $this->shortlinkTrackingTable->getTracksByLinkIdAndLimit($link, $amount);
-
     }
 
     public function getClickCountForLink(int $link): ?int
     {
         return $this->shortlinkTrackingTable->countAllByLink($link);
-
     }
 
 }

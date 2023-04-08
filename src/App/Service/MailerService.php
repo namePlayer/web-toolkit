@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Service;
 
@@ -12,15 +13,13 @@ readonly class MailerService
 
     public function __construct(
         private MailerFactory $mailer,
-        private Engine        $template,
-        private Logger        $logger
-    )
-    {
+        private Engine $template,
+        private Logger $logger
+    ) {
     }
 
     public function configureMail(string $to, string $subject, string $template, array $content = []): self
     {
-
         $this->mailer->getMailer()->addAddress($to);
 
         $this->mailer->getMailer()->isHTML();
@@ -29,21 +28,17 @@ readonly class MailerService
         $this->mailer->getMailer()->Body = $this->template->render('mail/' . $template, $content);
 
         return $this;
-
     }
 
     public function send(): bool
     {
-
         try {
             $this->mailer->getMailer()->send();
             return true;
-        } catch (Exception)
-        {
+        } catch (Exception) {
             $this->logger->error($this->mailer->getMailer()->ErrorInfo);
             return false;
         }
-
     }
 
 }

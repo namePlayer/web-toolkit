@@ -1,21 +1,20 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Factory;
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-class MailerFactory
+readonly class MailerFactory
 {
 
     public function __construct(
-        private readonly PHPMailer $mailer
-    )
-    {
+        private PHPMailer $mailer
+    ) {
     }
 
     public function getMailer(): PHPMailer
     {
-
         $this->mailer->isSMTP();
         $this->mailer->SMTPAuth = true;
         $this->mailer->Host = $_ENV['MAILER_HOST'];
@@ -28,7 +27,6 @@ class MailerFactory
         $this->mailer->Encoding = 'base64';
 
         return $this->mailer;
-
     }
 
 }

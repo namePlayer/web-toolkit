@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Service\UrlShortener;
@@ -16,17 +17,16 @@ readonly class ShortlinkService
 {
 
     public function __construct(
-        private ShortlinkTable           $shortlinkTable,
-        private ShortlinkValidation      $validation,
+        private ShortlinkTable $shortlinkTable,
+        private ShortlinkValidation $validation,
         private ShortlinkTrackingService $shortlinkTrackingService,
-        private ShortlinkDomainService   $shortlinkDomainService
-    )
-    {
+        private ShortlinkDomainService $shortlinkDomainService
+    ) {
     }
 
     public function create(Shortlink $shortlink): ?string
     {
-        if($this->validation->validate($shortlink) !== FALSE) {
+        if ($this->validation->validate($shortlink) !== false) {
             $this->correctDestinationLinkFormat($shortlink);
 
             if (!empty($shortlink->getUuid()) && $this->shortlinkExists($shortlink)) {
@@ -34,8 +34,9 @@ readonly class ShortlinkService
                 return null;
             }
 
-            if (empty($shortlink->getUuid()))
+            if (empty($shortlink->getUuid())) {
                 $this->generateShortLink($shortlink);
+            }
 
             $this->shortlinkTable->insert($shortlink);
 
@@ -50,10 +51,8 @@ readonly class ShortlinkService
      */
     public function openShortlink(Shortlink $shortlink): void
     {
-
         $shortlinkData = $this->shortlinkTable->findByUUIDAndDomain($shortlink);
-        if($shortlinkData === FALSE)
-        {
+        if ($shortlinkData === false) {
             $shortlink->setDestination('');
             return;
         }
@@ -62,11 +61,9 @@ readonly class ShortlinkService
         $shortlink->setDestination($shortlinkData['destination']);
         $shortlink->setPassword($shortlinkData['password']);
         $shortlink->setTracking($shortlinkData['tracking'] == 1);
-        if($shortlinkData['expiryDate'] !== NULL)
-        {
+        if ($shortlinkData['expiryDate'] !== null) {
             $shortlink->setExpiryDate(new DateTime($shortlinkData['expiryDate']));
         }
-
     }
 
     /**
@@ -74,24 +71,25 @@ readonly class ShortlinkService
      */
     public function listShortlinkForUser(Account $account): array
     {
-
         $shortlinkTable = [];
-        foreach ($this->shortlinkTable->findAllByAccountId($account->getId()) as $shortlink)
-        {
+        foreach ($this->shortlinkTable->findAllByAccountId($account->getId()) as $shortlink) {
             $shortlinkTable[] =
                 [
                     'id' => $shortlink['id'],
                     'uuid' => $shortlink['uuid'],
-                    'domain' => empty($shortlink['domain']) ? ShortlinkTool::getDefaultUrl() : $this->shortlinkDomainService->getDomainNameByID($shortlink['domain']),
+                    'domain' => empty($shortlink['domain']) ? ShortlinkTool::getDefaultUrl(
+                    ) : $this->shortlinkDomainService->getDomainNameByID($shortlink['domain']),
                     'created' => (new DateTime($shortlink['created']))->format('d.m.Y H:i'),
                     'account' => $shortlink['account'],
-                    'openShortlinkAddress' => empty($domain) ? \App\Tool\ShortlinkTool::getDefaultUrl() . $shortlink['uuid'] : 'http://' . $domain . '/' . $shortlink['uuid'],
-                    'clicks' => $shortlink['tracking'] === 1 ? $this->shortlinkTrackingService->getClickCountForLink($shortlink['id']) : null
+                    'openShortlinkAddress' => empty($domain) ? ShortlinkTool::getDefaultUrl(
+                        ) . $shortlink['uuid'] : 'http://' . $domain . '/' . $shortlink['uuid'],
+                    'clicks' => $shortlink['tracking'] === 1 ? $this->shortlinkTrackingService->getClickCountForLink(
+                        $shortlink['id']
+                    ) : null
                 ];
         }
 
         return $shortlinkTable;
-
     }
 
     /**
@@ -100,8 +98,7 @@ readonly class ShortlinkService
     public function getShortlinkById(int $id): ?Shortlink
     {
         $shortlinkData = $this->shortlinkTable->findById($id);
-        if($shortlinkData === FALSE)
-        {
+        if ($shortlinkData === false) {
             return null;
         }
 
@@ -112,7 +109,9 @@ readonly class ShortlinkService
         $shortlink->setAccount($shortlinkData['account']);
         $shortlink->setDateTime(new DateTime($shortlinkData['created']));
         $shortlink->setDestination($shortlinkData['destination']);
-        $shortlink->setExpiryDate($shortlinkData['expiryDate'] !== NULL ? new DateTime($shortlinkData['expiryDate']) : null);
+        $shortlink->setExpiryDate(
+            $shortlinkData['expiryDate'] !== null ? new DateTime($shortlinkData['expiryDate']) : null
+        );
         $shortlink->setPassword($shortlinkData['password']);
         $shortlink->setTracking($shortlinkData['tracking'] === 1);
 
@@ -139,19 +138,17 @@ readonly class ShortlinkService
         do {
             $shortlink->setUuid(Uuid::uuid4()->toString());
             $shortlink->setUuid(substr($shortlink->getUuid(), 0, strpos($shortlink->getUuid(), "-")));
-        } while($this->shortlinkExists($shortlink));
-
+        } while ($this->shortlinkExists($shortlink));
     }
 
     private function shortlinkExists(Shortlink $shortlink): bool
     {
-        return $this->shortlinkTable->findByUUIDAndDomain($shortlink) !== FALSE;
+        return $this->shortlinkTable->findByUUIDAndDomain($shortlink) !== false;
     }
 
     private function correctDestinationLinkFormat(Shortlink $shortlink): void
     {
-
-        if(
+        if (
             !str_starts_with($shortlink->getDestination(), 'http://') &&
             !str_starts_with($shortlink->getDestination(), 'https://')
         ) {

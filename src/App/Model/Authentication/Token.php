@@ -2,6 +2,8 @@
 
 namespace App\Model\Authentication;
 
+use DateTime;
+
 class Token
 {
 
@@ -9,8 +11,8 @@ class Token
     private int $type;
     private int $account;
     private string $token;
-    private ?\DateTime $expiry;
-    private \DateTime $created;
+    private ?DateTime $expiry;
+    private DateTime $created;
     private bool $used;
 
     public function getId(): int
@@ -53,22 +55,22 @@ class Token
         $this->token = $token;
     }
 
-    public function getExpiry(): ?\DateTime
+    public function getExpiry(): ?DateTime
     {
         return $this->expiry;
     }
 
-    public function setExpiry(?\DateTime $expiry): void
+    public function setExpiry(?DateTime $expiry): void
     {
         $this->expiry = $expiry;
     }
 
-    public function getCreated(): \DateTime
+    public function getCreated(): DateTime
     {
         return $this->created;
     }
 
-    public function setCreated(\DateTime $created): void
+    public function setCreated(DateTime $created): void
     {
         $this->created = $created;
     }

@@ -9,14 +9,11 @@ class PasswordResetValidation
 
     public function verify(Account $account): bool
     {
-
-        if(!filter_var($account->getEmail(), FILTER_VALIDATE_EMAIL))
-        {
+        if (!filter_var($account->getEmail(), FILTER_VALIDATE_EMAIL)) {
             MESSAGES->add('danger', 'reset-password-invalid-email-provided');
         }
 
         return MESSAGES->countByType('danger') === 0;
-
     }
 
 }

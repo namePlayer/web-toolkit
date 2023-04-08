@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Service\Authentication;
 
@@ -13,8 +14,7 @@ readonly class TokenService
 
     public function __construct(
         private TokenTable $tokenTable
-    )
-    {
+    ) {
     }
 
     public function create(Token $token): bool
@@ -30,8 +30,7 @@ readonly class TokenService
     public function getByToken(string $tokenString): Token|false
     {
         $tokenData = $this->tokenTable->findByToken($tokenString);
-        if($tokenData === FALSE)
-        {
+        if ($tokenData === false) {
             return false;
         }
 

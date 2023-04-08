@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Table\Authentication;
 
@@ -23,16 +24,13 @@ class TokenTable extends AbstractTable
 
     public function findByToken(string $token): array|bool
     {
-
         return $this->query->from($this->getTableName())->where('token', $token)->fetch();
-
     }
 
     public function updateUsed(int $token, bool $used): string|int|bool
     {
-
-        return $this->query->update($this->getTableName())->where('id', $token)->set(['used' => $used ? 1 : 0])->execute();
-
+        return $this->query->update($this->getTableName())->where('id', $token)->set(['used' => $used ? 1 : 0]
+        )->execute();
     }
 
 }

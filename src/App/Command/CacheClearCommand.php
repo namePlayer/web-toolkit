@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Command;
@@ -14,7 +15,7 @@ class CacheClearCommand extends Command
     protected static $defaultName = 'cache:clear';
     protected static $defaultDescription = 'Clear the application cache';
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->write('<fg=black;bg=blue>Starting Cache Clearing Operation</>' . PHP_EOL);
 

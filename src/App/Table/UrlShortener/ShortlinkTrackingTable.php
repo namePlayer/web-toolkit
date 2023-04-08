@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Table\UrlShortener;
@@ -12,7 +13,6 @@ class ShortlinkTrackingTable extends AbstractTable
 
     public function create(ShortlinkTracking $shortlinkTracking): bool|array
     {
-
         $values = [
             'link' => $shortlinkTracking->getLink(),
             'useragent' => $shortlinkTracking->getUseragent(),
@@ -24,25 +24,25 @@ class ShortlinkTrackingTable extends AbstractTable
         ];
 
         return $this->query->insertInto($this->getTableName())->values($values)->executeWithoutId();
-
     }
 
     public function getTracksByLinkIdAndLimit(int $link, int $limit): array
     {
-
         $where = [
             'link' => $link
         ];
 
-        return $this->query->from($this->getTableName())->where($where)->limit($limit)->orderBy('accessed DESC')->fetchAll();
-
+        return $this->query->from($this->getTableName())->where($where)->limit($limit)->orderBy(
+            'accessed DESC'
+        )->fetchAll();
     }
 
     public function countAllByLink(int $link): bool|array|int|string
     {
-
-        return $this->query->from($this->getTableName())->select(null)->select('COUNT(id)')->where('link', $link)->fetchColumn();
-
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(id)')->where(
+            'link',
+            $link
+        )->fetchColumn();
     }
 
 }

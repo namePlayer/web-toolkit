@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Service\Authentication;
@@ -20,16 +21,15 @@ readonly class AccountService
 {
 
     public function __construct(
-        private AccountTable             $accountTable,
-        private PasswordService          $passwordService,
-        private RegisterValidation       $registerValidation,
-        private AccountLevelTable        $accountLevelTable,
-        private PasswordResetValidation  $passwordResetValidation,
+        private AccountTable $accountTable,
+        private PasswordService $passwordService,
+        private RegisterValidation $registerValidation,
+        private AccountLevelTable $accountLevelTable,
+        private PasswordResetValidation $passwordResetValidation,
         private SetNewPasswordValidation $setNewPasswordValidation,
-        private TokenService             $tokenService,
-        private Logger                   $logger
-    )
-    {
+        private TokenService $tokenService,
+        private Logger $logger
+    ) {
     }
 
     public function updateLastUserLogin(Account $account): void
@@ -37,31 +37,26 @@ readonly class AccountService
         $account->setLastLogin(new DateTime());
 
         $this->accountTable->updateLastLogin($account);
-
     }
 
     public function create(Account $account): bool
     {
-        if($this->registerValidation->verify($account) === FALSE)
-        {
+        if ($this->registerValidation->verify($account) === false) {
             $this->logger->log(Level::Info, 'Registration Data Validation failed', MESSAGES->getAll());
             return false;
         }
 
-        if($this->findAccountByEmail($account->getEmail()) !== FALSE)
-        {
+        if ($this->findAccountByEmail($account->getEmail()) !== false) {
             MESSAGES->add('danger', 'email-invalid');
             $this->logger->log(Level::Info, 'Registration Email is already used');
             return false;
         }
 
         $account->setPassword($this->passwordService->hashPassword($account->getPassword()));
-        if($this->accountTable->insert($account) !== FALSE)
-        {
+        if ($this->accountTable->insert($account) !== false) {
             $account->setId($this->findAccountByEmail($account->getEmail())['id']);
 
-            if($account->getBusiness() !== NULL)
-            {
+            if ($account->getBusiness() !== null) {
                 $this->accountTable->setAccountBusinessByAccountId($account->getId(), $account->getId());
                 $account->setBusiness($account->getId());
             }
@@ -81,9 +76,7 @@ readonly class AccountService
 
     public function updateAccount(Account $account): void
     {
-
-        if($this->accountTable->updateAccountInformation($account) > 0)
-        {
+        if ($this->accountTable->updateAccountInformation($account) > 0) {
             MESSAGES->add('success', 'admin-account-update-successful');
             return;
         }
@@ -93,17 +86,14 @@ readonly class AccountService
 
     public function resetPassword(Account $account): bool|Token
     {
-
-        if($this->passwordResetValidation->verify($account) === FALSE)
-        {
+        if ($this->passwordResetValidation->verify($account) === false) {
             return false;
         }
 
         $accountData = $this->findAccountByEmail($account->getEmail());
 
         $token = new Token();
-        if($accountData === FALSE)
-        {
+        if ($accountData === false) {
             return $token;
         }
 
@@ -118,20 +108,17 @@ readonly class AccountService
 
     public function setNewPassword(Account $account, string $passwordCheck): bool
     {
-        if($this->setNewPasswordValidation->verify($account, $passwordCheck) === FALSE)
-        {
+        if ($this->setNewPasswordValidation->verify($account, $passwordCheck) === false) {
             return false;
         }
 
         $account->setPassword($this->passwordService->hashPassword($account->getPassword()));
 
-        if($this->accountTable->updateAccountPassword($account->getId(), $account->getPassword()) > 0)
-        {
+        if ($this->accountTable->updateAccountPassword($account->getId(), $account->getPassword()) > 0) {
             return true;
         }
 
         return false;
-
     }
 
     public function setAccountActive(int $account, bool $active): void

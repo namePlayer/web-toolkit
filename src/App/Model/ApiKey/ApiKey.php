@@ -2,14 +2,16 @@
 
 namespace App\Model\ApiKey;
 
+use DateTime;
+
 class ApiKey
 {
 
     private int $id;
     private ?int $account = null;
     private string $password;
-    private \DateTime $created;
-    private ?\DateTime $expires = null;
+    private DateTime $created;
+    private ?DateTime $expires = null;
     private bool $active;
 
 
@@ -43,22 +45,22 @@ class ApiKey
         $this->password = $password;
     }
 
-    public function getCreated(): \DateTime
+    public function getCreated(): DateTime
     {
         return $this->created;
     }
 
-    public function setCreated(\DateTime $created): void
+    public function setCreated(DateTime $created): void
     {
         $this->created = $created;
     }
 
-    public function getExpires(): ?\DateTime
+    public function getExpires(): ?DateTime
     {
         return $this->expires;
     }
 
-    public function setExpires(?\DateTime $expires): void
+    public function setExpires(?DateTime $expires): void
     {
         $this->expires = $expires;
     }

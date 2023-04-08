@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Factory;
 
@@ -10,9 +11,9 @@ use Monolog\Level;
 class LoggerFactory
 {
 
-    public function createPushHandler(string $name = 'app',string $logFilename = Software::LOG_FILENAME): StreamHandler
+    public function createPushHandler(string $name = 'app', string $logFilename = Software::LOG_FILENAME): StreamHandler
     {
-        $fileLocation = Software::LOG_DIR.'/'.$logFilename;
+        $fileLocation = Software::LOG_DIR . '/' . $logFilename;
 
         $streamHandler = new StreamHandler($fileLocation, Level::fromName($_ENV['SOFTWARE_LOGLEVEL']));
         $streamHandler->setFormatter($this->createFormatter());
@@ -22,7 +23,6 @@ class LoggerFactory
 
     private function createFormatter(): LineFormatter
     {
-
         $output = "[%level_name%] %datetime% | %message% %context% %extra%\n";
 
         return new LineFormatter($output);

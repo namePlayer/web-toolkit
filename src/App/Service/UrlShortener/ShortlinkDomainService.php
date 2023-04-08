@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Service\UrlShortener;
@@ -12,38 +13,32 @@ readonly class ShortlinkDomainService
 {
 
     public function __construct(
-        private ShortlinkDomainTable      $shortlinkDomainTable,
+        private ShortlinkDomainTable $shortlinkDomainTable,
         private ShortlinkDomainValidation $shortlinkDomainValidation
-    )
-    {
+    ) {
     }
 
     public function create(ShortlinkDomain $shortlinkDomain): void
     {
-
-        if($this->shortlinkDomainValidation->validate($shortlinkDomain) === FALSE)
-        {
+        if ($this->shortlinkDomainValidation->validate($shortlinkDomain) === false) {
             return;
         }
 
         $shortlinkDomain->setUuid(Uuid::uuid4()->toString());
 
-        if($this->shortlinkDomainTable->findByAddress($shortlinkDomain->getAddress()) !== FALSE)
-        {
+        if ($this->shortlinkDomainTable->findByAddress($shortlinkDomain->getAddress()) !== false) {
             MESSAGES->add('danger', 'url-shortener-domain-exists-creation');
             return;
         }
 
         $id = $this->shortlinkDomainTable->insert($shortlinkDomain);
 
-        if($id === FALSE)
-        {
+        if ($id === false) {
             MESSAGES->add('danger', 'url-shortener-domain-failed-creation');
             return;
         }
 
         MESSAGES->add('success', 'url-shortener-domain-created');
-
     }
 
     public function accountIsAllowedToUseDomain(int $account, int $domain): bool
@@ -62,14 +57,14 @@ readonly class ShortlinkDomainService
     {
         $result = $this->shortlinkDomainTable->findByUUID($uuid);
 
-        return $result === FALSE ? [] : $result;
+        return $result === false ? [] : $result;
     }
 
     public function getById(int $id): array
     {
         $result = $this->shortlinkDomainTable->findById($id);
 
-        return $result === FALSE ? [] : $result;
+        return $result === false ? [] : $result;
     }
 
     public function getByDomain(string $domain): array|false

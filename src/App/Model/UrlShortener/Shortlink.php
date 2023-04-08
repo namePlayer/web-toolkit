@@ -2,6 +2,8 @@
 
 namespace App\Model\UrlShortener;
 
+use DateTime;
+
 class Shortlink
 {
 
@@ -9,9 +11,9 @@ class Shortlink
     private ?int $domain = null;
     private string $uuid = '';
     private ?int $account;
-    private \DateTime $dateTime;
+    private DateTime $dateTime;
     private string $destination;
-    private ?\DateTime $expiryDate = null;
+    private ?DateTime $expiryDate = null;
     private ?string $password = null;
     private bool $tracking = false;
 
@@ -55,12 +57,12 @@ class Shortlink
         $this->account = $account;
     }
 
-    public function getDateTime(): \DateTime
+    public function getDateTime(): DateTime
     {
         return $this->dateTime;
     }
 
-    public function setDateTime(\DateTime $dateTime): void
+    public function setDateTime(DateTime $dateTime): void
     {
         $this->dateTime = $dateTime;
     }
@@ -75,12 +77,12 @@ class Shortlink
         $this->destination = $destination;
     }
 
-    public function getExpiryDate(): ?\DateTime
+    public function getExpiryDate(): ?DateTime
     {
         return $this->expiryDate;
     }
 
-    public function setExpiryDate(?\DateTime $expiryDate): void
+    public function setExpiryDate(?DateTime $expiryDate): void
     {
         $this->expiryDate = $expiryDate;
     }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Middleware;
@@ -12,32 +13,28 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class AuthenticationMiddleware implements MiddlewareInterface
+readonly class AuthenticationMiddleware implements MiddlewareInterface
 {
 
     public function __construct(
-        private readonly AccountService $accountService
-    )
-    {
+        private AccountService $accountService
+    ) {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-
-        if(
+        if (
             empty($_SESSION[Software::SESSION_USERID_NAME]) &&
             $request->getMethod() === "GET"
-        )
-        {
-            return new RedirectResponse('/authentication/login?redirect='.$request->getUri());
+        ) {
+            return new RedirectResponse('/authentication/login?redirect=' . $request->getUri());
         }
 
         $account = new Account();
         $account->setId($_SESSION[Software::SESSION_USERID_NAME]);
 
         $accountData = $this->accountService->findAccountById($account->getId());
-        if($accountData === FALSE || $accountData['active'] === 0)
-        {
+        if ($accountData === false || $accountData['active'] === 0) {
             session_destroy();
             return new RedirectResponse('/authentication/login');
         }
@@ -48,6 +45,5 @@ class AuthenticationMiddleware implements MiddlewareInterface
         $account->setLevel($accountData['level']);
 
         return $handler->handle($request->withAttribute(Account::class, $account));
-
     }
 }

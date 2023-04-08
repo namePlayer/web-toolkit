@@ -1,26 +1,25 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\PlatesExtension\Authentication;
 
+use AllowDynamicProperties;
 use App\Model\Authentication\AccountLevel;
 use App\Service\Authentication\AccountService;
-use App\Service\Tool\ToolService;
 use App\Software;
 use App\Table\Authentication\AccountLevelTable;
-use App\Table\Authentication\AccountTable;
 use League\Plates\Engine;
 use League\Plates\Extension\ExtensionInterface;
 
-#[\AllowDynamicProperties]
-class AuthenticationExtension implements ExtensionInterface
+#[AllowDynamicProperties]
+readonly class AuthenticationExtension implements ExtensionInterface
 {
 
     public function __construct(
-        private readonly AccountService $accountService,
-        private readonly AccountLevelTable $levelTable
-    )
-    {
+        private AccountService $accountService,
+        private AccountLevelTable $levelTable
+    ) {
     }
 
     public function register(Engine $engine)
@@ -31,14 +30,12 @@ class AuthenticationExtension implements ExtensionInterface
 
     public function getAccountInformation(): false|array
     {
-        if(
+        if (
             isset($_SESSION[Software::SESSION_USERID_NAME]) &&
             !empty($_SESSION[Software::SESSION_USERID_NAME])
-        )
-        {
+        ) {
             $account = $this->accountService->findAccountById($_SESSION[Software::SESSION_USERID_NAME]);
-            if($account !== FALSE)
-            {
+            if ($account !== false) {
                 return $account;
             }
         }
@@ -51,8 +48,7 @@ class AuthenticationExtension implements ExtensionInterface
         $accountLevel = $this->getAccountInformation()['level'];
         $levelBadge = $this->levelTable->findById($accountLevel);
 
-        return match ($accountLevel)
-        {
+        return match ($accountLevel) {
             AccountLevel::BASIC_LEVEL => ['label' => $levelBadge['title'], 'color' => 'secondary'],
             AccountLevel::PREMIUM_LEVEL => ['label' => $levelBadge['title'], 'color' => 'warning'],
             AccountLevel::PREMIUM_PLUS_LEVEL => ['label' => $levelBadge['title'], 'color' => 'success'],

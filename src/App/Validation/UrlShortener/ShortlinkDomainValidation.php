@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Validation\UrlShortener;
@@ -10,9 +11,7 @@ class ShortlinkDomainValidation
 
     public function validate(ShortlinkDomain $shortlinkDomain): bool
     {
-
-        if(empty($shortlinkDomain))
-        {
+        if (empty($shortlinkDomain)) {
             MESSAGES->add('danger', 'url-shortener-domain-name-empty');
         }
 

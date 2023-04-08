@@ -8,14 +8,13 @@ use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class AccountListController
+readonly class AccountListController
 {
 
     public function __construct(
-        private readonly Engine $template,
-        private readonly AccountService $accountService
-    )
-    {
+        private Engine $template,
+        private AccountService $accountService
+    ) {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

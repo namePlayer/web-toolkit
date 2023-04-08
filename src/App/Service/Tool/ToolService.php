@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Service\Tool;
@@ -12,11 +13,10 @@ readonly class ToolService
 {
 
     public function __construct(
-        private ToolTable      $toolTable,
+        private ToolTable $toolTable,
         private AccountService $accountService,
-        private Logger         $logger
-    )
-    {
+        private Logger $logger
+    ) {
     }
 
     public function getAllTools(): array
@@ -34,8 +34,7 @@ readonly class ToolService
         $level = $account->getLevel();
         $tool = $this->toolTable->findById($tool);
 
-        if($tool['level'] <= $level)
-        {
+        if ($tool['level'] <= $level) {
             return true;
         }
 

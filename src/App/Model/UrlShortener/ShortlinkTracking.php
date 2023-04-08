@@ -2,6 +2,8 @@
 
 namespace App\Model\UrlShortener;
 
+use DateTime;
+
 class ShortlinkTracking
 {
 
@@ -9,7 +11,7 @@ class ShortlinkTracking
     private int $link;
     private string $useragent;
     private string $userIp;
-    private \DateTime $accessed;
+    private DateTime $accessed;
     private string $browser;
     private string $operatingSystem;
     private string $country;
@@ -54,12 +56,12 @@ class ShortlinkTracking
         $this->userIp = $userIp;
     }
 
-    public function getAccessed(): \DateTime
+    public function getAccessed(): DateTime
     {
         return $this->accessed;
     }
 
-    public function setAccessed(\DateTime $accessed): void
+    public function setAccessed(DateTime $accessed): void
     {
         $this->accessed = $accessed;
     }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Validation\UrlShortener;
@@ -10,14 +11,11 @@ class ShortlinkValidation
 
     public function validate(Shortlink $shortlink): bool
     {
-
-        if(!filter_var($shortlink->getDestination(), FILTER_VALIDATE_URL))
-        {
+        if (!filter_var($shortlink->getDestination(), FILTER_VALIDATE_URL)) {
             MESSAGES->add('danger', 'shortlink-destination-invalid');
         }
 
         return MESSAGES->countByType('danger') === 0;
-
     }
 
 }

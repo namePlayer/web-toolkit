@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller\URLShortener;
@@ -11,14 +12,13 @@ use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class ListController
+readonly class ListController
 {
 
     public function __construct(
-        private readonly Engine $template,
-        private readonly ShortlinkService $shortlinkService
-    )
-    {
+        private Engine $template,
+        private ShortlinkService $shortlinkService
+    ) {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface
@@ -28,11 +28,15 @@ class ListController
         /* @var $tool Tool */
         $tool = $request->getAttribute(Tool::class);
 
-        return new HtmlResponse($this->template->render('urlShortener/listLinks', [
-            'tool' => $tool,
-            'shortlinkList' => $this->shortlinkService->listShortlinkForUser($account)
-            ],
-        ));
+        return new HtmlResponse(
+            $this->template->render(
+                'urlShortener/listLinks',
+                [
+                    'tool' => $tool,
+                    'shortlinkList' => $this->shortlinkService->listShortlinkForUser($account)
+                ],
+            )
+        );
     }
 
 }

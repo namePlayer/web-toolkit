@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Middleware;
@@ -11,26 +12,24 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class ToolMiddleware implements MiddlewareInterface
+readonly class ToolMiddleware implements MiddlewareInterface
 {
 
     public function __construct(
-        private readonly ToolTable $toolTable
-    )
-    {
+        private ToolTable $toolTable
+    ) {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $path = $request->getRequestTarget();
         $pathArray = explode('/', $path);
-        if(count($pathArray) > 2)
-        {
+        if (count($pathArray) > 2) {
             $path = '/' . $pathArray[1] . '/' . $pathArray[2];
         }
         $toolData = $this->toolTable->findByPath($path);
 
-        if($toolData === FALSE) {
+        if ($toolData === false) {
             return new RedirectResponse('/overview');
         }
 

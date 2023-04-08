@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Table\UrlShortener;
@@ -10,7 +11,7 @@ use App\Table\AbstractTable;
 class ShortlinkTable extends AbstractTable
 {
 
-    public function insert(Shortlink $shortlink)
+    public function insert(Shortlink $shortlink): bool|int
     {
         $values = [
             'uuid' => $shortlink->getUuid(),
@@ -21,8 +22,7 @@ class ShortlinkTable extends AbstractTable
             'domain' => $shortlink->getDomain()
         ];
 
-        if($shortlink->getExpiryDate() !== NULL)
-        {
+        if ($shortlink->getExpiryDate() !== null) {
             $values['expiryDate'] = $shortlink->getExpiryDate()->format(Software::DATABASE_TIME_FORMAT);
         }
 
@@ -46,7 +46,9 @@ class ShortlinkTable extends AbstractTable
 
     public function findALlLimitResults(int $maximum): array|false
     {
-        return $this->query->from($this->getTableName())->select('ShortlinkDomain.address')->leftJoin('ShortlinkDomain on ShortlinkDomain.id = Shortlink.domain')
+        return $this->query->from($this->getTableName())->select('ShortlinkDomain.address')->leftJoin(
+            'ShortlinkDomain on ShortlinkDomain.id = Shortlink.domain'
+        )
             ->orderBy('id DESC')->limit($maximum)->fetchAll();
     }
 
@@ -62,8 +64,9 @@ class ShortlinkTable extends AbstractTable
 
     public function countAllInLastDays(int $days): int|string|bool
     {
-        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->where('created between date_sub(now(),INTERVAL '.$days.' day) and now()')->fetchColumn();
-
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->where(
+            'created between date_sub(now(),INTERVAL ' . $days . ' day) and now()'
+        )->fetchColumn();
     }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\PlatesExtension\Message;
@@ -16,7 +17,6 @@ class MessageList
 
     public function add(string $type, string $message, string $additionalData = ''): void
     {
-
         $messageArray = [
             'type' => $type,
             'message' => $message,
@@ -38,10 +38,8 @@ class MessageList
     public function countByType(string $type): int
     {
         $count = 0;
-        foreach ($this->messageList as $message)
-        {
-            if($message['type'] === $type)
-            {
+        foreach ($this->messageList as $message) {
+            if ($message['type'] === $type) {
                 $count++;
             }
         }

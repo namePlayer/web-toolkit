@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Controller\Authentication;
 
@@ -8,54 +9,48 @@ use App\Model\Authentication\Token;
 use App\Model\Authentication\TokenType;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\TokenService;
+use DateTime;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class ResetPasswordController
+readonly class ResetPasswordController
 {
 
     public function __construct(
-        private readonly TokenService $tokenService,
-        private readonly AccountService $accountService,
-        private readonly Engine $template
-    )
-    {
+        private TokenService $tokenService,
+        private AccountService $accountService,
+        private Engine $template
+    ) {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface
     {
-
-        if(!isset($_GET['token']))
-        {
+        if (!isset($_GET['token'])) {
             return new RedirectResponse('/authentication/login');
         }
 
         $token = $this->tokenService->getByToken($_GET['token']);
         if (
-            $token === FALSE ||
-            ($token->getExpiry() !== NULL && $token->getExpiry() < new \DateTime()) ||
+            $token === false ||
+            ($token->getExpiry() !== null && $token->getExpiry() < new DateTime()) ||
             $token->isUsed() ||
             $token->getType() !== TokenType::RESET_PASSWORD_TOKEN
-        )
-        {
+        ) {
             return new RedirectResponse('/authentication/login');
         }
 
-        if($request->getMethod() === "POST")
-        {
+        if ($request->getMethod() === "POST") {
             $this->reset($request, $token);
         }
 
         return new HtmlResponse($this->template->render('authentication/resetPassword'));
     }
 
-    public function reset(ServerRequestInterface $request, Token $token)
+    public function reset(ServerRequestInterface $request, Token $token): void
     {
-
-        if(!isset($_POST['resetPasswordPassword'], $_POST['resetPasswordPasswordAgain']))
-        {
+        if (!isset($_POST['resetPasswordPassword'], $_POST['resetPasswordPasswordAgain'])) {
             return;
         }
 
@@ -63,12 +58,10 @@ class ResetPasswordController
         $account->setId($token->getAccount());
         $account->setPassword($_POST['resetPasswordPassword']);
 
-        if($this->accountService->setNewPassword($account, $_POST['resetPasswordPasswordAgain'])) {
+        if ($this->accountService->setNewPassword($account, $_POST['resetPasswordPasswordAgain'])) {
             $this->tokenService->setTokenIsUsedUp($token->getId());
             MESSAGES->add('success', 'reset-password-successful');
         }
-        return;
-
     }
 
 }

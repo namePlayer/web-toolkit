@@ -1,12 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
 
 use App\Exception\EnvironmentException;
-use Monolog\Handler\StreamHandler;
-use Monolog\Level;
-use Monolog\Logger;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\Dotenv\Exception\PathException;
 

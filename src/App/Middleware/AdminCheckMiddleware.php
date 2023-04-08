@@ -17,8 +17,7 @@ class AdminCheckMiddleware implements MiddlewareInterface
         /* @var $account Account */
         $account = $request->getAttribute(Account::class);
 
-        if(!$account->isAdmin())
-        {
+        if (!$account->isAdmin()) {
             return new RedirectResponse('/overview');
         }
 

@@ -1,16 +1,16 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Table\ApiKey;
 
 use App\Model\ApiKey\ApiKey;
 use App\Software;
 use App\Table\AbstractTable;
-use http\Params;
 
 class ApiKeyTable extends AbstractTable
 {
 
-    public function insert(ApiKey $apiKey)
+    public function insert(ApiKey $apiKey): bool|int
     {
         $values = [
             'account' => $apiKey->getAccount(),
@@ -19,8 +19,7 @@ class ApiKeyTable extends AbstractTable
             'active' => $apiKey->isActive() === true ? 1 : 0
         ];
 
-        if($apiKey->getExpires() !== NULL)
-        {
+        if ($apiKey->getExpires() !== null) {
             $values['expires'] = $apiKey->getExpires()->format(Software::DATABASE_TIME_FORMAT);
         }
 
@@ -29,12 +28,10 @@ class ApiKeyTable extends AbstractTable
 
     public function getAllApiKeysWithUsername(): array
     {
-
-            return $this->query->from($this->getTableName())
-                ->leftJoin('Account on Account.id = ApiKey.account')
-                ->select('Account.name')
-                ->fetchAll();
-
+        return $this->query->from($this->getTableName())
+            ->leftJoin('Account on Account.id = ApiKey.account')
+            ->select('Account.name')
+            ->fetchAll();
     }
 
     public function findByPassword(string $password): array|false
@@ -44,21 +41,18 @@ class ApiKeyTable extends AbstractTable
 
     public function updateActive(int $key, bool $active): string|int|bool
     {
-
-        return $this->query->update($this->getTableName())->where('id', $key)->set('active', $active ? 1 : 0)->execute();
-
+        return $this->query->update($this->getTableName())->where('id', $key)->set('active', $active ? 1 : 0)->execute(
+        );
     }
 
     public function updateKey(ApiKey $apiKey): string|int|bool
     {
-
         $set = [
             'password' => $apiKey->getPassword(),
             'expires' => $apiKey->getExpires()?->format(Software::DATABASE_TIME_FORMAT)
         ];
 
         return $this->query->update($this->getTableName())->where('id', $apiKey->getId())->set($set)->execute();
-
     }
 
 }

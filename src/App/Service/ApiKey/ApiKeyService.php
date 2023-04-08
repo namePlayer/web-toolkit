@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Service\ApiKey;
 
@@ -13,19 +14,16 @@ readonly class ApiKeyService
 {
 
     public function __construct(
-        private ApiKeyTable    $apiKeyTable,
+        private ApiKeyTable $apiKeyTable,
         private AccountService $accountService
-    )
-    {
+    ) {
     }
 
     public function create(ApiKey $apiKey): ?int
     {
-
-        if(($apiKey->getAccount() !== NULL) &&
-            ($this->accountService->findAccountById($apiKey->getAccount()) === FALSE)
-        )
-        {
+        if (($apiKey->getAccount() !== null) &&
+            ($this->accountService->findAccountById($apiKey->getAccount()) === false)
+        ) {
             MESSAGES->add('danger', 'admin-apikey-create-user-not-found');
             return null;
         }
@@ -33,7 +31,6 @@ readonly class ApiKeyService
         $apiKey->setPassword(Uuid::uuid4()->toString());
         $apiKey->setId((int)$this->apiKeyTable->insert($apiKey));
         return $apiKey->getId();
-
     }
 
     public function getAllApiKeys(): array
@@ -46,10 +43,8 @@ readonly class ApiKeyService
      */
     public function getApiKeyById(int $id): ApiKey|false
     {
-
         $data = $this->apiKeyTable->findById($id);
-        if($data === FALSE)
-        {
+        if ($data === false) {
             return false;
         }
 
@@ -58,24 +53,20 @@ readonly class ApiKeyService
         $apiKey->setAccount($data['account']);
         $apiKey->setPassword($data['password']);
         $apiKey->setCreated(new DateTime($data['created']));
-        $apiKey->setExpires($data['expires'] !== NULL ? new DateTime($data['expires']) : null);
+        $apiKey->setExpires($data['expires'] !== null ? new DateTime($data['expires']) : null);
         $apiKey->setActive($data['active'] === 1);
 
         return $apiKey;
-
     }
 
     public function getApiKeyByPassword(string $password): array
     {
-
         $key = $this->apiKeyTable->findByPassword($password);
-        if($key === FALSE)
-        {
+        if ($key === false) {
             return [];
         }
 
         return $key;
-
     }
 
     public function setActive(int $id, bool $active): void
@@ -85,8 +76,7 @@ readonly class ApiKeyService
 
     public function updateKey(ApiKey $apiKey): void
     {
-        if($this->apiKeyTable->updateKey($apiKey) >= 1)
-        {
+        if ($this->apiKeyTable->updateKey($apiKey) >= 1) {
             MESSAGES->add('success', 'admin-apikey-management-key-update-successful');
             return;
         }

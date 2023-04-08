@@ -3,7 +3,6 @@
 namespace App\Table;
 
 use Envms\FluentPDO\Query;
-use Monolog\Logger;
 use ReflectionClass;
 
 class AbstractTable

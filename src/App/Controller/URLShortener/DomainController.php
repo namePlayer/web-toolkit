@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller\URLShortener;
@@ -12,25 +13,23 @@ use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class DomainController
+readonly class DomainController
 {
 
     public function __construct(
-        private readonly Engine $template,
-        private readonly ShortlinkDomainService $shortlinkDomainService
-    )
-    {
+        private Engine $template,
+        private ShortlinkDomainService $shortlinkDomainService
+    ) {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface
     {
         /* @var $account Account */
         $account = $request->getAttribute(Account::class);
-        /* @var $tool Tool*/
+        /* @var $tool Tool */
         $tool = $request->getAttribute(Tool::class);
 
-        if($request->getMethod() === "POST")
-        {
+        if ($request->getMethod() === "POST") {
             $this->create($request, $account);
         }
 
@@ -45,13 +44,10 @@ class DomainController
         );
     }
 
-    public function create(ServerRequestInterface $request, Account $account)
+    public function create(ServerRequestInterface $request, Account $account): void
     {
-
-        if(!empty($_POST['urlShortenerAddNewDomainName']) && !empty($_POST['urlShortenerAddNewDomainLabelRadio']))
-        {
-
-            if(
+        if (!empty($_POST['urlShortenerAddNewDomainName']) && !empty($_POST['urlShortenerAddNewDomainLabelRadio'])) {
+            if (
                 $_POST['urlShortenerAddNewDomainLabelRadio'] !== 'global' &&
                 $_POST['urlShortenerAddNewDomainLabelRadio'] !== 'private'
             ) {
@@ -64,9 +60,7 @@ class DomainController
             $shortlinkDomain->setPublic($_POST['urlShortenerAddNewDomainLabelRadio'] === 'global');
 
             $this->shortlinkDomainService->create($shortlinkDomain);
-
         }
-
     }
 
 }
