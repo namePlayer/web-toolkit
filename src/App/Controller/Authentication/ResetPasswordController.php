@@ -56,9 +56,9 @@ readonly class ResetPasswordController
 
         $account = new Account();
         $account->setId($token->getAccount());
-        $account->setPassword($_POST['resetPasswordPassword']);
+        $account->setPassword(trim($_POST['resetPasswordPassword']));
 
-        if ($this->accountService->setNewPassword($account, $_POST['resetPasswordPasswordAgain'])) {
+        if ($this->accountService->setNewPassword($account, trim($_POST['resetPasswordPasswordAgain']))) {
             $this->tokenService->setTokenIsUsedUp($token->getId());
             MESSAGES->add('success', 'reset-password-successful');
         }

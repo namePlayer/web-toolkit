@@ -40,8 +40,8 @@ readonly class LoginController
     {
         if (isset($_POST['email'], $_POST['password'])) {
             $account = new Account();
-            $account->setEmail($_POST['email']);
-            $account->setPassword($_POST['password']);
+            $account->setEmail(trim($_POST['email']));
+            $account->setPassword(trim($_POST['password']));
 
             $login = $this->accountService->findAccountByEmail($account->getEmail());
             if ($login === false) {

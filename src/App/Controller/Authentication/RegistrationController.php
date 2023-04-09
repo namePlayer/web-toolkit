@@ -42,9 +42,9 @@ readonly class RegistrationController
     {
         if (isset($_POST['account-type'], $_POST['account-name'], $_POST['email'], $_POST['password'])) {
             $account = new Account();
-            $account->setName($_POST['account-name']);
-            $account->setEmail($_POST['email']);
-            $account->setPassword($_POST['password']);
+            $account->setName(trim($_POST['account-name']));
+            $account->setEmail(trim($_POST['email']));
+            $account->setPassword(trim($_POST['password']));
             $account->setLevel(AccountLevel::BASIC_LEVEL);
             if ($_POST['account-type'] !== 'private' && $_POST['account-type'] !== 'business') {
                 return;

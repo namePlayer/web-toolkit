@@ -37,7 +37,7 @@ readonly class LostPasswordController
         }
 
         $account = new Account();
-        $account->setEmail($_POST['resetPasswordEmail']);
+        $account->setEmail(trim($_POST['resetPasswordEmail']));
 
         $token = $this->accountService->resetPassword($account);
 
