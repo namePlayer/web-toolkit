@@ -17,7 +17,7 @@
   "homepage-footer-privacy-title": "Datenschutz",
   "homepage-footer-terms-title": "Nutzungsbedingungen",
   "homepage-footer-support-title": "Support",
-  "homepage-footer-status-title": "Systemstatus",
+  "homepage-footer-status-title": "Status",
   "homepage-footer-discord-title": "Discord",
 
   "create-account-title": "Neues Konto erstellen",
@@ -25,7 +25,7 @@
   "create-account-header-already-account-text": "Bereits ein Konto?",
   "create-account-tos-privacy-information": "Mit dem erstellen eines Kontos stimmst du den Nutzungsbedingungen und der Datenschutzerklärung zu ",
   "login-account-title": "Anmelden",
-  "create-account-for": "Ich erstelle das Konto für...",
+  "create-account-for": "Konto Verwendung",
   "for-private-account": "mich selbst",
   "for-company-account": "meine Organisation",
   "account-name": "Name",
