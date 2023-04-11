@@ -9,6 +9,7 @@ use App\Model\Authentication\Account;
 use App\Model\Authentication\AccountLevel;
 use App\Model\Authentication\Token;
 use App\Model\Authentication\TokenType;
+use App\Model\Mail\MailType;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\TokenService;
 use App\Service\MailerService;
@@ -64,7 +65,7 @@ readonly class RegistrationController
             $this->mailerService->configureMail(
                 $account->getEmail(),
                 'Account aktivieren',
-                'activateAccount',
+                MailType::ACTIVATION_MAIL_ID,
                 ['token' => $token->getToken(), 'name' => $account->getName()]
             )->send();
         }

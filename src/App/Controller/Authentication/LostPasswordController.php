@@ -5,6 +5,7 @@ namespace App\Controller\Authentication;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Authentication\Token;
+use App\Model\Mail\MailType;
 use App\Service\Authentication\AccountService;
 use App\Service\MailerService;
 use League\Plates\Engine;
@@ -49,7 +50,7 @@ readonly class LostPasswordController
             $this->mailerService->configureMail(
                 $account->getEmail(),
                 'Reset Password',
-                'resetPassword',
+                MailType::RESET_PASSWORD_MAIL_ID,
                 ['token' => $token->getToken()]
             )->send();
         }

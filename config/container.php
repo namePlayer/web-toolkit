@@ -153,6 +153,7 @@ $container->add(\App\Service\Authentication\TokenService::class)
 
 $container->add(\App\Service\MailerService::class)
     ->addArgument(\App\Factory\MailerFactory::class)
+    ->addArgument(\App\Table\Mail\MailTable::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\Monolog\Logger::class);
 
@@ -181,6 +182,9 @@ $container->add(\App\Table\ApiKey\ApiKeyTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\Authentication\TokenTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\Mail\MailTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #
