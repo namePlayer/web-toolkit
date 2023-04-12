@@ -12,6 +12,9 @@
         <a href="/admin/apikeys" class="list-group-item list-group-item-action">
             <?= $this->e($this->translate('admin-navigation-general-tab-api-key-management-title')) ?>
         </a>
+        <a href="/admin/mails" class="list-group-item list-group-item-action">
+            <?= $this->e($this->translate('admin-navigation-general-tab-mail-title')) ?>
+        </a>
         <a href="#" class="list-group-item list-group-item-action">
             <?= $this->e($this->translate('admin-navigation-general-tab-support-interface-title')) ?>
         </a>

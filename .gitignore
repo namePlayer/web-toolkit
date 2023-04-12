@@ -1,5 +1,6 @@
 /vendor/
 /.ddev/
+/.ddev*/
 /.idea/
 **/.env
 /public/test.php
@@ -9,3 +10,4 @@
 !/data/cache/.gitkeep
 /data/persistent/*
 !/data/persistent/.gitkeep
+db.sql

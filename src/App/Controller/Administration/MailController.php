@@ -11,12 +11,12 @@ use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-readonly class DashboardController
+readonly class MailController
 {
 
     public function __construct(
         private Engine $template,
-        private AccountService $accountService
+        private MailerService $mailerService
     ) {
     }
 
@@ -24,9 +24,10 @@ readonly class DashboardController
     {
         return new HtmlResponse(
             $this->template->render(
-                'administration/dashboard',
+                'administration/mail',
                 [
-                    'accountCount' => $this->accountService->getAllAccountsCount()
+                    'unsentMailAmount' => $this->mailerService->getUnsentAmount(),
+                    'mailsLastSevenDaysAmount' => $this->mailerService->getSentAmountForLastXDays(7)
                 ]
             )
         );

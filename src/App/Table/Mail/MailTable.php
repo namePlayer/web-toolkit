@@ -35,4 +35,16 @@ class MailTable extends AbstractTable
         $this->query->update($this->getTableName())->set('sent', (new \DateTime())->format(Software::DATABASE_TIME_FORMAT))->where('id',$id)->execute();
     }
 
+    public function findAmountBySentNull(): int|string
+    {
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->where('sent', null)->fetchColumn();
+    }
+
+    public function findAmountByLastDays(int $days): int|string
+    {
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->where(
+            'created between date_sub(now(),INTERVAL ' . $days . ' day) and now()'
+        )->fetchColumn();
+    }
+
 }

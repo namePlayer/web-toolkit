@@ -89,10 +89,15 @@
   "admin-navigation-general-tab-user-management-title": "Kontoverwaltung",
   "admin-navigation-general-tab-license-management-title": "Lizenzverwaltung",
   "admin-navigation-general-tab-api-key-management-title": "API-Key Verwaltung",
+  "admin-navigation-general-tab-mail-title": "E-Mail Management",
   "admin-navigation-general-tab-support-interface-title": "Support Oberfläche",
   "admin-navigation-tools-tab-title": "Tools",
   "admin-navigation-tools-tab-url-shortener-title": "URL-Kürzer",
   "admin-navigation-tools-tab-qrcode-generator-title": "QR-Code Generator",
+
+  "administration-mail-dashboard-title": "E-Mail Management",
+  "administration-mail-dashboard-unsent-mails-amount-card-title": "Ausstehende E-Mails",
+  "administration-mail-dashboard-total-mails-recent-amount-card-title": "E-Mails letzte 7 Tage",
 
   "admin-apikey-list-title": "API-Keys",
   "admin-apikey-list-create-key-button-title": "API-Key Erstellen",

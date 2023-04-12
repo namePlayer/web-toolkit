@@ -74,4 +74,14 @@ class MailerService
 
     }
 
+    public function getUnsentAmount(): int
+    {
+        return (int)$this->mailTable->findAmountBySentNull();
+    }
+
+    public function getSentAmountForLastXDays(int $days): int
+    {
+        return (int)$this->mailTable->findAmountByLastDays($days);
+    }
+
 }

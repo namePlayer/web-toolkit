@@ -101,6 +101,10 @@ $container->add(\App\Controller\Administration\AccountViewController::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Table\Authentication\AccountLevelTable::class);
 
+$container->add(\App\Controller\Administration\MailController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\MailerService::class);
+
 #
 # Services
 #
