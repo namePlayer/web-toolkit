@@ -59,6 +59,8 @@ $router->get('/admin/urlshortener', 'App\Controller\Administration\UrlShortener\
 
 $router->get('/admin/mails', 'App\Controller\Administration\MailController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+$router->post('/admin/mails', 'App\Controller\Administration\MailController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
 $router->get('/overview', 'App\Controller\Login\OverviewController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);

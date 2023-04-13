@@ -14,6 +14,7 @@ class MailerService
 {
 
     private Mail $mail;
+    private int $successSent = 0;
 
     public function __construct(
         private readonly MailerFactory $mailer,
@@ -40,14 +41,19 @@ class MailerService
         $this->mailTable->insert($this->mail);
     }
 
-    public function fetchMailsAndSend(): void
+    public function fetchMailsAndSend(int $amount = null): void
     {
+        $limit = $_ENV['MAILER_MAX_BATCH_SIZE'];
+        if($amount !== NULL)
+        {
+            $limit = $amount;
+        }
+
         $this->logger->info('Starting Mail Batch');
-        $mails = $this->mailTable->findAllNotSentLimit();
+        $mails = $this->mailTable->findAllNotSentLimit($limit);
 
         $amount = count($mails);
         $this->logger->info('Collected a batch of ' . $amount . ' Mails.');
-        $success = 0;
 
         foreach ($mails as $mail) {
 
@@ -61,8 +67,8 @@ class MailerService
             try {
                 $this->mailer->getMailer()->send();
                 $this->mailTable->updateMailSentById($mail['id']);
-                $success++;
-                $this->logger->info('Mail Sending took ' . microtime(true) - $time . 'ms ('.$success.'/'.$amount.')');
+                $this->successSent++;
+                $this->logger->info('Mail Sending took ' . microtime(true) - $time . 'ms ('.$this->successSent.'/'.$amount.')');
             } catch (Exception)
             {
                 $this->logger->error('Mail Sending failed after ' . microtime() - $time . 'ms', [$this->mailer->getMailer()->ErrorInfo]);
@@ -70,8 +76,13 @@ class MailerService
 
         }
 
-        $this->logger->info('Mail Batch complete. Sent a total of ' . $success . ' E-Mails');
+        $this->logger->info('Mail Batch complete. Sent a total of ' . $this->successSent . ' E-Mails');
 
+    }
+
+    public function getSentSuccessfullyAmount(): int
+    {
+        return $this->successSent;
     }
 
     public function getUnsentAmount(): int

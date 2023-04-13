@@ -51,7 +51,8 @@ readonly class LostPasswordController
                 $account->getEmail(),
                 'Reset Password',
                 MailType::RESET_PASSWORD_MAIL_ID,
-                ['token' => $token->getToken()]
+                ['token' => $token->getToken()],
+                $token->getAccount()
             )->send();
         }
 

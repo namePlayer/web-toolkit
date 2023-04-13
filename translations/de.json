@@ -95,9 +95,17 @@
   "admin-navigation-tools-tab-url-shortener-title": "URL-Kürzer",
   "admin-navigation-tools-tab-qrcode-generator-title": "QR-Code Generator",
 
+  "administration-mail-dashboard-send-unsent-mails-no-mails-found": "Es wurden keine E-Mails gefunden, die noch nicht versandt wurden.",
+  "administration-mail-dashboard-send-unsent-mails-amount-success": "Es wurden alle E-Mails versendet, welche noch nicht versant wurden. Anzahl: ",
   "administration-mail-dashboard-title": "E-Mail Management",
   "administration-mail-dashboard-unsent-mails-amount-card-title": "Ausstehende E-Mails",
   "administration-mail-dashboard-total-mails-recent-amount-card-title": "E-Mails letzte 7 Tage",
+  "administration-mail-dashboard-send-unsent-mails-button-title": "Versende offene E-Mails",
+  "administration-mail-dashboard-send-unsent-mails-modal-title": "Versende noch nicht versandte E-Mails",
+  "administration-mail-dashboard-send-unsent-mails-modal-amount": "Anzahl",
+  "administration-mail-dashboard-send-unsent-mails-modal-amount-helper": "Um alle noch nicht verschickten E-Mails zu verschicken, bitte die 0 angeben.",
+  "administration-mail-dashboard-send-unsent-mails-modal-close-button": "Abbrechen",
+  "administration-mail-dashboard-send-unsent-mails-modal-send-button": "Versenden",
 
   "admin-apikey-list-title": "API-Keys",
   "admin-apikey-list-create-key-button-title": "API-Key Erstellen",

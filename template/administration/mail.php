@@ -21,9 +21,20 @@
         <?= $this->insert('element/adminNavigation') ?>
 
         <div class="col-md-9">
-            <h4 class="mb-3">
-                <?= $this->e($this->translate('administration-mail-dashboard-title')) ?>
-            </h4>
+            <div class="row mb-3">
+                <div class="col-9">
+                    <h4 class="mb-3">
+                        <?= $this->e($this->translate('administration-mail-dashboard-title')) ?>
+                    </h4>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#emailDashboardSendEmailModal">
+                        <?= $this->e($this->translate('administration-mail-dashboard-send-unsent-mails-button-title')) ?>
+                    </button>
+                </div>
+            </div>
+
+            <?php $this->insert('element/alert') ?>
 
             <div class="row">
                 <div class="col-6">
@@ -56,3 +67,41 @@
     </div>
 
 </div>
+
+<form method="post">
+    <div class="modal fade" id="emailDashboardSendEmailModal" tabindex="-1" aria-labelledby="emailDashboardSendEmailModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="emailDashboardSendEmailModalLabel">
+                        <?= $this->e($this->translate('administration-mail-dashboard-send-unsent-mails-modal-title')) ?>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="emailDashboardSendEmailModalAmount" class="form-label">
+                            <?= $this->e($this->translate('administration-mail-dashboard-send-unsent-mails-modal-amount')) ?>
+                        </label>
+                        <input type="number" class="form-control"
+                               id="emailDashboardSendEmailModalAmount"
+                               name="emailDashboardSendEmailModalAmount"
+                               min="0" max="<?= $unsentMailAmount ?>"
+                               value="<?= min($unsentMailAmount, $_ENV['MAILER_MAX_BATCH_SIZE']) ?>">
+                        <div id="emailDashboardSendEmailModalAmountHelp" class="form-text">
+                            <?= $this->e($this->translate('administration-mail-dashboard-send-unsent-mails-modal-amount-helper')) ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <?= $this->e($this->translate('administration-mail-dashboard-send-unsent-mails-modal-close-button')) ?>
+                    </button>
+                    <button type="submit" class="btn btn-primary" name="emailDashboardSendEmailModalSendButton">
+                        <?= $this->e($this->translate('administration-mail-dashboard-send-unsent-mails-modal-send-button')) ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

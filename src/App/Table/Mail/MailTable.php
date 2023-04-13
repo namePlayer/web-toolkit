@@ -21,12 +21,12 @@ class MailTable extends AbstractTable
         return $this->query->insertInto($this->getTableName())->values($values)->executeWithoutId();
     }
 
-    public function findAllNotSentLimit(): array|bool
+    public function findAllNotSentLimit(int $limit): array|bool
     {
         return $this->query->from($this->getTableName())->where('sent', NULL)
             ->select('MailType.template')
             ->leftJoin('MailType on MailType.id = Mail.type')
-            ->limit($_ENV['MAILER_MAX_BATCH_SIZE'])
+            ->limit($limit)
             ->orderBy('created ASC')->fetchAll();
     }
 
