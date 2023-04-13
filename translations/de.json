@@ -1,6 +1,7 @@
 {
 
   "dateTime-format": "d.m.Y H:i",
+  "unknown-string": "Unbekannt",
 
   "homepage-content-create-shortlink-title": "Kurzlink erstellen",
   "homepage-content-create-shortlink-description": "Erstelle einen Kurzen Link, welcher einfach zu teilen ist. Dieser ist Beispielsweise Sinnvoll, solltest du auf deinem SmartTV eine Webseite öffnen wollen, welche eine Lange URL hat.",
@@ -204,7 +205,7 @@
   "url-shortener-description": "Hiermit kannst du deine URLs verkürzen, damit du sie schnell und einfach weitergeben kannst.",
   "link-successfully-shortened": "Der Link wurde erfolgreich verkürzt!",
   "shortlink-destination-invalid": "Die Zieladresse ist ungültig!",
-  "url-shortener-navigation-create-shortlink-title": "Kurlink erstellen",
+  "url-shortener-navigation-create-shortlink-title": "Kurzlink erstellen",
   "url-shortener-navigation-list-shortlink-title": "Link Übersicht",
   "url-shortener-navigation-list-domain-title": "Domain Übersicht",
   "url-shortener-creation-pane-title": "Kurzlink erstellen",
@@ -221,6 +222,7 @@
   "url-shortener-link-already-expired": "Der gewünschte Link ist nicht mehr verfügbar.",
   "url-shortener-link-password-required": "Dieser Link benötigt eine Passworteingabe.",
   "url-shortener-link-list-title": "Link Übersicht",
+  "url-shortener-link-info-pane-title": "Link Informationen",
   "url-shortener-link-list-table-uuid-title": "UUID",
   "url-shortener-link-list-table-domain-title": "Domain",
   "url-shortener-link-list-table-created-title": "Erstellt",
@@ -239,7 +241,6 @@
   "url-shortener-link-information-tracking-table-browser-title": "Browser",
   "url-shortener-link-information-tracking-table-os-title": "Betriebssystem",
   "url-shortener-link-information-tracking-table-country-title": "Land",
-  "url-shortener-link-information-tracking-table-unknown-string": "Unbekannt",
   "url-shortener-link-information-tracking-table-tracking-disabled": "Tracking ist für diesen Link deaktiviert",
   "url-shortener-domain-list": "Domain Übersicht",
   "url-shortener-domains-table-domain-name-title": "Adresse",

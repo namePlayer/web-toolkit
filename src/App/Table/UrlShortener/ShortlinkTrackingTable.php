@@ -45,4 +45,16 @@ class ShortlinkTrackingTable extends AbstractTable
         )->fetchColumn();
     }
 
+    public function getGroupedBrowserCountByLinkId(int $link, int $limit = 10): array|bool
+    {
+        return $this->query->from($this->getTableName())->select(null)->select('browser,COUNT(*) AS amount')->where('link', $link)
+            ->limit($limit)->orderBy('amount DESC')->groupBy('browser')->fetchAll();
+    }
+
+    public function getGroupedCountryCountByLinkId(int $link, int $limit = 10): array|bool
+    {
+        return $this->query->from($this->getTableName())->select(null)->select('country,COUNT(*) AS amount')->where('link', $link)
+            ->limit($limit)->orderBy('amount DESC')->groupBy('country')->fetchAll();
+    }
+
 }

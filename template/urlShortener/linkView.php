@@ -11,7 +11,7 @@ $this->layout('tooltemplate', ['tool' => $tool]);
     <div class="row">
         <div class="row mb-3 mt-3">
             <div class="col-4">
-                <h4 class="mb-4"><?= $this->e($this->translate('url-shortener-creation-pane-title')) ?></h4>
+                <h4 class="mb-4"><?= $this->e($this->translate('url-shortener-link-info-pane-title')) ?></h4>
             </div>
             <div class="col-8">
                 <?= $this->insert('urlShortener/navigation', ['tool' => $tool]) ?>
@@ -71,7 +71,7 @@ $this->layout('tooltemplate', ['tool' => $tool]);
         </div>
 
         <div class="col-md-9 mb-3">
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header">
                     Letzte 10 Aufrufe:
                 </div>
@@ -104,17 +104,17 @@ $this->layout('tooltemplate', ['tool' => $tool]);
                                         <th scope="row"><?= $data['accessed'] ?></th>
                                         <td>
                                             <?= empty($data['browser'])
-                                                ? $this->e($this->translate('url-shortener-link-information-tracking-table-unknown-string'))
+                                                ? $this->e($this->translate('unknown-string'))
                                                 : $data['browser'] ?>
                                         </td>
                                         <td>
                                             <?= empty($data['operatingSystem'])
-                                                ? $this->e($this->translate('url-shortener-link-information-tracking-table-unknown-string'))
+                                                ? $this->e($this->translate('unknown-string'))
                                                 : $data['operatingSystem'] ?>
                                         </td>
                                         <td>
                                             <?= empty($data['country'])
-                                                ? $this->e($this->translate('url-shortener-link-information-tracking-table-unknown-string'))
+                                                ? $this->e($this->translate('unknown-string'))
                                                 : $data['country'] ?>
                                         </td>
                                     </tr>
@@ -134,6 +134,74 @@ $this->layout('tooltemplate', ['tool' => $tool]);
 
                 </div>
             </div>
+
+            <?php if($shortlink->isTracking()): ?>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <?= $this->e($this->translate('url-shortener-link-information-tracking-table-browser-title')) ?>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col"><?= $this->e($this->translate('url-shortener-link-information-tracking-table-browser-title')) ?></th>
+                                        <th scope="col"><?= $this->e($this->translate('url-shortener-link-list-table-clicks-title')) ?></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach ($browserList as $browser): ?>
+                                        <tr>
+                                            <td>
+                                                <?= empty($browser['browser'])
+                                                    ? $this->e($this->translate('unknown-string'))
+                                                    : $browser['browser'] ?>
+                                            </td>
+                                            <td><?= $browser['amount'] ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <?= $this->e($this->translate('url-shortener-link-information-tracking-table-country-title')) ?>
+                            </div>
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <?= $this->e($this->translate('url-shortener-link-information-tracking-table-country-title')) ?>
+                                        </th>
+                                        <th scope="col"><?= $this->e($this->translate('url-shortener-link-list-table-clicks-title')) ?></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach ($countryList as $country): ?>
+                                        <tr>
+                                            <td>
+                                                <?= empty($country['country'])
+                                                    ? $this->e($this->translate('unknown-string'))
+                                                    : $country['country'] ?>
+                                            </td>
+                                            <td><?= $country['amount'] ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
         </div>
     </div>
 

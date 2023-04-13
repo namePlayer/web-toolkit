@@ -55,7 +55,9 @@ readonly class LinkViewController
                         10
                     ) : [],
                     'shortlinkDomain' => $link->getDomain() === null ? ShortlinkTool::getDefaultUrl(
-                    ) : $this->shortlinkDomainService->getById($link->getDomain())['address']
+                    ) : $this->shortlinkDomainService->getById($link->getDomain())['address'],
+                    'browserList' => $this->shortlinkTrackingService->getLinkBrowserAmount($link->getId(), 10),
+                    'countryList' => $this->shortlinkTrackingService->getLinkCountryAmount($link->getId(), 10)
                 ]
             )
         );

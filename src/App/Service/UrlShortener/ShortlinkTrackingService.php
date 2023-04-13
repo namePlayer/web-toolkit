@@ -38,6 +38,16 @@ readonly class ShortlinkTrackingService
         $this->shortlinkTrackingTable->create($tracking);
     }
 
+    public function getLinkBrowserAmount(int $link, int $limit = 10): array
+    {
+        return $this->shortlinkTrackingTable->getGroupedBrowserCountByLinkId($link, $limit);
+    }
+
+    public function getLinkCountryAmount(int $link, int $limit = 10): array
+    {
+        return $this->shortlinkTrackingTable->getGroupedCountryCountByLinkId($link, $limit);
+    }
+
     public function getLastClicksForLink(int $link, int $amount): array
     {
         return $this->shortlinkTrackingTable->getTracksByLinkIdAndLimit($link, $amount);
