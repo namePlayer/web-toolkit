@@ -2,13 +2,14 @@
 
 <div class="container">
 
-    <?= $this->insert('urlShortener/navigation', ['tool' => $tool]) ?>
-
-    <div class="row mt-4">
-        <div class="col-9">
-            <h4><?= $this->e($this->translate('url-shortener-domain-list')) ?></h4>
+    <div class="row mb-4 mt-4 d-flex align-items-center">
+        <div class="col-4">
+            <h3><?= $this->e($this->translate('url-shortener-domain-list')) ?></h3>
         </div>
-        <div class="col-3">
+        <div class="col-6">
+            <?= $this->insert('urlShortener/navigation', ['tool' => $tool]) ?>
+        </div>
+        <div class="col-2">
             <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#urlShortenerAddNewDomain">
                 Hinzufügen
             </button>

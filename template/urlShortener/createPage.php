@@ -2,17 +2,19 @@
 
 <div class="container">
 
+    <div class="row mb-4 mt-4">
+        <div class="col-4 d-flex align-items-center">
+            <h3><?= $this->e($this->translate('url-shortener-creation-pane-title')) ?></h3>
+        </div>
+        <div class="col-8 d-flex align-items-center">
+            <?= $this->insert('urlShortener/navigation', ['tool' => $tool]) ?>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col">
+
             <form method="post">
-                <div class="row mb-3 mt-3">
-                    <div class="col-4">
-                        <h3 class="mb-4"><?= $this->e($this->translate('url-shortener-creation-pane-title')) ?></h3>
-                    </div>
-                    <div class="col-8">
-                        <?= $this->insert('urlShortener/navigation', ['tool' => $tool]) ?>
-                    </div>
-                </div>
                 <div class="row mb-5">
                     <div class="col-md-3">
                         <h6 class="text-muted"><label for="urlShortenerLinkAddress" class="form-label">Adresse</label></h6>

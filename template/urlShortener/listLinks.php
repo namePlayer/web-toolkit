@@ -2,11 +2,11 @@
 
 <div class="container">
 
-    <div class="row mb-3 mt-3 d-flex align-items-center">
-        <div class="col-4">
-            <h4 class="mt-4"><?= $this->e($this->translate('url-shortener-link-list-title')) ?></h4>
+    <div class="row mb-4 mt-4">
+        <div class="col-4 d-flex align-items-center">
+            <h3><?= $this->e($this->translate('url-shortener-link-list-title')) ?></h3>
         </div>
-        <div class="col-8">
+        <div class="col-8 d-flex align-items-center">
             <?= $this->insert('urlShortener/navigation', ['tool' => $tool]) ?>
         </div>
     </div>

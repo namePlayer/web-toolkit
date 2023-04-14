@@ -11,7 +11,7 @@ use App\Table\AbstractTable;
 class ShortlinkTable extends AbstractTable
 {
 
-    public function insert(Shortlink $shortlink): bool|int
+    public function insert(Shortlink $shortlink): string|bool|int
     {
         $values = [
             'uuid' => $shortlink->getUuid(),
