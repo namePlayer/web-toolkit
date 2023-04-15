@@ -103,6 +103,56 @@ $this->layout('tooltemplate', ['tool' => $tool]);
                     </tbody>
                 </table>
             </div>
+            <div class="col-sm-6 mb-3">
+                <h5 class="mb-3"><?= $this->e($this->translate('url-shortener-link-information-tracking-table-device-title')) ?></h5>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            <?= $this->e($this->translate('url-shortener-link-information-tracking-table-device-title')) ?>
+                        </th>
+                        <th scope="col"><?= $this->e($this->translate('url-shortener-link-list-table-clicks-title')) ?></th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <?php foreach ($deviceList as $device): ?>
+                        <tr>
+                            <td>
+                                <?= empty($device['device'])
+                                    ? $this->e($this->translate('unknown-string'))
+                                    : $device['device'] ?>
+                            </td>
+                            <td><?= $device['amount'] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-6 mb-3">
+                <h5 class="mb-3"><?= $this->e($this->translate('url-shortener-link-information-tracking-table-referer-title')) ?></h5>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            <?= $this->e($this->translate('url-shortener-link-information-tracking-table-referer-title')) ?>
+                        </th>
+                        <th scope="col"><?= $this->e($this->translate('url-shortener-link-list-table-clicks-title')) ?></th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <?php foreach ($refererList as $referer): ?>
+                        <tr>
+                            <td>
+                                <?= empty($referer['referer'])
+                                    ? $this->e($this->translate('unknown-string'))
+                                    : $referer['referer'] ?>
+                            </td>
+                            <td><?= $referer['amount'] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         <?php endif; ?>
 
         <div class="col-md-12">

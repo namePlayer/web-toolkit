@@ -58,7 +58,9 @@ readonly class LinkViewController
                     ) : $this->shortlinkDomainService->getById($link->getDomain())['address'],
                     'linkClicks' => $this->shortlinkTrackingService->getClickCountForLink($link->getId()),
                     'browserList' => $this->shortlinkTrackingService->getLinkBrowserAmount($link->getId(), 10),
-                    'countryList' => $this->shortlinkTrackingService->getLinkCountryAmount($link->getId(), 10)
+                    'countryList' => $this->shortlinkTrackingService->getLinkCountryAmount($link->getId(), 10),
+                    'deviceList' => $this->shortlinkTrackingService->getLinkDeviceAmount($link->getId(), 10),
+                    'refererList' => $this->shortlinkTrackingService->getLinkRefererAmount($link->getId(), 10)
                 ]
             )
         );

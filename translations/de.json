@@ -244,6 +244,8 @@
   "url-shortener-link-information-tracking-table-browser-title": "Browser",
   "url-shortener-link-information-tracking-table-os-title": "Betriebssystem",
   "url-shortener-link-information-tracking-table-country-title": "Land",
+  "url-shortener-link-information-tracking-table-device-title": "Gerät",
+  "url-shortener-link-information-tracking-table-referer-title": "Referer",
   "url-shortener-link-information-tracking-table-tracking-disabled": "Tracking ist für diesen Link deaktiviert",
   "url-shortener-domain-list": "Domain Übersicht",
   "url-shortener-domains-table-domain-name-title": "Adresse",

@@ -34,6 +34,7 @@ readonly class ShortlinkTrackingService
 
         $tracking->setBrowser($userAgent->getClient('name'));
         $tracking->setOperatingSystem($userAgent->getOs('name'));
+        $tracking->setDevice($userAgent->getDeviceName());
 
         $this->shortlinkTrackingTable->create($tracking);
     }
@@ -46,6 +47,16 @@ readonly class ShortlinkTrackingService
     public function getLinkCountryAmount(int $link, int $limit = 10): array
     {
         return $this->shortlinkTrackingTable->getGroupedCountryCountByLinkId($link, $limit);
+    }
+
+    public function getLinkDeviceAmount(int $link, int $limit = 10): array
+    {
+        return $this->shortlinkTrackingTable->getGroupedDeviceCountByLinkId($link, $limit);
+    }
+
+    public function getLinkRefererAmount(int $link, int $limit = 10): array
+    {
+        return $this->shortlinkTrackingTable->getGroupedRefererCountByLinkId($link, $limit);
     }
 
     public function getLastClicksForLink(int $link, int $amount): array

@@ -15,12 +15,12 @@ class ShortlinkTrackingTable extends AbstractTable
     {
         $values = [
             'link' => $shortlinkTracking->getLink(),
-            'useragent' => $shortlinkTracking->getUseragent(),
-            'userIp' => $shortlinkTracking->getUserIp(),
             'accessed' => $shortlinkTracking->getAccessed()->format(Software::DATABASE_TIME_FORMAT),
             'browser' => $shortlinkTracking->getBrowser(),
             'operatingSystem' => $shortlinkTracking->getOperatingSystem(),
-            'country' => $shortlinkTracking->getCountry()
+            'country' => $shortlinkTracking->getCountry(),
+            'device' => $shortlinkTracking->getDevice(),
+            'referer' => $shortlinkTracking->getReferer()
         ];
 
         return $this->query->insertInto($this->getTableName())->values($values)->executeWithoutId();
@@ -55,6 +55,18 @@ class ShortlinkTrackingTable extends AbstractTable
     {
         return $this->query->from($this->getTableName())->select(null)->select('country,COUNT(*) AS amount')->where('link', $link)
             ->limit($limit)->orderBy('amount DESC')->groupBy('country')->fetchAll();
+    }
+
+    public function getGroupedDeviceCountByLinkId(int $link, int $limit = 10): array|bool
+    {
+        return $this->query->from($this->getTableName())->select(null)->select('device,COUNT(*) AS amount')->where('link', $link)
+            ->limit($limit)->orderBy('amount DESC')->groupBy('device')->fetchAll();
+    }
+
+    public function getGroupedRefererCountByLinkId(int $link, int $limit = 10): array|bool
+    {
+        return $this->query->from($this->getTableName())->select(null)->select('referer,COUNT(*) AS amount')->where('link', $link)
+            ->limit($limit)->orderBy('amount DESC')->groupBy('referer')->fetchAll();
     }
 
 }

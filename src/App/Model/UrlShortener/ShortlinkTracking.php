@@ -15,6 +15,8 @@ class ShortlinkTracking
     private string $browser;
     private string $operatingSystem;
     private string $country;
+    private string $device;
+    private string $referer;
 
     public function getId(): int
     {
@@ -94,6 +96,38 @@ class ShortlinkTracking
     public function setCountry(string $country): void
     {
         $this->country = $country;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDevice(): string
+    {
+        return $this->device;
+    }
+
+    /**
+     * @param string $device
+     */
+    public function setDevice(string $device): void
+    {
+        $this->device = $device;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReferer(): string
+    {
+        return $this->referer;
+    }
+
+    /**
+     * @param string $referer
+     */
+    public function setReferer(string $referer): void
+    {
+        $this->referer = $referer;
     }
 
 }

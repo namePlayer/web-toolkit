@@ -82,6 +82,7 @@ readonly class OpenLinkApiController
             $tracking->setUseragent($userInformation['useragent']);
             $tracking->setLink($shortlink->getId());
             $tracking->setAccessed(new DateTime());
+            $tracking->setReferer($userInformation['referer'] ?? '');
 
             $this->shortlinkTrackingService->track($tracking);
         }

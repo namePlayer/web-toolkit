@@ -66,6 +66,7 @@ readonly class LinkController
             $tracking->setUserIp($_SERVER['REMOTE_ADDR']);
             $tracking->setUseragent($_SERVER['HTTP_USER_AGENT']);
             $tracking->setAccessed(new DateTime());
+            $tracking->setReferer($_SERVER['HTTP_REFERER'] ?? '');
             $this->shortlinkTrackingService->track($tracking);
         }
 
