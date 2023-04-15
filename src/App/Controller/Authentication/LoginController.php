@@ -6,11 +6,15 @@ namespace App\Controller\Authentication;
 
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
+use App\Model\Mail\MailType;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\PasswordService;
+use App\Service\MailerService;
+use App\Service\UserInformationService;
 use App\Software;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
+use MaxMind\Db\Reader;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -20,7 +24,8 @@ readonly class LoginController
     public function __construct(
         private Engine $template,
         private AccountService $accountService,
-        private PasswordService $passwordService
+        private PasswordService $passwordService,
+        private MailerService $mailerService
     ) {
     }
 
@@ -36,7 +41,7 @@ readonly class LoginController
         return new HtmlResponse($this->template->render('authentication/login'));
     }
 
-    public function login(ServerRequestInterface $request): ResponseInterface|false
+    public function login(ServerRequestInterface $request): ?ResponseInterface
     {
         if (isset($_POST['email'], $_POST['password'])) {
             $account = new Account();
@@ -46,21 +51,39 @@ readonly class LoginController
             $login = $this->accountService->findAccountByEmail($account->getEmail());
             if ($login === false) {
                 MESSAGES->add('danger', 'login-wrong-combination');
-                return false;
+                return null;
             }
 
+            $account->setName($login['name']);
             $account->setId($login['id']);
             $account->setActive((int)$login['active'] === 1);
             $account->setSetupComplete((int)$login['setupComplete'] === 1);
 
             if ($account->isActive() === false) {
                 MESSAGES->add('danger', 'login-account-disabled');
-                return false;
+                return null;
             }
 
             if ($this->passwordService->verifyPassword($account->getPassword(), $login['password'])) {
+                $userInformation = new UserInformationService();
+
                 MESSAGES->add('success', 'login-account-successful');
                 $this->accountService->updateLastUserLogin($account);
+
+                $this->mailerService->configureMail(
+                    $account->getEmail(),
+                    'Neue Anmeldung erkannt',
+                    MailType::NEW_LOGIN_DETECTED_MAIL_ID,
+                    [
+                        'accountName' => $account->getName(),
+                        'browser' => $userInformation->configure($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'])->getBrowser(),
+                        'country' => $userInformation->getCountry(),
+                        'ip' => $userInformation->getIP()
+                    ],
+                    $account->getId()
+                )->send();
+
+
                 $_SESSION[Software::SESSION_USERID_NAME] = $account->getId();
                 if (!$account->isSetupComplete()) {
                     return new RedirectResponse("/authentication/setup");
@@ -74,7 +97,7 @@ readonly class LoginController
             MESSAGES->add('danger', 'login-wrong-combination');
         }
 
-        return false;
+        return null;
     }
 
 }

@@ -7,6 +7,7 @@ class MailType
 
     public const ACTIVATION_MAIL_ID = 1;
     public const RESET_PASSWORD_MAIL_ID = 2;
+    public const NEW_LOGIN_DETECTED_MAIL_ID = 3;
 
     private int $id;
     private string $title;
