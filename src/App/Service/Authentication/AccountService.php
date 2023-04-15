@@ -121,6 +121,17 @@ readonly class AccountService
         return false;
     }
 
+    public function generateActivationToken(Account $account): Token
+    {
+        $token = new Token();
+        $token->setAccount($account->getId());
+        $token->setType(TokenType::ACTIVATION_TOKEN);
+        $token->setExpiry((new DateTime())->add(new DateInterval('PT1H')));
+
+        $this->tokenService->create($token);
+        return $token;
+    }
+
     public function setAccountActive(int $account, bool $active): void
     {
         $this->accountTable->updateAccountActive($account, $active);

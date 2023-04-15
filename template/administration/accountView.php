@@ -167,7 +167,7 @@ $this->layout('basetemplate') ?>
 
                     </form>
 
-                    <form class="row mt-3">
+                    <form class="row mt-3" method="post">
                         <div class="col-3">
 
                             <button type="submit" class="w-100 btn btn-primary" name="adminAccountTabSettingsResendActivationMailButton">

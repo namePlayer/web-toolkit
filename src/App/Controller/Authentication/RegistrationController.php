@@ -56,12 +56,8 @@ readonly class RegistrationController
                 return;
             }
 
-            $token = new Token();
-            $token->setAccount($account->getId());
-            $token->setType(TokenType::ACTIVATION_TOKEN);
-            $token->setExpiry((new DateTime())->add(new DateInterval('PT1H')));
+            $token = $this->accountService->generateActivationToken($account);
 
-            $this->tokenService->create($token);
             $this->mailerService->configureMail(
                 $account->getEmail(),
                 'Account aktivieren',

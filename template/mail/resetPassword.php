@@ -6,4 +6,7 @@
     https://<?= $_ENV['SOFTWARE_DEFAULT_HOST'] ?>/authentication/reset-password?token=<?= $token ?></a>
 <br>
 <br>
-<span>Solltest du diese Anfrage nicht gestellt haben, so beachte diese E-Mail als Wertlos.</span>
+<span>Solltest du diese Anfrage nicht gestellt haben, so beachte diese E-Mail als Wertlos.</span> <br><br>
+<?php if(isset($requestedByAdmin)): ?>
+    <span>Diese Anfrage wurde durch einen Administrator ausgelöst.</span>
+<?php endif; ?>

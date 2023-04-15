@@ -5,7 +5,10 @@ namespace App\Controller\Administration;
 
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
+use App\Model\Authentication\Token;
+use App\Model\Mail\MailType;
 use App\Service\Authentication\AccountService;
+use App\Service\MailerService;
 use App\Table\Authentication\AccountLevelTable;
 use DateTime;
 use Laminas\Diactoros\Response\RedirectResponse;
@@ -19,7 +22,8 @@ readonly class AccountViewController
     public function __construct(
         private Engine $template,
         private AccountService $accountService,
-        private AccountLevelTable $accountLevelTable
+        private AccountLevelTable $accountLevelTable,
+        private MailerService $mailerService
     ) {
     }
 
@@ -83,6 +87,47 @@ readonly class AccountViewController
 
             $this->accountService->updateAccount($account);
         }
+
+        if(isset($_POST['adminAccountTabSettingsResendActivationMailButton']))
+        {
+            if($account->isActive())
+            {
+                MESSAGES->add('warning', 'admin-account-resend-activation-mail-not-necessary');
+                return;
+            }
+
+            $token = $this->accountService->generateActivationToken($account);
+
+            $this->mailerService->configureMail(
+                $account->getEmail(),
+                'Konto aktivieren',
+                MailType::ACTIVATION_MAIL_ID,
+                ['name' => $account->getName(), 'token' => $token->getToken()],
+                $account->getId()
+            )->send();
+
+            MESSAGES->add('success', 'admin-account-resend-activation-mail-successful');
+        }
+
+        if(isset($_POST['adminAccountTabSettingsResetPasswordMailButton']))
+        {
+            $token = $this->accountService->resetPassword($account);
+            if(!$token instanceof Token)
+            {
+                return;
+            }
+
+            $this->mailerService->configureMail(
+                $account->getEmail(),
+                'Reset Password',
+                MailType::RESET_PASSWORD_MAIL_ID,
+                ['token' => $token->getToken(), 'requestedByAdmin' => true],
+                $account->getId()
+            )->send();
+
+            MESSAGES->add('success', 'admin-account-reset-mail-successful');
+        }
+
     }
 
 }

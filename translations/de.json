@@ -166,6 +166,9 @@
 
   "admin-account-update-failed": "Das aktualisieren des Kontos ist fehlgeschlagen.",
   "admin-account-update-successful": "Das Konto wurde erfolgreich aktualisiert.",
+  "admin-account-resend-activation-mail-successful": "Die Aktivierungs E-Mail wurde erneut versandt.",
+  "admin-account-resend-activation-mail-not-necessary": "Das Konto ist bereits aktiviert. Es wurde keine E-Mail versandt.",
+  "admin-account-reset-mail-successful": "Eine E-Mail zum Reset des Passworts wurde an den Nutzer verschickt.",
   "admin-account-view-title": "Konto verwalten",
   "admin-account-view-navigation-info-tab-title": "Übersicht",
   "admin-account-view-info-tab-account-title": "Konto Name",
