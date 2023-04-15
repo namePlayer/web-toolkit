@@ -1,4 +1,4 @@
-    {
+{
     "name": "npcorenet/skeleton",
     "type": "template",
     "description": "The npcorenet Project skeleton",
@@ -19,6 +19,7 @@
     "require": {
         "php": ">=8.2",
         "ext-pdo": "*",
+        "ext-http": "*",
         "league/container": "^4.2",
         "league/route": "^5.1",
         "envms/fluentpdo": "^2.2",
@@ -32,6 +33,6 @@
         "geoip2/geoip2": "~2.0",
         "ramsey/uuid": "^4.7",
         "phpmailer/phpmailer": "^6.8",
-      "ext-http": "*"
+        "spomky-labs/otphp": "^11.2"
     }
 }

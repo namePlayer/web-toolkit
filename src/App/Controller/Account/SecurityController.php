@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Authentication;
+namespace App\Controller\Account;
 
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
@@ -9,11 +9,11 @@ use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-readonly class AccountController
+class SecurityController
 {
 
     public function __construct(
-        private Engine $template,
+        private readonly Engine $template,
         private AccountService $accountService
     ) {
     }
@@ -23,7 +23,7 @@ readonly class AccountController
         /* @var $account Account */
         $account = $request->getAttribute(Account::class);
 
-        return new HtmlResponse();
+        return new HtmlResponse($this->template->render('account/security'));
     }
 
 }

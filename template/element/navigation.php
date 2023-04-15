@@ -36,7 +36,7 @@
                             <?= $this->e($this->translate('navigation-logged-in-as')) ?> <b><?= $this->getAccountInformation()['name'] ?></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><?= $this->e($this->translate('navigation-account-settings')) ?></a></li>
+                            <li><a class="dropdown-item" href="/account"><?= $this->e($this->translate('navigation-account-settings')) ?></a></li>
                             <li><a class="dropdown-item" href="#"><?= $this->e($this->translate('navigation-account-licenses')) ?></a></li>
                             <li><a class="dropdown-item" href="#"><?= $this->e($this->translate('navigation-account-support')) ?></a></li>
                             <?php if($this->getAccountInformation()['isSupport'] === 1 || $this->getAccountInformation()['isAdmin'] === 1): ?>

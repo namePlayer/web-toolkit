@@ -30,7 +30,10 @@ $router->get('/authentication/activate-account', 'App\Controller\Authentication\
 
 $router->get('/authentication/logout', 'App\Controller\Authentication\LogoutController::load');
 
-$router->get('/authentication/account', 'App\Controller\Authentication\AccountController::load')
+$router->get('/account/security', 'App\Controller\Account\SecurityController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
+
+$router->get('/account', 'App\Controller\Account\AccountController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
 
 $router->get('/admin/dashboard', 'App\Controller\Administration\DashboardController::load')
