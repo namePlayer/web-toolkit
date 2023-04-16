@@ -32,6 +32,8 @@ $router->get('/authentication/logout', 'App\Controller\Authentication\LogoutCont
 
 $router->get('/account/security', 'App\Controller\Account\SecurityController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
+$router->post('/account/security', 'App\Controller\Account\SecurityController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
 
 $router->get('/account', 'App\Controller\Account\AccountController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);

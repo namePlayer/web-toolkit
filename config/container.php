@@ -40,7 +40,8 @@ $container->add(\App\Controller\Account\AccountController::class)
 
 $container->add(\App\Controller\Account\SecurityController::class)
     ->addArgument(\League\Plates\Engine::class)
-    ->addArgument(\App\Service\Authentication\AccountService::class);
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Service\Account\SecurityService::class);
 
 $container->add(\App\Controller\Authentication\ResetPasswordController::class)
     ->addArgument(\App\Service\Authentication\TokenService::class)
@@ -167,6 +168,10 @@ $container->add(\App\Service\MailerService::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\Monolog\Logger::class);
 
+$container->add(\App\Service\Account\SecurityService::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Table\Account\TwoFactorTable::class);
+
 #
 # Repositories
 #
@@ -195,6 +200,9 @@ $container->add(\App\Table\Authentication\TokenTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\Mail\MailTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\Account\TwoFactorTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #

@@ -30,6 +30,8 @@
                 <?= $this->e($this->translate('account-settings-navigation-security-tab-title')) ?>
             </h3>
 
+            <?php $this->insert('element/alert') ?>
+
             <div class="row mb-3">
                 <div class="col-12 mb-1">
                     <h5><?= $this->e($this->translate('account-settings-security-general')) ?></h5>
@@ -56,8 +58,8 @@
                     </h5>
                 </div>
                 <div class="col-3 mb-3">
-                    <button type="button" class="btn btn-primary w-100">
-                        <?= $this->e($this->translate('account-settings-security-two-factor-add')) ?>
+                    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#addTwoFactorModal">
+                        <?= $this->e($this->translate('account-settings-security-two-factor-add-button')) ?>
                     </button>
                 </div>
                 <div class="col-12">
@@ -137,3 +139,34 @@
     </div>
 
 </div>
+
+<form method="post">
+    <div class="modal fade" id="addTwoFactorModal" tabindex="-1" aria-labelledby="addTwoFactorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addTwoFactorModalLabel"><?= $this->e($this->translate('account-settings-security-two-factor-add')) ?></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="addTwoFactorModalTFAToken" class="form-label">2 Faktor Schlüssel</label>
+                        <input type="text" class="form-control disabled" id="addTwoFactorModalTFAToken" name="addTwoFactorModalTFAToken" value="<?= $totpToken ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="addTwoFactorModalName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="addTwoFactorModalName" name="addTwoFactorModalName" value="Web-Toolkit">
+                    </div>
+                    <div class="mb-3">
+                        <label for="addTwoFactorModalTFACode" class="form-label">Generierter Code</label>
+                        <input type="text" class="form-control" id="addTwoFactorModalTFACode" name="addTwoFactorModalTFACode" placeholder="000000">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" name="addTwoFactorModalSubmit">Anlegen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
