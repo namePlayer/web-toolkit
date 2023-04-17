@@ -49,6 +49,7 @@ class SecurityController
             $twoFactor->setAccount($account->getId());
             $twoFactor->setType(TwoFactorType::TOTP_ID);
             $twoFactor->setName($_POST['addTwoFactorModalName']);
+            $twoFactor->setToken($_POST['addTwoFactorModalTFAToken']);
 
             $this->securityService->add($twoFactor, $_POST['addTwoFactorModalTFACode']);
 

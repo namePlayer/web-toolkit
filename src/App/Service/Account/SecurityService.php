@@ -24,12 +24,11 @@ class SecurityService
             return;
         }
 
-        $twoFactor->setToken($this->generateTOTPSecret());
         $totp = $this->generateTOTPFromSecret($twoFactor->getSecret());
 
-        if($totp->now() !== (string)$code)
+        if(!$totp->verify($code))
         {
-            MESSAGES->add('danger', 'account-settings-security-two-factor-failed-code-invalid');
+            MESSAGES->add('danger', 'account-settings-security-two-factor-failed-code-invalid', $totp->now());
             return;
         }
 
@@ -49,7 +48,10 @@ class SecurityService
 
     private function generateTOTPFromSecret(string $secret): TOTP
     {
-        return TOTP::createFromSecret($secret);
+        $totp = TOTP::createFromSecret($secret);
+        $totp->setDigits(6);
+        $totp->setPeriod(30);
+        return $totp;
     }
 
 }
