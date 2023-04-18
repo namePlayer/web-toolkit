@@ -28,6 +28,9 @@ $router->post('/authentication/reset-password', 'App\Controller\Authentication\R
 
 $router->get('/authentication/activate-account', 'App\Controller\Authentication\ActivateAccountController::load');
 
+$router->get('/authentication/twoFactor', 'App\Controller\Authentication\TwoFactorController::load');
+$router->post('/authentication/twoFactor', 'App\Controller\Authentication\TwoFactorController::load');
+
 $router->get('/authentication/logout', 'App\Controller\Authentication\LogoutController::load');
 
 $router->get('/account/security', 'App\Controller\Account\SecurityController::load')

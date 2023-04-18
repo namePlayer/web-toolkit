@@ -62,6 +62,12 @@
   "reset-password-password-not-match": "Die angegebenen Passwörter stimmen nicht überein!",
   "reset-password-successful": "Das neue Passwort wurde gesetzt.",
 
+  "two-factor-authentication-title": "2-Faktor-Authentifizierung",
+  "two-factor-authentication-description": "In deinem Konto wurde eine 2-Faktor-Authentifizierung eingerichtet. Bitte identifiziere deine Identität.",
+  "totp-code": "Sicherheits Pin",
+  "two-factor-authenticate-button": "Verifizieren",
+  "two-factor-back-to-login-text": "Abbrechen, zurück zur Anmeldung",
+
   "basic-private": "Standard",
   "premium-private": "Premium",
   "premium-plus-private": "Premium+",
