@@ -20,5 +20,9 @@ class TwoFactorTable extends AbstractTable
         $this->query->insertInto($this->getTableName())->values($values)->executeWithoutId();
     }
 
+    public function findAllTwoFactorsByAccount(int $account): array|false
+    {
+        return $this->query->from($this->getTableName())->where('account', $account)->fetchAll();
+    }
 
 }

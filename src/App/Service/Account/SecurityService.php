@@ -26,7 +26,7 @@ class SecurityService
 
         $totp = $this->generateTOTPFromSecret($twoFactor->getSecret());
 
-        if(!$totp->verify($code))
+        if($totp->verify($code, null, 5) === FALSE)
         {
             MESSAGES->add('danger', 'account-settings-security-two-factor-failed-code-invalid', $totp->now());
             return;
@@ -39,6 +39,12 @@ class SecurityService
         }
 
         MESSAGES->add('success', 'Der 2. Faktor wurde erfolgreich hinterlegt');
+    }
+
+
+    public function getTwoFactorByAccountID(int $account): array|false
+    {
+        return $this->twoFactorTable->findAllTwoFactorsByAccount($account);
     }
 
     public function generateTOTPSecret(): string

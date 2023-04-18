@@ -81,14 +81,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">Android</th>
-                                <td>TOTP</td>
-                                <td>04.02.2023 13:45</td>
-                                <td>
-                                    <a href="#" class="text-danger text-decoration-none">Entfernen</a>
-                                </td>
-                            </tr>
+                            <?php if($twoFactors !== FALSE): ?>
+
+                                <?php foreach($twoFactors as $twoFactor): ?>
+
+                                    <tr>
+                                        <th scope="row"><?= $twoFactor['name'] ?></th>
+                                        <td>TOTP</td>
+                                        <td><?= (new DateTime($twoFactor['created'], new DateTimeZone('Europe/Berlin')))->format($this->translate('dateTime-format')) ?></td>
+                                        <td>
+                                            <a href="#" class="text-danger text-decoration-none">Entfernen</a>
+                                        </td>
+                                    </tr>
+
+                                <?php endforeach; ?>
+
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>

@@ -35,7 +35,8 @@ class SecurityController
         return new HtmlResponse(
             $this->template->render('account/security',
             [
-                'totpToken' => $this->securityService->generateTOTPSecret()
+                'totpToken' => $this->securityService->generateTOTPSecret(),
+                'twoFactors' => $this->securityService->getTwoFactorByAccountID($account->getId())
             ]));
     }
 
