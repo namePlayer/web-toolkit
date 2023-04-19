@@ -24,6 +24,7 @@ class Software
 
     public const DATABASE_TIME_FORMAT = 'Y-m-d H:i:s';
     public const SESSION_USERID_NAME = 'webtoolkit_login_id';
+    public const SESSION_TFA_NAME = 'webtoolkit_login_tfa';
 
     public const DISCORD_INVITE = 'https://discord.gg/RwxEQ7Gcmm';
 

@@ -28,8 +28,10 @@ $router->post('/authentication/reset-password', 'App\Controller\Authentication\R
 
 $router->get('/authentication/activate-account', 'App\Controller\Authentication\ActivateAccountController::load');
 
-$router->get('/authentication/twoFactor', 'App\Controller\Authentication\TwoFactorController::load');
-$router->post('/authentication/twoFactor', 'App\Controller\Authentication\TwoFactorController::load');
+$router->get('/authentication/twoFactor', 'App\Controller\Authentication\TwoFactorController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
+$router->post('/authentication/twoFactor', 'App\Controller\Authentication\TwoFactorController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class]);
 
 $router->get('/authentication/logout', 'App\Controller\Authentication\LogoutController::load');
 

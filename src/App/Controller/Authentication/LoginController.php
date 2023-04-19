@@ -7,6 +7,7 @@ namespace App\Controller\Authentication;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Mail\MailType;
+use App\Service\Account\SecurityService;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\PasswordService;
 use App\Service\MailerService;
@@ -25,7 +26,8 @@ readonly class LoginController
         private Engine $template,
         private AccountService $accountService,
         private PasswordService $passwordService,
-        private MailerService $mailerService
+        private MailerService $mailerService,
+        private SecurityService $securityService
     ) {
     }
 
@@ -85,6 +87,10 @@ readonly class LoginController
 
 
                 $_SESSION[Software::SESSION_USERID_NAME] = $account->getId();
+                if(!empty($this->securityService->getTwoFactorByAccountID($account->getId()))) {
+                    return new RedirectResponse("/authentication/twoFactor");
+                }
+
                 if (!$account->isSetupComplete()) {
                     return new RedirectResponse("/authentication/setup");
                 }

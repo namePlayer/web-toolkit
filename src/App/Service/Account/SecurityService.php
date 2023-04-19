@@ -41,6 +41,29 @@ class SecurityService
         MESSAGES->add('success', 'Der 2. Faktor wurde erfolgreich hinterlegt');
     }
 
+    public function accountHasTwoFactorEnabled(int $account): bool
+    {
+        return !empty($this->getTwoFactorByAccountID($account));
+    }
+
+    public function verifyAccountTwoFactor(int $account, string $code): bool
+    {
+        foreach ($this->getTwoFactorByAccountID($account) as $twoFactor)
+        {
+            if($this->verifyTOTPBySecret($twoFactor['secret'], $code))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function verifyTOTPBySecret(string $secret, string $code): bool
+    {
+        $totp = $this->generateTOTPFromSecret($secret);
+        return $totp->verify($code);
+    }
 
     public function getTwoFactorByAccountID(int $account): array|false
     {

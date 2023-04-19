@@ -67,6 +67,8 @@
   "totp-code": "Sicherheits Pin",
   "two-factor-authenticate-button": "Verifizieren",
   "two-factor-back-to-login-text": "Abbrechen, zurück zur Anmeldung",
+  "two-factor-authentication-success": "Der 2. Faktor wurde erfolgreich verifiziert.",
+  "two-factor-authentication-failed": "Der 2. Faktor konnte nicht verifiziert werden.",
 
   "basic-private": "Standard",
   "premium-private": "Premium",

@@ -27,7 +27,8 @@ $container->add(\App\Controller\Authentication\LoginController::class)
     ->addArgument(League\Plates\Engine::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Service\Authentication\PasswordService::class)
-    ->addArgument(\App\Service\MailerService::class);
+    ->addArgument(\App\Service\MailerService::class)
+    ->addArgument(\App\Service\Account\SecurityService::class);
 
 $container->add(\App\Controller\Authentication\LostPasswordController::class)
     ->addArgument(League\Plates\Engine::class)
