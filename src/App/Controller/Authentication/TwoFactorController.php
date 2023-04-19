@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Authentication;
 
@@ -35,27 +35,29 @@ readonly class TwoFactorController
         }
 
         if ($request->getMethod() === "POST") {
-            $this->authenticate($account->getId());
+            if($this->authenticate($account->getId()))
+            {
+                return new RedirectResponse('/overview');
+            }
         }
 
         return new HtmlResponse($this->template->render('authentication/twoFactor'));
     }
 
-    public function authenticate(int $account)
+    public function authenticate(int $account): bool
     {
         if(isset($_POST['totpCodeLoginTFA']))
         {
-
             if($this->securityService->verifyAccountTwoFactor($account, $_POST['totpCodeLoginTFA']))
             {
                 MESSAGES->add('success', 'two-factor-authentication-success');
                 $_SESSION[Software::SESSION_TFA_NAME] = $_POST['totpCodeLoginTFA'];
-                return;
+                return true;
             }
 
             MESSAGES->add('danger', 'two-factor-authentication-failed');
-
         }
+        return false;
     }
 
 }

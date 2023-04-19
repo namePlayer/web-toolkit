@@ -240,6 +240,9 @@ $container->add(\App\Middleware\AdminCheckMiddleware::class);
 $container->add(\App\Middleware\ApiAuthenticationMiddleware::class)
     ->addArgument(\App\Service\ApiKey\ApiKeyService::class);
 
+$container->add(\App\Middleware\TwoFactorMiddleware::class)
+    ->addArgument(\App\Service\Account\SecurityService::class);
+
 #
 # Dependencies
 #
