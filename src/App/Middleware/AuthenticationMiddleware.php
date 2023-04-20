@@ -13,7 +13,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-readonly class AuthenticationMiddleware implements MiddlewareInterface
+readonly class
+AuthenticationMiddleware implements MiddlewareInterface
 {
 
     public function __construct(
@@ -43,6 +44,7 @@ readonly class AuthenticationMiddleware implements MiddlewareInterface
         $account->setBusiness($accountData['business']);
         $account->setAdmin($accountData['isAdmin'] === 1);
         $account->setLevel($accountData['level']);
+        $account->setSendMailUnknownLogin($accountData['sendMailUnknownLogin'] === 1);
 
         return $handler->handle($request->withAttribute(Account::class, $account));
     }

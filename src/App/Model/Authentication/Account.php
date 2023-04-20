@@ -21,6 +21,7 @@ class Account
     private bool $setupComplete;
     private bool $support;
     private bool $admin;
+    private bool $sendMailUnknownLogin;
 
     public function getId(): int
     {
@@ -160,6 +161,16 @@ class Account
     public function setAdmin(bool $admin): void
     {
         $this->admin = $admin;
+    }
+
+    public function isSendMailUnknownLogin(): bool
+    {
+        return $this->sendMailUnknownLogin;
+    }
+
+    public function setSendMailUnknownLogin(bool $sendMailUnknownLogin): void
+    {
+        $this->sendMailUnknownLogin = $sendMailUnknownLogin;
     }
 
 }

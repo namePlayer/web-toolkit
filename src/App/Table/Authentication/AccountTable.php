@@ -79,4 +79,10 @@ class AccountTable extends AbstractTable
         )->execute();
     }
 
+    public function updateAccountSendMailUnknownLogin(int $account, bool $active): int|string|bool
+    {
+        return $this->query->update($this->getTableName())->where('id', $account)->set(['sendMailUnknownLogin' => $active ? 1 : 0]
+        )->execute();
+    }
+
 }

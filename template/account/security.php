@@ -40,12 +40,16 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="sendLoginEmailCheck" name="sendLoginEmailCheck" checked>
+                                <input class="form-check-input" type="checkbox" role="switch" id="sendLoginEmailCheck" name="sendLoginEmailCheck"
+                                <?= $account['sendMailUnknownLogin'] === 1 ? 'checked' : '' ?>>
                                 <label class="form-check-label" for="sendLoginEmailCheck">
                                     <?= $this->e($this->translate('account-settings-security-general-send-login-information-mail')) ?>
                                 </label>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary float-end" name="securityBasicSettingsSave">Speichern</button>
                     </div>
 
                 </form>

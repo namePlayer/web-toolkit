@@ -60,6 +60,7 @@ readonly class LoginController
             $account->setId($login['id']);
             $account->setActive((int)$login['active'] === 1);
             $account->setSetupComplete((int)$login['setupComplete'] === 1);
+            $account->setSendMailUnknownLogin((int)$login['sendMailUnknownLogin'] === 1);
 
             if ($account->isActive() === false) {
                 MESSAGES->add('danger', 'login-account-disabled');
@@ -72,18 +73,21 @@ readonly class LoginController
                 MESSAGES->add('success', 'login-account-successful');
                 $this->accountService->updateLastUserLogin($account);
 
-                $this->mailerService->configureMail(
-                    $account->getEmail(),
-                    'Neue Anmeldung erkannt',
-                    MailType::NEW_LOGIN_DETECTED_MAIL_ID,
-                    [
-                        'accountName' => $account->getName(),
-                        'browser' => $userInformation->configure($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'])->getBrowser(),
-                        'country' => $userInformation->getCountry(),
-                        'ip' => $userInformation->getIP()
-                    ],
-                    $account->getId()
-                )->send();
+                if($account->isSendMailUnknownLogin())
+                {
+                    $this->mailerService->configureMail(
+                        $account->getEmail(),
+                        'Neue Anmeldung erkannt',
+                        MailType::NEW_LOGIN_DETECTED_MAIL_ID,
+                        [
+                            'accountName' => $account->getName(),
+                            'browser' => $userInformation->configure($_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT'])->getBrowser(),
+                            'country' => $userInformation->getCountry(),
+                            'ip' => $userInformation->getIP()
+                        ],
+                        $account->getId()
+                    )->send();
+                }
 
 
                 $_SESSION[Software::SESSION_USERID_NAME] = $account->getId();

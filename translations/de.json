@@ -122,6 +122,7 @@
   "account-settings-security-two-factor-failed-unk": "Der 2. Faktor konnte nicht in deinem Konto hinterlegt werden.",
   "account-settings-security-two-factor-failed-code-invalid": "Dein angegebener Code ist nicht korrekt.",
   "account-settings-security-two-factor-success": "Der 2. Faktor wurde erfolgreich in deinem Konto hinterlegt.",
+  "account-settings-security-update-success": "Deine Sicherheitseinstellungen wurden aktualisiert.",
 
   "admin-navigation-general-tab-title": "Allgemein",
   "admin-navigation-general-tab-user-management-title": "Kontoverwaltung",

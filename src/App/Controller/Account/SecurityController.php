@@ -35,6 +35,7 @@ class SecurityController
         return new HtmlResponse(
             $this->template->render('account/security',
             [
+                'account' => $this->accountService->findAccountById($account->getId()),
                 'totpToken' => $this->securityService->generateTOTPSecret(),
                 'twoFactors' => $this->securityService->getTwoFactorByAccountID($account->getId())
             ]));
@@ -45,7 +46,6 @@ class SecurityController
 
         if(isset($_POST['addTwoFactorModalSubmit'], $_POST['addTwoFactorModalTFAToken'], $_POST['addTwoFactorModalName'], $_POST['addTwoFactorModalTFACode']))
         {
-
             $twoFactor = new TwoFactor();
             $twoFactor->setAccount($account->getId());
             $twoFactor->setType(TwoFactorType::TOTP_ID);
@@ -53,6 +53,14 @@ class SecurityController
             $twoFactor->setToken($_POST['addTwoFactorModalTFAToken']);
 
             $this->securityService->add($twoFactor, $_POST['addTwoFactorModalTFACode']);
+        }
+
+        if(isset($_POST['securityBasicSettingsSave']))
+        {
+
+            $this->accountService->setSendLoginEmail($account->getId(), isset($_POST['sendLoginEmailCheck']));
+
+            MESSAGES->add('success', 'account-settings-security-update-success');
 
         }
 

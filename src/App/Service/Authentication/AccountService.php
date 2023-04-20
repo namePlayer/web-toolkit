@@ -162,4 +162,10 @@ readonly class AccountService
         return $this->accountTable->findAll();
     }
 
+    public function setSendLoginEmail(int $account, bool $active): void
+    {
+        $this->accountTable->updateAccountSendMailUnknownLogin($account, $active);
+    }
+
+
 }
