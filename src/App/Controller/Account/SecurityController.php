@@ -32,11 +32,14 @@ class SecurityController
             $this->create($account);
         }
 
+        $otp = $this->securityService->generateTOTPSecret();
+
         return new HtmlResponse(
             $this->template->render('account/security',
             [
                 'account' => $this->accountService->findAccountById($account->getId()),
-                'totpToken' => $this->securityService->generateTOTPSecret(),
+                'totpToken' => $otp,
+                'totpQrCode' => $this->securityService->generateTOTPQrCodeBase64($this->securityService->generateTOTPFromSecret($otp)),
                 'twoFactors' => $this->securityService->getTwoFactorByAccountID($account->getId())
             ]));
     }

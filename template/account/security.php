@@ -161,9 +161,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="mb-3 text-center">
+                        <?= $totpQrCode ?>
+                    </div>
                     <div class="mb-3">
-                        <label for="addTwoFactorModalTFAToken" class="form-label">2 Faktor Schlüssel</label>
-                        <input type="text" class="form-control disabled" id="addTwoFactorModalTFAToken" name="addTwoFactorModalTFAToken" value="<?= $totpToken ?>">
+                        <input type="hidden" class="form-control" id="addTwoFactorModalTFAToken" name="addTwoFactorModalTFAToken" value="<?= $totpToken ?>">
                     </div>
                     <div class="mb-3">
                         <label for="addTwoFactorModalName" class="form-label">Name</label>
