@@ -92,15 +92,21 @@ readonly class LoginController
 
                 $_SESSION[Software::SESSION_USERID_NAME] = $account->getId();
                 if(!empty($this->securityService->getTwoFactorByAccountID($account->getId()))) {
-                    return new RedirectResponse("/authentication/twoFactor");
+                    if(!empty($_GET['redirect']))
+                    {
+                        return new RedirectResponse("/authentication/twoFactor?redirect=" . $_GET['redirect']);
+                    }
+                    return new RedirectResponse('/authentication/twoFactor');
                 }
 
                 if (!$account->isSetupComplete()) {
                     return new RedirectResponse("/authentication/setup");
                 }
+
                 if (!empty($_GET['redirect'])) {
                     return new RedirectResponse($_GET['redirect']);
                 }
+
                 return new RedirectResponse("/overview");
             }
 
