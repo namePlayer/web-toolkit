@@ -49,7 +49,9 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <button type="submit" class="btn btn-primary float-end" name="securityBasicSettingsSave">Speichern</button>
+                        <button type="submit" class="btn btn-primary float-end" name="securityBasicSettingsSave">
+                            <?= $this->e($this->translate('save-button')) ?>
+                        </button>
                     </div>
 
                 </form>
@@ -94,7 +96,7 @@
                                         <td>TOTP</td>
                                         <td><?= (new DateTime($twoFactor['created'], new DateTimeZone('Europe/Berlin')))->format($this->translate('dateTime-format')) ?></td>
                                         <td>
-                                            <a href="#" class="text-danger text-decoration-none">Entfernen</a>
+                                            <a href="#" class="text-danger text-decoration-none"><?= $this->e($this->translate('remove-button')) ?></a>
                                         </td>
                                     </tr>
 
@@ -133,13 +135,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">185.223.***.***</th>
-                            <td>14.12.2022 18:25</td>
-                            <td>
-                                <a href="#" class="text-danger text-decoration-none">Entfernen</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <th scope="row">185.223.***.***</th>
+                                <td>14.12.2022 18:25</td>
+                                <td>
+                                    <a href="#" class="text-danger text-decoration-none"><?= $this->e($this->translate('remove-button')) ?></a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -168,17 +170,17 @@
                         <input type="hidden" class="form-control" id="addTwoFactorModalTFAToken" name="addTwoFactorModalTFAToken" value="<?= $totpToken ?>">
                     </div>
                     <div class="mb-3">
-                        <label for="addTwoFactorModalName" class="form-label">Name</label>
+                        <label for="addTwoFactorModalName" class="form-label"><?= $this->e($this->translate('account-settings-security-two-factor-name')) ?></label>
                         <input type="text" class="form-control" id="addTwoFactorModalName" name="addTwoFactorModalName" value="Web-Toolkit">
                     </div>
                     <div class="mb-3">
-                        <label for="addTwoFactorModalTFACode" class="form-label">Generierter Code</label>
+                        <label for="addTwoFactorModalTFACode" class="form-label"><?= $this->e($this->translate('account-settings-security-two-factor-generated-code')) ?></label>
                         <input type="text" class="form-control" id="addTwoFactorModalTFACode" name="addTwoFactorModalTFACode" placeholder="000000">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="addTwoFactorModalSubmit">Anlegen</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= $this->e($this->translate('close-button')) ?></button>
+                    <button type="submit" class="btn btn-primary" name="addTwoFactorModalSubmit"><?= $this->e($this->translate('save-button')) ?></button>
                 </div>
             </div>
         </div>

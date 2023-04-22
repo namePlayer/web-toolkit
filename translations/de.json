@@ -2,6 +2,10 @@
 
   "dateTime-format": "d.m.Y H:i",
   "unknown-string": "Unbekannt",
+  "save-button": "Speichern",
+  "remove-button": "Entfernen",
+  "delete-button": "Löschen",
+  "close-button": "Schließen",
 
   "active-string": "Aktiviert",
   "inactive-string": "Inaktiv",
@@ -123,6 +127,8 @@
   "account-settings-security-two-factor-failed-code-invalid": "Dein angegebener Code ist nicht korrekt.",
   "account-settings-security-two-factor-success": "Der 2. Faktor wurde erfolgreich in deinem Konto hinterlegt.",
   "account-settings-security-update-success": "Deine Sicherheitseinstellungen wurden aktualisiert.",
+  "account-settings-security-two-factor-name": "Name",
+  "account-settings-security-two-factor-generated-code": "Generierter Code",
 
   "admin-navigation-general-tab-title": "Allgemein",
   "admin-navigation-general-tab-user-management-title": "Kontoverwaltung",
