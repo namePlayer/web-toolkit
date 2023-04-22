@@ -37,6 +37,11 @@ readonly class TwoFactorController
         if ($request->getMethod() === "POST") {
             if($this->authenticate($account->getId()))
             {
+
+                if(isset($_GET['redirect'])) {
+                    return new RedirectResponse($_GET['redirect']);
+                }
+
                 return new RedirectResponse('/overview');
             }
         }

@@ -32,7 +32,7 @@ readonly class TwoFactorMiddleware implements MiddlewareInterface
 
         if(empty($_SESSION[Software::SESSION_TFA_NAME]))
         {
-            return new RedirectResponse('/authentication/twoFactor');
+            return new RedirectResponse('/authentication/twoFactor?redirect=' . $request->getUri());
         }
 
         return $handler->handle($request);
