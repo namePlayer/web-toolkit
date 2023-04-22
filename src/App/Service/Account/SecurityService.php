@@ -23,28 +23,39 @@ readonly class SecurityService
     {
     }
 
-    public function add(TwoFactor $twoFactor, int $code): void
+    public function add(TwoFactor $twoFactor, int $code, bool $disableMessage = false): bool
     {
         if($this->accountService->findAccountById($twoFactor->getAccount()) === FALSE)
         {
-            return;
+            return false;
         }
 
         $totp = $this->generateTOTPFromSecret($twoFactor->getSecret());
 
         if($this->verifyTOTPBySecret($twoFactor->getSecret(), (string)$code) === FALSE)
         {
-            MESSAGES->add('danger', 'account-settings-security-two-factor-failed-code-invalid');
-            return;
+            if(!$disableMessage)
+            {
+                MESSAGES->add('danger', 'account-settings-security-two-factor-failed-code-invalid');
+            }
+            return false;
         }
 
         if($this->twoFactorTable->insert($twoFactor) === FALSE)
         {
-            MESSAGES->add('danger', 'account-settings-security-two-factor-failed-unk');
-            return;
+            if(!$disableMessage)
+            {
+                MESSAGES->add('danger', 'account-settings-security-two-factor-failed-unk');
+            }
+            return false;
         }
 
-        MESSAGES->add('success', 'Der 2. Faktor wurde erfolgreich hinterlegt');
+        if(!$disableMessage)
+        {
+            MESSAGES->add('success', 'Der 2. Faktor wurde erfolgreich hinterlegt');
+        }
+
+        return true;
     }
 
     public function accountHasTwoFactorEnabled(int $account): bool
@@ -81,15 +92,15 @@ readonly class SecurityService
         return trim(Base32::encodeUpper(random_bytes(isset($_ENV['MFA_TOTP_GEN_BITS']) ? (int)$_ENV['MFA_TOTP_GEN_BITS'] : 10)), '=');
     }
 
-    public function generateTOTPQrCodeBase64(TOTP $totp): string
+    public function generateTOTPQrCodeBase64(TOTP $totp, int $margin = 15, int $size = 300): string
     {
 
         $qrcode = Builder::create()
             ->writer(new SvgWriter())
             ->data($totp->getProvisioningUri())
-            ->size(300)
+            ->size($size)
             ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
-            ->margin(15)
+            ->margin($margin)
             ->labelText('2 Factor Auth')
             ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
             ->build();

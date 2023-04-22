@@ -154,7 +154,7 @@
 
 </div>
 
-<form method="post">
+<form method="post" action="/account/security/addtwofactor">
     <div class="modal fade" id="addTwoFactorModal" tabindex="-1" aria-labelledby="addTwoFactorModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -163,20 +163,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3 text-center">
-                        <?= $totpQrCode ?>
-                    </div>
-                    <div class="mb-3">
-                        <input type="hidden" class="form-control" id="addTwoFactorModalTFAToken" name="addTwoFactorModalTFAToken" value="<?= $totpToken ?>">
-                    </div>
                     <div class="mb-3">
                         <label for="addTwoFactorModalName" class="form-label"><?= $this->e($this->translate('account-settings-security-two-factor-name')) ?></label>
                         <input type="text" class="form-control" id="addTwoFactorModalName" name="addTwoFactorModalName" value="Web-Toolkit">
                     </div>
-                    <div class="mb-3">
-                        <label for="addTwoFactorModalTFACode" class="form-label"><?= $this->e($this->translate('account-settings-security-two-factor-generated-code')) ?></label>
-                        <input type="text" class="form-control" id="addTwoFactorModalTFACode" name="addTwoFactorModalTFACode" placeholder="000000">
-                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= $this->e($this->translate('close-button')) ?></button>
