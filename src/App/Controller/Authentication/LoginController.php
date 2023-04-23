@@ -11,6 +11,7 @@ use App\Service\Account\SecurityService;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\PasswordService;
 use App\Service\MailerService;
+use App\Service\Security\AccountTrustedDeviceService;
 use App\Service\UserInformationService;
 use App\Software;
 use Laminas\Diactoros\Response\RedirectResponse;
@@ -27,7 +28,8 @@ readonly class LoginController
         private AccountService $accountService,
         private PasswordService $passwordService,
         private MailerService $mailerService,
-        private SecurityService $securityService
+        private SecurityService $securityService,
+        private AccountTrustedDeviceService $accountTrustedDeviceService
     ) {
     }
 
@@ -73,7 +75,7 @@ readonly class LoginController
                 MESSAGES->add('success', 'login-account-successful');
                 $this->accountService->updateLastUserLogin($account);
 
-                if($account->isSendMailUnknownLogin())
+                if($account->isSendMailUnknownLogin() && !$this->accountTrustedDeviceService->accountHasTrustedIp($account->getId(), $_SERVER['REMOTE_ADDR']))
                 {
                     $this->mailerService->configureMail(
                         $account->getEmail(),

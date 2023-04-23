@@ -28,7 +28,8 @@ $container->add(\App\Controller\Authentication\LoginController::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Service\Authentication\PasswordService::class)
     ->addArgument(\App\Service\MailerService::class)
-    ->addArgument(\App\Service\Account\SecurityService::class);
+    ->addArgument(\App\Service\Account\SecurityService::class)
+    ->addArgument(\App\Service\Security\AccountTrustedDeviceService::class);
 
 $container->add(\App\Controller\Authentication\LostPasswordController::class)
     ->addArgument(League\Plates\Engine::class)
@@ -182,6 +183,9 @@ $container->add(\App\Service\Account\SecurityService::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Table\Account\TwoFactorTable::class);
 
+$container->add(\App\Service\Security\AccountTrustedDeviceService::class)
+    ->addArgument(\App\Table\Security\AccountTrustedDeviceTable::class);
+
 #
 # Repositories
 #
@@ -213,6 +217,9 @@ $container->add(\App\Table\Mail\MailTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\Account\TwoFactorTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\Security\AccountTrustedDeviceTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #
