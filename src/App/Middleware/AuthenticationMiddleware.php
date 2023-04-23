@@ -40,6 +40,7 @@ AuthenticationMiddleware implements MiddlewareInterface
             return new RedirectResponse('/authentication/login');
         }
 
+        $account->setName($accountData['name']);
         $account->setEmail($accountData['email']);
         $account->setBusiness($accountData['business']);
         $account->setAdmin($accountData['isAdmin'] === 1);

@@ -11,7 +11,7 @@
             padding: 0;
         }
         body {
-            font-family: Arial;
+            font-family: Arial, sans-serif;
         }
         #wrapper {
             text-align: center;

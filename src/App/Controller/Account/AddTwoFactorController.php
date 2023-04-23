@@ -6,8 +6,10 @@ use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Authentication\TwoFactor;
 use App\Model\Authentication\TwoFactorType;
+use App\Model\Mail\MailType;
 use App\Service\Account\SecurityService;
 use App\Service\Authentication\AccountService;
+use App\Service\MailerService;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
@@ -17,9 +19,10 @@ class AddTwoFactorController
 {
 
     public function __construct(
-        private readonly Engine $template,
-        private AccountService $accountService,
-        private SecurityService $securityService
+        private readonly Engine          $template,
+        private AccountService           $accountService,
+        private readonly SecurityService $securityService,
+        private MailerService            $mailerService
     ) {
     }
 
@@ -43,6 +46,13 @@ class AddTwoFactorController
         {
             if($this->securityService->add($twoFactor, $_POST['addTwoFactorTotpTFACode']))
             {
+                $this->mailerService->configureMail(
+                    $account->getEmail(),
+                    'Neuer zweiter Faktor hinterlegt',
+                    MailType::ADDED_TWO_FACTOR_MAIL_ID,
+                    ['accountName' => $account->getName()],
+                    $account->getId()
+                )->send();
                 return new RedirectResponse('/account/security');
             }
         }
