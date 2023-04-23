@@ -20,6 +20,19 @@
             margin: auto;
             border-radius: 2px;
         }
+        .btn-link {
+            border: 1px solid gray;
+            text-decoration: none;
+            color: gray;
+            padding: 10px 25px 10px 25px;
+            border-radius: 5px;
+        }
+        .green {
+            color: #008000;
+        }
+        .red {
+            color: #800000;
+        }
     </style>
 </head>
     <body>
