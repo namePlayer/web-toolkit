@@ -1,6 +1,6 @@
 <?php $this->layout('mail/mailTemplate'); ?>
 <h2>Neue Anmeldung in deinem Web-Toolkit Account erkannt</h2> <br>
-<span>Hallo <?= $accountName ?? ''?>,</span> <br>
+<span>Hallo<?= ' ' . $accountName ?? ''?>,</span> <br>
 <span>Unser System hat eine neue Anmeldung in deinem Konto feststellen können.</span>
 <br>
 <br>
@@ -11,15 +11,11 @@
 <span>Solltest du das gewesen sein, kannst du diese E-Mail ignorieren. Ansonsten ändere bitte sofort dein Passwort und wende dich an unseren Support.</span>
 <br><br><br>
 
-<a href="https://google.com" class="btn-link green">
-    Ja, das war ich
+<a href="http://<?= $_ENV['SOFTWARE_DEFAULT_HOST'] ?>/account/security/allowip?address=<?= $ip ?>" class="btn-link">
+   IP-Adresse verifizieren
 </a>
-
 <br>
-
-<a href="https://youtube.com" class="btn-link red">
-    Nein, das war ich nicht
-</a>
+<p>Wenn du diese IP-Adresse verifizierst, wirst du keine E-Mails erhalten, wenn du dich von dieser Adresse anmeldest.</p>
 
 <br><br><br>
 <span>Viele Grüße,</span> <br>
