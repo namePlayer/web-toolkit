@@ -30,9 +30,25 @@ class AccountTrustedDeviceService
         return $this->accountTrustedDeviceTable->findByAccountAndTrustedIp($account, $ip) !== false;
     }
 
-    public function getTrustedIpsForAccount(int $account): array
+    public function getTrustedIpsForAccount(int $account, bool $censor = true): array
     {
-        return $this->accountTrustedDeviceTable->findAllByAccount($account);
+        $trustedDevices = $this->accountTrustedDeviceTable->findAllByAccount($account);
+
+        if($censor)
+        {
+            $censored = [];
+            foreach ($trustedDevices as $trustedDevice) {
+
+                $charCount = strlen($trustedDevice['ip']) - 3;
+                $ip = substr_replace($trustedDevice['ip'], str_repeat('*', $charCount), $charCount-1, $charCount);
+                $trustedDevice['ip'] = $ip;
+                $censored[] = $trustedDevice;
+
+            }
+            return $censored;
+        }
+
+        return $trustedDevices;
     }
 
 }

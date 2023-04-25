@@ -135,13 +135,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">185.223.***.***</th>
-                                <td>14.12.2022 18:25</td>
-                                <td>
-                                    <a href="#" class="text-danger text-decoration-none"><?= $this->e($this->translate('remove-button')) ?></a>
-                                </td>
-                            </tr>
+                            <?php foreach ($allowedAddresses as $allowedAddress): ?>
+
+                                <tr>
+                                    <th scope="row"><?= $allowedAddress['ip'] ?></th>
+                                    <td><?= (new DateTime($allowedAddress['allowed']))->format($this->translate('dateTime-format')); ?></td>
+                                    <td>
+                                        <a href="#" class="text-danger text-decoration-none"><?= $this->e($this->translate('remove-button')) ?></a>
+                                    </td>
+                                </tr>
+
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

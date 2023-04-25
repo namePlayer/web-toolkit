@@ -8,6 +8,7 @@ use App\Model\Authentication\TwoFactor;
 use App\Model\Authentication\TwoFactorType;
 use App\Service\Account\SecurityService;
 use App\Service\Authentication\AccountService;
+use App\Service\Security\AccountTrustedDeviceService;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -18,7 +19,8 @@ class SecurityController
         public function __construct(
             private readonly Engine $template,
             private AccountService $accountService,
-            private SecurityService $securityService
+            private SecurityService $securityService,
+            private AccountTrustedDeviceService $accountTrustedDeviceService
         ) {
         }
 
@@ -36,7 +38,8 @@ class SecurityController
             $this->template->render('account/security',
             [
                 'account' => $this->accountService->findAccountById($account->getId()),
-                'twoFactors' => $this->securityService->getTwoFactorByAccountID($account->getId())
+                'twoFactors' => $this->securityService->getTwoFactorByAccountID($account->getId()),
+                'allowedAddresses' => $this->accountTrustedDeviceService->getTrustedIpsForAccount($account->getId())
             ]));
     }
 

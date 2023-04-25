@@ -47,7 +47,8 @@ $container->add(\App\Controller\Account\AccountController::class)
 $container->add(\App\Controller\Account\SecurityController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
-    ->addArgument(\App\Service\Account\SecurityService::class);
+    ->addArgument(\App\Service\Account\SecurityService::class)
+    ->addArgument(\App\Service\Security\AccountTrustedDeviceService::class);
 
 $container->add(\App\Controller\Account\AddTwoFactorController::class)
     ->addArgument(\League\Plates\Engine::class)
