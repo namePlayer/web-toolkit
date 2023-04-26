@@ -22,7 +22,7 @@ readonly class AccountListController
         return new HtmlResponse(
             $this->template->render(
                 'administration/accountList',
-                ['accounts' => $this->accountService->getAccountList()]
+                ['accounts' => $this->accountService->getAccountList(true)]
             )
         );
     }

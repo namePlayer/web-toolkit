@@ -67,7 +67,7 @@ $this->layout('basetemplate') ?>
                                 ? $this->e($this->translate('admin-account-list-table-organisation-field-none'))
                                 : ($account['business'] === $account['id']
                                     ? $this->e($this->translate('admin-account-list-table-organisation-field-is-same'))
-                                    : '<a href="/admin/account/'.$account['business'].'">'.$account['business'].'</a>'
+                                    : '<a href="/admin/account/'.$account['business'].'">'.$account['businessName'].'</a>'
                                 )
                             ?>
                         </td>

@@ -56,8 +56,7 @@ class AccountTable extends AbstractTable
 
     public function setAccountBusinessByAccountId(?int $business, int $account): array|false|int
     {
-        return $this->query->update($this->getTableName())->where('id', $account)->set('business', $business)->execute(
-        );
+        return $this->query->update($this->getTableName())->where('id', $account)->set('business', $business)->execute();
     }
 
     public function countAllUsers(array $filters = []): int|string
@@ -83,6 +82,12 @@ class AccountTable extends AbstractTable
     {
         return $this->query->update($this->getTableName())->where('id', $account)->set(['sendMailUnknownLogin' => $active ? 1 : 0]
         )->execute();
+    }
+
+    public function findAllForAdminView(): bool|array
+    {
+        return $this->query->from($this->getTableName())->select('a.name as businessName')->leftJoin(
+            'Account a on Account.id = Account.business')->fetchAll();
     }
 
 }

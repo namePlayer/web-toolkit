@@ -157,8 +157,13 @@ readonly class AccountService
         return (int)$this->accountTable->countAllUsers();
     }
 
-    public function getAccountList(): array
+    public function getAccountList(bool $admin = false): array
     {
+        if($admin)
+        {
+            //var_dump($this->accountTable->findAllForAdminView());
+            return $this->accountTable->findAllForAdminView();
+        }
         return $this->accountTable->findAll();
     }
 
