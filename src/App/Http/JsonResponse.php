@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace App\Http;
 
 use Laminas\Diactoros\Response\JsonResponse as LaminasJsonResponse;
-
 use function is_null;
 
 class JsonResponse extends LaminasJsonResponse
 {
     public function __construct(
-        int $code,
+        int    $code,
         ?array $data = null,
         string $message = '',
-        array $headers = [],
-        int $encodingOptions = LaminasJsonResponse::DEFAULT_JSON_FLAGS
-    ) {
+        array  $headers = [],
+        int    $encodingOptions = LaminasJsonResponse::DEFAULT_JSON_FLAGS
+    )
+    {
         $response = [
             'code' => $code,
             'message' => empty($message) ? $this->getDefaultMessageForCode($code) : $message,

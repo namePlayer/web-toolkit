@@ -16,8 +16,7 @@ class AccountTrustedDeviceService
 
     public function add(AccountTrustedDevice $accountTrustedDevice): bool
     {
-        if($this->accountHasTrustedIp($accountTrustedDevice->getAccount(), $accountTrustedDevice->getIpAddress()))
-        {
+        if ($this->accountHasTrustedIp($accountTrustedDevice->getAccount(), $accountTrustedDevice->getIpAddress())) {
             return false;
         }
 
@@ -34,13 +33,12 @@ class AccountTrustedDeviceService
     {
         $trustedDevices = $this->accountTrustedDeviceTable->findAllByAccount($account);
 
-        if($censor)
-        {
+        if ($censor) {
             $censored = [];
             foreach ($trustedDevices as $trustedDevice) {
 
                 $charCount = strlen($trustedDevice['ip']) - 3;
-                $ip = substr_replace($trustedDevice['ip'], str_repeat('*', $charCount), $charCount-1, $charCount);
+                $ip = substr_replace($trustedDevice['ip'], str_repeat('*', $charCount), $charCount - 1, $charCount);
                 $trustedDevice['ip'] = $ip;
                 $censored[] = $trustedDevice;
 

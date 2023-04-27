@@ -16,7 +16,8 @@ readonly class ApiAuthenticationMiddleware implements MiddlewareInterface
 
     public function __construct(
         private ApiKeyService $apiKeyService
-    ) {
+    )
+    {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface

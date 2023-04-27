@@ -18,10 +18,11 @@ readonly class ApiKeyDetailController
 {
 
     public function __construct(
-        private Engine $template,
-        private ApiKeyService $apiKeyService,
+        private Engine         $template,
+        private ApiKeyService  $apiKeyService,
         private AccountService $accountService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request, array $args = []): ResponseInterface

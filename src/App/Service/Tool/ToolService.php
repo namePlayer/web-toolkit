@@ -13,10 +13,11 @@ readonly class ToolService
 {
 
     public function __construct(
-        private ToolTable $toolTable,
+        private ToolTable      $toolTable,
         private AccountService $accountService,
-        private Logger $logger
-    ) {
+        private Logger         $logger
+    )
+    {
     }
 
     public function getAllTools(): array

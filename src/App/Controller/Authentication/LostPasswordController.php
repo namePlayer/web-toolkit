@@ -16,10 +16,11 @@ readonly class LostPasswordController
 {
 
     public function __construct(
-        private Engine $template,
+        private Engine         $template,
         private AccountService $accountService,
-        private MailerService $mailerService
-    ) {
+        private MailerService  $mailerService
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

@@ -17,9 +17,10 @@ readonly class DomainController
 {
 
     public function __construct(
-        private Engine $template,
+        private Engine                 $template,
         private ShortlinkDomainService $shortlinkDomainService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

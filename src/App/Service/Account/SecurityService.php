@@ -4,7 +4,6 @@ namespace App\Service\Account;
 
 use App\Model\Authentication\TwoFactor;
 use App\Service\Authentication\AccountService;
-use App\Software;
 use App\Table\Account\TwoFactorTable;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
@@ -25,33 +24,27 @@ readonly class SecurityService
 
     public function add(TwoFactor $twoFactor, int $code, bool $disableMessage = false): bool
     {
-        if($this->accountService->findAccountById($twoFactor->getAccount()) === FALSE)
-        {
+        if ($this->accountService->findAccountById($twoFactor->getAccount()) === FALSE) {
             return false;
         }
 
         $totp = $this->generateTOTPFromSecret($twoFactor->getSecret());
 
-        if($this->verifyTOTPBySecret($twoFactor->getSecret(), (string)$code) === FALSE)
-        {
-            if(!$disableMessage)
-            {
+        if ($this->verifyTOTPBySecret($twoFactor->getSecret(), (string)$code) === FALSE) {
+            if (!$disableMessage) {
                 MESSAGES->add('danger', 'account-settings-security-two-factor-failed-code-invalid');
             }
             return false;
         }
 
-        if($this->twoFactorTable->insert($twoFactor) === FALSE)
-        {
-            if(!$disableMessage)
-            {
+        if ($this->twoFactorTable->insert($twoFactor) === FALSE) {
+            if (!$disableMessage) {
                 MESSAGES->add('danger', 'account-settings-security-two-factor-failed-unk');
             }
             return false;
         }
 
-        if(!$disableMessage)
-        {
+        if (!$disableMessage) {
             MESSAGES->add('success', 'Der 2. Faktor wurde erfolgreich hinterlegt');
         }
 
@@ -65,10 +58,8 @@ readonly class SecurityService
 
     public function verifyAccountTwoFactor(int $account, string $code): bool
     {
-        foreach ($this->getTwoFactorByAccountID($account) as $twoFactor)
-        {
-            if($this->verifyTOTPBySecret($twoFactor['secret'], $code))
-            {
+        foreach ($this->getTwoFactorByAccountID($account) as $twoFactor) {
+            if ($this->verifyTOTPBySecret($twoFactor['secret'], $code)) {
                 return true;
             }
         }

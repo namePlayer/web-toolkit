@@ -7,14 +7,10 @@ namespace App\Controller\Authentication;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Authentication\AccountLevel;
-use App\Model\Authentication\Token;
-use App\Model\Authentication\TokenType;
 use App\Model\Mail\MailType;
 use App\Service\Authentication\AccountService;
 use App\Service\Authentication\TokenService;
 use App\Service\MailerService;
-use DateInterval;
-use DateTime;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -23,11 +19,12 @@ readonly class RegistrationController
 {
 
     public function __construct(
-        private Engine $template,
+        private Engine         $template,
         private AccountService $accountService,
-        private TokenService $tokenService,
-        private MailerService $mailerService
-    ) {
+        private TokenService   $tokenService,
+        private MailerService  $mailerService
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

@@ -16,7 +16,8 @@ readonly class ShortlinkTrackingService
 
     public function __construct(
         private ShortlinkTrackingTable $shortlinkTrackingTable
-    ) {
+    )
+    {
     }
 
     public function track(ShortlinkTracking $tracking): void

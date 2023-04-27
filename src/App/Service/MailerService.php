@@ -18,10 +18,11 @@ class MailerService
 
     public function __construct(
         private readonly MailerFactory $mailer,
-        private readonly MailTable $mailTable,
-        private readonly Engine $template,
-        private readonly Logger $logger
-    ) {
+        private readonly MailTable     $mailTable,
+        private readonly Engine        $template,
+        private readonly Logger        $logger
+    )
+    {
     }
 
     public function configureMail(string $to, string $subject, int $template, array $content = [], int $account = null): self
@@ -44,8 +45,7 @@ class MailerService
     public function fetchMailsAndSend(int $amount = null): void
     {
         $limit = $_ENV['MAILER_MAX_BATCH_SIZE'];
-        if($amount !== NULL)
-        {
+        if ($amount !== NULL) {
             $limit = $amount;
         }
 
@@ -62,15 +62,14 @@ class MailerService
             $this->mailer->getMailer()->Subject = $mail['subject'];
             $this->mailer->getMailer()->addAddress($mail['email']);
             $this->mailer->getMailer()->Body =
-            $this->template->render('mail/'.$mail['template'], json_decode($mail['content'], true));
+                $this->template->render('mail/' . $mail['template'], json_decode($mail['content'], true));
 
             try {
                 $this->mailer->getMailer()->send();
                 $this->mailTable->updateMailSentById($mail['id']);
                 $this->successSent++;
-                $this->logger->info('Mail Sending took ' . microtime(true) - $time . 'ms ('.$this->successSent.'/'.$amount.')');
-            } catch (Exception)
-            {
+                $this->logger->info('Mail Sending took ' . microtime(true) - $time . 'ms (' . $this->successSent . '/' . $amount . ')');
+            } catch (Exception) {
                 $this->mailTable->updateMailSentById($mail['id']);
                 $this->logger->error('Mail Sending failed after ' . microtime(true) - $time . 'ms', [$this->mailer->getMailer()->ErrorInfo]);
             }

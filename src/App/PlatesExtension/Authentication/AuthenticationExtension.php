@@ -17,9 +17,10 @@ class AuthenticationExtension implements ExtensionInterface
 {
 
     public function __construct(
-        private AccountService $accountService,
+        private AccountService    $accountService,
         private AccountLevelTable $levelTable
-    ) {
+    )
+    {
     }
 
     public function register(Engine $engine)

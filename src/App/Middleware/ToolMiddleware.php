@@ -17,7 +17,8 @@ readonly class ToolMiddleware implements MiddlewareInterface
 
     public function __construct(
         private ToolTable $toolTable
-    ) {
+    )
+    {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface

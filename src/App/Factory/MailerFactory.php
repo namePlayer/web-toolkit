@@ -10,7 +10,8 @@ readonly class MailerFactory
 
     public function __construct(
         private PHPMailer $mailer
-    ) {
+    )
+    {
     }
 
     public function getMailer(): PHPMailer

@@ -21,11 +21,12 @@ readonly class CreateController
 {
 
     public function __construct(
-        private Engine $template,
-        private ShortlinkService $shortlinkService,
+        private Engine                   $template,
+        private ShortlinkService         $shortlinkService,
         private ShortlinkPasswordService $passwordService,
-        private ShortlinkDomainService $shortlinkDomainService
-    ) {
+        private ShortlinkDomainService   $shortlinkDomainService
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

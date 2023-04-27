@@ -5,6 +5,7 @@ namespace App\Table\Mail;
 use App\Model\Mail\Mail;
 use App\Software;
 use App\Table\AbstractTable;
+use DateTime;
 
 class MailTable extends AbstractTable
 {
@@ -32,7 +33,7 @@ class MailTable extends AbstractTable
 
     public function updateMailSentById(int $id): void
     {
-        $this->query->update($this->getTableName())->set('sent', (new \DateTime())->format(Software::DATABASE_TIME_FORMAT))->where('id',$id)->execute();
+        $this->query->update($this->getTableName())->set('sent', (new DateTime())->format(Software::DATABASE_TIME_FORMAT))->where('id', $id)->execute();
     }
 
     public function findAmountBySentNull(): int|string

@@ -14,7 +14,8 @@ readonly class TokenService
 
     public function __construct(
         private TokenTable $tokenTable
-    ) {
+    )
+    {
     }
 
     public function create(Token $token): bool

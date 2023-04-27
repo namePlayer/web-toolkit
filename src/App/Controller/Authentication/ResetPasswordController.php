@@ -19,10 +19,11 @@ readonly class ResetPasswordController
 {
 
     public function __construct(
-        private TokenService $tokenService,
+        private TokenService   $tokenService,
         private AccountService $accountService,
-        private Engine $template
-    ) {
+        private Engine         $template
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

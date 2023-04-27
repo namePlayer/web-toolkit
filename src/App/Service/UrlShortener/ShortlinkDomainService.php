@@ -13,9 +13,10 @@ readonly class ShortlinkDomainService
 {
 
     public function __construct(
-        private ShortlinkDomainTable $shortlinkDomainTable,
+        private ShortlinkDomainTable      $shortlinkDomainTable,
         private ShortlinkDomainValidation $shortlinkDomainValidation
-    ) {
+    )
+    {
     }
 
     public function create(ShortlinkDomain $shortlinkDomain): void

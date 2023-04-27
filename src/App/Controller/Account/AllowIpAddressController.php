@@ -16,8 +16,8 @@ readonly class AllowIpAddressController
 {
 
     public function __construct(
-        private Engine $template,
-        private AccountService  $accountService,
+        private Engine                      $template,
+        private AccountService              $accountService,
         private AccountTrustedDeviceService $accountTrustedDeviceService
     )
     {
@@ -28,8 +28,7 @@ readonly class AllowIpAddressController
         /* @var $account Account */
         $account = $request->getAttribute(Account::class);
 
-        if(empty($_GET['address']))
-        {
+        if (empty($_GET['address'])) {
             return new RedirectResponse('/account/security');
         }
 
@@ -37,11 +36,9 @@ readonly class AllowIpAddressController
         $accountTrustedDevice->setIpAddress($_GET['address']);
         $accountTrustedDevice->setAccount($account->getId());
 
-        if($request->getMethod() === 'POST')
-        {
+        if ($request->getMethod() === 'POST') {
             $res = $this->create($accountTrustedDevice);
-            if($res instanceof ResponseInterface)
-            {
+            if ($res instanceof ResponseInterface) {
                 return $res;
             }
         }
@@ -56,8 +53,7 @@ readonly class AllowIpAddressController
     public function create(AccountTrustedDevice $accountTrustedDevice): ?ResponseInterface
     {
 
-        if($this->accountTrustedDeviceService->add($accountTrustedDevice))
-        {
+        if ($this->accountTrustedDeviceService->add($accountTrustedDevice)) {
             return new RedirectResponse('/account/security');
         }
 

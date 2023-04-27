@@ -20,11 +20,12 @@ readonly class LinkViewController
 {
 
     public function __construct(
-        private Engine $template,
-        private ShortlinkService $shortlinkService,
+        private Engine                   $template,
+        private ShortlinkService         $shortlinkService,
         private ShortlinkTrackingService $shortlinkTrackingService,
-        private ShortlinkDomainService $shortlinkDomainService
-    ) {
+        private ShortlinkDomainService   $shortlinkDomainService
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request, array $args): ResponseInterface
@@ -54,8 +55,7 @@ readonly class LinkViewController
                         $link->getId(),
                         10
                     ) : [],
-                    'shortlinkDomain' => $link->getDomain() === null ? ShortlinkTool::getDefaultUrl(
-                    ) : $this->shortlinkDomainService->getById($link->getDomain())['address'],
+                    'shortlinkDomain' => $link->getDomain() === null ? ShortlinkTool::getDefaultUrl() : $this->shortlinkDomainService->getById($link->getDomain())['address'],
                     'linkClicks' => $this->shortlinkTrackingService->getClickCountForLink($link->getId()),
                     'browserList' => $this->shortlinkTrackingService->getLinkBrowserAmount($link->getId(), 10),
                     'countryList' => $this->shortlinkTrackingService->getLinkCountryAmount($link->getId(), 10),

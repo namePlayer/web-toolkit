@@ -13,9 +13,10 @@ readonly class AccountController
 {
 
     public function __construct(
-        private Engine $template,
+        private Engine         $template,
         private AccountService $accountService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

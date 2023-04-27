@@ -10,7 +10,8 @@ readonly class SetNewPasswordValidation
 
     public function __construct(
         private PasswordValidation $passwordValidation
-    ) {
+    )
+    {
     }
 
     public function verify(Account $account, string $passwordCheck): bool

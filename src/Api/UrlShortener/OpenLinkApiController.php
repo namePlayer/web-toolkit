@@ -19,12 +19,13 @@ readonly class OpenLinkApiController
 {
 
     public function __construct(
-        private ApiKeyService $apiKeyService,
-        private ShortlinkDomainService $shortlinkDomainService,
-        private ShortlinkService $shortlinkService,
+        private ApiKeyService            $apiKeyService,
+        private ShortlinkDomainService   $shortlinkDomainService,
+        private ShortlinkService         $shortlinkService,
         private ShortlinkPasswordService $shortlinkPasswordService,
         private ShortlinkTrackingService $shortlinkTrackingService
-    ) {
+    )
+    {
     }
 
     public function access(ServerRequestInterface $request): ResponseInterface
@@ -73,9 +74,10 @@ readonly class OpenLinkApiController
 
     private function respond(
         ServerRequestInterface $request,
-        Shortlink $shortlink,
-        array $userInformation
-    ): ResponseInterface {
+        Shortlink              $shortlink,
+        array                  $userInformation
+    ): ResponseInterface
+    {
         if ($shortlink->isTracking()) {
             $tracking = new ShortlinkTracking();
             $tracking->setUserIp($userInformation['ip']);

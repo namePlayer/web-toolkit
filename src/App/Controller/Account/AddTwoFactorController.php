@@ -23,7 +23,8 @@ class AddTwoFactorController
         private AccountService           $accountService,
         private readonly SecurityService $securityService,
         private MailerService            $mailerService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface
@@ -31,8 +32,7 @@ class AddTwoFactorController
         /* @var $account Account */
         $account = $request->getAttribute(Account::class);
 
-        if($request->getMethod() !== "POST" | !isset($_POST['addTwoFactorModalSubmit']) || !isset($_POST['addTwoFactorModalName']))
-        {
+        if ($request->getMethod() !== "POST" | !isset($_POST['addTwoFactorModalSubmit']) || !isset($_POST['addTwoFactorModalName'])) {
             return new RedirectResponse('/account/security');
         }
 
@@ -42,10 +42,8 @@ class AddTwoFactorController
         $twoFactor->setToken($_POST['twoFactorToken'] ?? $this->securityService->generateTOTPSecret());
         $twoFactor->setName($_POST['addTwoFactorModalName']);
 
-        if(isset($_POST['addTwoFactorTotpTFACode']))
-        {
-            if($this->securityService->add($twoFactor, $_POST['addTwoFactorTotpTFACode']))
-            {
+        if (isset($_POST['addTwoFactorTotpTFACode'])) {
+            if ($this->securityService->add($twoFactor, $_POST['addTwoFactorTotpTFACode'])) {
                 $this->mailerService->configureMail(
                     $account->getEmail(),
                     'Neuer zweiter Faktor hinterlegt',

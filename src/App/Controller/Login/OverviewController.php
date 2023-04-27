@@ -15,9 +15,10 @@ readonly class OverviewController
 {
 
     public function __construct(
-        private Engine $engine,
+        private Engine      $engine,
         private ToolService $toolService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

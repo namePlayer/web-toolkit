@@ -16,9 +16,10 @@ readonly class ApiKeyController
 {
 
     public function __construct(
-        private Engine $template,
+        private Engine        $template,
         private ApiKeyService $apiKeyService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

@@ -41,8 +41,7 @@ class ApiKeyTable extends AbstractTable
 
     public function updateActive(int $key, bool $active): string|int|bool
     {
-        return $this->query->update($this->getTableName())->where('id', $key)->set('active', $active ? 1 : 0)->execute(
-        );
+        return $this->query->update($this->getTableName())->where('id', $key)->set('active', $active ? 1 : 0)->execute();
     }
 
     public function updateKey(ApiKey $apiKey): string|int|bool

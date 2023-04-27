@@ -14,10 +14,11 @@ readonly class ShortlinkDashboardController
 {
 
     public function __construct(
-        private Engine $template,
-        private ShortlinkService $shortlinkService,
+        private Engine                 $template,
+        private ShortlinkService       $shortlinkService,
         private ShortlinkDomainService $shortlinkDomainService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

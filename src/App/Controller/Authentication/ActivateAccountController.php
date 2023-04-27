@@ -17,10 +17,11 @@ readonly class ActivateAccountController
 {
 
     public function __construct(
-        private Engine $engine,
-        private TokenService $tokenService,
+        private Engine         $engine,
+        private TokenService   $tokenService,
         private AccountService $accountService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

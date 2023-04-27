@@ -16,9 +16,10 @@ readonly class ListController
 {
 
     public function __construct(
-        private Engine $template,
+        private Engine           $template,
         private ShortlinkService $shortlinkService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface

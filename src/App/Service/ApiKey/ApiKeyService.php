@@ -14,9 +14,10 @@ readonly class ApiKeyService
 {
 
     public function __construct(
-        private ApiKeyTable $apiKeyTable,
+        private ApiKeyTable    $apiKeyTable,
         private AccountService $accountService
-    ) {
+    )
+    {
     }
 
     public function create(ApiKey $apiKey): ?int

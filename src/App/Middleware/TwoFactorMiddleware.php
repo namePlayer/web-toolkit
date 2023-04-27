@@ -25,13 +25,11 @@ readonly class TwoFactorMiddleware implements MiddlewareInterface
         /* @var $account Account */
         $account = $request->getAttribute(Account::class);
 
-        if(!$this->securityService->accountHasTwoFactorEnabled($account->getId()))
-        {
+        if (!$this->securityService->accountHasTwoFactorEnabled($account->getId())) {
             return $handler->handle($request);
         }
 
-        if(empty($_SESSION[Software::SESSION_TFA_NAME]))
-        {
+        if (empty($_SESSION[Software::SESSION_TFA_NAME])) {
             return new RedirectResponse('/authentication/twoFactor?redirect=' . $request->getUri());
         }
 

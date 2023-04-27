@@ -20,11 +20,12 @@ readonly class AccountViewController
 {
 
     public function __construct(
-        private Engine $template,
-        private AccountService $accountService,
+        private Engine            $template,
+        private AccountService    $accountService,
         private AccountLevelTable $accountLevelTable,
-        private MailerService $mailerService
-    ) {
+        private MailerService     $mailerService
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request, array $args): ResponseInterface
@@ -88,10 +89,8 @@ readonly class AccountViewController
             $this->accountService->updateAccount($account);
         }
 
-        if(isset($_POST['adminAccountTabSettingsResendActivationMailButton']))
-        {
-            if($account->isActive())
-            {
+        if (isset($_POST['adminAccountTabSettingsResendActivationMailButton'])) {
+            if ($account->isActive()) {
                 MESSAGES->add('warning', 'admin-account-resend-activation-mail-not-necessary');
                 return;
             }
@@ -109,11 +108,9 @@ readonly class AccountViewController
             MESSAGES->add('success', 'admin-account-resend-activation-mail-successful');
         }
 
-        if(isset($_POST['adminAccountTabSettingsResetPasswordMailButton']))
-        {
+        if (isset($_POST['adminAccountTabSettingsResetPasswordMailButton'])) {
             $token = $this->accountService->resetPassword($account);
-            if(!$token instanceof Token)
-            {
+            if (!$token instanceof Token) {
                 return;
             }
 

@@ -17,11 +17,12 @@ readonly class ShortlinkService
 {
 
     public function __construct(
-        private ShortlinkTable $shortlinkTable,
-        private ShortlinkValidation $validation,
+        private ShortlinkTable           $shortlinkTable,
+        private ShortlinkValidation      $validation,
         private ShortlinkTrackingService $shortlinkTrackingService,
-        private ShortlinkDomainService $shortlinkDomainService
-    ) {
+        private ShortlinkDomainService   $shortlinkDomainService
+    )
+    {
     }
 
     public function create(Shortlink $shortlink): ?string
@@ -77,12 +78,10 @@ readonly class ShortlinkService
                 [
                     'id' => $shortlink['id'],
                     'uuid' => $shortlink['uuid'],
-                    'domain' => empty($shortlink['domain']) ? ShortlinkTool::getDefaultUrl(
-                    ) : $this->shortlinkDomainService->getDomainNameByID($shortlink['domain']),
+                    'domain' => empty($shortlink['domain']) ? ShortlinkTool::getDefaultUrl() : $this->shortlinkDomainService->getDomainNameByID($shortlink['domain']),
                     'created' => (new DateTime($shortlink['created']))->format('d.m.Y H:i'),
                     'account' => $shortlink['account'],
-                    'openShortlinkAddress' => empty($domain) ? ShortlinkTool::getDefaultUrl(
-                        ) . $shortlink['uuid'] : 'http://' . $domain . '/' . $shortlink['uuid'],
+                    'openShortlinkAddress' => empty($domain) ? ShortlinkTool::getDefaultUrl() . $shortlink['uuid'] : 'http://' . $domain . '/' . $shortlink['uuid'],
                     'clicks' => $shortlink['tracking'] === 1 ? $this->shortlinkTrackingService->getClickCountForLink(
                         $shortlink['id']
                     ) : null

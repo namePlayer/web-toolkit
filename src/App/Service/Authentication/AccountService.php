@@ -21,15 +21,16 @@ readonly class AccountService
 {
 
     public function __construct(
-        private AccountTable $accountTable,
-        private PasswordService $passwordService,
-        private RegisterValidation $registerValidation,
-        private AccountLevelTable $accountLevelTable,
-        private PasswordResetValidation $passwordResetValidation,
+        private AccountTable             $accountTable,
+        private PasswordService          $passwordService,
+        private RegisterValidation       $registerValidation,
+        private AccountLevelTable        $accountLevelTable,
+        private PasswordResetValidation  $passwordResetValidation,
         private SetNewPasswordValidation $setNewPasswordValidation,
-        private TokenService $tokenService,
-        private Logger $logger
-    ) {
+        private TokenService             $tokenService,
+        private Logger                   $logger
+    )
+    {
     }
 
     public function updateLastUserLogin(Account $account): void
@@ -159,8 +160,7 @@ readonly class AccountService
 
     public function getAccountList(bool $admin = false): array
     {
-        if($admin)
-        {
+        if ($admin) {
             //var_dump($this->accountTable->findAllForAdminView());
             return $this->accountTable->findAllForAdminView();
         }

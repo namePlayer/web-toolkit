@@ -20,11 +20,12 @@ readonly class LinkController
 {
 
     public function __construct(
-        private Engine $template,
-        private ShortlinkService $shortlinkService,
+        private Engine                   $template,
+        private ShortlinkService         $shortlinkService,
         private ShortlinkPasswordService $passwordService,
         private ShortlinkTrackingService $shortlinkTrackingService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request, array $args): ResponseInterface

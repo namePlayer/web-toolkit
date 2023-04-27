@@ -16,7 +16,6 @@ use App\Service\UserInformationService;
 use App\Software;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
-use MaxMind\Db\Reader;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -24,13 +23,14 @@ readonly class LoginController
 {
 
     public function __construct(
-        private Engine $template,
-        private AccountService $accountService,
-        private PasswordService $passwordService,
-        private MailerService $mailerService,
-        private SecurityService $securityService,
+        private Engine                      $template,
+        private AccountService              $accountService,
+        private PasswordService             $passwordService,
+        private MailerService               $mailerService,
+        private SecurityService             $securityService,
         private AccountTrustedDeviceService $accountTrustedDeviceService
-    ) {
+    )
+    {
     }
 
     public function load(ServerRequestInterface $request): ResponseInterface
@@ -75,8 +75,7 @@ readonly class LoginController
                 MESSAGES->add('success', 'login-account-successful');
                 $this->accountService->updateLastUserLogin($account);
 
-                if($account->isSendMailUnknownLogin() && !$this->accountTrustedDeviceService->accountHasTrustedIp($account->getId(), $_SERVER['REMOTE_ADDR']))
-                {
+                if ($account->isSendMailUnknownLogin() && !$this->accountTrustedDeviceService->accountHasTrustedIp($account->getId(), $_SERVER['REMOTE_ADDR'])) {
                     $this->mailerService->configureMail(
                         $account->getEmail(),
                         'Neue Anmeldung erkannt',
@@ -93,9 +92,8 @@ readonly class LoginController
 
 
                 $_SESSION[Software::SESSION_USERID_NAME] = $account->getId();
-                if(!empty($this->securityService->getTwoFactorByAccountID($account->getId()))) {
-                    if(!empty($_GET['redirect']))
-                    {
+                if (!empty($this->securityService->getTwoFactorByAccountID($account->getId()))) {
+                    if (!empty($_GET['redirect'])) {
                         return new RedirectResponse("/authentication/twoFactor?redirect=" . $_GET['redirect']);
                     }
                     return new RedirectResponse('/authentication/twoFactor');

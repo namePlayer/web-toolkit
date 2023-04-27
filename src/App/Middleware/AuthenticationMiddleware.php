@@ -19,7 +19,8 @@ AuthenticationMiddleware implements MiddlewareInterface
 
     public function __construct(
         private AccountService $accountService
-    ) {
+    )
+    {
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
