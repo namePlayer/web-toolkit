@@ -94,9 +94,13 @@
                                     <tr>
                                         <th scope="row"><?= $twoFactor['name'] ?></th>
                                         <td>TOTP</td>
-                                        <td><?= (new DateTime($twoFactor['created'], new DateTimeZone('Europe/Berlin')))->format($this->translate('dateTime-format')) ?></td>
                                         <td>
-                                            <a href="#" class="text-danger text-decoration-none"><?= $this->e($this->translate('remove-button')) ?></a>
+                                            <?= (new DateTime($twoFactor['created']))->format($this->translate('dateTime-format')) ?>
+                                        </td>
+                                        <td>
+                                            <a href="/account/security/removetwofactor/<?= $twoFactor['id'] ?>" class="text-danger text-decoration-none">
+                                                <?= $this->e($this->translate('remove-button')) ?>
+                                            </a>
                                         </td>
                                     </tr>
 

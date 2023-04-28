@@ -45,6 +45,11 @@ $router->get('/account/security/addtwofactor', 'App\Controller\Account\AddTwoFac
 $router->post('/account/security/addtwofactor', 'App\Controller\Account\AddTwoFactorController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 
+$router->get('/account/security/removetwofactor/{id}', 'App\Controller\Account\RemoveTwoFactorController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/account/security/removetwofactor/{id}', 'App\Controller\Account\RemoveTwoFactorController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
 $router->get('/account/security/allowip', 'App\Controller\Account\AllowIpAddressController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 $router->post('/account/security/allowip', 'App\Controller\Account\AllowIpAddressController::load')

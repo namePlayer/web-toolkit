@@ -56,6 +56,12 @@ $container->add(\App\Controller\Account\AddTwoFactorController::class)
     ->addArgument(\App\Service\Account\SecurityService::class)
     ->addArgument(\App\Service\MailerService::class);
 
+$container->add(\App\Controller\Account\RemoveTwoFactorController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Service\Account\SecurityService::class)
+    ->addArgument(\App\Service\MailerService::class);
+
 $container->add(\App\Controller\Account\AllowIpAddressController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)

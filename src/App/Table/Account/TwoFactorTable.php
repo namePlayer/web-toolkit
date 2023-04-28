@@ -25,4 +25,14 @@ class TwoFactorTable extends AbstractTable
         return $this->query->from($this->getTableName())->where('account', $account)->fetchAll();
     }
 
+    public function findTwoFactorByIdAndAccount(int $id, int $account): array|bool
+    {
+        $where = [
+            'id' => $id,
+            'account' => $account
+        ];
+
+        return $this->query->from($this->getTableName())->where($where)->fetch();
+    }
+
 }

@@ -67,6 +67,11 @@ readonly class SecurityService
         return false;
     }
 
+    public function getTwoFactorByIdAndAccount(TwoFactor $twoFactor): array|false
+    {
+        return $this->twoFactorTable->findTwoFactorByIdAndAccount($twoFactor->getId(), $twoFactor->getAccount());
+    }
+
     public function verifyTOTPBySecret(string $secret, string $code): bool
     {
         $totp = $this->generateTOTPFromSecret($secret);

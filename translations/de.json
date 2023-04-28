@@ -134,6 +134,9 @@
   "account-settings-add-second-factor-general-tab-title": "2. Faktor hinzufügen",
   "account-settings-add-second-factor-totp-apps-note": "Um den 2. Faktor hinzufügen zu können, benötigst du eine App, die TOTP unterstützt. Unten findest du ein paar Beispiele aufgelistet: ",
 
+  "account-settings-security-remove-two-factor-title": "2. Faktor entfernen",
+  "account-settings-security-remove-two-factor-note": "Solltest du deinen 2. Faktor verloren haben, kannst du diesen hier entfernen.",
+
   "account-settings-navigation-security-allow-ip-address-title": "IP-Adresse verifizieren",
   "account-settings-navigation-security-allow-ip-address-note": "Um die Anzahl an Anmeldeinformationen zu verringern, kannst du hier deine IP-Adresse freischalten. Solltest du dich dann über diese Anmelden, wirst du keine E-Mail erhalten.",
 
