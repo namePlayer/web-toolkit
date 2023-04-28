@@ -47,6 +47,16 @@ class RemoveTwoFactorController
             return new RedirectResponse('/account/security');
         }
 
+        $twoFactor->setToken($data['secret']);
+
+        if($request->getMethod() === "POST")
+        {
+            if($this->remove($twoFactor))
+            {
+                return new RedirectResponse('/account/security');
+            }
+        }
+
         $twoFactor->setName($data['name']);
         $twoFactor->setType($data['type']);
 
@@ -58,6 +68,23 @@ class RemoveTwoFactorController
                 ]
             ));
 
+    }
+
+    public function remove(TwoFactor $twoFactor): bool
+    {
+
+        if(isset($_POST['removeTwoFactorTOTP'], $_POST['removeTwoFactor']))
+        {
+            if($this->securityService->verifyAccountTwoFactor($twoFactor->getAccount(), $_POST['removeTwoFactorTOTP']))
+            {
+                $this->securityService->removeTwoFactorByIdAndAccount($twoFactor->getId(), $twoFactor->getAccount());
+                MESSAGES->add('success', 'account-settings-security-remove-two-factor-success');
+                return true;
+            }
+            MESSAGES->add('danger', 'account-settings-security-remove-two-factor-invalid-code');
+        }
+
+        return false;
     }
 
 }

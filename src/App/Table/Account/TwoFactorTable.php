@@ -35,4 +35,14 @@ class TwoFactorTable extends AbstractTable
         return $this->query->from($this->getTableName())->where($where)->fetch();
     }
 
+    public function deleteByidAndAccount(int $id, int $account): bool|int|string|array
+    {
+        $where = [
+            'id' => $id,
+            'account' => $account
+        ];
+
+        return $this->query->delete($this->getTableName())->where($where)->execute();
+    }
+
 }
