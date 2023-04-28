@@ -86,7 +86,7 @@ class AccountTable extends AbstractTable
     public function findAllForAdminView(): bool|array
     {
         return $this->query->from($this->getTableName())->select('a.name as businessName')->leftJoin(
-            'Account a on Account.id = Account.business')->fetchAll();
+            'Account a on a.id = Account.business')->fetchAll();
     }
 
 }
