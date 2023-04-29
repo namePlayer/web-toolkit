@@ -24,7 +24,14 @@ readonly class AccountController
         /* @var $account Account */
         $account = $request->getAttribute(Account::class);
 
-        return new HtmlResponse($this->template->render('account/account'));
+        $accountData = $this->accountService->findAccountById($account->getId());
+
+        return new HtmlResponse($this->template->render(
+            'account/account',
+            [
+                'accountData' => $accountData
+            ]
+        ));
     }
 
 }

@@ -26,7 +26,14 @@
 
         <div class="col-md-9">
 
-            <h3 class="mb-3"><?= $this->e($this->translate('account-settings-navigation-general-tab-title')) ?></h3>
+            <div class="row mb-3">
+                <div class="col-8">
+                    <h3><?= $this->e($this->translate('account-settings-navigation-general-tab-title')) ?></h3>
+                </div>
+                <div class="col-4 d-flex align-items-center">
+                    <span>Kundennummer: <b><?= $this->e($accountData['id']) ?></b></span>
+                </div>
+            </div>
             <form action="" method="post">
                 <div class="row">
 
@@ -34,25 +41,25 @@
                         <label for="accountUserAccountname" class="form-label">
                             <?= $this->e($this->translate('account-settings-general-accountname')) ?>
                         </label>
-                        <input type="text" class="form-control" id="accountUserAccountname" name="accountUserAccountname">
+                        <input type="text" class="form-control" id="accountUserAccountname" name="accountUserAccountname" value="<?= $this->e($accountData['name']) ?>">
                     </div>
                     <div class="col-6 mb-3">
                         <label for="accountUserFirstname" class="form-label">
                             <?= $this->e($this->translate('account-settings-general-firstname')) ?>
                         </label>
-                        <input type="text" class="form-control" id="accountUserFirstname" name="accountUserFirstname">
+                        <input type="text" class="form-control" id="accountUserFirstname" name="accountUserFirstname" value="<?= $this->e($accountData['firstname']) ?>">
                     </div>
                     <div class="col-6 mb-3">
                         <label for="accountUserLastname" class="form-label">
                             <?= $this->e($this->translate('account-settings-general-lastname')) ?>
                         </label>
-                        <input type="text" class="form-control" id="accountUserLastname" name="accountUserLastname">
+                        <input type="text" class="form-control" id="accountUserLastname" name="accountUserLastname" value="<?= $this->e($accountData['surname']) ?>">
                     </div>
                     <div class="col-12 mb-3">
                         <label for="accountUserEmail" class="form-label">
                             <?= $this->e($this->translate('account-settings-general-email')) ?>
                         </label>
-                        <input type="email" class="form-control" id="accountUserEmail" name="accountUserEmail">
+                        <input type="email" class="form-control" id="accountUserEmail" name="accountUserEmail" value="<?= $this->e($accountData['email']) ?>">
                     </div>
                     <div class="col-8"></div>
                     <div class="col-4">
