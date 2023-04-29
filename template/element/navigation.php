@@ -18,7 +18,7 @@
                     </li>
                 <?php endif; ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= $this->e($this->translate('navigation-products')) ?></a>
+                    <a class="nav-link" href="/products"><?= $this->e($this->translate('navigation-products')) ?></a>
                 </li>
             </ul>
 
@@ -37,8 +37,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/account"><?= $this->e($this->translate('navigation-account-settings')) ?></a></li>
-                            <li><a class="dropdown-item" href="#"><?= $this->e($this->translate('navigation-account-licenses')) ?></a></li>
-                            <li><a class="dropdown-item" href="#"><?= $this->e($this->translate('navigation-account-support')) ?></a></li>
+                            <li><a class="dropdown-item" href="/support"><?= $this->e($this->translate('navigation-account-support')) ?></a></li>
                             <?php if($this->getAccountInformation()['isSupport'] === 1 || $this->getAccountInformation()['isAdmin'] === 1): ?>
                                 <hr>
                                 <li><a class="dropdown-item" href="/admin/support"><?= $this->e($this->translate('navigation-support-dashboard')) ?></a></li>
