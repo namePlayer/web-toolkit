@@ -10,7 +10,7 @@ use App\Table\AbstractTable;
 class ApiKeyTable extends AbstractTable
 {
 
-    public function insert(ApiKey $apiKey): bool|int
+    public function insert(ApiKey $apiKey): bool|int|string
     {
         $values = [
             'account' => $apiKey->getAccount(),
