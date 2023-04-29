@@ -95,4 +95,9 @@ class MailerService
         return (int)$this->mailTable->findAmountByLastDays($days);
     }
 
+    public function getMailTypeAmount(): array
+    {
+        return $this->mailTable->getGroupedMailTypeAmount();
+    }
+
 }

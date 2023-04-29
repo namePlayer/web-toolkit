@@ -37,7 +37,7 @@
             <?php $this->insert('element/alert') ?>
 
             <div class="row">
-                <div class="col-6">
+                <div class="col-6 mb-3">
                     <div class="card">
                         <div class="card-body">
                             <span class="text-start">
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-6 mb-3">
                     <div class="card">
                         <div class="card-body">
                             <span class="text-start">
@@ -60,6 +60,25 @@
                             </span>
                         </div>
                     </div>
+                </div>
+                <div class="col-12 mb-3">
+                    <h5><?= $this->e($this->translate('administration-mail-dashboard-mail-type-stats-title')) ?></h5>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col"><?= $this->e($this->translate('administration-mail-dashboard-mail-type-stats-table-title')) ?></th>
+                            <th scope="col"><?= $this->e($this->translate('administration-mail-dashboard-mail-type-stats-table-amount')) ?></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($mailTypeAmountGrouped as $mailTypeAmount): ?>
+                                <tr>
+                                    <td><?= $this->e($mailTypeAmount['title']) ?></td>
+                                    <td><?= $this->e($mailTypeAmount['amount']) ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

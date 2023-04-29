@@ -48,4 +48,13 @@ class MailTable extends AbstractTable
         )->fetchColumn();
     }
 
+    public function getGroupedMailTypeAmount(): array|bool
+    {
+
+        return $this->query->from($this->getTableName())->select(null)->select('MailType.title, COUNT(*) as amount')
+            ->leftJoin('MailType on MailType.id = Mail.type')
+            ->groupBy('MailType.title')->orderBy('amount DESC')->fetchAll();
+
+    }
+
 }

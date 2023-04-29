@@ -31,7 +31,8 @@ readonly class MailController
                 'administration/mail',
                 [
                     'unsentMailAmount' => $this->mailerService->getUnsentAmount(),
-                    'mailsLastSevenDaysAmount' => $this->mailerService->getSentAmountForLastXDays(7)
+                    'mailsLastSevenDaysAmount' => $this->mailerService->getSentAmountForLastXDays(7),
+                    'mailTypeAmountGrouped' => $this->mailerService->getMailTypeAmount()
                 ]
             )
         );
