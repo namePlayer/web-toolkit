@@ -26,7 +26,43 @@
 
         <div class="col-md-9">
 
-            <h3><?= $this->e($this->translate('account-settings-navigation-general-tab-title')) ?></h3>
+            <h3 class="mb-3"><?= $this->e($this->translate('account-settings-navigation-general-tab-title')) ?></h3>
+            <form action="" method="post">
+                <div class="row">
+
+                    <div class="col-12 mb-3">
+                        <label for="accountUserAccountname" class="form-label">
+                            <?= $this->e($this->translate('account-settings-general-accountname')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="accountUserAccountname" name="accountUserAccountname">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="accountUserFirstname" class="form-label">
+                            <?= $this->e($this->translate('account-settings-general-firstname')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="accountUserFirstname" name="accountUserFirstname">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="accountUserLastname" class="form-label">
+                            <?= $this->e($this->translate('account-settings-general-lastname')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="accountUserLastname" name="accountUserLastname">
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="accountUserEmail" class="form-label">
+                            <?= $this->e($this->translate('account-settings-general-email')) ?>
+                        </label>
+                        <input type="email" class="form-control" id="accountUserEmail" name="accountUserEmail">
+                    </div>
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <?= $this->e($this->translate('save-button')) ?>
+                        </button>
+                    </div>
+
+                </div>
+            </form>
 
         </div>
 

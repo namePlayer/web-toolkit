@@ -110,6 +110,12 @@
   "account-settings-navigation-security-tab-title": "Sicherheit",
   "account-settings-navigation-organisation-tab-title": "Organisation",
   "account-settings-navigation-licenses-tab-title": "Lizenzen",
+
+  "account-settings-general-accountname": "Konto- oder Organisationsname",
+  "account-settings-general-firstname": "Vorname",
+  "account-settings-general-lastname": "Nachname",
+  "account-settings-general-email": "E-Mail Adresse",
+
   "account-settings-security-general": "Allgemein",
   "account-settings-security-general-send-login-information-mail": "Sende mir eine E-Mail, wenn eine Anmeldung von einer unbekannten IP vorgenommen wird",
   "account-settings-security-two-factor": "2-Faktor Authentifizierung",
