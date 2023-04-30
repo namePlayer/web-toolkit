@@ -360,6 +360,8 @@
   "administration-url-shortener-all-links-search-shortcode": "Kurzcode",
   "administration-url-shortener-all-links-search-destination": "Zieladresse",
   "administration-url-shortener-all-links-search-domain": "Domain",
-  "administration-url-shortener-all-links-search-result-limit": "Max. Ergebnisse"
+  "administration-url-shortener-all-links-search-result-limit": "Max. Ergebnisse",
+
+  "administration-url-shortener-link-management-title": "Link Verwaltung"
 
 }

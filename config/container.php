@@ -189,6 +189,11 @@ $container->add(\App\Controller\Administration\UrlShortener\AllLinksController::
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkService::class);
 
+$container->add(\App\Controller\Administration\UrlShortener\LinkManagementController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class);
+
 $container->add(\App\Service\ApiKey\ApiKeyService::class)
     ->addArgument(\App\Table\ApiKey\ApiKeyTable::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
