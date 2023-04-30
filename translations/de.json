@@ -8,6 +8,7 @@
   "delete-button": "Löschen",
   "close-button": "Schließen",
   "search-button": "Suche",
+  "abort-button": "Abbrechen",
 
   "active-string": "Aktiviert",
   "inactive-string": "Inaktiv",
@@ -341,6 +342,8 @@
   "administration-url-shortener-dashboard-link-table-id-header": "ID",
   "administration-url-shortener-dashboard-link-table-domain-header": "Domain",
   "administration-url-shortener-dashboard-link-table-uuid-header": "Shortcode",
+  "administration-url-shortener-dashboard-link-table-created-header": "Erstellt am",
+  "administration-url-shortener-dashboard-link-table-account-header": "Nutzerkonto",
   "administration-url-shortener-dashboard-domain-table-id-header": "ID",
   "administration-url-shortener-dashboard-domain-table-address-header": "Domain",
   "administration-url-shortener-dashboard-domain-table-status-header": "Status",
@@ -350,6 +353,13 @@
   "administration-url-shortener-dashboard-all-links-title": "Alle Links",
   "administration-url-shortener-dashboard-all-domains-title": "Alle Domains",
 
-  "administration-url-shortener-all-links-title": "Alle Links"
+  "administration-url-shortener-all-links-title": "Alle Links",
+  "administration-url-shortener-all-links-search-title": "Kurzlink suchen",
+  "administration-url-shortener-all-links-search-id": "Link ID",
+  "administration-url-shortener-all-links-search-customerid": "Kundennummer",
+  "administration-url-shortener-all-links-search-shortcode": "Kurzcode",
+  "administration-url-shortener-all-links-search-destination": "Zieladresse",
+  "administration-url-shortener-all-links-search-domain": "Domain",
+  "administration-url-shortener-all-links-search-result-limit": "Max. Ergebnisse"
 
 }

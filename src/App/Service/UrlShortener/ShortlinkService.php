@@ -138,6 +138,11 @@ readonly class ShortlinkService
             $searchFor = array_merge($searchFor, ['Shortlink.uuid LIKE ?' => '%' . $searchDTO->getShortcode() . '%']);
         }
 
+        if(!empty($searchDTO->getDestination()))
+        {
+            $searchFor = array_merge($searchFor, ['Shortlink.destination LIKE ?' => '%' . $searchDTO->getDestination() . '%']);
+        }
+
         if(!empty($searchDTO->getDomain()))
         {
             $searchFor = array_merge($searchFor, ['Shortlink.domain' => $searchDTO->getDomain()]);

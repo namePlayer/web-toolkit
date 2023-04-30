@@ -34,10 +34,6 @@ class AllLinksController
 
     private function search(ServerRequestInterface $request): array
     {
-        if($request->getMethod() !== "POST")
-        {
-            return $this->shortlinkService->getAllShortlinksByLimit(25);
-        }
 
         $searchDTO = new ShortlinkSearchDTO();
         $searchDTO->setId(empty($_POST['adminSearchShortlinkModalId']) ? 0 : (int)$_POST['adminSearchShortlinkModalId']);
@@ -45,6 +41,7 @@ class AllLinksController
         $searchDTO->setDomain(empty($_POST['adminSearchShortlinkModalDomain']) ? '' : (string)$_POST['adminSearchShortlinkModalDomain']);
         $searchDTO->setShortcode(empty($_POST['adminSearchShortlinkModalShortcode']) ? '' : (string)$_POST['adminSearchShortlinkModalShortcode']);
         $searchDTO->setResultLimit(empty($_POST['adminSearchShortlinkModalLimit']) ? 25 : (int)$_POST['adminSearchShortlinkModalLimit']);
+        $searchDTO->setDestination(empty($_POST['adminSearchShortlinkModalDestination']) ? '' : (string)$_POST['adminSearchShortlinkModalDestination']);
 
         return $this->shortlinkService->search($searchDTO);
     }

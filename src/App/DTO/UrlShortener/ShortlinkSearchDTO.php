@@ -10,6 +10,7 @@ class ShortlinkSearchDTO
     private string $domain;
     private string $shortcode;
     private int $resultLimit;
+    private string $destination;
 
     public function getId(): int
     {
@@ -59,6 +60,16 @@ class ShortlinkSearchDTO
     public function setResultLimit(int $resultLimit): void
     {
         $this->resultLimit = $resultLimit;
+    }
+
+    public function getDestination(): string
+    {
+        return $this->destination;
+    }
+
+    public function setDestination(string $destination): void
+    {
+        $this->destination = $destination;
     }
 
 }

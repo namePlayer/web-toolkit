@@ -45,7 +45,13 @@
                                     <?= $this->e($this->translate('administration-url-shortener-dashboard-link-table-domain-header')) ?>
                                 </th>
                                 <th scope="col">
+                                    <?= $this->e($this->translate('administration-url-shortener-dashboard-link-table-account-header')) ?>
+                                </th>
+                                <th scope="col">
                                     <?= $this->e($this->translate('administration-url-shortener-dashboard-link-table-uuid-header')) ?>
+                                </th>
+                                <th scope="col">
+                                    <?= $this->e($this->translate('administration-url-shortener-dashboard-link-table-created-header')) ?>
                                 </th>
                                 <th scope="col">
                                 </th>
@@ -58,7 +64,16 @@
                                     <td>
                                         <?= $link['domain'] === NULL ? \App\Tool\ShortlinkTool::getDefaultUrl() : $link['address'] ?>
                                     </td>
-                                    <td><?= $link['uuid'] ?></td>
+                                    <td>
+                                        <a href="/admin/account/<?= $this->e($link['account']) ?>" class="text-decoration-none">
+                                            <?= $this->e($link['accountName']) ?>
+                                        </a>
+                                        <span class="text-muted">
+                                            <?= $link['account'] ?>
+                                        </span>
+                                    </td>
+                                    <td><?= $this->e($link['uuid']) ?></td>
+                                    <td><?= (new DateTime($link['created']))->format($this->translate('dateTime-format')) ?></td>
                                     <td>
                                         <a href="/admin/urlshortener/link/<?= $link['id'] ?>" class="text-decoration-none">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-wide" viewBox="0 0 16 16">
@@ -83,7 +98,9 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="adminSearchShortlinkModalLabel">Shortlink Search</h1>
+                    <h1 class="modal-title fs-5" id="adminSearchShortlinkModalLabel">
+                        <?= $this->e($this->translate('administration-url-shortener-all-links-search-title')) ?>
+                    </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -91,23 +108,39 @@
                     <div class="row">
 
                         <div class="col-6 mb-3">
-                            <label for="adminSearchShortlinkModalId" class="form-label">ID</label>
+                            <label for="adminSearchShortlinkModalId" class="form-label">
+                                <?= $this->e($this->translate('administration-url-shortener-all-links-search-id')) ?>
+                            </label>
                             <input type="number" class="form-control" id="adminSearchShortlinkModalId" name="adminSearchShortlinkModalId">
                         </div>
                         <div class="col-6 mb-3">
-                            <label for="adminSearchShortlinkModalAccount" class="form-label">Kundenummer</label>
+                            <label for="adminSearchShortlinkModalAccount" class="form-label">
+                                <?= $this->e($this->translate('administration-url-shortener-all-links-search-customerid')) ?>
+                            </label>
                             <input type="number" class="form-control" id="adminSearchShortlinkModalAccount" name="adminSearchShortlinkModalAccount">
                         </div>
                         <div class="col-12 mb-3">
-                            <label for="adminSearchShortlinkModalShortcode" class="form-label">Shortcode</label>
+                            <label for="adminSearchShortlinkModalShortcode" class="form-label">
+                                <?= $this->e($this->translate('administration-url-shortener-all-links-search-shortcode')) ?>
+                            </label>
                             <input type="text" class="form-control" id="adminSearchShortlinkModalShortcode" name="adminSearchShortlinkModalShortcode">
                         </div>
+                        <div class="col-12 mb-3">
+                            <label for="adminSearchShortlinkModalDestination" class="form-label">
+                                <?= $this->e($this->translate('administration-url-shortener-all-links-search-destination')) ?>
+                            </label>
+                            <input type="text" class="form-control" id="adminSearchShortlinkModalDestination" name="adminSearchShortlinkModalDestination">
+                        </div>
                         <div class="col-8 mb-3">
-                            <label for="adminSearchShortlinkModalDomain" class="form-label">Domain</label>
+                            <label for="adminSearchShortlinkModalDomain" class="form-label">
+                                <?= $this->e($this->translate('administration-url-shortener-all-links-search-domain')) ?>
+                            </label>
                             <input type="text" class="form-control" id="adminSearchShortlinkModalDomain" name="adminSearchShortlinkModalDomain">
                         </div>
                         <div class="col-4 mb-3">
-                            <label for="adminSearchShortlinkModalLimit" class="form-label">Search Result limit</label>
+                            <label for="adminSearchShortlinkModalLimit" class="form-label">
+                                <?= $this->e($this->translate('administration-url-shortener-all-links-search-result-limit')) ?>
+                            </label>
                             <input type="number" class="form-control" id="adminSearchShortlinkModalLimit" name="adminSearchShortlinkModalLimit" value="25">
                         </div>
 
@@ -115,8 +148,12 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Abort</button>
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <?= $this->e($this->translate('abort-button')) ?>
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <?= $this->e($this->translate('search-button')) ?>
+                    </button>
                 </div>
             </div>
         </div>
