@@ -148,6 +148,9 @@
   "account-settings-navigation-security-allow-ip-address-title": "IP-Adresse verifizieren",
   "account-settings-navigation-security-allow-ip-address-note": "Um die Anzahl an Anmeldeinformationen zu verringern, kannst du hier deine IP-Adresse freischalten. Solltest du dich dann über diese Anmelden, wirst du keine E-Mail erhalten.",
 
+  "support-tab-title": "Support",
+  "support-create-ticket-button": "Ticket erstellen",
+
   "admin-navigation-general-tab-title": "Allgemein",
   "admin-navigation-general-tab-user-management-title": "Kontoverwaltung",
   "admin-navigation-general-tab-license-management-title": "Lizenzverwaltung",

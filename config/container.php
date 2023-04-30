@@ -40,6 +40,9 @@ $container->add(\App\Controller\Authentication\TwoFactorController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\Account\SecurityService::class);
 
+$container->add(\App\Controller\Support\SupportController::class)
+    ->addArgument(\League\Plates\Engine::class);
+
 $container->add(\App\Controller\Account\AccountController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
@@ -135,6 +138,9 @@ $container->add(\App\Controller\Administration\AccountViewController::class)
 $container->add(\App\Controller\Administration\MailController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\MailerService::class);
+
+$container->add(\App\Controller\Administration\Support\SupportController::class)
+    ->addArgument(\League\Plates\Engine::class);
 
 #
 # Services

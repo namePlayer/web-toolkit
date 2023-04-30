@@ -15,7 +15,7 @@
         <a href="/admin/mails" class="list-group-item list-group-item-action">
             <?= $this->e($this->translate('admin-navigation-general-tab-mail-title')) ?>
         </a>
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="/admin/support" class="list-group-item list-group-item-action">
             <?= $this->e($this->translate('admin-navigation-general-tab-support-interface-title')) ?>
         </a>
     </div>

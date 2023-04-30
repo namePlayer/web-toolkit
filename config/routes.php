@@ -35,6 +35,9 @@ $router->post('/authentication/twoFactor', 'App\Controller\Authentication\TwoFac
 
 $router->get('/authentication/logout', 'App\Controller\Authentication\LogoutController::load');
 
+$router->get('/support', 'App\Controller\Support\SupportController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
 $router->get('/account/security', 'App\Controller\Account\SecurityController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 $router->post('/account/security', 'App\Controller\Account\SecurityController::load')
@@ -85,6 +88,11 @@ $router->get('/admin/urlshortener', 'App\Controller\Administration\UrlShortener\
 $router->get('/admin/mails', 'App\Controller\Administration\MailController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 $router->post('/admin/mails', 'App\Controller\Administration\MailController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+
+$router->get('/admin/support', 'App\Controller\Administration\Support\SupportController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+$router->post('/admin/support', 'App\Controller\Administration\Support\SupportController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
 $router->get('/overview', 'App\Controller\Login\OverviewController::load')
