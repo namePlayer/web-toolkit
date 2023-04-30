@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\UrlShortener;
 
+use App\DTO\UrlShortener\ShortlinkSearchDTO;
 use App\Model\Authentication\Account;
 use App\Model\UrlShortener\Shortlink;
 use App\Table\UrlShortener\ShortlinkTable;
@@ -115,6 +116,40 @@ readonly class ShortlinkService
         $shortlink->setTracking($shortlinkData['tracking'] === 1);
 
         return $shortlink;
+    }
+
+    public function search(ShortlinkSearchDTO $searchDTO): array
+    {
+
+        $searchFor = [];
+
+        if($searchDTO->getId() !== 0)
+        {
+            $searchFor = array_merge($searchFor, ['Shortlink.id' => $searchDTO->getId()]);
+        }
+
+        if($searchDTO->getAccount() !== 0)
+        {
+            $searchFor = array_merge($searchFor, ['Shortlink.account' => $searchDTO->getAccount()]);
+        }
+
+        if(!empty($searchDTO->getShortcode()))
+        {
+            $searchFor = array_merge($searchFor, ['Shortlink.uuid LIKE ?' => '%' . $searchDTO->getShortcode() . '%']);
+        }
+
+        if(!empty($searchDTO->getDomain()))
+        {
+            $searchFor = array_merge($searchFor, ['Shortlink.domain' => $searchDTO->getDomain()]);
+            if(!is_numeric($searchFor['Shortlink.domain']))
+            {
+                unset($searchFor['Shortlink.domain']);
+                $searchFor = array_merge($searchFor, ['ShortlinkDomain.address LIKE ?' => '%'.$searchDTO->getDomain().'%']);
+            }
+        }
+
+        return $this->shortlinkTable->findBySearchArray($searchFor, $searchDTO->getResultLimit());
+
     }
 
     public function getAllShortlinksByLimit(int $limit): array

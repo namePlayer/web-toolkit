@@ -7,6 +7,7 @@
   "remove-button": "Entfernen",
   "delete-button": "Löschen",
   "close-button": "Schließen",
+  "search-button": "Suche",
 
   "active-string": "Aktiviert",
   "inactive-string": "Inaktiv",
@@ -347,6 +348,8 @@
   "administration-url-shortener-dashboard-domain-table-status-verification": "Verifizierung",
   "administration-url-shortener-dashboard-recent-domains-title": "Zuletzt hinzugefügte Domains",
   "administration-url-shortener-dashboard-all-links-title": "Alle Links",
-  "administration-url-shortener-dashboard-all-domains-title": "Alle Domains"
+  "administration-url-shortener-dashboard-all-domains-title": "Alle Domains",
+
+  "administration-url-shortener-all-links-title": "Alle Links"
 
 }

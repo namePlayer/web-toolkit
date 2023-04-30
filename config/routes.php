@@ -85,6 +85,11 @@ $router->post('/admin/account/{id}', 'App\Controller\Administration\AccountViewC
 $router->get('/admin/urlshortener', 'App\Controller\Administration\UrlShortener\ShortlinkDashboardController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
+$router->get('/admin/urlshortener/alllinks', 'App\Controller\Administration\UrlShortener\AllLinksController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+$router->post('/admin/urlshortener/alllinks', 'App\Controller\Administration\UrlShortener\AllLinksController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+
 $router->get('/admin/mails', 'App\Controller\Administration\MailController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 $router->post('/admin/mails', 'App\Controller\Administration\MailController::load')

@@ -69,4 +69,15 @@ class ShortlinkTable extends AbstractTable
         )->fetchColumn();
     }
 
+    public function findBySearchArray(array $search, int $limit): array
+    {
+//        var_dump($this->query->from($this->getTableName())->select('ShortlinkDomain.address')->leftJoin(
+//            'ShortlinkDomain on ShortlinkDomain.id = Shortlink.domain'
+//        )->where($search, ['eli'])->limit($limit)->getQuery());
+
+        return $this->query->from($this->getTableName())->select('ShortlinkDomain.address')->leftJoin(
+            'ShortlinkDomain on ShortlinkDomain.id = Shortlink.domain'
+        )->where($search, ['eli'])->limit($limit)->fetchAll();
+    }
+
 }
