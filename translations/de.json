@@ -13,6 +13,7 @@
   "active-string": "Aktiviert",
   "inactive-string": "Inaktiv",
   "disabled-string": "Deaktiviert",
+  "customer-id-string": "Kundennummer",
 
   "homepage-content-create-shortlink-title": "Kurzlink erstellen",
   "homepage-content-create-shortlink-description": "Erstelle einen Kurzen Link, welcher einfach zu teilen ist. Dieser ist Beispielsweise Sinnvoll, solltest du auf deinem SmartTV eine Webseite öffnen wollen, welche eine Lange URL hat.",
@@ -362,6 +363,11 @@
   "administration-url-shortener-all-links-search-domain": "Domain",
   "administration-url-shortener-all-links-search-result-limit": "Max. Ergebnisse",
 
-  "administration-url-shortener-link-management-title": "Link Verwaltung"
+  "administration-url-shortener-link-management-title": "Link Verwaltung",
+  "administration-url-shortener-link-management-information-tab-title": "Informationen",
+  "administration-url-shortener-link-management-tracking-tab-title": "Tracking",
+  "administration-url-shortener-link-management-actions-tab-title": "Aktionen",
+  "administration-url-shortener-link-management-actions-tab-lock": "Sperren",
+  "administration-url-shortener-link-management-actions-tab-delete": "Löschen"
 
 }

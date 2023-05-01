@@ -35,8 +35,8 @@
                 </div>
                 <div class="col-4 mb-3">
                     <span><b>ID: </b> <?= $data->getId() ?></span> <br>
-                    <span><b>Kundennummer: </b> <?= $data->getAccount() ?></span> <br>
-                    <span><b>UUID: </b> <?= $data->getUUID() ?></span> <br>
+                    <span><b><?= $this->translate('customer-id-string') ?>: </b> <?= $data->getAccount() ?></span> <br>
+                    <span><b>UUID: </b> <?= $this->e($data->getUUID()) ?></span> <br>
                 </div>
 
                 <div class="col-md-12 mt-4">
@@ -44,20 +44,26 @@
                     <ul class="nav nav-pills nav-fill mb-3" id="link-management-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="link-management-home-tab" data-bs-toggle="pill" data-bs-target="#link-management-home" type="button" role="tab" aria-controls="link-management-home" aria-selected="true">
-                                Information
+                                <?= $this->translate('administration-url-shortener-link-management-information-tab-title') ?>
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="link-management-tracking-tab" data-bs-toggle="pill" data-bs-target="#link-management-tracking" type="button" role="tab" aria-controls="link-management-tracking" aria-selected="false"
                                 <?= $data->isTracking() ? '' : ' disabled' ?>>
-                                Tracking
+                                <?= $this->translate('administration-url-shortener-link-management-tracking-tab-title') ?>
                             </button>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Aktionen</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                                <?= $this->translate('administration-url-shortener-link-management-actions-tab-title') ?>
+                            </a>
                             <ul class="dropdown-menu w-100">
-                                <li><a class="dropdown-item link-danger" href="#">Sperren</a></li>
-                                <li><a class="dropdown-item link-danger" href="#">Löschen</a></li>
+                                <li><a class="dropdown-item link-danger" href="#">
+                                        <?= $this->translate('administration-url-shortener-link-management-actions-tab-lock') ?>
+                                    </a></li>
+                                <li><a class="dropdown-item link-danger" href="#">
+                                        <?= $this->translate('administration-url-shortener-link-management-actions-tab-delete') ?>
+                                    </a></li>
                             </ul>
                         </li>
                     </ul>
@@ -67,7 +73,7 @@
                                 <div class="col-md-4 mb-3">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5>Domain</h5>
+                                            <h5><?= $this->translate('url-shortener-link-list-table-domain-title') ?></h5>
                                             <span><?= $this->e($domain ?? \App\Tool\ShortlinkTool::getDefaultUrl()) ?></span>
                                         </div>
                                     </div>
@@ -75,10 +81,10 @@
                                 <div class="col-md-4 mb-3">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5>Tracking</h5>
+                                            <h5><?= $this->translate('url-shortener-link-information-tracking') ?></h5>
                                             <?= $data->isTracking()
-                                                ? '<span class="text-success">Aktiviert</span>'
-                                                : '<span class="text-danger">Deaktiviert</span>'
+                                                ? '<span class="text-success">'.$this->translate('active-string').'</span>'
+                                                : '<span class="text-danger">'.$this->translate('disabled-string').'</span>'
                                             ?>
                                         </div>
                                     </div>
@@ -86,10 +92,10 @@
                                 <div class="col-md-4 mb-3">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5>Passwortschutz</h5>
+                                            <h5><?= $this->translate('url-shortener-link-information-password') ?></h5>
                                             <?= $data->getPassword() !== NULL
-                                                ? '<span class="text-success">Aktiviert</span>'
-                                                : '<span class="text-danger">Deaktiviert</span>'
+                                                ? '<span class="text-success">'.$this->translate('active-string').'</span>'
+                                                : '<span class="text-danger">'.$this->translate('disabled-string').'</span>'
                                             ?>
                                         </div>
                                     </div>
@@ -107,7 +113,7 @@
                                 <div class="col-md-4 mb-3">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5>Ablauf</h5>
+                                            <h5><?= $this->translate('url-shortener-link-information-expiry') ?></h5>
                                             <?= $data->getExpiryDate() !== NULL
                                                 ? $data->getExpiryDate()->format($this->translate('dateTime-format'))
                                                 : '<span>Nie</span>'
@@ -134,12 +140,24 @@
                                             <thead>
                                                     <tr>
                                                         <th scope="col">#</th>
-                                                        <th scope="col">Accessed</th>
-                                                        <th scope="col">Browser</th>
-                                                        <th scope="col">OS</th>
-                                                        <th scope="col">Country</th>
-                                                        <th scope="col">Device</th>
-                                                        <th scope="col">Referer</th>
+                                                        <th scope="col">
+                                                            <?= $this->translate('url-shortener-link-information-tracking-table-date-title') ?>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <?= $this->translate('url-shortener-link-information-tracking-table-browser-title') ?>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <?= $this->translate('url-shortener-link-information-tracking-table-os-title') ?>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <?= $this->translate('url-shortener-link-information-tracking-table-country-title') ?>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <?= $this->translate('url-shortener-link-information-tracking-table-device-title') ?>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <?= $this->translate('url-shortener-link-information-tracking-table-referer-title') ?>
+                                                        </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

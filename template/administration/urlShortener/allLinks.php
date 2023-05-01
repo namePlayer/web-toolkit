@@ -152,7 +152,7 @@
                         <?= $this->e($this->translate('abort-button')) ?>
                     </button>
                     <button type="submit" class="btn btn-primary">
-                        <?= $this->e($this->translate('administration-url-shortener-all-links-search-search-button')) ?>
+                        <?= $this->e($this->translate('search-button')) ?>
                     </button>
                 </div>
             </div>
