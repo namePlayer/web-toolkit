@@ -20,7 +20,7 @@ $this->layout('tooltemplate', ['tool' => $tool]);
     <div class="row" style="margin-bottom: 200px;">
 
         <div class="col-8 mb-5 align-self-center">
-            <h4><?= $shortlinkDomain . '/' . $shortlink->getUuid()?></h4>
+            <h4><?= $shortlinkDomain . '/' . $this->e($shortlink->getUuid()) ?></h4>
             <small>
                 <a href="<?= $shortlink->getDestination() ?>" class="text-muted text-decoration-none">
                     <?= $shortlink->getDestination() ?>

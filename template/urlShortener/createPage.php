@@ -21,7 +21,7 @@
                         <select class="form-select" id="urlShortenerLinkAddress" name="urlShortenerLinkAddress">
                             <option value="" selected></option>
                             <?php foreach($domains as $domain): ?>
-                                <option value="<?= $domain['uuid'] ?>"><?= $domain['address'] ?></option>
+                                <option value="<?= $domain['uuid'] ?>"><?= $this->e($domain['address']) ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

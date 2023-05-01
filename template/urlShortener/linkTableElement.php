@@ -1,7 +1,7 @@
 <tr>
-    <th scope="row"><?= $uuid ?></th>
-    <td><?= $domain ?></td>
-    <td><?= $created ?></td>
+    <th scope="row"><?= $this->e($uuid) ?></th>
+    <td><?= $this->e($domain) ?></td>
+    <td><?= $this->e($created) ?></td>
     <td>
         <small class="text-muted">
             <?= $clicks !== NULL

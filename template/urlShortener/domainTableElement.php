@@ -1,6 +1,6 @@
 <tr>
     <th scope="col"><?= $domain['id'] ?></th>
-    <td><?= $domain['address'] ?></td>
+    <td><?= $this->e($domain['address']) ?></td>
     <td><?= (new DateTime($domain['created']))->format('d.m.Y H:i') ?></td>
     <td>
         <?= $domain['verified'] === 1

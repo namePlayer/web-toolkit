@@ -88,9 +88,9 @@
                                 <tr>
                                     <th scope="row"><?= $link['id'] ?></th>
                                     <td>
-                                        <?= $link['domain'] === NULL ? \App\Tool\ShortlinkTool::getDefaultUrl() : $link['address'] ?>
+                                        <?= $link['domain'] === NULL ? \App\Tool\ShortlinkTool::getDefaultUrl() : $this->e($link['address']) ?>
                                     </td>
-                                    <td><?= $link['uuid'] ?></td>
+                                    <td><?= $this->e($link['uuid']) ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

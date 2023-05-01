@@ -69,7 +69,7 @@
                                             <?= $this->e($link['accountName']) ?>
                                         </a>
                                         <span class="text-muted">
-                                            <?= $link['account'] ?>
+                                            <?= $this->e($link['account']) ?>
                                         </span>
                                     </td>
                                     <td><?= $this->e($link['uuid']) ?></td>
