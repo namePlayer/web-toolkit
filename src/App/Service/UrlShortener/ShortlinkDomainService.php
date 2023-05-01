@@ -78,10 +78,10 @@ readonly class ShortlinkDomainService
         return $this->shortlinkDomainTable->findAllWithLimitDescending($limit);
     }
 
-    public function getDomainNameByID(int $id): ?string
+    public function getDomainNameByID(?int $id): ?string
     {
         $domain = $this->getById($id);
-        return !empty($domain) ? $domain['address'] : null;
+        return $domain['address'];
     }
 
     public function getCount(): int

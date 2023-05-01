@@ -37,7 +37,10 @@ class LinkManagementController
         return new HtmlResponse(
             $this->template->render(
                 'administration/urlShortener/linkManagement',
-                ['data' => $linkInformation]
+                [
+                    'data' => $linkInformation,
+                    'domain' => $linkInformation->getDomain() === null ? null : $this->shortlinkDomainService->getDomainNameByID($linkInformation->getDomain())
+                ]
             )
         );
     }
