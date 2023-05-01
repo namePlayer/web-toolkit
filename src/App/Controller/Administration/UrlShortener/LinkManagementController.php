@@ -5,6 +5,7 @@ namespace App\Controller\Administration\UrlShortener;
 use App\Http\HtmlResponse;
 use App\Service\UrlShortener\ShortlinkDomainService;
 use App\Service\UrlShortener\ShortlinkService;
+use App\Service\UrlShortener\ShortlinkTrackingService;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
@@ -16,7 +17,8 @@ class LinkManagementController
     public function __construct(
         private Engine                 $template,
         private ShortlinkService       $shortlinkService,
-        private ShortlinkDomainService $shortlinkDomainService
+        private ShortlinkDomainService $shortlinkDomainService,
+        private ShortlinkTrackingService $shortlinkTrackingService
     )
     {
     }
@@ -39,7 +41,13 @@ class LinkManagementController
                 'administration/urlShortener/linkManagement',
                 [
                     'data' => $linkInformation,
-                    'domain' => $linkInformation->getDomain() === null ? null : $this->shortlinkDomainService->getDomainNameByID($linkInformation->getDomain())
+                    'domain' => $linkInformation->getDomain() !== null
+                        ? $this->shortlinkDomainService->getDomainNameByID($linkInformation->getDomain())
+                        : null,
+                    'tracking' => $linkInformation->isTracking()
+                        ? $this->shortlinkTrackingService->getLastClicksForLink($linkInformation->getId(), 25)
+                        : null,
+                    'clickCount' => $this->shortlinkTrackingService->getClickCountForLink($linkInformation->getId())
                 ]
             )
         );

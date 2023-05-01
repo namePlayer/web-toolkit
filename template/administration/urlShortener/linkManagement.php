@@ -60,78 +60,107 @@
                                 <li><a class="dropdown-item link-danger" href="#">Löschen</a></li>
                             </ul>
                         </li>
-
                     </ul>
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="">
-                            <div class="tab-pane fade show active" id="link-management-home" role="tabpanel" aria-labelledby="link-management-home-tab" tabindex="0">
+                    <div class="tab-content" id="link-management-tabContent">
+                        <div class="tab-pane fade show active" id="link-management-home" role="tabpanel" aria-labelledby="link-management-home-tab" tabindex="0">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5>Domain</h5>
+                                            <span><?= $this->e($domain ?? \App\Tool\ShortlinkTool::getDefaultUrl()) ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5>Tracking</h5>
+                                            <?= $data->isTracking()
+                                                ? '<span class="text-success">Aktiviert</span>'
+                                                : '<span class="text-danger">Deaktiviert</span>'
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5>Passwortschutz</h5>
+                                            <?= $data->getPassword() !== NULL
+                                                ? '<span class="text-success">Aktiviert</span>'
+                                                : '<span class="text-danger">Deaktiviert</span>'
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5>Erstellt</h5>
+                                            <span>
+                                                <?= $data->getDateTime()->format($this->translate('dateTime-format')) ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5>Ablauf</h5>
+                                            <?= $data->getExpiryDate() !== NULL
+                                                ? $data->getExpiryDate()->format($this->translate('dateTime-format'))
+                                                : '<span>Nie</span>'
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if($tracking !== NULL): ?>
 
+                            <div class="tab-pane fade" id="link-management-tracking" role="tabpanel" aria-labelledby="link-management-tracking-tab" tabindex="0">
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <div class="card">
                                             <div class="card-body">
-                                                <h5>Domain</h5>
-                                                <span><?= $this->e($domain ?? \App\Tool\ShortlinkTool::getDefaultUrl()) ?></span>
+                                                <span class="float-start">Clicks</span>
+                                                <h4 class="text-end"><b><?= $clickCount ?></b></h4>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5>Tracking</h5>
-                                                <?= $data->isTracking()
-                                                    ? '<span class="text-success">Aktiviert</span>'
-                                                    : '<span class="text-danger">Deaktiviert</span>'
-                                                ?>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-12">
+                                        <table class="table">
+                                            <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Accessed</th>
+                                                        <th scope="col">Browser</th>
+                                                        <th scope="col">OS</th>
+                                                        <th scope="col">Country</th>
+                                                        <th scope="col">Device</th>
+                                                        <th scope="col">Referer</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach($tracking as $track): ?>
+                                                        <tr>
+                                                            <th scope="row"><?= $track['id'] ?></th>
+                                                            <td><?= $this->e($track['accessed']) ?></td>
+                                                            <td><?= $this->e($track['browser']) ?></td>
+                                                            <td><?= $this->e($track['operatingSystem']) ?></td>
+                                                            <td><?= $this->e($track['country']) ?></td>
+                                                            <td><?= $this->e($track['device']) ?></td>
+                                                            <td><?= $this->e($track['referer']) ?></td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5>Passwortschutz</h5>
-                                                <?= $data->getPassword() !== NULL
-                                                    ? '<span class="text-success">Aktiviert</span>'
-                                                    : '<span class="text-danger">Deaktiviert</span>'
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5>Erstellt</h5>
-                                                <span>
-                                                    <?= $data->getDateTime()->format($this->translate('dateTime-format')) ?>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h5>Ablauf</h5>
-                                                <?= $data->getExpiryDate() !== NULL
-                                                    ? $data->getExpiryDate()->format($this->translate('dateTime-format'))
-                                                    : '<span>Nie</span>'
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </div>
-<!--                                    <div class="col-md-4 mb-3">-->
-<!--                                        <div class="card">-->
-<!--                                            <div class="card-body">-->
-<!--                                                <h5 class="text-danger">Gesperrt</h5>-->
-<!--                                                <span>Redirection to illegal content</span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-
                                 </div>
-
                             </div>
-                            <div class="tab-pane fade" id="link-management-tracking" role="tabpanel" aria-labelledby="link-management-tracking-tab" tabindex="0">...</div>
-                        </div>
+
+                        <?php endif; ?>
                     </div>
 
 
