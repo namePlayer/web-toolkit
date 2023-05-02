@@ -30,9 +30,7 @@
                             <span class="text-start">
                                 <?= $this->e($this->translate('administration-dashboard-registered-accounts-card-title')) ?>
                             </span>
-                            <span class="text-end">
-                                <h4><?= $accountCount ?></h4>
-                            </span>
+                            <h4 class="text-end"><?= $accountCount ?></h4>
                         </div>
                     </div>
                 </div>
@@ -42,9 +40,7 @@
                             <span class="text-start">
                                 <?= $this->e($this->translate('administration-dashboard-active-licenses-card-title')) ?>
                             </span>
-                            <span class="text-end">
-                                <h4>0</h4>
-                            </span>
+                            <h4 class="text-end">0</h4>
                         </div>
                     </div>
                 </div>
@@ -54,9 +50,7 @@
                             <span class="text-start">
                                 <?= $this->e($this->translate('administration-dashboard-open-support-tickets-card-title')) ?>
                             </span>
-                            <span class="text-end">
-                                <h4>0</h4>
-                            </span>
+                            <h4 class="text-end">0</h4>
                         </div>
                     </div>
                 </div>
