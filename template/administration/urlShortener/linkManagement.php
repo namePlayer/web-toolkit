@@ -116,7 +116,7 @@
                                             <h5><?= $this->translate('url-shortener-link-information-expiry') ?></h5>
                                             <?= $data->getExpiryDate() !== NULL
                                                 ? $data->getExpiryDate()->format($this->translate('dateTime-format'))
-                                                : '<span>Nie</span>'
+                                                : '<span>'.$this->translate('url-shortener-link-information-never-string').'</span>'
                                             ?>
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@
                                     <div class="col-md-4 mb-3">
                                         <div class="card">
                                             <div class="card-body">
-                                                <span class="float-start">Clicks</span>
+                                                <span class="float-start"><?= $this->translate('url-shortener-link-information-clicks') ?></span>
                                                 <h4 class="text-end"><b><?= $clickCount ?></b></h4>
                                             </div>
                                         </div>
