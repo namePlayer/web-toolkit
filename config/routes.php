@@ -60,6 +60,8 @@ $router->post('/account/security/allowip', 'App\Controller\Account\AllowIpAddres
 
 $router->get('/account', 'App\Controller\Account\AccountController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/account', 'App\Controller\Account\AccountController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 
 $router->get('/admin/dashboard', 'App\Controller\Administration\DashboardController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
