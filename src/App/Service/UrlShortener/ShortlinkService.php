@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\UrlShortener;
 
+use App\DTO\UrlShortener\ShortlinkDeleteDTO;
 use App\DTO\UrlShortener\ShortlinkSearchDTO;
 use App\Model\Authentication\Account;
 use App\Model\UrlShortener\Shortlink;
@@ -155,6 +156,18 @@ readonly class ShortlinkService
 
         return $this->shortlinkTable->findBySearchArray($searchFor, $searchDTO->getResultLimit());
 
+    }
+
+    public function deleteShortlink(ShortlinkDeleteDTO $shortlinkDeleteDTO): bool
+    {
+        if($shortlinkDeleteDTO->getVerificationCode() !== $shortlinkDeleteDTO->getInput())
+        {
+            MESSAGES->add('danger', 'url-shortener-delete-failed');
+            return false;
+        }
+
+        $this->shortlinkTable->deleteShortlinkById($shortlinkDeleteDTO->getId());
+        return $this->getShortlinkById($shortlinkDeleteDTO->getId()) === null;
     }
 
     public function getAllShortlinksByLimit(int $limit): array

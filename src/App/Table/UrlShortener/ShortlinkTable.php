@@ -78,4 +78,9 @@ class ShortlinkTable extends AbstractTable
         )->where($search, ['eli'])->limit($limit)->orderBy('created DESC')->fetchAll();
     }
 
+    public function deleteShortlinkById(int $id): int|bool|string
+    {
+        return $this->query->delete($this->getTableName())->where('id', $id)->execute();
+    }
+
 }

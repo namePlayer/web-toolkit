@@ -21,6 +21,8 @@
         <?= $this->insert('element/adminNavigation') ?>
 
         <div class="col-md-9">
+            <?php $this->insert('element/alert') ?>
+
             <div class="row d-flex align-items-end">
                 <div class="col-8 mb-3">
                     <h3>
@@ -58,10 +60,10 @@
                                 <?= $this->translate('administration-url-shortener-link-management-actions-tab-title') ?>
                             </a>
                             <ul class="dropdown-menu w-100">
-                                <li><a class="dropdown-item link-danger" href="#">
+                                <li><a class="dropdown-item link-danger" role="button" data-bs-toggle="modal" data-bs-target="#deleteShortlinkModal">
                                         <?= $this->translate('administration-url-shortener-link-management-actions-tab-lock') ?>
                                     </a></li>
-                                <li><a class="dropdown-item link-danger" href="#">
+                                <li><a class="dropdown-item link-danger" role="button" data-bs-toggle="modal" data-bs-target="#deleteShortlinkModal">
                                         <?= $this->translate('administration-url-shortener-link-management-actions-tab-delete') ?>
                                     </a></li>
                             </ul>
@@ -187,3 +189,33 @@
     </div>
 
 </div>
+
+<form action="" method="post">
+    <div class="modal fade" id="deleteShortlinkModal" tabindex="-1" aria-labelledby="deleteShortlinkModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteShortlinkModalLabel">Delete Shortlink</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <span>To confirm this action please enter the following: <b><?= $deleteCode ?></b></span>
+                    <input type="hidden" name="deleteShortlinkModalConfirmationCode" value="<?= $deleteCode ?>">
+                    <div class="mt-3 mb-3">
+                        <label for="deleteShortlinkModalConfirmationCodeInput" class="form-label">Code</label>
+                        <input type="text" class="form-control" name="deleteShortlinkModalConfirmationCodeInput" id="deleteShortlinkModalConfirmationCodeInput" placeholder="<?= $deleteCode ?>" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="btn btn-secondary"><?= $this->translate('abort-button') ?></a>
+                    <button type="submit" class="btn btn-danger" name="deleteShortlinkModalConfirmationSubmit">
+                        <?= $this->translate('delete-button') ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

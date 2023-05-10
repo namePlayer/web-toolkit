@@ -334,6 +334,7 @@
   "url-shortener-domains-table-element-privacy-public-title": "Öffentlich",
   "url-shortener-domains-table-element-privacy-private-title": "Privat",
   "url-shortener-domains-table-element-manage-button-title": "Verwalten",
+  "url-shortener-delete-failed": "Das Löschen des Kurzlinks ist fehlgeschlagen.",
 
   "administration-url-shortener-dashboard-title": "Kurzlink Dashboard",
   "administration-url-shortener-dashboard-total-link-count-title": "Anzahl gesamt",
