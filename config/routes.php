@@ -76,12 +76,16 @@ $router->get('/admin/apikey/{id}', 'App\Controller\Administration\ApiKeyDetailCo
 $router->post('/admin/apikey/{id}', 'App\Controller\Administration\ApiKeyDetailController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
+
 $router->get('/admin/accounts', 'App\Controller\Administration\AccountListController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
 $router->get('/admin/account/{id}', 'App\Controller\Administration\AccountViewController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 $router->post('/admin/account/{id}', 'App\Controller\Administration\AccountViewController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+
+$router->get('/admin/tools', 'App\Controller\Administration\ToolOverviewController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
 $router->get('/admin/urlshortener', 'App\Controller\Administration\UrlShortener\ShortlinkDashboardController::load')

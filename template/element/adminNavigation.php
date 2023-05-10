@@ -20,7 +20,7 @@
         </a>
     </div>
     <div class="list-group mb-3">
-        <a href="#" class="list-group-item list-group-item-action disabled">
+        <a href="/admin/tools" class="list-group-item list-group-item-action">
             <b><?= $this->e($this->translate('admin-navigation-tools-tab-title')) ?></b>
         </a>
         <a href="/admin/urlshortener" class="list-group-item list-group-item-action">
