@@ -369,6 +369,8 @@
   "administration-url-shortener-link-management-tracking-tab-title": "Tracking",
   "administration-url-shortener-link-management-actions-tab-title": "Aktionen",
   "administration-url-shortener-link-management-actions-tab-lock": "Sperren",
-  "administration-url-shortener-link-management-actions-tab-delete": "Löschen"
+  "administration-url-shortener-link-management-actions-tab-delete": "Löschen",
+  "administration-url-shortener-link-management-delete-title": "Kurzlink löschen",
+  "administration-url-shortener-link-management-delete-security-key": "Gib nachfolgendes im Textfeld ein, um das löschen zu bestätigen"
 
 }

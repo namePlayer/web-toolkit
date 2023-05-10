@@ -195,12 +195,17 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="deleteShortlinkModalLabel">Delete Shortlink</h1>
+                    <h1 class="modal-title fs-5" id="deleteShortlinkModalLabel">
+                        <?= $this->translate('administration-url-shortener-link-management-delete-title') ?>
+                    </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
-                    <span>To confirm this action please enter the following: <b><?= $deleteCode ?></b></span>
+                    <span>
+                        <?= $this->translate('administration-url-shortener-link-management-delete-security-key') ?>:
+                        <b><?= $deleteCode ?></b>
+                    </span>
                     <input type="hidden" name="deleteShortlinkModalConfirmationCode" value="<?= $deleteCode ?>">
                     <div class="mt-3 mb-3">
                         <label for="deleteShortlinkModalConfirmationCodeInput" class="form-label">Code</label>
