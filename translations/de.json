@@ -336,6 +336,9 @@
   "url-shortener-domains-table-element-manage-button-title": "Verwalten",
   "url-shortener-delete-failed": "Das Löschen des Kurzlinks ist fehlgeschlagen.",
 
+  "forms-tool-title": "Formulare",
+  "forms-tool-description": "Erstelle Formulare, egal ob für ein Quiz oder eine Umfrage",
+
   "administration-url-shortener-dashboard-title": "Kurzlink Dashboard",
   "administration-url-shortener-dashboard-total-link-count-title": "Anzahl gesamt",
   "administration-url-shortener-dashboard-link-last-seven-days-count-title": "Anzahl Letzte 7 Tage",
