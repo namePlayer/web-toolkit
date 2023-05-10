@@ -36,10 +36,14 @@ readonly class LinkViewController
         $tool = $request->getAttribute(Tool::class);
 
         if (empty($args['linkId'])) {
-            return new RedirectResponse('/');
+            return new RedirectResponse('/tool/url-shortener/list');
         }
 
         $link = $this->shortlinkService->getShortlinkById((int)$args['linkId']);
+        if($link === null)
+        {
+            return new RedirectResponse('/tool/url-shortener/list');
+        }
 
         if ($link->getAccount() !== $account->getId()) {
             return new RedirectResponse(ShortlinkTool::TOOL_URL . '/list');
