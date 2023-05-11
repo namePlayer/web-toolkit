@@ -369,6 +369,11 @@
   "administration-url-shortener-all-links-search-destination": "Zieladresse",
   "administration-url-shortener-all-links-search-domain": "Domain",
   "administration-url-shortener-all-links-search-result-limit": "Max. Ergebnisse",
+  "administration-url-shortener-all-domains-search-title": "Domain suchen",
+  "administration-url-shortener-all-domains-search-id": "ID",
+  "administration-url-shortener-all-domains-search-customerid": "Kundennummer",
+  "administration-url-shortener-all-domains-search-domain": "Adresse",
+  "administration-url-shortener-all-domains-search-result-limit": "Limit",
 
   "administration-url-shortener-link-management-title": "Link Verwaltung",
   "administration-url-shortener-link-management-information-tab-title": "Informationen",

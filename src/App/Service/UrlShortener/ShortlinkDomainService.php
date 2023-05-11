@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\UrlShortener;
 
+use App\DTO\UrlShortener\ShortlinkDomainSearchDTO;
 use App\Model\UrlShortener\ShortlinkDomain;
 use App\Table\UrlShortener\ShortlinkDomainTable;
 use App\Validation\UrlShortener\ShortlinkDomainValidation;
@@ -49,9 +50,26 @@ readonly class ShortlinkDomainService
         return $result['user'] === $account;
     }
 
-    public function getAllDomains(): array
+    public function getAllDomains(ShortlinkDomainSearchDTO $domainSearchDTO): array
     {
-        return $this->shortlinkDomainTable->findAll();
+        $search = [];
+
+        if($domainSearchDTO->getId() !== 0)
+        {
+            $search = array_merge($search, ['ShortlinkDomain.id' => $domainSearchDTO->getId()]);
+        }
+
+        if($domainSearchDTO->getAccount() !== 0)
+        {
+            $search = array_merge($search, ['ShortlinkDomain.user' => $domainSearchDTO->getAccount()]);
+        }
+
+        if($domainSearchDTO->getAddress() !== '')
+        {
+            $search = array_merge($search, ['ShortlinkDomain.address LIKE ?' => '%'.$domainSearchDTO->getAddress().'%']);
+        }
+
+        return $this->shortlinkDomainTable->findBySearchArray($search, $domainSearchDTO->getLimit());
     }
 
     public function getDomainListForUser(int $user): array

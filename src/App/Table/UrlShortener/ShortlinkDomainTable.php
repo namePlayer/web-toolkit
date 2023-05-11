@@ -33,6 +33,13 @@ class ShortlinkDomainTable extends AbstractTable
             ->fetchAll();
     }
 
+    public function findBySearchArray(array $search, int $limit = 50): array
+    {
+        return $this->query->from($this->getTableName())->select(['a.name as accountName'])->leftJoin(
+            'Account a on a.id = ShortlinkDomain.user'
+        )->where($search)->limit($limit)->orderBy('created DESC')->fetchAll();
+    }
+
     public function findByAddress(string $address): array|false
     {
         return $this->query->from($this->getTableName())->where('address', $address)->fetch();
