@@ -193,6 +193,10 @@ $container->add(\App\Controller\Administration\UrlShortener\AllLinksController::
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkService::class);
 
+$container->add(\App\Controller\Administration\UrlShortener\AllDomainsController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\UrlShortener\ShortlinkDomainService::class);
+
 $container->add(\App\Controller\Administration\UrlShortener\LinkManagementController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\UrlShortener\ShortlinkService::class)

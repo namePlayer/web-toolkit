@@ -96,6 +96,11 @@ $router->get('/admin/urlshortener/alllinks', 'App\Controller\Administration\UrlS
 $router->post('/admin/urlshortener/alllinks', 'App\Controller\Administration\UrlShortener\AllLinksController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
+$router->get('/admin/urlshortener/alldomains', 'App\Controller\Administration\UrlShortener\AllDomainsController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+$router->post('/admin/urlshortener/alldomains', 'App\Controller\Administration\UrlShortener\AllDomainsController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+
 $router->get('/admin/urlshortener/link/{id}', 'App\Controller\Administration\UrlShortener\LinkManagementController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 $router->post('/admin/urlshortener/link/{id}', 'App\Controller\Administration\UrlShortener\LinkManagementController::load')

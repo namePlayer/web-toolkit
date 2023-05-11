@@ -49,6 +49,11 @@ readonly class ShortlinkDomainService
         return $result['user'] === $account;
     }
 
+    public function getAllDomains(): array
+    {
+        return $this->shortlinkDomainTable->findAll();
+    }
+
     public function getDomainListForUser(int $user): array
     {
         return $this->shortlinkDomainTable->getAllDomainsForUser($user);
