@@ -83,10 +83,11 @@ class AccountTable extends AbstractTable
         )->execute();
     }
 
-    public function findAllForAdminView(): bool|array
+    public function findAllWithSearch(array $search): bool|array
     {
         return $this->query->from($this->getTableName())->select('a.name as businessName')->leftJoin(
-            'Account a on a.id = Account.business')->fetchAll();
+            'Account a on a.id = Account.business'
+        )->where($search)->orderBy('Account.registered DESC')->fetchAll();
     }
 
 }

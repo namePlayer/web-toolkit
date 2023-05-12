@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Authentication;
 
+use App\DTO\Account\AccountSearchDTO;
 use App\Model\Authentication\Account;
 use App\Model\Authentication\Token;
 use App\Model\Authentication\TokenType;
@@ -158,13 +159,36 @@ readonly class AccountService
         return (int)$this->accountTable->countAllUsers();
     }
 
-    public function getAccountList(bool $admin = false): array
+    public function getAccountList(AccountSearchDTO $accountSearchDTO): array
     {
-        if ($admin) {
-            //var_dump($this->accountTable->findAllForAdminView());
-            return $this->accountTable->findAllForAdminView();
+        $searchFor = [];
+
+        if($accountSearchDTO->getId() !== 0)
+        {
+            $searchFor = array_merge($searchFor, ['Account.id' => $accountSearchDTO->getId()]);
         }
-        return $this->accountTable->findAll();
+
+        if($accountSearchDTO->getName() !== '')
+        {
+            $searchFor = array_merge($searchFor, ['Account.name LIKE ?' => '%'.$accountSearchDTO->getName().'%']);
+        }
+
+        if($accountSearchDTO->getEmail() !== '')
+        {
+            $searchFor = array_merge($searchFor, ['Account.email LIKE ?' => '%'.$accountSearchDTO->getEmail().'%']);
+        }
+
+        if($accountSearchDTO->getFirstname() !== '')
+        {
+            $searchFor = array_merge($searchFor, ['Account.firstname LIKE ?' => '%'.$accountSearchDTO->getFirstname().'%']);
+        }
+
+        if($accountSearchDTO->getSurname() !== '')
+        {
+            $searchFor = array_merge($searchFor, ['Account.surname LIKE ?' => '%'.$accountSearchDTO->getSurname().'%']);
+        }
+
+        return $this->accountTable->findAllWithSearch($searchFor);
     }
 
     public function setSendLoginEmail(int $account, bool $active): void

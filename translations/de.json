@@ -230,6 +230,12 @@
   "admin-account-list-table-active-status-disabled": "Deaktiviert",
   "admin-account-list-table-actions-heading": "Aktionen",
   "admin-account-list-table-actions-manage-button": "Verwalten",
+  "admin-account-list-search-title": "Nutzerkonto suchen",
+  "admin-account-list-search-id": "ID",
+  "admin-account-list-search-name": "Name",
+  "admin-account-list-search-email": "E-Mail Adresse",
+  "admin-account-list-search-firstname": "Vorname",
+  "admin-account-list-search-surname": "Nachname",
 
   "admin-account-update-failed": "Das aktualisieren des Kontos ist fehlgeschlagen.",
   "admin-account-update-successful": "Das Konto wurde erfolgreich aktualisiert.",

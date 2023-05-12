@@ -28,6 +28,14 @@ $this->layout('basetemplate') ?>
                 <div class="col-9">
                     <h4><?= $this->e($this->translate('admin-account-list-title')) ?></h4>
                 </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#adminSearchAccountModal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search me-2" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                        <?= $this->e($this->translate('search-button')) ?>
+                    </button>
+                </div>
             </div>
 
             <?php $this->insert('element/alert') ?>
@@ -97,3 +105,60 @@ $this->layout('basetemplate') ?>
         </div>
     </div>
 </div>
+
+<form action="" method="post">
+    <div class="modal fade" id="adminSearchAccountModal" tabindex="-1" aria-labelledby="adminSearchAccountModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="adminSearchAccountModalLabel">
+                        <?= $this->e($this->translate('admin-account-list-search-title')) ?>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-4 mb-3">
+                            <label for="adminSearchAccountModalID" class="form-label">
+                                <?= $this->e($this->translate('admin-account-list-search-id')) ?>
+                            </label>
+                            <input type="number" class="form-control" id="adminSearchAccountModalID" name="adminSearchAccountModalID">
+                        </div>
+                        <div class="col-8 mb-3">
+                            <label for="adminSearchAccountModalName" class="form-label">
+                                <?= $this->e($this->translate('admin-account-list-search-name')) ?>
+                            </label>
+                            <input type="text" class="form-control" id="adminSearchAccountModalName" name="adminSearchAccountModalName">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="adminSearchAccountModalEmail" class="form-label">
+                                <?= $this->e($this->translate('admin-account-list-search-email')) ?>
+                            </label>
+                            <input type="text" class="form-control" id="adminSearchAccountModalEmail" name="adminSearchAccountModalEmail">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="adminSearchAccountModalFirstname" class="form-label">
+                                <?= $this->e($this->translate('admin-account-list-search-firstname')) ?>
+                            </label>
+                            <input type="text" class="form-control" id="adminSearchAccountModalFirstname" name="adminSearchAccountModalFirstname">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label for="adminSearchAccountModalSurname" class="form-label">
+                                <?= $this->e($this->translate('admin-account-list-search-surname')) ?>
+                            </label>
+                            <input type="text" class="form-control" id="adminSearchAccountModalSurname" name="adminSearchAccountModalSurname">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <?= $this->e($this->translate('abort-button')) ?>
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <?= $this->e($this->translate('search-button')) ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
