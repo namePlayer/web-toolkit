@@ -45,7 +45,8 @@ $container->add(\App\Controller\Support\SupportController::class)
 
 $container->add(\App\Controller\Account\AccountController::class)
     ->addArgument(\League\Plates\Engine::class)
-    ->addArgument(\App\Service\Authentication\AccountService::class);
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Validation\Authentication\ChangePasswordValidation::class);
 
 $container->add(\App\Controller\Account\SecurityController::class)
     ->addArgument(\League\Plates\Engine::class)
@@ -281,6 +282,9 @@ $container->add(\App\Validation\Authentication\PasswordResetValidation::class);
 $container->add(\App\Validation\Authentication\PasswordValidation::class);
 
 $container->add(\App\Validation\Authentication\SetNewPasswordValidation::class)
+    ->addArgument(\App\Validation\Authentication\PasswordValidation::class);
+
+$container->add(\App\Validation\Authentication\ChangePasswordValidation::class)
     ->addArgument(\App\Validation\Authentication\PasswordValidation::class);
 
 #

@@ -134,6 +134,18 @@ readonly class AccountService
         return false;
     }
 
+    public function changePasswordForAccount(int $account, string $password): bool
+    {
+        $password = $this->passwordService->hashPassword($password);
+
+        if($this->accountTable->updateAccountPassword($account, $password) > 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public function generateActivationToken(Account $account): Token
     {
         $token = new Token();
@@ -207,5 +219,15 @@ readonly class AccountService
         $this->accountTable->updateAccountSendMailUnknownLogin($account, $active);
     }
 
+    public function validatePasswordForAccount(int $account, string $password): bool
+    {
+
+        $accountData = $this->findAccountById($account);
+        if($this->passwordService->verifyPassword($password, $accountData['password']))
+        {
+            return true;
+        }
+        return false;
+    }
 
 }
