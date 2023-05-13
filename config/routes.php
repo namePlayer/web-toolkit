@@ -107,6 +107,11 @@ $router->get('/admin/urlshortener/link/{id}', 'App\Controller\Administration\Url
 $router->post('/admin/urlshortener/link/{id}', 'App\Controller\Administration\UrlShortener\LinkManagementController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
+$router->get('/admin/urlshortener/domain/{id}', 'App\Controller\Administration\UrlShortener\DomainManagementController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+$router->post('/admin/urlshortener/domain/{id}', 'App\Controller\Administration\UrlShortener\DomainManagementController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+
 $router->get('/admin/mails', 'App\Controller\Administration\MailController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 $router->post('/admin/mails', 'App\Controller\Administration\MailController::load')
