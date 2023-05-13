@@ -4,7 +4,6 @@ namespace App\Controller\Administration\UrlShortener;
 
 use App\DTO\UrlShortener\ShortlinkSearchDTO;
 use App\Http\HtmlResponse;
-use App\Service\UrlShortener\ShortlinkDomainService;
 use App\Service\UrlShortener\ShortlinkService;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
@@ -14,8 +13,8 @@ class AllLinksController
 {
 
     public function __construct(
-        private Engine                 $template,
-        private ShortlinkService       $shortlinkService
+        private readonly Engine           $template,
+        private readonly ShortlinkService $shortlinkService
     )
     {
     }

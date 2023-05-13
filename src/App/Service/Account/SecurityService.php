@@ -115,7 +115,7 @@ readonly class SecurityService
         return $totp;
     }
 
-    public function removeTwoFactorByIdAndAccount(int $id, int $account)
+    public function removeTwoFactorByIdAndAccount(int $id, int $account): void
     {
         $this->twoFactorTable->deleteByidAndAccount($id, $account);
     }

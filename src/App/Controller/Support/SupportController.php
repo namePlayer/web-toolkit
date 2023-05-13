@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Support;
 
@@ -7,11 +7,11 @@ use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class SupportController
+readonly class SupportController
 {
 
     public function __construct(
-        private Engine        $template
+        private Engine $template
     )
     {
     }

@@ -1,11 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Account;
 
 use App\DTO\Account\ChangePasswordDTO;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
-use App\Service\Account\SecurityService;
 use App\Service\Authentication\AccountService;
 use App\Validation\Authentication\ChangePasswordValidation;
 use League\Plates\Engine;

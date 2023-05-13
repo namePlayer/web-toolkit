@@ -2,12 +2,9 @@
 
 namespace App\Controller\Administration\UrlShortener;
 
-use App\DTO\UrlShortener\ShortlinkDeleteDTO;
 use App\Http\HtmlResponse;
 use App\Service\Security\SecurityKeyService;
 use App\Service\UrlShortener\ShortlinkDomainService;
-use App\Service\UrlShortener\ShortlinkService;
-use App\Service\UrlShortener\ShortlinkTrackingService;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
@@ -17,9 +14,9 @@ class DomainManagementController
 {
 
     public function __construct(
-        private Engine                 $template,
-        private ShortlinkDomainService $shortlinkDomainService,
-        private SecurityKeyService     $securityKeyService
+        private readonly Engine                 $template,
+        private readonly ShortlinkDomainService $shortlinkDomainService,
+        private readonly SecurityKeyService     $securityKeyService
     )
     {
     }

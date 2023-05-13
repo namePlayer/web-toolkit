@@ -13,7 +13,7 @@ use League\Plates\Extension\ExtensionInterface;
 class TranslationExtension implements ExtensionInterface
 {
 
-    public function __construct(private Translation $translation)
+    public function __construct(private readonly Translation $translation)
     {
     }
 

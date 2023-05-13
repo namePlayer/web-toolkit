@@ -8,12 +8,12 @@ use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class ToolOverviewController
+readonly class ToolOverviewController
 {
 
     public function __construct(
-        private readonly Engine $template,
-        private readonly ToolService $toolService
+        private Engine      $template,
+        private ToolService $toolService
     )
     {
     }

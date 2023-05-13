@@ -17,11 +17,11 @@ class LinkManagementController
 {
 
     public function __construct(
-        private Engine                 $template,
-        private ShortlinkService       $shortlinkService,
-        private ShortlinkDomainService $shortlinkDomainService,
-        private ShortlinkTrackingService $shortlinkTrackingService,
-        private SecurityKeyService      $securityKeyService
+        private readonly Engine                   $template,
+        private readonly ShortlinkService         $shortlinkService,
+        private readonly ShortlinkDomainService   $shortlinkDomainService,
+        private readonly ShortlinkTrackingService $shortlinkTrackingService,
+        private readonly SecurityKeyService       $securityKeyService
     )
     {
     }

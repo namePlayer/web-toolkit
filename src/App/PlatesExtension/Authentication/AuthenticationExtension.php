@@ -17,13 +17,13 @@ class AuthenticationExtension implements ExtensionInterface
 {
 
     public function __construct(
-        private AccountService    $accountService,
-        private AccountLevelTable $levelTable
+        private readonly AccountService    $accountService,
+        private readonly AccountLevelTable $levelTable
     )
     {
     }
 
-    public function register(Engine $engine)
+    public function register(Engine $engine): void
     {
         $engine->registerFunction('getAccountInformation', [$this, 'getAccountInformation']);
         $engine->registerFunction('getLevelBadge', [$this, 'getLevelBadge']);

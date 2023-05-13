@@ -14,11 +14,12 @@ class DynamicTextExtension implements ExtensionInterface
 {
 
 
-    public function register(Engine $engine)
+    public function register(Engine $engine): void
     {
         $engine->registerFunction('timeOfDayGreeting', [$this, 'timeOfDayGreeting']);
     }
 
+    /** @noinspection PhpDuplicateMatchArmBodyInspection */
     public function timeOfDayGreeting(): string
     {
         $currentTime = (int)(new DateTime())->format('H');

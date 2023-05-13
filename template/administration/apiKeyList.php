@@ -1,4 +1,4 @@
-<?php use App\Model\ApiKey\ApiKey;
+<?php
 
 $this->layout('basetemplate') ?>
 

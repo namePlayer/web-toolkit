@@ -8,7 +8,7 @@ use App\Table\AbstractTable;
 class TwoFactorTable extends AbstractTable
 {
 
-    public function insert(TwoFactor $twoFactor)
+    public function insert(TwoFactor $twoFactor): void
     {
         $values = [
             'type' => $twoFactor->getType(),

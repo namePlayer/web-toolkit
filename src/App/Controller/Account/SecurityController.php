@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Account;
 
@@ -15,10 +15,10 @@ class SecurityController
 {
 
     public function __construct(
-        private readonly Engine             $template,
-        private AccountService              $accountService,
-        private SecurityService             $securityService,
-        private AccountTrustedDeviceService $accountTrustedDeviceService
+        private readonly Engine                      $template,
+        private readonly AccountService              $accountService,
+        private readonly SecurityService             $securityService,
+        private readonly AccountTrustedDeviceService $accountTrustedDeviceService
     )
     {
     }

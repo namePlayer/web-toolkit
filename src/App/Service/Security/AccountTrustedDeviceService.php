@@ -5,11 +5,11 @@ namespace App\Service\Security;
 use App\Model\Security\AccountTrustedDevice;
 use App\Table\Security\AccountTrustedDeviceTable;
 
-class AccountTrustedDeviceService
+readonly class AccountTrustedDeviceService
 {
 
     public function __construct(
-        private readonly AccountTrustedDeviceTable $accountTrustedDeviceTable
+        private AccountTrustedDeviceTable $accountTrustedDeviceTable
     )
     {
     }
