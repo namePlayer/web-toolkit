@@ -32,23 +32,17 @@ class DomainManagementController
         }
 
         $domainInformation = $this->shortlinkDomainService->getById((int)$args['id']);
-        if($domainInformation === null)
+        if(empty($domainInformation))
         {
             return new RedirectResponse('/admin/urlshortener/alldomains');
-        }
-
-        if($request->getMethod() === "POST")
-        {
-            $disable = $this->disable((int)$args['id']);
-            if($disable instanceof ResponseInterface)
-            {
-                return $disable;
-            }
         }
 
         return new HtmlResponse(
             $this->template->render(
                 'administration/urlShortener/domainManagement',
+                [
+                    'data' => $domainInformation
+                ]
             )
         );
     }

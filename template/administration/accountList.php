@@ -88,8 +88,8 @@ $this->layout('basetemplate') ?>
                         </td>
                         <td>
                             <?= $account['active'] === 1
-                                ? $this->e($this->translate('admin-account-list-table-active-status-active'))
-                                : $this->e($this->translate('admin-account-list-table-active-status-disabled'))
+                                ? $this->e($this->translate('active-string'))
+                                : $this->e($this->translate('disabled-string'))
                             ?>
                         </td>
                         <td>

@@ -33,16 +33,14 @@
                         </a>
                         <?= $this->e($this->translate('administration-url-shortener-link-management-title')) ?>
                     </h3>
-                    <span><?= $this->e('domain') ?></span>
+                    <h5><?= $this->e($data['address']) ?></h5>
                 </div>
                 <div class="col-4 mb-3">
-                    <span><b>ID: </b> <?= 'id' ?></span> <br>
-                    <span><b><?= $this->translate('customer-id-string') ?>: </b> <?= 'account' ?></span> <br>
+                    <span><b>ID: </b> <?= $this->e($data['id']) ?></span> <br>
+                    <span><b><?= $this->translate('customer-id-string') ?>: </b> <?= $this->e($data['user']) ?></span> <br>
                 </div>
 
                 <div class="col-md-12 mt-4">
-
-
 
                 </div>
             </div>

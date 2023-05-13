@@ -72,7 +72,10 @@
                                             <?= $this->e($domain['user']) ?>
                                         </span>
                                     </td>
-                                    <td><?= $this->e($domain['verified']) ?></td>
+                                    <td><?= $domain['verified'] === 1
+                                            ? $this->e($this->translate('admin-account-list-table-active-status-active'))
+                                            : $this->e($this->translate('admin-account-list-table-active-status-disabled'))
+                                        ?></td>
                                     <td><?= (new DateTime($domain['created']))->format($this->translate('dateTime-format')) ?></td>
                                     <td>
                                         <a href="/admin/urlshortener/domain/<?= $domain['id'] ?>" class="text-decoration-none">
