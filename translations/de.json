@@ -114,6 +114,8 @@
   "account-settings-navigation-organisation-tab-title": "Organisation",
   "account-settings-navigation-licenses-tab-title": "Lizenzen",
 
+  "account-settings-update-successful": "Die Kontoeinstellungen wurden erfolgreich geändert.",
+  "account-settings-update-failed": "Etwas ist schiefgelaufen. Es wurden keine Daten geändert.",
   "account-settings-general-accountname": "Konto- oder Organisationsname",
   "account-settings-general-firstname": "Vorname",
   "account-settings-general-lastname": "Nachname",

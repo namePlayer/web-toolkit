@@ -33,6 +33,9 @@
                 <div class="col-4 d-flex align-items-center">
                     <span>Kundennummer: <b><?= $this->e($accountData['id']) ?></b></span>
                 </div>
+                <div class="col-12 mt-3">
+                    <?php $this->insert('element/alert') ?>
+                </div>
             </div>
             <form action="" method="post">
                 <div class="row">
@@ -76,3 +79,5 @@
     </div>
 
 </div>
+
+

@@ -28,7 +28,11 @@ readonly class AccountController
 
         if($request->getMethod() === "POST")
         {
-            $this->update($account);
+            $update = $this->update($account);
+            if(is_array($update))
+            {
+                $accountData = $update;
+            }
         }
 
         return new HtmlResponse($this->template->render(
@@ -39,12 +43,22 @@ readonly class AccountController
         ));
     }
 
-    public function update(Account $account): void
+    public function update(Account $account): ?array
     {
 
-        $account = clone $account;
-        
+        $updateAccount = clone $account;
 
+        $updateAccount->setName($_POST['accountUserAccountname']);
+        $updateAccount->setFirstname($_POST['accountUserFirstname']);
+        $updateAccount->setSurname($_POST['accountUserLastname']);
+        $updateAccount->setEmail($_POST['accountUserEmail']);
+
+        if($this->accountService->updateAccount($updateAccount))
+        {
+            return $this->accountService->findAccountById($account->getId());
+        }
+        
+        return null;
     }
 
 }

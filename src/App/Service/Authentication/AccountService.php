@@ -76,14 +76,25 @@ readonly class AccountService
         return false;
     }
 
-    public function updateAccount(Account $account): void
+    public function updateAccount(Account $account, bool $admin = false): bool
     {
         if ($this->accountTable->updateAccountInformation($account) > 0) {
-            MESSAGES->add('success', 'admin-account-update-successful');
-            return;
+            if($admin)
+            {
+                MESSAGES->add('success', 'admin-account-update-successful');
+                return true;
+            }
+            MESSAGES->add('success', 'account-settings-update-successful');
+            return true;
         }
 
-        MESSAGES->add('danger', 'admin-account-update-failed');
+        if($admin)
+        {
+            MESSAGES->add('danger', 'admin-account-update-failed');
+            return false;
+        }
+        MESSAGES->add('danger', 'account-settings-update-failed');
+        return false;
     }
 
     public function resetPassword(Account $account): bool|Token

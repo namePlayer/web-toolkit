@@ -86,7 +86,7 @@ readonly class AccountViewController
             $account->setSupport(isset($_POST['adminAccountTabSettingsSupport']));
             $account->setAdmin(isset($_POST['adminAccountTabSettingsAdmin']));
 
-            $this->accountService->updateAccount($account);
+            $this->accountService->updateAccount($account, true);
         }
 
         if (isset($_POST['adminAccountTabSettingsResendActivationMailButton'])) {

@@ -47,6 +47,8 @@ AuthenticationMiddleware implements MiddlewareInterface
         $account->setAdmin($accountData['isAdmin'] === 1);
         $account->setLevel($accountData['level']);
         $account->setSendMailUnknownLogin($accountData['sendMailUnknownLogin'] === 1);
+        $account->setActive($accountData['active'] === 1);
+        $account->setSupport($accountData['isSupport'] === 1);
 
         return $handler->handle($request->withAttribute(Account::class, $account));
     }
