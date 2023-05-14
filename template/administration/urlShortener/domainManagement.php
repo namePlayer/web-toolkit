@@ -31,7 +31,7 @@
                                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
                             </svg>
                         </a>
-                        <?= $this->e($this->translate('administration-url-shortener-link-management-title')) ?>
+                        <?= $this->e($this->translate('administration-url-shortener-domain-management-title')) ?>
                     </h3>
                     <h5><?= $this->e($data['address']) ?></h5>
                 </div>
@@ -49,16 +49,16 @@
                                 <div class="card">
                                     <div class="card-body text-center">
 
-                                        <span>Status</span>
+                                        <span><?= $this->translate('administration-url-shortener-domain-management-status') ?></span>
                                         <h3>
                                             <?= $data['disabled'] === 0
-                                                ? 'Aktiviert'
-                                                : 'Deaktiviert'
+                                                ? $this->translate('active-string')
+                                                : $this->translate('disabled-string')
                                             ?>
                                         </h3>
                                         <?= $data['disabled'] === 0
-                                            ? '<button type="submit" class="btn btn-danger mt-3" name="toggleDomainActivation">Deaktivieren</button>'
-                                            : '<button type="submit" class="btn btn-success mt-3" name="toggleDomainActivation">Aktivieren</button>'
+                                            ? '<button type="submit" class="btn btn-danger mt-3" name="toggleDomainActivation">'.$this->translate('disable-button').'</button>'
+                                            : '<button type="submit" class="btn btn-success mt-3" name="toggleDomainActivation">'.$this->translate('activate-button').'</button>'
                                         ?>
 
                                     </div>
@@ -68,19 +68,19 @@
                                 <div class="card">
                                     <div class="card-body text-center">
 
-                                        <span>Verifizierung</span>
+                                        <span><?= $this->translate('administration-url-shortener-domain-management-verification') ?></span>
                                         <h3>
                                             <?= $data['verified'] === 1
-                                                ? 'Verifiziert'
-                                                : 'Ausstehend'
+                                                ? $this->translate('verified-string')
+                                                : $this->translate('outstanding-string')
                                             ?>
                                         </h3>
                                         <?= $data['verified'] === 0
-                                            ? '<button type="submit" class="btn btn-info mt-3" name="verifyDomain">Verifizieren</button>'
+                                            ? '<button type="submit" class="btn btn-info mt-3" name="verifyDomain">'.$this->translate('verify-button').'</button>'
                                             : '<button type="button" class="btn btn-success disabled mt-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill me-2" viewBox="0 0 16 16">
                                               <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-                                            </svg>Verifiziert</button>'
+                                            </svg>'.$this->translate('verified-string').'</button>'
                                         ?>
 
                                     </div>

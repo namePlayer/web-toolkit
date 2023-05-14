@@ -9,11 +9,16 @@
   "close-button": "Schließen",
   "search-button": "Suche",
   "abort-button": "Abbrechen",
+  "activate-button": "Aktivieren",
+  "disable-button": "Deaktivieren",
+  "verify-button": "Verifizieren",
 
   "active-string": "Aktiviert",
   "inactive-string": "Inaktiv",
   "disabled-string": "Deaktiviert",
   "customer-id-string": "Kundennummer",
+  "verified-string": "Verifiziert",
+  "outstanding-string": "Ausstehend",
 
   "homepage-content-create-shortlink-title": "Kurzlink erstellen",
   "homepage-content-create-shortlink-description": "Erstelle einen Kurzen Link, welcher einfach zu teilen ist. Dieser ist Beispielsweise Sinnvoll, solltest du auf deinem SmartTV eine Webseite öffnen wollen, welche eine Lange URL hat.",
@@ -401,6 +406,10 @@
   "administration-url-shortener-link-management-actions-tab-lock": "Sperren",
   "administration-url-shortener-link-management-actions-tab-delete": "Löschen",
   "administration-url-shortener-link-management-delete-title": "Kurzlink löschen",
-  "administration-url-shortener-link-management-delete-security-key": "Gib nachfolgendes im Textfeld ein, um das löschen zu bestätigen"
+  "administration-url-shortener-link-management-delete-security-key": "Gib nachfolgendes im Textfeld ein, um das löschen zu bestätigen",
+
+  "administration-url-shortener-domain-management-title": "Domain Verwaltung",
+  "administration-url-shortener-domain-management-status": "Status",
+  "administration-url-shortener-domain-management-verification": "Verifizierungsstatus"
 
 }
