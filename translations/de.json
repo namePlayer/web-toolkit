@@ -2,6 +2,7 @@
 
   "dateTime-format": "d.m.Y H:i",
   "unknown-string": "Unbekannt",
+  "create-button": "Erstellen",
   "add-button": "Hinzufügen",
   "save-button": "Speichern",
   "remove-button": "Entfernen",
@@ -410,6 +411,13 @@
 
   "administration-url-shortener-domain-management-title": "Domain Verwaltung",
   "administration-url-shortener-domain-management-status": "Status",
-  "administration-url-shortener-domain-management-verification": "Verifizierungsstatus"
+  "administration-url-shortener-domain-management-verification": "Verifizierungsstatus",
+
+  "forms-tool-main-pane-title": "Formular Übersicht",
+  "forms-tool-create-new-form-button": "Neues Formular",
+  "forms-tool-create-new-modal-title": "Neues Formular erstellen",
+  "forms-tool-form-title-string": "Name",
+  "forms-tool-form-template-string": "Vorlage",
+  "forms-tool-form-template-no-template": "Keine Vorlage anwenden"
 
 }

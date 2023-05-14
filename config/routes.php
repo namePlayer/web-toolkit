@@ -144,6 +144,11 @@ $router->post('/tool/url-shortener', 'App\Controller\URLShortener\CreateControll
 $router->get('/aka/{shortcode}', 'App\Controller\URLShortener\LinkController::load');
 $router->post('/aka/{shortcode}', 'App\Controller\URLShortener\LinkController::load');
 
+$router->get('/tool/forms', 'App\Controller\Forms\FormsController::load')
+    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/tool/forms', 'App\Controller\Forms\FormsController::load')
+    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
 $router->get('/api/shortlink', 'Api\UrlShortener\OpenLinkApiController::access')
     ->lazyMiddlewares([\App\Middleware\ApiAuthenticationMiddleware::class])
     ->setStrategy($jsonStrategy);

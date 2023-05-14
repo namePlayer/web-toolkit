@@ -147,6 +147,9 @@ $container->add(\App\Controller\Administration\ToolOverviewController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\Tool\ToolService::class);
 
+$container->add(\App\Controller\Forms\FormsController::class)
+    ->addArgument(\League\Plates\Engine::class);
+
 #
 # Services
 #
