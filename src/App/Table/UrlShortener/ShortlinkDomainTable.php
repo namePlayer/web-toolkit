@@ -60,4 +60,23 @@ class ShortlinkDomainTable extends AbstractTable
         return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->fetchColumn();
     }
 
+    public function updateActivationForDomainID(int $domain, bool $verification): int|bool
+    {
+        $set = [
+            'verified' => $verification ? 1 : 0
+        ];
+
+        return $this->query->update($this->getTableName())->where('id', $domain)->set($set)->execute();
+    }
+
+
+    public function updateDisabledForDomainID(int $domain, bool $disabled): int|bool
+    {
+        $set = [
+            'disabled' => $disabled ? 1 : 0
+        ];
+
+        return $this->query->update($this->getTableName())->where('id', $domain)->set($set)->execute();
+    }
+
 }

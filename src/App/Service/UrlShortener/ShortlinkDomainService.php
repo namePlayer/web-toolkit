@@ -107,6 +107,16 @@ readonly class ShortlinkDomainService
         return $domain['address'];
     }
 
+    public function changeVerificationState(int $domain, bool $active): bool
+    {
+        return $this->shortlinkDomainTable->updateActivationForDomainID($domain, $active) > 0;
+    }
+
+    public function changeDisabledState(int $domain, bool $disabled): bool
+    {
+        return $this->shortlinkDomainTable->updateDisabledForDomainID($domain, $disabled) > 0;
+    }
+
     public function getCount(): int
     {
         return (int)$this->shortlinkDomainTable->countAll();

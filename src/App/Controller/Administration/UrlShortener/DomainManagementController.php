@@ -10,13 +10,13 @@ use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class DomainManagementController
+readonly class DomainManagementController
 {
 
     public function __construct(
-        private readonly Engine                 $template,
-        private readonly ShortlinkDomainService $shortlinkDomainService,
-        private readonly SecurityKeyService     $securityKeyService
+        private Engine                 $template,
+        private ShortlinkDomainService $shortlinkDomainService,
+        private SecurityKeyService     $securityKeyService
     )
     {
     }
@@ -34,6 +34,15 @@ class DomainManagementController
             return new RedirectResponse('/admin/urlshortener/alldomains');
         }
 
+        if($request->getMethod() === 'POST')
+        {
+            $update = $this->stateChange($domainInformation);
+            if(is_array($update))
+            {
+                $domainInformation = $update;
+            }
+        }
+
         return new HtmlResponse(
             $this->template->render(
                 'administration/urlShortener/domainManagement',
@@ -42,6 +51,45 @@ class DomainManagementController
                 ]
             )
         );
+    }
+
+    private function stateChange(array $domainInformation): ?array
+    {
+
+        if(isset($_POST['verifyDomain']))
+        {
+            if($domainInformation['verified'] === 0)
+            {
+                if($this->shortlinkDomainService->changeVerificationState($domainInformation['id'], true))
+                {
+                    $domainInformation['verified'] = 1;
+                }
+                return $domainInformation;
+            }
+        }
+
+        if(isset($_POST['toggleDomainActivation']))
+        {
+            if($domainInformation['disabled'] === 1)
+            {
+                if($this->shortlinkDomainService->changeDisabledState($domainInformation['id'], false))
+                {
+                    $domainInformation['disabled'] = 0;
+                    return $domainInformation;
+                }
+                return null;
+            }
+
+            if($this->shortlinkDomainService->changeDisabledState($domainInformation['id'], true))
+            {
+                $this->shortlinkDomainService->changeVerificationState($domainInformation['id'], false);
+                $domainInformation['disabled'] = 1;
+                $domainInformation['verified'] = 0;
+                return $domainInformation;
+            }
+        }
+
+        return null;
     }
 
 }
