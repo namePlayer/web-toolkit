@@ -8,7 +8,10 @@ use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Forms\Form;
 use App\Model\Tool\Tool;
+use App\Service\Forms\FormService;
 use App\Service\UrlShortener\ShortlinkService;
+use App\Tool\FormsTool;
+use Laminas\Diactoros\Response\RedirectResponse;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -17,7 +20,8 @@ readonly class FormsController
 {
 
     public function __construct(
-        private Engine           $template
+        private Engine          $template,
+        private FormService     $formService
     )
     {
     }
@@ -42,7 +46,8 @@ readonly class FormsController
             $this->template->render(
                 'forms/mainPage',
                 [
-                    'tool' => $tool
+                    'tool' => $tool,
+                    'formList' => $this->formService->getAllFormsForAccount($account->getId())
                 ],
             )
         );
@@ -55,7 +60,13 @@ readonly class FormsController
 
             $form = new Form();
             $form->setAccount($account->getId());
-            $form->setName($_POST['formsToolCreateModalFormTitle']);
+            $form->setName(trim($_POST['formsToolCreateModalFormTitle']));
+
+            $createForm = $this->formService->create($form);
+            if(is_string($createForm))
+            {
+                return new RedirectResponse(FormsTool::TOOL_URL . '/edit/' . $createForm);
+            }
 
         }
 

@@ -5,6 +5,7 @@
   "create-button": "Erstellen",
   "add-button": "Hinzufügen",
   "save-button": "Speichern",
+  "edit-button": "Bearbeiten",
   "remove-button": "Entfernen",
   "delete-button": "Löschen",
   "close-button": "Schließen",
@@ -20,6 +21,8 @@
   "customer-id-string": "Kundennummer",
   "verified-string": "Verifiziert",
   "outstanding-string": "Ausstehend",
+  "public-string": "Öffentlich",
+  "private-string": "Privat",
 
   "homepage-content-create-shortlink-title": "Kurzlink erstellen",
   "homepage-content-create-shortlink-description": "Erstelle einen Kurzen Link, welcher einfach zu teilen ist. Dieser ist Beispielsweise Sinnvoll, solltest du auf deinem SmartTV eine Webseite öffnen wollen, welche eine Lange URL hat.",
