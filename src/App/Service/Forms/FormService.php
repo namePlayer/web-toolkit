@@ -32,6 +32,11 @@ class FormService
         return $this->formTable->findAllByAccount($account);
     }
 
+    public function getFormByUuid(string $uuid): bool|array
+    {
+        return $this->formTable->findByUuid($uuid);
+    }
+
     private function generateFormUuid(): string
     {
         do {

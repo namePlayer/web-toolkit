@@ -425,6 +425,7 @@
   "forms-tool-form-list-title-heading": "Titel",
   "forms-tool-form-list-created-heading": "Erstellt",
   "forms-tool-form-list-edited-heading": "Zuletzt bearbeitet",
-  "forms-tool-form-list-visibility-heading": "Sichtbarkeit"
+  "forms-tool-form-list-visibility-heading": "Sichtbarkeit",
+  "forms-tool-add-form-element-button": "Element hinzufügen"
 
 }

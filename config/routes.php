@@ -149,6 +149,11 @@ $router->get('/tool/forms', 'App\Controller\Forms\FormsController::load')
 $router->post('/tool/forms', 'App\Controller\Forms\FormsController::load')
     ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 
+$router->get('/tool/forms/edit/{uuid}', 'App\Controller\Forms\FormEditController::load')
+    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/tool/forms/edit/{uuid}', 'App\Controller\Forms\FormEditController::load')
+    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
 $router->get('/api/shortlink', 'Api\UrlShortener\OpenLinkApiController::access')
     ->lazyMiddlewares([\App\Middleware\ApiAuthenticationMiddleware::class])
     ->setStrategy($jsonStrategy);
