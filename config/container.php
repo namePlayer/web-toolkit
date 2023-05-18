@@ -153,7 +153,8 @@ $container->add(\App\Controller\Forms\FormsController::class)
 
 $container->add(\App\Controller\Forms\FormEditController::class)
     ->addArgument(\League\Plates\Engine::class)
-    ->addArgument(\App\Service\Forms\FormService::class);
+    ->addArgument(\App\Service\Forms\FormService::class)
+    ->addArgument(\App\Service\Forms\FormFieldService::class);
 
 #
 # Services
@@ -243,6 +244,9 @@ $container->add(\App\Service\Security\SecurityKeyService::class);
 $container->add(\App\Service\Forms\FormService::class)
     ->addArgument(\App\Table\Forms\FormTable::class);
 
+$container->add(\App\Service\Forms\FormFieldService::class)
+    ->addArgument(\App\Table\Forms\FormFieldTable::class);
+
 #
 # Repositories
 #
@@ -280,6 +284,9 @@ $container->add(\App\Table\Security\AccountTrustedDeviceTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\Forms\FormTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\Forms\FormFieldTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #

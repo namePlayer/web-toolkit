@@ -5,6 +5,7 @@ namespace App\Controller\Forms;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Tool\Tool;
+use App\Service\Forms\FormFieldService;
 use App\Service\Forms\FormService;
 use App\Tool\FormsTool;
 use Laminas\Diactoros\Response\RedirectResponse;
@@ -17,7 +18,8 @@ class FormEditController
 
     public function __construct(
         private readonly Engine $template,
-        private readonly FormService $formService
+        private readonly FormService $formService,
+        private readonly FormFieldService $formFieldService
     )
     {
     }
@@ -40,7 +42,11 @@ class FormEditController
             return new RedirectResponse(FormsTool::TOOL_URL);
         }
 
-        return new HtmlResponse($this->template->render('forms/editFormPage', ['tool' => $tool, 'form' => $form]));
+        return new HtmlResponse($this->template->render('forms/editFormPage', [
+            'tool' => $tool,
+            'form' => $form,
+            'fields' => []
+        ]));
     }
 
 }
