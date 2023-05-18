@@ -426,6 +426,9 @@
   "forms-tool-form-list-created-heading": "Erstellt",
   "forms-tool-form-list-edited-heading": "Zuletzt bearbeitet",
   "forms-tool-form-list-visibility-heading": "Sichtbarkeit",
-  "forms-tool-add-form-element-button": "Element hinzufügen"
-
+  "forms-tool-add-form-element-button": "Element hinzufügen",
+  "forms-tool-add-form-element-modal-title": "Formular Element hinzufügen",
+  "forms-tool-form-element-title": "Feld Name",
+  "forms-tool-form-element-description": "Beschreibung",
+  "forms-tool-form-element-type": "Feld Typ"
 }

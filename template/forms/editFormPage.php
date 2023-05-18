@@ -39,8 +39,54 @@
 
     <div class="row">
 
-        
-
     </div>
 
 </div>
+
+<form action="" method="post">
+    <div class="modal fade" id="formsToolAddNewFieldModal" tabindex="-1" aria-labelledby="formsToolAddNewFieldModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="formsToolAddNewFieldModalLabel">
+                        <?= $this->translate('forms-tool-add-form-element-modal-title') ?>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="formsToolAddNewFieldTitle" class="form-label">
+                            <?= $this->translate('forms-tool-form-element-title') ?>
+                        </label>
+                        <input type="text" class="form-control" id="formsToolAddNewFieldTitle">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formsToolAddNewFieldDescription" class="form-label">
+                            <?= $this->translate('forms-tool-form-element-description') ?>
+                        </label>
+                        <input type="text" class="form-control" id="formsToolAddNewFieldDescription">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formsToolAddNewFieldType" class="form-label">
+                            <?= $this->translate('forms-tool-form-element-type') ?>
+                        </label>
+                        <select class="form-select" aria-label="Default select example" id="formsToolAddNewFieldType">
+                            <option selected></option>
+                            <option value="text">Kurz-Text</option>
+                            <option value="textarea">Lang-Text</option>
+                            <option value="email">E-Mail</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <?= $this->e($this->translate('abort-button')) ?>
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <?= $this->e($this->translate('add-button')) ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
