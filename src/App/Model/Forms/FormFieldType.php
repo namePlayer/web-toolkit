@@ -5,6 +5,11 @@ namespace App\Model\Forms;
 class FormFieldType
 {
 
+    public const HEADER_FIELD = 1;
+    public const TEXT_FIELD = 2;
+    public const TEXTAREA_FIELD = 3;
+    public const DROPDOWN_FIELD = 4;
+
     private int $id;
     private string $title;
     private string $template;

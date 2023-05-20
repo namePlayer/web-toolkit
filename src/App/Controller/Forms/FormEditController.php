@@ -45,6 +45,7 @@ class FormEditController
         return new HtmlResponse($this->template->render('forms/editFormPage', [
             'tool' => $tool,
             'form' => $form,
+            'fieldTypes' => $this->formFieldService->getAllAvailableFields(),
             'fields' => []
         ]));
     }

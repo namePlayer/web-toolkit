@@ -72,23 +72,25 @@
                         <label for="formsToolAddNewFieldTitle" class="form-label">
                             <?= $this->translate('forms-tool-form-element-title') ?>
                         </label>
-                        <input type="text" class="form-control" id="formsToolAddNewFieldTitle">
+                        <input type="text" class="form-control" id="formsToolAddNewFieldTitle" name="formsToolAddNewFieldTitle">
                     </div>
                     <div class="mb-3">
                         <label for="formsToolAddNewFieldDescription" class="form-label">
                             <?= $this->translate('forms-tool-form-element-description') ?>
                         </label>
-                        <input type="text" class="form-control" id="formsToolAddNewFieldDescription">
+                        <input type="text" class="form-control" id="formsToolAddNewFieldDescription" name="formsToolAddNewFieldDescription">
                     </div>
                     <div class="mb-3">
                         <label for="formsToolAddNewFieldType" class="form-label">
                             <?= $this->translate('forms-tool-form-element-type') ?>
                         </label>
-                        <select class="form-select" aria-label="Default select example" id="formsToolAddNewFieldType">
+                        <select class="form-select" id="formsToolAddNewFieldType" name="formsToolAddNewFieldType">
                             <option selected></option>
-                            <option value="text">Kurz-Text</option>
-                            <option value="textarea">Lang-Text</option>
-                            <option value="email">E-Mail</option>
+                            <?php foreach($fieldTypes as $fieldType): ?>
+                                <option value="<?= $fieldType['id'] ?>">
+                                    <?= $this->translate($fieldType['title']) ?>
+                                </option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>

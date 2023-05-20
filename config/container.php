@@ -245,7 +245,8 @@ $container->add(\App\Service\Forms\FormService::class)
     ->addArgument(\App\Table\Forms\FormTable::class);
 
 $container->add(\App\Service\Forms\FormFieldService::class)
-    ->addArgument(\App\Table\Forms\FormFieldTable::class);
+    ->addArgument(\App\Table\Forms\FormFieldTable::class)
+    ->addArgument(\App\Table\Forms\FormFieldTypeTable::class);
 
 #
 # Repositories
@@ -287,6 +288,9 @@ $container->add(\App\Table\Forms\FormTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\Forms\FormFieldTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\Forms\FormFieldTypeTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #
