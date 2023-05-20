@@ -39,6 +39,20 @@
 
     <div class="row">
 
+        <div class="col-2"></div>
+        <div class="col-8">
+
+            <?= $this->insert('forms/fields/headerField', ['editView' => true]) ?>
+
+            <?= $this->insert('forms/fields/textField', ['editView' => true, 'required' => true]) ?>
+
+            <?= $this->insert('forms/fields/textareaField', ['editView' => true, 'required' => true]) ?>
+
+            <?= $this->insert('forms/fields/dropdownField', ['editView' => true, 'required' => true, 'options' => [0 => 'test', 1=>'test1']]) ?>
+
+        </div>
+        <div class="col-2"></div>
+
     </div>
 
 </div>
