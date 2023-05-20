@@ -1,14 +1,16 @@
 <div class="mb-3">
 
-    <div class="<?= isset($editView) ? 'card' : '' ?>">
-        <div class="<?= isset($editView) ? 'card-body' : '' ?>">
+    <div class="card">
+        <div class="card-body" id="<?= $field['uuid'] ?>">
             <div class="row">
                 <div class="col-10">
-                    <label class="form-label mb-1 fs-5" for="dropdownInput">
-                        Dropdown Name
+                    <label class="form-label mb-1 fs-5" for="<?= $field['uuid'] ?>">
+                        <?= $this->e($field['title']) ?>
                         <?= isset($required) ? '<span class="text-danger ms-1">*</span>' : '' ?>
                     </label>
-                    <p class="text-muted">Feldbeschreibung</p>
+                    <p class="text-muted mb-2">
+                        <?= $this->e($field['description']) ?>
+                    </p>
                 </div>
                 <?php if(isset($editView)): ?>
                     <div class="col-2">
@@ -20,7 +22,7 @@
                     </div>
                 <?php endif; ?>
             </div>
-            <select class="form-select" name="" id="dropdownInput">
+            <select class="form-select" name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>">
                 <option selected></option>
                 <?php foreach($options as $option): ?>
                     <option value="<?= $option ?>"><?= $option ?></option>

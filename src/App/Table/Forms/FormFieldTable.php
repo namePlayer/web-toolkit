@@ -21,6 +21,13 @@ class FormFieldTable extends AbstractTable
         return $this->query->insertInto($this->getTableName())->values($values)->executeWithoutId();
     }
 
+    public function findAllFieldsByFormId(int $form): array|bool
+    {
+        return $this->query->from($this->getTableName())->select('FormFieldType.template')->where('form', $form)
+            ->leftJoin('FormFieldType on FormFieldType.id = FormField.id')
+            ->fetchAll();
+    }
+
     public function findByUuid(string $uuid): bool|array
     {
         return $this->query->from($this->getTableName())->where('uuid', $uuid)->fetch();

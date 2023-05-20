@@ -1,11 +1,15 @@
 <div class="mb-3">
 
-    <div class="card">
+    <div class="card" id="<?= $field['uuid'] ?>">
         <div class="card-body">
             <div class="row">
                 <div class="col">
-                    <label class="form-label fs-3" for="textInput">Header Titel</label>
-                    <p class="text-muted mb-1">Header Beschreibung</p>
+                    <label class="form-label fs-3" for="textInput">
+                        <?= $this->e($field['title']) ?>
+                    </label>
+                    <p class="text-muted mb-1">
+                        <?= $this->e($field['description']) ?>
+                    </p>
                 </div>
                 <?php if(isset($editView)): ?>
                     <div class="col-2">

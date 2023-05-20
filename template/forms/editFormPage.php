@@ -42,13 +42,11 @@
         <div class="col-2"></div>
         <div class="col-8">
 
-            <?= $this->insert('forms/fields/headerField', ['editView' => true]) ?>
+            <?php foreach ($fields as $field): ?>
 
-            <?= $this->insert('forms/fields/textField', ['editView' => true, 'required' => true]) ?>
+                <?= $this->insert('forms/fields/'.$field['template'], ['editView' => true, 'field' => $field]) ?>
 
-            <?= $this->insert('forms/fields/textareaField', ['editView' => true, 'required' => true]) ?>
-
-            <?= $this->insert('forms/fields/dropdownField', ['editView' => true, 'required' => true, 'options' => [0 => 'test', 1=>'test1']]) ?>
+            <?php endforeach; ?>
 
         </div>
         <div class="col-2"></div>
@@ -84,7 +82,7 @@
                         <label for="formsToolAddNewFieldType" class="form-label">
                             <?= $this->translate('forms-tool-form-element-type') ?>
                         </label>
-                        <select class="form-select" id="formsToolAddNewFieldType" name="formsToolAddNewFieldType">
+                        <select class="form-select" id="formsToolAddNewFieldType" name="formsToolAddNewFieldType" required>
                             <option selected></option>
                             <?php foreach($fieldTypes as $fieldType): ?>
                                 <option value="<?= $fieldType['id'] ?>">

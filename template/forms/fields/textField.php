@@ -1,14 +1,16 @@
 <div class="mb-3">
 
-    <div class="<?= isset($editView) ? 'card' : '' ?>">
-        <div class="<?= isset($editView) ? 'card-body' : '' ?>">
+    <div class="card" id="<?= $field['uuid'] ?>">
+        <div class="card-body">
             <div class="row">
                 <div class="col-10">
-                    <label class="form-label mb-1 fs-5" for="textInput">
-                        Feldname
+                    <label class="form-label mb-1 fs-5" for="<?= $field['uuid'] ?>">
+                        <?= $this->e($field['title']) ?>
                         <?= isset($required) ? '<span class="text-danger ms-1">*</span>' : '' ?>
                     </label>
-                    <p class="text-muted">Feldbeschreibung</p>
+                    <p class="text-muted">
+                        <?= $this->e($field['description']) ?>
+                    </p>
                 </div>
                 <?php if(isset($editView)): ?>
                     <div class="col-2">
@@ -20,7 +22,7 @@
                     </div>
                 <?php endif; ?>
             </div>
-            <input type="text" name="" id="textInput" class="form-control" placeholder="A Short Text..." readonly>
+            <input type="text" name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>" class="form-control" placeholder="A Short Text..." readonly>
         </div>
     </div>
 

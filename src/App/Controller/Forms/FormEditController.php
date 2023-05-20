@@ -53,7 +53,7 @@ class FormEditController
             'tool' => $tool,
             'form' => $form,
             'fieldTypes' => $this->formFieldService->getAllAvailableFields(),
-            'fields' => []
+            'fields' => $this->formFieldService->getAllFieldsForForm($form['id'])
         ]));
     }
 
