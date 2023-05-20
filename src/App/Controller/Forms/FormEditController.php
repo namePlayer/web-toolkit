@@ -2,8 +2,10 @@
 
 namespace App\Controller\Forms;
 
+use App\DTO\Forms\AddNewFieldDTO;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
+use App\Model\Forms\FormField;
 use App\Model\Tool\Tool;
 use App\Service\Forms\FormFieldService;
 use App\Service\Forms\FormService;
@@ -42,12 +44,35 @@ class FormEditController
             return new RedirectResponse(FormsTool::TOOL_URL);
         }
 
+        if($request->getMethod() === "POST" && isset($_POST['formsToolAddNewFieldSubmit']))
+        {
+            $this->addField($form['id']);
+        }
+
         return new HtmlResponse($this->template->render('forms/editFormPage', [
             'tool' => $tool,
             'form' => $form,
             'fieldTypes' => $this->formFieldService->getAllAvailableFields(),
             'fields' => []
         ]));
+    }
+
+    private function addField(int $form): void
+    {
+
+        if(isset($_POST['formsToolAddNewFieldTitle'], $_POST['formsToolAddNewFieldDescription'], $_POST['formsToolAddNewFieldType']))
+        {
+
+            $formField = new FormField();
+            $formField->setForm($form);
+            $formField->setTitle($_POST['formsToolAddNewFieldTitle']);
+            $formField->setDescription($_POST['formsToolAddNewFieldDescription']);
+            $formField->setType((int)$_POST['formsToolAddNewFieldType']);
+
+            $this->formFieldService->create($formField);
+
+        }
+
     }
 
 }

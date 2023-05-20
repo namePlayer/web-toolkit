@@ -98,7 +98,7 @@
                     <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">
                         <?= $this->e($this->translate('abort-button')) ?>
                     </button>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" name="formsToolAddNewFieldSubmit">
                         <?= $this->e($this->translate('add-button')) ?>
                     </button>
                 </div>

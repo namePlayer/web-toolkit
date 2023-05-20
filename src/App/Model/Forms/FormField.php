@@ -8,6 +8,7 @@ class FormField
     private int $id;
     private int $form;
     private int $type;
+    private string $uuid;
     private string $title;
     private string $description;
     private array $options = [];
@@ -40,6 +41,16 @@ class FormField
     public function setType(int $type): void
     {
         $this->type = $type;
+    }
+
+    public function getUuid(): string
+    {
+        return $this->uuid;
+    }
+
+    public function setUuid(string $uuid): void
+    {
+        $this->uuid = $uuid;
     }
 
     public function getTitle(): string
