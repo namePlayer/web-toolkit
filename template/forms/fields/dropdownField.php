@@ -6,7 +6,7 @@
                 <div class="col-10">
                     <label class="form-label mb-1 fs-5" for="<?= $field['uuid'] ?>">
                         <?= $this->e($field['title']) ?>
-                        <?= isset($required) ? '<span class="text-danger ms-1">*</span>' : '' ?>
+                        <?= isset($field['options']['required']) ? '<span class="text-danger ms-1">*</span>' : '' ?>
                     </label>
                     <p class="text-muted mb-2">
                         <?= $this->e($field['description']) ?>
@@ -24,7 +24,7 @@
             </div>
             <select class="form-select" name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>">
                 <option selected></option>
-                <?php foreach($options as $option): ?>
+                <?php foreach($field['options']['options'] as $option): ?>
                     <option value="<?= $option ?>"><?= $option ?></option>
                 <?php endforeach; ?>
             </select>

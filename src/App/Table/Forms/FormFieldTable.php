@@ -24,7 +24,7 @@ class FormFieldTable extends AbstractTable
     public function findAllFieldsByFormId(int $form): array|bool
     {
         return $this->query->from($this->getTableName())->select('FormFieldType.template')->where('form', $form)
-            ->leftJoin('FormFieldType on FormFieldType.id = FormField.id')
+            ->leftJoin('FormFieldType on FormFieldType.id = FormField.type')
             ->fetchAll();
     }
 

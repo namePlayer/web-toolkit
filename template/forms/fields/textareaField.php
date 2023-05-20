@@ -6,7 +6,7 @@
                 <div class="col-10">
                     <label class="form-label mb-1 fs-5" for="<?= $field['uuid'] ?>">
                         <?= $this->e($field['title']) ?>
-                        <?= isset($required) ? '<span class="text-danger ms-1">*</span>' : '' ?>
+                        <?= isset($field['options']['required']) ? '<span class="text-danger ms-1">*</span>' : '' ?>
                     </label>
                     <p class="text-muted mb-2">
                         <?= $this->e($field['description']) ?>
