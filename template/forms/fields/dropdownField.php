@@ -23,7 +23,9 @@
                 <?php endif; ?>
             </div>
             <select class="form-select" name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>">
-                <option selected></option>
+                <option selected <?= isset($field['options']['required']) ? 'disabled' : '' ?>>
+                    <?= $field['options']['placeholder'] ?? $this->translate('forms-dropdown-field-default-placeholder') ?>
+                </option>
                 <?php foreach($field['options']['options'] as $option): ?>
                     <option value="<?= $option ?>"><?= $option ?></option>
                 <?php endforeach; ?>

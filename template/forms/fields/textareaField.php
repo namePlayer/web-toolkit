@@ -22,8 +22,8 @@
                     </div>
                 <?php endif; ?>
             </div>
-            <textarea name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>" class="form-control" placeholder="A Long Text..." readonly>
-
+            <textarea name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>" class="form-control"
+                      placeholder="<?= $field['options']['placeholder'] ?? $this->translate('forms-textarea-field-default-placeholder') ?>" readonly>
             </textarea>
         </div>
     </div>

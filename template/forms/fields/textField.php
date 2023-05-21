@@ -22,7 +22,8 @@
                     </div>
                 <?php endif; ?>
             </div>
-            <input type="text" name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>" class="form-control" placeholder="A Short Text..." readonly>
+            <input type="text" name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>" class="form-control"
+                   placeholder="<?= $field['options']['placeholder'] ?? $this->translate('forms-text-field-default-placeholder') ?>" readonly>
         </div>
     </div>
 

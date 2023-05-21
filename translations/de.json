@@ -418,8 +418,11 @@
 
   "forms-header-field": "Überschrift",
   "forms-text-field": "Kurzantwort",
+  "forms-text-field-default-placeholder": "Ein kurzer Text...",
   "forms-textarea-field": "Langantwort",
+  "forms-textarea-field-default-placeholder": "Eine sehr sehr lange Antwort...",
   "forms-dropdown-field": "Dropdownantwort",
+  "forms-dropdown-field-default-placeholder": "Auswählen...",
   "forms-tool-main-pane-title": "Formular Übersicht",
   "forms-tool-create-new-form-button": "Neues Formular",
   "forms-tool-create-new-modal-title": "Neues Formular erstellen",
