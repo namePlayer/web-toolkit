@@ -56,7 +56,7 @@ class FormFieldService
         return $uuid;
     }
 
-    private function getFieldByUUID(string $uuid): false|array
+    public function getFieldByUUID(string $uuid): false|array
     {
         return $this->formFieldTable->findByUuid($uuid);
     }

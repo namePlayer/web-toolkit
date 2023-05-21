@@ -3,6 +3,7 @@
 namespace App\Controller\Forms;
 
 use App\Http\HtmlResponse;
+use App\Service\Forms\FormEntryService;
 use App\Service\Forms\FormFieldService;
 use App\Service\Forms\FormService;
 use App\Software;
@@ -17,7 +18,8 @@ readonly class FormPublicController
     public function __construct(
         private Engine $template,
         private FormService $formService,
-        private FormFieldService $formFieldService
+        private FormFieldService $formFieldService,
+        private FormEntryService $formEntryService
     )
     {
     }
@@ -37,22 +39,35 @@ readonly class FormPublicController
 
         $formFields = $this->formFieldService->getAllFieldsForForm($formInformation['id']);
 
-        if($request->getMethod() === "POST")
+        if(isset($args['context']) && $args['context'] === 'submit')
         {
-            $this->submitForm();
+            if($request->getMethod() === "POST")
+            {
+                $submit = $this->submitForm($formInformation['id']);
+                if($submit === true)
+                {
+                    return new HtmlResponse(
+                        $this->template->render('forms/publicFormSubmitted', ['formInformation' => $formInformation])
+                    );
+                }
+            }
         }
 
         return new HtmlResponse($this->template->render('forms/publicForm', [
             'formInformation' => $formInformation,
-            'formFields' => $formFields
+            'formFields' => $formFields,
+            'errorFields' => $submit ?? []
         ]));
     }
 
-    private function submitForm(): void
+    private function submitForm(int $form): bool|array
     {
+        if(!empty($_POST))
+        {
+            return $this->formEntryService->createFromFormIdAndPostData($form, $_POST);
+        }
 
-        var_dump($_POST);
-
+        return [];
     }
 
 }

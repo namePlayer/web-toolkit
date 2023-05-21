@@ -154,6 +154,9 @@ $router->get('/tool/forms/edit/{uuid}', 'App\Controller\Forms\FormEditController
 $router->post('/tool/forms/edit/{uuid}', 'App\Controller\Forms\FormEditController::load')
     ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 
+$router->get('/form/{uuid}/{context}', 'App\Controller\Forms\FormPublicController::load');
+$router->post('/form/{uuid}/{context}', 'App\Controller\Forms\FormPublicController::load');
+
 $router->get('/form/{uuid}', 'App\Controller\Forms\FormPublicController::load');
 $router->post('/form/{uuid}', 'App\Controller\Forms\FormPublicController::load');
 

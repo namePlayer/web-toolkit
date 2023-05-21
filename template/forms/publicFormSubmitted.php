@@ -3,25 +3,19 @@
     'background' => $formInformation['additionalData']['color'] ?? '#FFFFFF'
 ]); ?>
 
-    <div class="container mt-3">
+    <div class="container mt-3"">
 
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
-            <form action="/form/<?= $formInformation['uuid'] ?>/submit" method="post">
-                <h2 class="mb-4"><?= $formInformation['name'] ?></ß0ß></h2>
 
-                <?php foreach ($formFields as $formField): ?>
-                    <?= $this->insert('forms/fields/' . $formField['template'],
-                        ['field' => $formField]) ?>
-                <?php endforeach; ?>
-                <div class="row">
-                    <div class="col-8"></div>
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary w-100">Formular absenden</button>
-                    </div>
+            <div class="card">
+
+                <div class="card-body">
+                    <h3>Ihr Formular wurde abgesendet.</h3>
                 </div>
-            </form>
+
+            </div>
 
             <div class="text-center mb-5 mt-5">
                 <small>Geben Sie niemals Passwörter über Formulare weiter.</small>
@@ -38,6 +32,7 @@
                     <a href="#" class="text-decoration-none">Nutzungsbedingungen</a> -
                     <a href="#" class="text-decoration-none">Weitere Informationen</a> </small>
             </div>
+
         </div>
         <div class="col-2"></div>
     </div>
