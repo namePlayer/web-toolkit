@@ -1,6 +1,9 @@
-<?php $this->layout('publictemplate', ['pageTitle' => $formInformation['name'] . ' | ' . $_ENV['SOFTWARE_TITLE'] . ' Forms']); ?>
+<?php $this->layout('publictemplate', [
+    'pageTitle' => $formInformation['name'] . ' | ' . $_ENV['SOFTWARE_TITLE'] . ' Forms',
+    'background' => $formInformation['additionalData']['color'] ?? '#FFFFFF'
+]); ?>
 
-<div class="container mt-3">
+    <div class="container mt-3"">
 
     <div class="row">
         <div class="col-2"></div>
@@ -10,7 +13,8 @@
 
                 <?php foreach ($formFields as $formField): ?>
 
-                    <?= $this->insert('forms/fields/' . $formField['template'], ['field' => $formField]) ?>
+                    <?= $this->insert('forms/fields/' . $formField['template'],
+                        ['field' => $formField]) ?>
 
                 <?php endforeach; ?>
                 <div class="row">

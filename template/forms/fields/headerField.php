@@ -1,13 +1,16 @@
 <div class="mb-3">
 
-    <div class="card" id="<?= $field['uuid'] ?>">
+    <div class="card" id="<?= $field['uuid'] ?>"
+         style="background: <?= $field['options']['fieldColor'] ?? '#FFFFFF' ?>;
+             color: <?= $field['options']['fieldTextColor'] ?? '#000000' ?>;
+             ">
         <div class="card-body">
             <div class="row">
                 <div class="col">
                     <label class="form-label fs-3" for="textInput">
                         <?= $this->e($field['title']) ?>
                     </label>
-                    <p class="text-muted mb-1">
+                    <p class="mb-1">
                         <?= $this->e($field['description']) ?>
                     </p>
                 </div>

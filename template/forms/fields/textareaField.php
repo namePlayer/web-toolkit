@@ -1,6 +1,9 @@
 <div class="mb-3">
 
-    <div class="card" id="<?= $field['uuid'] ?>">
+    <div class="card" id="<?= $field['uuid'] ?>"
+         style="background: <?= $field['options']['fieldColor'] ?? '#FFFFFF' ?>;
+             color: <?= $field['options']['fieldTextColor'] ?? '#000000' ?>;
+             ">
         <div class="card-body">
             <div class="row">
                 <div class="col-10">
@@ -8,7 +11,7 @@
                         <?= $this->e($field['title']) ?>
                         <?= isset($field['options']['required']) ? '<span class="text-danger ms-1">*</span>' : '' ?>
                     </label>
-                    <p class="text-muted mb-2">
+                    <p class="mb-2">
                         <?= $this->e($field['description']) ?>
                     </p>
                 </div>
