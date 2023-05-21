@@ -32,7 +32,8 @@ readonly class FormPublicController
         }
 
         $formInformation = $this->formService->getFormByUuid($args['uuid']);
-        if($formInformation === FALSE || ($formInformation['published'] === 0 && $formInformation['account'] !== $_SESSION[Software::SESSION_USERID_NAME]))
+        if($formInformation === FALSE ||
+            ($formInformation['published'] === 0 && $formInformation['account'] !== ($_SESSION[Software::SESSION_USERID_NAME] ?? 0)))
         {
             return new RedirectResponse('/');
         }

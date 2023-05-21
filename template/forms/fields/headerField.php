@@ -1,8 +1,8 @@
 <div class="mb-3">
 
     <div class="card" id="<?= $field['uuid'] ?>"
-         style="background: <?= $field['options']['fieldColor'] ?? '#FFFFFF' ?>;
-             color: <?= $field['options']['fieldTextColor'] ?? '#000000' ?>;
+         style="background: <?= $field['options']['fieldColor'] ?? 'reset' ?>;
+             color: <?= $field['options']['fieldTextColor'] ?? 'reset' ?>;
              ">
         <div class="card-body">
             <div class="row">

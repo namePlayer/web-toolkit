@@ -10,6 +10,18 @@
 </head>
     <body style="background: <?= $background ?? '#FFFFFF' ?>;">
 
+        <?php if(isset($displayNavigation) && $displayNavigation === true): ?>
+
+            <?php if(isset($isLoggedIn)): ?>
+                <?php if($isLoggedIn === true): ?>
+                    <?= $this->insert('element/navigation') ?>
+                <?php endif; ?>
+            <?php else: ?>
+                <?= $this->insert('element/navigation') ?>
+            <?php endif; ?>
+
+        <?php endif; ?>
+
         <div class="d-flex align-self-center h-100">
             <?= $this->section('content') ?>
         </div>

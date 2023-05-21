@@ -32,7 +32,6 @@ class AuthenticationExtension implements ExtensionInterface
     public function getAccountInformation(): false|array
     {
         if (
-            isset($_SESSION[Software::SESSION_USERID_NAME]) &&
             !empty($_SESSION[Software::SESSION_USERID_NAME])
         ) {
             $account = $this->accountService->findAccountById($_SESSION[Software::SESSION_USERID_NAME]);

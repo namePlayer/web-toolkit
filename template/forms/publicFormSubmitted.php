@@ -1,9 +1,10 @@
 <?php $this->layout('publictemplate', [
     'pageTitle' => $formInformation['name'] . ' | ' . $_ENV['SOFTWARE_TITLE'] . ' Forms',
-    'background' => $formInformation['additionalData']['color'] ?? '#FFFFFF'
+    'background' => $formInformation['additionalData']['color'] ?? 'reset',
+    'displayNavigation' => true
 ]); ?>
 
-    <div class="container mt-3"">
+    <div class="container mt-3">
 
     <div class="row">
         <div class="col-2"></div>
