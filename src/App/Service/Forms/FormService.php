@@ -6,11 +6,11 @@ use App\Model\Forms\Form;
 use App\Table\Forms\FormTable;
 use Ramsey\Uuid\Uuid;
 
-class FormService
+readonly class FormService
 {
 
     public function __construct(
-        private readonly FormTable $formTable
+        private FormTable $formTable
     )
     {
     }
@@ -34,7 +34,12 @@ class FormService
 
     public function getFormByUuid(string $uuid): bool|array
     {
-        return $this->formTable->findByUuid($uuid);
+        $form = $this->formTable->findByUuid($uuid);
+        if(isset($form['additionalData']))
+        {
+            $form['additionalData'] = json_decode($form['additionalData'], true);
+        }
+        return $form;
     }
 
     private function generateFormUuid(): string

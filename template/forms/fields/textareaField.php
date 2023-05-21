@@ -23,8 +23,8 @@
                 <?php endif; ?>
             </div>
             <textarea name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>" class="form-control"
-                      placeholder="<?= $field['options']['placeholder'] ?? $this->translate('forms-textarea-field-default-placeholder') ?>" readonly>
-            </textarea>
+                      <?= isset($editView) ? 'readonly' : '' ?>
+                      placeholder="<?= $field['options']['placeholder'] ?? $this->translate('forms-textarea-field-default-placeholder') ?>"></textarea>
         </div>
     </div>
 

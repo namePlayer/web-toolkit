@@ -156,6 +156,11 @@ $container->add(\App\Controller\Forms\FormEditController::class)
     ->addArgument(\App\Service\Forms\FormService::class)
     ->addArgument(\App\Service\Forms\FormFieldService::class);
 
+$container->add(\App\Controller\Forms\FormPublicController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Forms\FormService::class)
+    ->addArgument(\App\Service\Forms\FormFieldService::class);
+
 #
 # Services
 #

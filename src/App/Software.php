@@ -28,6 +28,7 @@ class Software
 
     public const DISCORD_INVITE = 'https://discord.gg/RwxEQ7Gcmm';
 
+
     /**
      * @throws EnvironmentException
      */
