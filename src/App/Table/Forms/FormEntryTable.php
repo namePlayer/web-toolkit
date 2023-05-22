@@ -3,21 +3,19 @@
 namespace App\Table\Forms;
 
 use App\Model\Forms\FormEntry;
+use App\Model\Forms\FormEntryField;
 use App\Table\AbstractTable;
 
 class FormEntryTable extends AbstractTable
 {
 
-    public function insert(FormEntry $formEntry): array|bool
+    public function insert(FormEntry $formEntry): array|bool|string|int
     {
         $values = [
-            'uuid' => $formEntry->getUuid(),
-            'form' => $formEntry->getForm(),
-            'field' => $formEntry->getField(),
-            'value' => $formEntry->getValue()
+            'uuid' => $formEntry->getUuid()
         ];
 
-        return $this->query->insertInto($this->getTableName())->values($values)->executeWithoutId();
+        return $this->query->insertInto($this->getTableName())->values($values)->execute();
     }
 
     public function findEntriesByUuid(string $uuid): array|false

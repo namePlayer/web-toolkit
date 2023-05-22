@@ -256,6 +256,7 @@ $container->add(\App\Service\Forms\FormFieldService::class)
 
 $container->add(\App\Service\Forms\FormEntryService::class)
     ->addArgument(\App\Table\Forms\FormEntryTable::class)
+    ->addArgument(\App\Table\Forms\FormEntryFieldTable::class)
     ->addArgument(\App\Service\Forms\FormFieldService::class);
 
 #
@@ -304,6 +305,9 @@ $container->add(\App\Table\Forms\FormFieldTypeTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\Forms\FormEntryTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\Forms\FormEntryFieldTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #

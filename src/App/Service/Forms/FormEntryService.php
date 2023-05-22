@@ -3,6 +3,8 @@
 namespace App\Service\Forms;
 
 use App\Model\Forms\FormEntry;
+use App\Model\Forms\FormEntryField;
+use App\Table\Forms\FormEntryFieldTable;
 use App\Table\Forms\FormEntryTable;
 use Ramsey\Uuid\Uuid;
 
@@ -11,6 +13,7 @@ class FormEntryService
 
     public function __construct(
         private FormEntryTable $formEntryTable,
+        private FormEntryFieldTable $formEntryFieldTable,
         private FormFieldService $formFieldService
     )
     {
@@ -18,7 +21,6 @@ class FormEntryService
 
     public function createFromFormIdAndPostData(int $form, array $postData):bool|array
     {
-        $uuid = $this->generateEntryUuid();
         $emptyFields = [];
         $entries = [];
         foreach ($postData as $field => $value) {
@@ -28,9 +30,7 @@ class FormEntryService
                 $emptyFields[] = $field;
             }
 
-            $entry = new FormEntry();
-            $entry->setForm($form);
-            $entry->setUuid($uuid);
+            $entry = new FormEntryField();
             $entry->setField($this->formFieldService->getFieldByUUID($field)['id']);
             $entry->setValue($value);
             $entries[] = $entry;
@@ -38,10 +38,15 @@ class FormEntryService
 
         if(empty($emptyFields))
         {
+            $formEntry = new FormEntry();
+            $formEntry->setUuid($this->generateEntryUuid());
+            $formEntryId = (int)$this->formEntryTable->insert($formEntry);
+
             $errors = 0;
-            foreach ($entries as $entry)
+            foreach ($entries as $entryField)
             {
-                if($this->formEntryTable->insert($entry) === false)
+                $entryField->setEntry($formEntryId);
+                if($this->formEntryFieldTable->insert($entryField) === false)
                 {
                     $errors++;
                 }
