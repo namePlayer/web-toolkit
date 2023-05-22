@@ -13,15 +13,7 @@
                 <?= $form['name'] ?>
             </h3>
         </div>
-        <div class="col-2 d-flex align-items-center">
-        </div>
-        <div class="col-2 d-flex align-items-center me-3">
-            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#formsToolAddNewFieldModal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-                </svg>
-                <?= $this->e($this->translate('forms-tool-add-form-element-button')) ?>
-            </button>
+        <div class="col-4 d-flex align-items-center">
         </div>
         <div class="col-1 d-grid gap-2 d-md-flex justify-content-center">
             <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#formsToolAddNewFieldModal">
@@ -48,11 +40,48 @@
         <div class="col-2"></div>
         <div class="col-8">
 
-            <?php foreach ($fields as $field): ?>
+            <ul class="nav nav-pills nav-fill mb-3" id="formEditorTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="formEditorHomeTab" data-bs-toggle="pill"
+                            data-bs-target="#formEditorHomeTabContent" type="button" role="tab"
+                            aria-controls="formEditorHomeTabContent" aria-selected="true">
+                        Editor
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="formEditorEntriesTab" data-bs-toggle="pill"
+                            data-bs-target="#formEditorEntriesTabContent" type="button" role="tab"
+                            aria-controls="formEditorEntriesTabContent" aria-selected="false">
+                        Einträge
+                    </button>
+                </li>
+            </ul>
 
-                <?= $this->insert('forms/fields/'.$field['template'], ['editView' => true, 'field' => $field]) ?>
+            <div class="tab-content" id="formEditorTabContent">
+                <div class="tab-pane fade show active" id="formEditorHomeTabContent" role="tabpanel" aria-labelledby="formEditorHomeTab" tabindex="0">
+                    <div class="row mb-3">
+                        <div class="col"></div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#formsToolAddNewFieldModal">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                </svg>
+                                <?= $this->e($this->translate('forms-tool-add-form-element-button')) ?>
+                            </button>
+                        </div>
+                    </div>
+                    <?php foreach ($fields as $field): ?>
 
-            <?php endforeach; ?>
+                        <?= $this->insert('forms/fields/'.$field['template'], ['editView' => true, 'field' => $field]) ?>
+
+                    <?php endforeach; ?>
+                </div>
+                <div class="tab-pane fade" id="formEditorEntriesTabContent" role="tabpanel" aria-labelledby="formEditorEntriesTab" tabindex="0">
+
+
+
+                </div>
+            </div>
 
         </div>
         <div class="col-2"></div>
