@@ -51,11 +51,7 @@ class FormEntryService
                     $errors++;
                 }
             }
-            if($errors === 0)
-            {
-                return true;
-            }
-            return false;
+            return $errors === 0;
         }
 
         return $emptyFields;

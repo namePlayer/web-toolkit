@@ -1,7 +1,8 @@
 <?php $this->layout('publictemplate', [
     'pageTitle' => $formInformation['name'] . ' | ' . $_ENV['SOFTWARE_TITLE'] . ' Forms',
     'background' => $formInformation['additionalData']['color'] ?? 'reset',
-    'displayNavigation' => true
+    'displayNavigation' => true,
+    'isLoggedIn' => $this->getAccountInformation() !== FALSE
 ]); ?>
 
     <div class="container mt-3">
