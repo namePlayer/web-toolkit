@@ -8,6 +8,7 @@ class FormEntry
 {
 
     private int $id;
+    private int $form;
     private string $uuid;
     private DateTime $entered;
 
@@ -19,6 +20,16 @@ class FormEntry
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function getForm(): int
+    {
+        return $this->form;
+    }
+
+    public function setForm(int $form): void
+    {
+        $this->form = $form;
     }
 
     public function getUuid(): string

@@ -7,6 +7,7 @@ use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Forms\FormField;
 use App\Model\Tool\Tool;
+use App\Service\Forms\FormEntryService;
 use App\Service\Forms\FormFieldService;
 use App\Service\Forms\FormService;
 use App\Tool\FormsTool;
@@ -21,7 +22,8 @@ class FormEditController
     public function __construct(
         private readonly Engine $template,
         private readonly FormService $formService,
-        private readonly FormFieldService $formFieldService
+        private readonly FormFieldService $formFieldService,
+        private readonly FormEntryService $formEntryService
     )
     {
     }
@@ -53,7 +55,8 @@ class FormEditController
             'tool' => $tool,
             'form' => $form,
             'fieldTypes' => $this->formFieldService->getAllAvailableFields(),
-            'fields' => $this->formFieldService->getAllFieldsForForm($form['id'])
+            'fields' => $this->formFieldService->getAllFieldsForForm($form['id']),
+            'formEntryList' => $this->formEntryService->getEntryListForFormId($form['id'])
         ]));
     }
 

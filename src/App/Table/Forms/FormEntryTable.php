@@ -12,6 +12,7 @@ class FormEntryTable extends AbstractTable
     public function insert(FormEntry $formEntry): array|bool|string|int
     {
         $values = [
+            'form' => $formEntry->getForm(),
             'uuid' => $formEntry->getUuid()
         ];
 
@@ -21,6 +22,11 @@ class FormEntryTable extends AbstractTable
     public function findEntriesByUuid(string $uuid): array|false
     {
         return $this->query->from($this->getTableName())->where('uuid', $uuid)->fetchAll();
+    }
+
+    public function findAllEntryByFormId(int $form): array|false
+    {
+        return $this->query->from($this->getTableName())->where('form', $form)->fetchAll();
     }
 
 }

@@ -40,6 +40,7 @@ class FormEntryService
         {
             $formEntry = new FormEntry();
             $formEntry->setUuid($this->generateEntryUuid());
+            $formEntry->setForm($form);
             $formEntryId = (int)$this->formEntryTable->insert($formEntry);
 
             $errors = 0;
@@ -55,6 +56,11 @@ class FormEntryService
         }
 
         return $emptyFields;
+    }
+
+    public function getEntryListForFormId(int $form): array
+    {
+        return $this->formEntryTable->findAllEntryByFormId($form);
     }
 
     public function findEntriesByUuid(string $uuid): array

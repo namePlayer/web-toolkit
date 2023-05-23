@@ -78,7 +78,18 @@
                 </div>
                 <div class="tab-pane fade" id="formEditorEntriesTabContent" role="tabpanel" aria-labelledby="formEditorEntriesTab" tabindex="0">
 
-
+                    <div class="row">
+                        <div class="col-6">
+                            <select class="form-select" aria-label="Default select example">
+                                <option disabled value=""></option>
+                                <?php foreach ($formEntryList as $formEntry): ?>
+                                    <option value="<?= $formEntry['uuid'] ?>">
+                                        <?= (new DateTime($formEntry['entered']))->format($this->translate('dateTime-format')) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
 
                 </div>
             </div>
