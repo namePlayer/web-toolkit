@@ -77,6 +77,7 @@
                     <?php endforeach; ?>
                 </div>
                 <div class="tab-pane fade" id="formEditorEntriesTabContent" role="tabpanel" aria-labelledby="formEditorEntriesTab" tabindex="0">
+                    <h2>Formular Einträge</h2>
 
                     <div class="row">
                         <div class="col-6">
