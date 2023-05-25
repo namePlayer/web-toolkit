@@ -15,8 +15,8 @@ readonly class AccountController
 {
 
     public function __construct(
-        private Engine         $template,
-        private AccountService $accountService,
+        private Engine                   $template,
+        private AccountService           $accountService,
         private ChangePasswordValidation $changePasswordValidation
     )
     {
@@ -29,11 +29,9 @@ readonly class AccountController
 
         $accountData = $this->accountService->findAccountById($account->getId());
 
-        if($request->getMethod() === "POST")
-        {
+        if ($request->getMethod() === "POST") {
             $update = $this->update($account);
-            if(is_array($update))
-            {
+            if (is_array($update)) {
                 $accountData = $update;
             }
         }
@@ -49,29 +47,25 @@ readonly class AccountController
     public function update(Account $account): ?array
     {
 
-        if(isset($_POST['accountSettingsChangePasswordSubmit'], $_POST['accountSettingsChangePasswordOldPassword'],
+        if (isset($_POST['accountSettingsChangePasswordSubmit'], $_POST['accountSettingsChangePasswordOldPassword'],
             $_POST['accountSettingsChangePasswordNewPassword'], $_POST['accountSettingsChangePasswordRepeatNewPassword']
-        ))
-        {
+        )) {
             $changePasswordDTO = new ChangePasswordDTO();
             $changePasswordDTO->setAccount($account->getId());
             $changePasswordDTO->setOldPassword($_POST['accountSettingsChangePasswordOldPassword']);
             $changePasswordDTO->setNewPassword($_POST['accountSettingsChangePasswordNewPassword']);
             $changePasswordDTO->setRepeatNewPassword($_POST['accountSettingsChangePasswordRepeatNewPassword']);
 
-            if(!$this->changePasswordValidation->verify($changePasswordDTO))
-            {
+            if (!$this->changePasswordValidation->verify($changePasswordDTO)) {
                 return null;
             }
 
-            if(!$this->accountService->validatePasswordForAccount($changePasswordDTO->getAccount(), $changePasswordDTO->getOldPassword()))
-            {
+            if (!$this->accountService->validatePasswordForAccount($changePasswordDTO->getAccount(), $changePasswordDTO->getOldPassword())) {
                 MESSAGES->add('danger', 'account-settings-change-password-old-password-incorrect');
                 return null;
             }
 
-            if($this->accountService->changePasswordForAccount($changePasswordDTO->getAccount(), $changePasswordDTO->getNewPassword()))
-            {
+            if ($this->accountService->changePasswordForAccount($changePasswordDTO->getAccount(), $changePasswordDTO->getNewPassword())) {
                 MESSAGES->add('success', 'account-settings-change-password-success');
                 return null;
             }
@@ -87,11 +81,10 @@ readonly class AccountController
         $updateAccount->setSurname($_POST['accountUserLastname']);
         $updateAccount->setEmail($_POST['accountUserEmail']);
 
-        if($this->accountService->updateAccount($updateAccount))
-        {
+        if ($this->accountService->updateAccount($updateAccount)) {
             return $this->accountService->findAccountById($account->getId());
         }
-        
+
         return null;
     }
 

@@ -4,7 +4,6 @@ namespace App\Table\Forms;
 
 use App\Model\Forms\Form;
 use App\Table\AbstractTable;
-use http\Params;
 
 class FormTable extends AbstractTable
 {

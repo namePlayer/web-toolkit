@@ -28,22 +28,18 @@ class LinkManagementController
 
     public function load(ServerRequestInterface $request, array $args): ResponseInterface
     {
-        if(empty((int)$args['id']))
-        {
+        if (empty((int)$args['id'])) {
             return new RedirectResponse('/admin/urlshortener/alllinks');
         }
 
         $linkInformation = $this->shortlinkService->getShortlinkById((int)$args['id']);
-        if($linkInformation === FALSE || $linkInformation === null)
-        {
+        if ($linkInformation === FALSE || $linkInformation === null) {
             return new RedirectResponse('/admin/urlshortener/alllinks');
         }
 
-        if($request->getMethod() === "POST")
-        {
+        if ($request->getMethod() === "POST") {
             $disable = $this->disable((int)$args['id']);
-            if($disable instanceof ResponseInterface)
-            {
+            if ($disable instanceof ResponseInterface) {
                 return $disable;
             }
         }
@@ -69,16 +65,14 @@ class LinkManagementController
     public function disable(int $id): ?ResponseInterface
     {
 
-        if(isset($_POST['deleteShortlinkModalConfirmationSubmit'], $_POST['deleteShortlinkModalConfirmationCode'], $_POST['deleteShortlinkModalConfirmationCodeInput']))
-        {
+        if (isset($_POST['deleteShortlinkModalConfirmationSubmit'], $_POST['deleteShortlinkModalConfirmationCode'], $_POST['deleteShortlinkModalConfirmationCodeInput'])) {
 
             $shortlinkDeleteDTO = new ShortlinkDeleteDTO();
             $shortlinkDeleteDTO->setId($id);
             $shortlinkDeleteDTO->setVerificationCode($_POST['deleteShortlinkModalConfirmationCode']);
             $shortlinkDeleteDTO->setInput($_POST['deleteShortlinkModalConfirmationCodeInput']);
 
-            if($this->shortlinkService->deleteShortlink($shortlinkDeleteDTO))
-            {
+            if ($this->shortlinkService->deleteShortlink($shortlinkDeleteDTO)) {
                 return new RedirectResponse('/admin/urlshortener/alllinks');
             }
 

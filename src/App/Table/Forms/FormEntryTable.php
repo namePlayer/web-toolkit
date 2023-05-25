@@ -3,7 +3,6 @@
 namespace App\Table\Forms;
 
 use App\Model\Forms\FormEntry;
-use App\Model\Forms\FormEntryField;
 use App\Table\AbstractTable;
 
 class FormEntryTable extends AbstractTable

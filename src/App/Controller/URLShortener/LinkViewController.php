@@ -40,8 +40,7 @@ readonly class LinkViewController
         }
 
         $link = $this->shortlinkService->getShortlinkById((int)$args['linkId']);
-        if($link === null)
-        {
+        if ($link === null) {
             return new RedirectResponse('/tool/url-shortener/list');
         }
 

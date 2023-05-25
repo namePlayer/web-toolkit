@@ -33,28 +33,23 @@ readonly class AccountListController
     {
         $accountSearchDTO = new AccountSearchDTO();
 
-        if(!empty($_POST['adminSearchAccountModalID']))
-        {
+        if (!empty($_POST['adminSearchAccountModalID'])) {
             $accountSearchDTO->setId((int)$_POST['adminSearchAccountModalID']);
         }
 
-        if(!empty($_POST['adminSearchAccountModalName']))
-        {
+        if (!empty($_POST['adminSearchAccountModalName'])) {
             $accountSearchDTO->setName($_POST['adminSearchAccountModalName']);
         }
 
-        if(!empty($_POST['adminSearchAccountModalEmail']))
-        {
+        if (!empty($_POST['adminSearchAccountModalEmail'])) {
             $accountSearchDTO->setEmail($_POST['adminSearchAccountModalEmail']);
         }
 
-        if(!empty($_POST['adminSearchAccountModalFirstname']))
-        {
+        if (!empty($_POST['adminSearchAccountModalFirstname'])) {
             $accountSearchDTO->setFirstname($_POST['adminSearchAccountModalFirstname']);
         }
 
-        if(!empty($_POST['adminSearchAccountModalSurname']))
-        {
+        if (!empty($_POST['adminSearchAccountModalSurname'])) {
             $accountSearchDTO->setSurname($_POST['adminSearchAccountModalSurname']);
         }
 

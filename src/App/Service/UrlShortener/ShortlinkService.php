@@ -124,33 +124,27 @@ readonly class ShortlinkService
 
         $searchFor = [];
 
-        if($searchDTO->getId() !== 0)
-        {
+        if ($searchDTO->getId() !== 0) {
             $searchFor = array_merge($searchFor, ['Shortlink.id' => $searchDTO->getId()]);
         }
 
-        if($searchDTO->getAccount() !== 0)
-        {
+        if ($searchDTO->getAccount() !== 0) {
             $searchFor = array_merge($searchFor, ['Shortlink.account' => $searchDTO->getAccount()]);
         }
 
-        if(!empty($searchDTO->getShortcode()))
-        {
+        if (!empty($searchDTO->getShortcode())) {
             $searchFor = array_merge($searchFor, ['Shortlink.uuid LIKE ?' => '%' . $searchDTO->getShortcode() . '%']);
         }
 
-        if(!empty($searchDTO->getDestination()))
-        {
+        if (!empty($searchDTO->getDestination())) {
             $searchFor = array_merge($searchFor, ['Shortlink.destination LIKE ?' => '%' . $searchDTO->getDestination() . '%']);
         }
 
-        if(!empty($searchDTO->getDomain()))
-        {
+        if (!empty($searchDTO->getDomain())) {
             $searchFor = array_merge($searchFor, ['Shortlink.domain' => $searchDTO->getDomain()]);
-            if(!is_numeric($searchFor['Shortlink.domain']))
-            {
+            if (!is_numeric($searchFor['Shortlink.domain'])) {
                 unset($searchFor['Shortlink.domain']);
-                $searchFor = array_merge($searchFor, ['ShortlinkDomain.address LIKE ?' => '%'.$searchDTO->getDomain().'%']);
+                $searchFor = array_merge($searchFor, ['ShortlinkDomain.address LIKE ?' => '%' . $searchDTO->getDomain() . '%']);
             }
         }
 
@@ -160,8 +154,7 @@ readonly class ShortlinkService
 
     public function deleteShortlink(ShortlinkDeleteDTO $shortlinkDeleteDTO): bool
     {
-        if($shortlinkDeleteDTO->getVerificationCode() !== $shortlinkDeleteDTO->getInput())
-        {
+        if ($shortlinkDeleteDTO->getVerificationCode() !== $shortlinkDeleteDTO->getInput()) {
             MESSAGES->add('danger', 'url-shortener-delete-failed');
             return false;
         }

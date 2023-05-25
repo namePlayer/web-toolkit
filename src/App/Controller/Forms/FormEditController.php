@@ -20,8 +20,8 @@ class FormEditController
 {
 
     public function __construct(
-        private readonly Engine $template,
-        private readonly FormService $formService,
+        private readonly Engine           $template,
+        private readonly FormService      $formService,
         private readonly FormFieldService $formFieldService,
         private readonly FormEntryService $formEntryService
     )
@@ -35,19 +35,16 @@ class FormEditController
         /* @var $tool Tool */
         $tool = $request->getAttribute(Tool::class);
 
-        if(empty($args['uuid']))
-        {
+        if (empty($args['uuid'])) {
             return new RedirectResponse(FormsTool::TOOL_URL);
         }
 
         $form = $this->formService->getFormByUuid($args['uuid']);
-        if($form === FALSE || $form['account'] !== $account->getId())
-        {
+        if ($form === FALSE || $form['account'] !== $account->getId()) {
             return new RedirectResponse(FormsTool::TOOL_URL);
         }
 
-        if($request->getMethod() === "POST" && isset($_POST['formsToolAddNewFieldSubmit']))
-        {
+        if ($request->getMethod() === "POST" && isset($_POST['formsToolAddNewFieldSubmit'])) {
             $this->addField($form['id']);
         }
 
@@ -63,8 +60,7 @@ class FormEditController
     private function addField(int $form): void
     {
 
-        if(isset($_POST['formsToolAddNewFieldTitle'], $_POST['formsToolAddNewFieldDescription'], $_POST['formsToolAddNewFieldType']))
-        {
+        if (isset($_POST['formsToolAddNewFieldTitle'], $_POST['formsToolAddNewFieldDescription'], $_POST['formsToolAddNewFieldType'])) {
 
             $formField = new FormField();
             $formField->setForm($form);

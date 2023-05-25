@@ -13,7 +13,7 @@ readonly class SupportController
 {
 
     public function __construct(
-        private Engine        $template
+        private Engine $template
     )
     {
     }

@@ -19,8 +19,7 @@ readonly class FormService
     {
         $form->setUuid($this->generateFormUuid());
 
-        if($this->formTable->insert($form) !== FALSE)
-        {
+        if ($this->formTable->insert($form) !== FALSE) {
             return $form->getUuid();
         }
 
@@ -35,8 +34,7 @@ readonly class FormService
     public function getFormByUuid(string $uuid): bool|array
     {
         $form = $this->formTable->findByUuid($uuid);
-        if(isset($form['additionalData']))
-        {
+        if (isset($form['additionalData'])) {
             $form['additionalData'] = json_decode($form['additionalData'], true);
         }
         return $form;
@@ -46,7 +44,7 @@ readonly class FormService
     {
         do {
             $uuid = Uuid::uuid4()->toString();
-        } while($this->isUuidUsed($uuid));
+        } while ($this->isUuidUsed($uuid));
 
         return $uuid;
     }

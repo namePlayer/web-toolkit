@@ -11,7 +11,7 @@ class FormFieldService
 {
 
     public function __construct(
-        private readonly FormFieldTable $formFieldTable,
+        private readonly FormFieldTable     $formFieldTable,
         private readonly FormFieldTypeTable $formFieldTypeTable
     )
     {
@@ -19,8 +19,7 @@ class FormFieldService
 
     public function create(FormField $formField): void
     {
-        if(!$this->fieldTypeExists($formField->getType()))
-        {
+        if (!$this->fieldTypeExists($formField->getType())) {
             return;
         }
 
@@ -34,8 +33,7 @@ class FormFieldService
         $fields = $this->formFieldTable->findAllFieldsByFormId($form);
 
         foreach ($fields as $field => $value) {
-            if(isset($value['options']))
-            {
+            if (isset($value['options'])) {
                 $fields[$field]['options'] = json_decode($value['options'], true);
             }
         }
@@ -52,7 +50,7 @@ class FormFieldService
     {
         do {
             $uuid = Uuid::uuid7()->toString();
-        } while($this->getFieldByUUID($uuid) !== FALSE);
+        } while ($this->getFieldByUUID($uuid) !== FALSE);
         return $uuid;
     }
 

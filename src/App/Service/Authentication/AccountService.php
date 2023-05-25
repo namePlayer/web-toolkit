@@ -79,8 +79,7 @@ readonly class AccountService
     public function updateAccount(Account $account, bool $admin = false): bool
     {
         if ($this->accountTable->updateAccountInformation($account) > 0) {
-            if($admin)
-            {
+            if ($admin) {
                 MESSAGES->add('success', 'admin-account-update-successful');
                 return true;
             }
@@ -88,8 +87,7 @@ readonly class AccountService
             return true;
         }
 
-        if($admin)
-        {
+        if ($admin) {
             MESSAGES->add('danger', 'admin-account-update-failed');
             return false;
         }
@@ -138,8 +136,7 @@ readonly class AccountService
     {
         $password = $this->passwordService->hashPassword($password);
 
-        if($this->accountTable->updateAccountPassword($account, $password) > 0)
-        {
+        if ($this->accountTable->updateAccountPassword($account, $password) > 0) {
             return true;
         }
 
@@ -186,29 +183,24 @@ readonly class AccountService
     {
         $searchFor = [];
 
-        if($accountSearchDTO->getId() !== 0)
-        {
+        if ($accountSearchDTO->getId() !== 0) {
             $searchFor = array_merge($searchFor, ['Account.id' => $accountSearchDTO->getId()]);
         }
 
-        if($accountSearchDTO->getName() !== '')
-        {
-            $searchFor = array_merge($searchFor, ['Account.name LIKE ?' => '%'.$accountSearchDTO->getName().'%']);
+        if ($accountSearchDTO->getName() !== '') {
+            $searchFor = array_merge($searchFor, ['Account.name LIKE ?' => '%' . $accountSearchDTO->getName() . '%']);
         }
 
-        if($accountSearchDTO->getEmail() !== '')
-        {
-            $searchFor = array_merge($searchFor, ['Account.email LIKE ?' => '%'.$accountSearchDTO->getEmail().'%']);
+        if ($accountSearchDTO->getEmail() !== '') {
+            $searchFor = array_merge($searchFor, ['Account.email LIKE ?' => '%' . $accountSearchDTO->getEmail() . '%']);
         }
 
-        if($accountSearchDTO->getFirstname() !== '')
-        {
-            $searchFor = array_merge($searchFor, ['Account.firstname LIKE ?' => '%'.$accountSearchDTO->getFirstname().'%']);
+        if ($accountSearchDTO->getFirstname() !== '') {
+            $searchFor = array_merge($searchFor, ['Account.firstname LIKE ?' => '%' . $accountSearchDTO->getFirstname() . '%']);
         }
 
-        if($accountSearchDTO->getSurname() !== '')
-        {
-            $searchFor = array_merge($searchFor, ['Account.surname LIKE ?' => '%'.$accountSearchDTO->getSurname().'%']);
+        if ($accountSearchDTO->getSurname() !== '') {
+            $searchFor = array_merge($searchFor, ['Account.surname LIKE ?' => '%' . $accountSearchDTO->getSurname() . '%']);
         }
 
         return $this->accountTable->findAllWithSearch($searchFor);
@@ -223,8 +215,7 @@ readonly class AccountService
     {
 
         $accountData = $this->findAccountById($account);
-        if($this->passwordService->verifyPassword($password, $accountData['password']))
-        {
+        if ($this->passwordService->verifyPassword($password, $accountData['password'])) {
             return true;
         }
         return false;

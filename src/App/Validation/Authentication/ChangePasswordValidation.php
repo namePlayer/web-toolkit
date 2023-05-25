@@ -16,13 +16,11 @@ class ChangePasswordValidation
     public function verify(ChangePasswordDTO $changePasswordDTO): bool
     {
 
-        if(empty($changePasswordDTO->getNewPassword()))
-        {
+        if (empty($changePasswordDTO->getNewPassword())) {
             MESSAGES->add('danger', 'account-settings-change-password-new-password-empty');
         }
 
-        if($changePasswordDTO->getNewPassword() !== $changePasswordDTO->getRepeatNewPassword())
-        {
+        if ($changePasswordDTO->getNewPassword() !== $changePasswordDTO->getRepeatNewPassword()) {
             MESSAGES->add('danger', 'account-settings-change-password-not-match');
         }
 

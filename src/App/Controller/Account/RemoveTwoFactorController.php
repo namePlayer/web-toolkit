@@ -31,8 +31,7 @@ readonly class RemoveTwoFactorController
         $account = $request->getAttribute(Account::class);
 
         $twoFactor = new TwoFactor();
-        if(empty($args['id']))
-        {
+        if (empty($args['id'])) {
             return new RedirectResponse('/account/security');
         }
 
@@ -40,17 +39,14 @@ readonly class RemoveTwoFactorController
         $twoFactor->setAccount($account->getId());
 
         $data = $this->securityService->getTwoFactorByIdAndAccount($twoFactor);
-        if($data === FALSE)
-        {
+        if ($data === FALSE) {
             return new RedirectResponse('/account/security');
         }
 
         $twoFactor->setToken($data['secret']);
 
-        if($request->getMethod() === "POST")
-        {
-            if($this->remove($twoFactor))
-            {
+        if ($request->getMethod() === "POST") {
+            if ($this->remove($twoFactor)) {
                 return new RedirectResponse('/account/security');
             }
         }
@@ -71,10 +67,8 @@ readonly class RemoveTwoFactorController
     public function remove(TwoFactor $twoFactor): bool
     {
 
-        if(isset($_POST['removeTwoFactorTOTP'], $_POST['removeTwoFactor']))
-        {
-            if($this->securityService->verifyAccountTwoFactor($twoFactor->getAccount(), $_POST['removeTwoFactorTOTP']))
-            {
+        if (isset($_POST['removeTwoFactorTOTP'], $_POST['removeTwoFactor'])) {
+            if ($this->securityService->verifyAccountTwoFactor($twoFactor->getAccount(), $_POST['removeTwoFactorTOTP'])) {
                 $this->securityService->removeTwoFactorByIdAndAccount($twoFactor->getId(), $twoFactor->getAccount());
                 MESSAGES->add('success', 'account-settings-security-remove-two-factor-success');
                 return true;

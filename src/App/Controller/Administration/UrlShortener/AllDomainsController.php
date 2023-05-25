@@ -36,23 +36,19 @@ class AllDomainsController
 
         $domainSearchDTO = new ShortlinkDomainSearchDTO();
 
-        if(!empty($_POST['adminSearchShortlinkDomainModalId']))
-        {
+        if (!empty($_POST['adminSearchShortlinkDomainModalId'])) {
             $domainSearchDTO->setId((int)$_POST['adminSearchShortlinkDomainModalId']);
         }
 
-        if(!empty($_POST['adminSearchShortlinkDomainModalAccount']))
-        {
+        if (!empty($_POST['adminSearchShortlinkDomainModalAccount'])) {
             $domainSearchDTO->setAccount((int)$_POST['adminSearchShortlinkDomainModalAccount']);
         }
 
-        if(!empty($_POST['adminSearchShortlinkDomainModalAddress']))
-        {
+        if (!empty($_POST['adminSearchShortlinkDomainModalAddress'])) {
             $domainSearchDTO->setAddress($_POST['adminSearchShortlinkDomainModalAddress']);
         }
 
-        if(!empty($_POST['adminSearchShortlinkDomainModalLimit']))
-        {
+        if (!empty($_POST['adminSearchShortlinkDomainModalLimit'])) {
             $domainSearchDTO->setLimit((int)$_POST['adminSearchShortlinkDomainModalLimit']);
         }
 

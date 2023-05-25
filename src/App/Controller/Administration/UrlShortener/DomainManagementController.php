@@ -23,22 +23,18 @@ readonly class DomainManagementController
 
     public function load(ServerRequestInterface $request, array $args): ResponseInterface
     {
-        if(empty((int)$args['id']))
-        {
+        if (empty((int)$args['id'])) {
             return new RedirectResponse('/admin/urlshortener/alldomains');
         }
 
         $domainInformation = $this->shortlinkDomainService->getById((int)$args['id']);
-        if(empty($domainInformation))
-        {
+        if (empty($domainInformation)) {
             return new RedirectResponse('/admin/urlshortener/alldomains');
         }
 
-        if($request->getMethod() === 'POST')
-        {
+        if ($request->getMethod() === 'POST') {
             $update = $this->stateChange($domainInformation);
-            if(is_array($update))
-            {
+            if (is_array($update)) {
                 $domainInformation = $update;
             }
         }
@@ -56,32 +52,25 @@ readonly class DomainManagementController
     private function stateChange(array $domainInformation): ?array
     {
 
-        if(isset($_POST['verifyDomain']))
-        {
-            if($domainInformation['verified'] === 0)
-            {
-                if($this->shortlinkDomainService->changeVerificationState($domainInformation['id'], true))
-                {
+        if (isset($_POST['verifyDomain'])) {
+            if ($domainInformation['verified'] === 0) {
+                if ($this->shortlinkDomainService->changeVerificationState($domainInformation['id'], true)) {
                     $domainInformation['verified'] = 1;
                 }
                 return $domainInformation;
             }
         }
 
-        if(isset($_POST['toggleDomainActivation']))
-        {
-            if($domainInformation['disabled'] === 1)
-            {
-                if($this->shortlinkDomainService->changeDisabledState($domainInformation['id'], false))
-                {
+        if (isset($_POST['toggleDomainActivation'])) {
+            if ($domainInformation['disabled'] === 1) {
+                if ($this->shortlinkDomainService->changeDisabledState($domainInformation['id'], false)) {
                     $domainInformation['disabled'] = 0;
                     return $domainInformation;
                 }
                 return null;
             }
 
-            if($this->shortlinkDomainService->changeDisabledState($domainInformation['id'], true))
-            {
+            if ($this->shortlinkDomainService->changeDisabledState($domainInformation['id'], true)) {
                 $this->shortlinkDomainService->changeVerificationState($domainInformation['id'], false);
                 $domainInformation['disabled'] = 1;
                 $domainInformation['verified'] = 0;

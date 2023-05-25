@@ -54,19 +54,16 @@ readonly class ShortlinkDomainService
     {
         $search = [];
 
-        if($domainSearchDTO->getId() !== 0)
-        {
+        if ($domainSearchDTO->getId() !== 0) {
             $search = array_merge($search, ['ShortlinkDomain.id' => $domainSearchDTO->getId()]);
         }
 
-        if($domainSearchDTO->getAccount() !== 0)
-        {
+        if ($domainSearchDTO->getAccount() !== 0) {
             $search = array_merge($search, ['ShortlinkDomain.user' => $domainSearchDTO->getAccount()]);
         }
 
-        if($domainSearchDTO->getAddress() !== '')
-        {
-            $search = array_merge($search, ['ShortlinkDomain.address LIKE ?' => '%'.$domainSearchDTO->getAddress().'%']);
+        if ($domainSearchDTO->getAddress() !== '') {
+            $search = array_merge($search, ['ShortlinkDomain.address LIKE ?' => '%' . $domainSearchDTO->getAddress() . '%']);
         }
 
         return $this->shortlinkDomainTable->findBySearchArray($search, $domainSearchDTO->getLimit());
