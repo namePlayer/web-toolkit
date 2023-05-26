@@ -23,6 +23,7 @@
   "outstanding-string": "Ausstehend",
   "public-string": "Öffentlich",
   "private-string": "Privat",
+  "amount-string": "Anzahl",
 
   "homepage-content-create-shortlink-title": "Kurzlink erstellen",
   "homepage-content-create-shortlink-description": "Erstelle einen Kurzen Link, welcher einfach zu teilen ist. Dieser ist Beispielsweise Sinnvoll, solltest du auf deinem SmartTV eine Webseite öffnen wollen, welche eine Lange URL hat.",
@@ -437,5 +438,11 @@
   "forms-tool-add-form-element-modal-title": "Formular Element hinzufügen",
   "forms-tool-form-element-title": "Feld Name",
   "forms-tool-form-element-description": "Beschreibung",
-  "forms-tool-form-element-type": "Feld Typ"
+  "forms-tool-form-element-type": "Feld Typ",
+  "forms-tool-form-editor-header": "Formular Editor",
+  "forms-tool-form-entry-header": "Formular Einträge",
+  "forms-tool-form-editor-header-nav": "Editor",
+  "forms-tool-form-entry-header-nav": "Formular Einträge",
+  "forms-tool-form-entry-all-entries": "Alle Einträge"
+
 }

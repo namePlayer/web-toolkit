@@ -10,7 +10,7 @@
                         <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
                     </svg>
                 </a>
-                <?= $form['name'] ?>
+                <?= $this->e($form['name']) ?>
             </h3>
         </div>
         <div class="col-4 d-flex align-items-center">
@@ -45,14 +45,14 @@
                     <button class="nav-link <?= $selectedEntry === null ? 'active' : ''?>" id="formEditorHomeTab" data-bs-toggle="pill"
                             data-bs-target="#formEditorHomeTabContent" type="button" role="tab"
                             aria-controls="formEditorHomeTabContent" aria-selected="true">
-                        Editor
+                        <?= $this->translate('forms-tool-form-editor-header-nav') ?>
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link <?= $selectedEntry === null ? '' : 'active'?>" id="formEditorEntriesTab" data-bs-toggle="pill"
                             data-bs-target="#formEditorEntriesTabContent" type="button" role="tab"
                             aria-controls="formEditorEntriesTabContent" aria-selected="false">
-                        Einträge
+                        <?= $this->translate('forms-tool-form-entry-header-nav') ?>
                     </button>
                 </li>
             </ul>
@@ -80,14 +80,16 @@
 
                     <div class="row">
                         <div class="col-4">
-                            <span class="align-middle fs-4">Formular Einträge</span> <br>
-                            <span class="align-middle">Anzahl: <b><?= $formEntryCount ?></b></span>
+                            <span class="align-middle fs-4"><?= $this->translate('forms-tool-form-entry-header') ?></span> <br>
+                            <span class="align-middle"><?= $this->translate('amount-string') ?>: <b><?= $formEntryCount ?></b></span>
                         </div>
                         <div class="col-8 d-flex align-items-center">
                             <div class="input-group">
                                 <a href="?entry=" class="btn btn-outline-secondary" type="button">&laquo;</a>
                                 <select class="form-select" id="inputGroupSelect04" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                                    <option value="?entry=" <?= $selectedEntry === false ? 'selected' : '' ?>>Alle Einträge</option>
+                                    <option value="?entry=" <?= $selectedEntry === false ? 'selected' : '' ?>>
+                                        <?= $this->translate('forms-tool-form-entry-all-entries') ?>
+                                    </option>
                                     <?php foreach ($formEntryList as $formEntry): ?>
                                         <option
                                             value="?entry=<?= $formEntry['uuid'] ?>"
