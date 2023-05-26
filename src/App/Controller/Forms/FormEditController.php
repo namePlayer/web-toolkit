@@ -23,7 +23,7 @@ class FormEditController
         private readonly Engine           $template,
         private readonly FormService      $formService,
         private readonly FormFieldService $formFieldService,
-        private readonly FormEntryService $formEntryService
+        private readonly FormEntryService $formEntryService,
     )
     {
     }
@@ -48,12 +48,19 @@ class FormEditController
             $this->addField($form['id']);
         }
 
+        if(isset($_GET['entry']))
+        {
+            $entry = $this->formEntryService->getEntryByUuid($_GET['entry']);
+        }
+
         return new HtmlResponse($this->template->render('forms/editFormPage', [
             'tool' => $tool,
             'form' => $form,
             'fieldTypes' => $this->formFieldService->getAllAvailableFields(),
             'fields' => $this->formFieldService->getAllFieldsForForm($form['id']),
-            'formEntryList' => $this->formEntryService->getEntryListForFormId($form['id'])
+            'formEntryList' => $this->formEntryService->getEntryListForFormId($form['id']),
+            'formEntryCount' => $this->formEntryService->getFormEntryCount($form['id']),
+            'selectedEntry' => $entry ?? null
         ]));
     }
 

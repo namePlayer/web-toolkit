@@ -28,4 +28,14 @@ class FormEntryTable extends AbstractTable
         return $this->query->from($this->getTableName())->where('form', $form)->fetchAll();
     }
 
+    public function findByUuid(string $uuid): array|bool
+    {
+        return $this->query->from($this->getTableName())->where('uuid', $uuid)->fetch();
+    }
+
+    public function countEntriesByFormId(int $form): string|int|array|bool
+    {
+        return $this->query->from($this->getTableName())->select(null)->select('COUNT(*)')->where('form', $form)->fetchColumn();
+    }
+
 }

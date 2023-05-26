@@ -54,6 +54,11 @@ class FormEntryService
         return $emptyFields;
     }
 
+    public function getEntryByUuid(string $uuid): array|bool
+    {
+        return $this->formEntryTable->findByUuid($uuid);
+    }
+
     public function getEntryListForFormId(int $form): array
     {
         return $this->formEntryTable->findAllEntryByFormId($form);
@@ -62,6 +67,11 @@ class FormEntryService
     public function findEntriesByUuid(string $uuid): array
     {
         return $this->formEntryTable->findEntriesByUuid($uuid);
+    }
+
+    public function getFormEntryCount(int $form): int
+    {
+        return (int)$this->formEntryTable->countEntriesByFormId($form);
     }
 
     private function generateEntryUuid(): string

@@ -42,14 +42,14 @@
 
             <ul class="nav nav-pills nav-fill mb-3" id="formEditorTabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="formEditorHomeTab" data-bs-toggle="pill"
+                    <button class="nav-link <?= $selectedEntry === null ? 'active' : ''?>" id="formEditorHomeTab" data-bs-toggle="pill"
                             data-bs-target="#formEditorHomeTabContent" type="button" role="tab"
                             aria-controls="formEditorHomeTabContent" aria-selected="true">
                         Editor
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="formEditorEntriesTab" data-bs-toggle="pill"
+                    <button class="nav-link <?= $selectedEntry === null ? '' : 'active'?>" id="formEditorEntriesTab" data-bs-toggle="pill"
                             data-bs-target="#formEditorEntriesTabContent" type="button" role="tab"
                             aria-controls="formEditorEntriesTabContent" aria-selected="false">
                         Einträge
@@ -58,7 +58,7 @@
             </ul>
 
             <div class="tab-content" id="formEditorTabContent">
-                <div class="tab-pane fade show active" id="formEditorHomeTabContent" role="tabpanel" aria-labelledby="formEditorHomeTab" tabindex="0">
+                <div class="tab-pane fade <?= $selectedEntry === null ? 'show active' : ''?>" id="formEditorHomeTabContent" role="tabpanel" aria-labelledby="formEditorHomeTab" tabindex="0">
                     <div class="row mb-3">
                         <div class="col"></div>
                         <div class="col-4">
@@ -76,19 +76,28 @@
 
                     <?php endforeach; ?>
                 </div>
-                <div class="tab-pane fade" id="formEditorEntriesTabContent" role="tabpanel" aria-labelledby="formEditorEntriesTab" tabindex="0">
-                    <h2>Formular Einträge</h2>
+                <div class="tab-pane fade <?= $selectedEntry !== null ? 'show active' : ''?>" id="formEditorEntriesTabContent" role="tabpanel" aria-labelledby="formEditorEntriesTab" tabindex="0">
 
                     <div class="row">
-                        <div class="col-6">
-                            <select class="form-select" aria-label="Default select example">
-                                <option disabled value=""></option>
-                                <?php foreach ($formEntryList as $formEntry): ?>
-                                    <option value="<?= $formEntry['uuid'] ?>">
-                                        <?= (new DateTime($formEntry['entered']))->format($this->translate('dateTime-format')) ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
+                        <div class="col-4">
+                            <span class="align-middle fs-4">Formular Einträge</span> <br>
+                            <span class="align-middle">Anzahl: <b><?= $formEntryCount ?></b></span>
+                        </div>
+                        <div class="col-8 d-flex align-items-center">
+                            <div class="input-group">
+                                <a href="?entry=" class="btn btn-outline-secondary" type="button">&laquo;</a>
+                                <select class="form-select" id="inputGroupSelect04" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                                    <option value="?entry=" <?= $selectedEntry === false ? 'selected' : '' ?>>Alle Einträge</option>
+                                    <?php foreach ($formEntryList as $formEntry): ?>
+                                        <option
+                                            value="?entry=<?= $formEntry['uuid'] ?>"
+                                            <?= !empty($selectedEntry) && $selectedEntry['uuid'] === $formEntry['uuid'] ? 'selected' : '' ?>>
+                                            <?= (new DateTime($formEntry['entered']))->format($this->translate('dateTime-format')) ?> [<?= $formEntry['uuid'] ?>]
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <a href="#" class="btn btn-outline-secondary" type="button">&raquo;</a>
+                            </div>
                         </div>
                     </div>
 
