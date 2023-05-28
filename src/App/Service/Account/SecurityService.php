@@ -4,13 +4,13 @@ namespace App\Service\Account;
 
 use App\Model\Authentication\TwoFactor;
 use App\Service\Authentication\AccountService;
-use App\Table\Account\TwoFactorTable;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\SvgWriter;
 use OTPHP\TOTP;
 use ParagonIE\ConstantTime\Base32;
+use App\Table\Security\TwoFactorTable;
 
 readonly class SecurityService
 {

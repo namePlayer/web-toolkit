@@ -45,7 +45,7 @@ readonly class AddTwoFactorController
         $twoFactor->setName($_POST['addTwoFactorModalName']);
 
         if (isset($_POST['addTwoFactorTotpTFACode'])) {
-            if ($this->securityService->add($twoFactor, $_POST['addTwoFactorTotpTFACode'])) {
+            if ($this->securityService->add($twoFactor, (int)$_POST['addTwoFactorTotpTFACode'])) {
                 $this->mailerService->configureMail(
                     $account->getEmail(),
                     'Neuer zweiter Faktor hinterlegt',

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Table\Account;
+namespace App\Table\Security;
 
 use App\Model\Authentication\TwoFactor;
 use App\Table\AbstractTable;

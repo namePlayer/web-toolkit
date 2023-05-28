@@ -241,7 +241,7 @@ $container->add(\App\Service\MailerService::class)
 
 $container->add(\App\Service\Account\SecurityService::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
-    ->addArgument(\App\Table\Account\TwoFactorTable::class);
+    ->addArgument(\App\Table\Security\TwoFactorTable::class);
 
 $container->add(\App\Service\Security\AccountTrustedDeviceService::class)
     ->addArgument(\App\Table\Security\AccountTrustedDeviceTable::class);
@@ -290,7 +290,7 @@ $container->add(\App\Table\Authentication\TokenTable::class)
 $container->add(\App\Table\Mail\MailTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
-$container->add(\App\Table\Account\TwoFactorTable::class)
+$container->add(\App\Table\Security\TwoFactorTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\Security\AccountTrustedDeviceTable::class)
