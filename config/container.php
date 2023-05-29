@@ -71,6 +71,15 @@ $container->add(\App\Controller\Account\AllowIpAddressController::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Service\Security\AccountTrustedDeviceService::class);
 
+$container->add(\App\Controller\Account\OrganisationController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
+
+$container->add(\App\Controller\Account\OrganisationInviteController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Service\Authentication\TokenService::class);
+
 $container->add(\App\Controller\Authentication\ResetPasswordController::class)
     ->addArgument(\App\Service\Authentication\TokenService::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)

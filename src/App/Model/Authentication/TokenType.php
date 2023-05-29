@@ -7,6 +7,7 @@ class TokenType
 
     public const ACTIVATION_TOKEN = 1;
     public const RESET_PASSWORD_TOKEN = 2;
+    public const ORGANISATION_INVITE_TOKEN = 3;
 
     private int $id;
     private int $title;

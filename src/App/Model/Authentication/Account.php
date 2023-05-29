@@ -113,7 +113,7 @@ class Account
         $this->lastLogin = $lastLogin;
     }
 
-    public function getBusiness(): ?bool
+    public function getBusiness(): ?int
     {
         return $this->business;
     }

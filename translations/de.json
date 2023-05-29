@@ -117,12 +117,17 @@
   "navigation-admin-dashboard": "Administration",
   "navigation-account-logout": "Abmelden",
 
-  "account-manage-title": "Konto Verwalten",
+  "account-manage-title": "Konto Verwaltung",
   "account-settings-navigation-title": "Navigation",
   "account-settings-navigation-general-tab-title": "Allgemein",
   "account-settings-navigation-security-tab-title": "Sicherheit",
   "account-settings-navigation-organisation-tab-title": "Organisation",
   "account-settings-navigation-licenses-tab-title": "Lizenzen",
+  "account-settings-organisation-navigation-title": "Organisationseinstellungen",
+  "account-settings-organisation-navigation-user-tab-title": "Benutzer",
+  "account-settings-organisation-navigation-licenses-tab-title": "Lizenzen",
+  "account-settings-organisation-navigation-invite-tab-title": "Einladen",
+  "organisation-manage-title": "Organisationsverwaltung",
 
   "account-settings-update-successful": "Die Kontoeinstellungen wurden erfolgreich geändert.",
   "account-settings-update-failed": "Etwas ist schiefgelaufen. Es wurden keine Daten geändert.",

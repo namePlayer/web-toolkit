@@ -58,6 +58,16 @@ $router->get('/account/security/allowip', 'App\Controller\Account\AllowIpAddress
 $router->post('/account/security/allowip', 'App\Controller\Account\AllowIpAddressController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 
+$router->get('/account/organisation/invite', 'App\Controller\Account\OrganisationInviteController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/account/organisation/invite', 'App\Controller\Account\OrganisationInviteController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
+$router->get('/account/organisation', 'App\Controller\Account\OrganisationController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/account/organisation', 'App\Controller\Account\OrganisationController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
 $router->get('/account', 'App\Controller\Account\AccountController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 $router->post('/account', 'App\Controller\Account\AccountController::load')
