@@ -1,6 +1,6 @@
 <div class="alert alert-danger">
 
-    Sie sind kein Mitglied einer Organisation. Sie können einer Organisation mit einem Einladungscode beitreten.
+    <?= $this->translate('organisation-settings-invite-no-organisation-member') ?>
 
 </div>
 
@@ -10,11 +10,15 @@
 
         <div class="col-2"></div>
         <div class="col-md-6">
-            <label for="organisationJoinInviteCode" class="form-label">Einladungscode</label>
+            <label for="organisationJoinInviteCode" class="form-label">
+                <?= $this->translate('organisation-settings-invite-code-label') ?>
+            </label>
             <input type="text" class="form-control" id="organisationJoinInviteCode">
         </div>
         <div class="col-md-2 d-flex align-items-end">
-            <button type="submit" class="btn btn-primary w-100">Beitreten</button>
+            <button type="submit" class="btn btn-primary w-100">
+                <?= $this->translate('organisation-settings-invite-join-label') ?>
+            </button>
         </div>
         <div class="col-2"></div>
 

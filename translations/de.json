@@ -179,6 +179,19 @@
   "account-settings-navigation-security-allow-ip-address-title": "IP-Adresse verifizieren",
   "account-settings-navigation-security-allow-ip-address-note": "Um die Anzahl an Anmeldeinformationen zu verringern, kannst du hier deine IP-Adresse freischalten. Solltest du dich dann über diese Anmelden, wirst du keine E-Mail erhalten.",
 
+  "organisation-settings-invite-no-organisation-member": "Sie sind kein Mitglied einer Organisation. Sie können einer Organisation mit einem Einladungscode beitreten.",
+  "organisation-settings-invite-code-label": "Organisationseinladung",
+  "organisation-settings-invite-join-label": "Beitreten",
+
+  "organisation-settings-create-invite-label": "Einladung erstellen",
+  "organisation-settings-invite-table-invite": "Einladungscode",
+  "organisation-settings-invite-table-created": "Erstellt",
+  "organisation-settings-invite-table-expires": "Läuft ab",
+  "organisation-settings-invite-table-actions": "Aktionen",
+  "organisation-settings-invite-table-action-disable": "Deaktivieren",
+  "organisation-settings-invite-modal-title": "Einladungscode erstellen",
+  "organisation-settings-invite-modal-expiry-label": "Ablauf der Einladung",
+
   "support-tab-title": "Support",
   "support-create-ticket-button": "Ticket erstellen",
 
