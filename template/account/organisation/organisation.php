@@ -33,7 +33,8 @@
                 <?= $this->insert('account/organisation/organisationElement',
                     [
                         'organisation' => $organisation,
-                        'account' => $account
+                        'account' => $account,
+                        'isOwner' => $account->getId() === $organisation['id']
                     ]
                 ) ?>
 

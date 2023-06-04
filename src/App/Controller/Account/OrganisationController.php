@@ -68,7 +68,17 @@ class OrganisationController
             return;
         }
 
-
+        if(isset($_POST['leaveOrganisationModalPasswordConfirmation']))
+        {
+            if($this->accountService->validatePasswordForAccount($account->getId(), $_POST['leaveOrganisationModalPasswordConfirmation']) && !$account->isCreatedByOrganisation())
+            {
+                MESSAGES->add('success', 'organisation-settings-organisation-left');
+                $account->setBusiness(null);
+                $this->accountService->setAccountOrganisation($account->getId(), null);
+                return;
+            }
+            MESSAGES->add('danger', 'organisation-settings-organisation-left-failed');
+        }
 
     }
 

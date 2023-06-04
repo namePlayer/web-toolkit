@@ -129,6 +129,7 @@
   "account-settings-organisation-navigation-user-tab-title": "Benutzer",
   "account-settings-organisation-navigation-licenses-tab-title": "Lizenzen",
   "account-settings-organisation-navigation-invite-tab-title": "Einladen",
+  "account-settings-organisation-navigation-policies-tab-title": "Richtlinien",
   "organisation-manage-title": "Organisationsverwaltung",
 
   "account-settings-update-successful": "Die Kontoeinstellungen wurden erfolgreich geändert.",
@@ -189,6 +190,8 @@
   "organisation-settings-invite-not-found": "Einladung wurde nicht gefunden.",
   "organisation-settings-invite-expired": "Diese Einladung ist bereits abgelaufen.",
   "organisation-settings-invite-organisation-joined": "Du bist erfolgreich einer Organisation beigetreten.",
+  "organisation-settings-organisation-left": "Du hast deine Organisation erfolgreich verlassen.",
+  "organisation-settings-organisation-left-failed": "Die Organisation wurde nicht verlassen. Möglicherweise hast du das falsche Passwort eingegeben.",
   "organisation-settings-invite-table-created": "Erstellt",
   "organisation-settings-invite-table-expires": "Läuft ab",
   "organisation-settings-invite-table-actions": "Aktionen",

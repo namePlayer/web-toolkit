@@ -32,6 +32,9 @@
             <a href="/account/organisation/invite" class="list-group-item list-group-item-action">
                 <?= $this->e($this->translate('account-settings-organisation-navigation-invite-tab-title')) ?>
             </a>
+            <a href="/account/organisation/policies" class="list-group-item list-group-item-action">
+                <?= $this->e($this->translate('account-settings-organisation-navigation-policies-tab-title')) ?>
+            </a>
         </div>
 
     <?php endif; ?>

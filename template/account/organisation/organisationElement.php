@@ -2,7 +2,9 @@
 <div class="row">
 
     <div class="col-9">
-        <span>Deine zugehörige Organisation:</span>
+        <span>
+            <?= $isOwner ? 'Organisationseigentümer' : 'Deine zugehörige Organisation' ?>:
+        </span>
         <h4><?= $organisation['name'] ?></h4>
     </div>
     <div class="col-3 d-flex align-items-end">
@@ -38,7 +40,7 @@
                     </p>
                     <div class="mb-3">
                         <label for="leaveOrganisationModalPasswordConfirmation" class="form-label"><?= $this->translate('password') ?></label>
-                        <input class="form-control" type="text" id="leaveOrganisationModalPasswordConfirmation" name="leaveOrganisationModalPasswordConfirmation">
+                        <input class="form-control" type="password" id="leaveOrganisationModalPasswordConfirmation" name="leaveOrganisationModalPasswordConfirmation">
                     </div>
                 </div>
                 <div class="modal-footer">
