@@ -22,6 +22,7 @@ class Account
     private bool $support;
     private bool $admin;
     private bool $sendMailUnknownLogin;
+    private bool $createdByOrganisation;
 
     public function getId(): int
     {
@@ -171,6 +172,16 @@ class Account
     public function setSendMailUnknownLogin(bool $sendMailUnknownLogin): void
     {
         $this->sendMailUnknownLogin = $sendMailUnknownLogin;
+    }
+
+    public function isCreatedByOrganisation(): bool
+    {
+        return $this->createdByOrganisation;
+    }
+
+    public function setCreatedByOrganisation(bool $createdByOrganisation): void
+    {
+        $this->createdByOrganisation = $createdByOrganisation;
     }
 
 }

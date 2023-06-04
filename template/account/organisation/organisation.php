@@ -28,17 +28,18 @@
 
             <?php $this->insert('element/alert') ?>
 
-            <?php if($organisation === null): ?>
+            <?php if($organisation !== null): ?>
 
-                <?= $this->insert('account/organisation/noOrganisationElement') ?>
-
-            <?php elseif($organisation['id'] === $account->getId()): ?>
-
-                <?= $this->insert('account/organisation/selfOrganisationElement') ?>
+                <?= $this->insert('account/organisation/organisationElement',
+                    [
+                        'organisation' => $organisation,
+                        'account' => $account
+                    ]
+                ) ?>
 
             <?php else: ?>
 
-                Organisation Overview
+                <?= $this->insert('account/organisation/noOrganisationElement') ?>
 
             <?php endif; ?>
 

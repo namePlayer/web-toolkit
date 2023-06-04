@@ -14,6 +14,7 @@
   "activate-button": "Aktivieren",
   "disable-button": "Deaktivieren",
   "verify-button": "Verifizieren",
+  "leave-button": "Verlassen",
 
   "active-string": "Aktiviert",
   "inactive-string": "Inaktiv",
@@ -183,7 +184,6 @@
   "organisation-settings-invite-no-organisation-member": "Sie sind kein Mitglied einer Organisation. Sie können einer Organisation mit einem Einladungscode beitreten.",
   "organisation-settings-invite-code-label": "Organisationseinladung",
   "organisation-settings-invite-join-label": "Beitreten",
-
   "organisation-settings-create-invite-label": "Einladung erstellen",
   "organisation-settings-invite-table-invite": "Einladungscode",
   "organisation-settings-invite-not-found": "Einladung wurde nicht gefunden.",
@@ -195,6 +195,8 @@
   "organisation-settings-invite-table-action-disable": "Deaktivieren",
   "organisation-settings-invite-modal-title": "Einladungscode erstellen",
   "organisation-settings-invite-modal-expiry-label": "Ablauf der Einladung",
+  "organisation-settings-leave-organisation-modal-label": "Organisation verlassen",
+  "organisation-settings-leave-organisation-notice": "Wenn du deine Organisation verlässt, kannst du dieser solange nicht mehr beitreten, bis du erneut eine Einladung erhältst.",
 
   "support-tab-title": "Support",
   "support-create-ticket-button": "Ticket erstellen",

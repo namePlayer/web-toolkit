@@ -65,8 +65,11 @@ class OrganisationController
             $this->accountService->setAccountOrganisation($account->getId(), $token->getAccount());
             MESSAGES->add('success', 'organisation-settings-invite-organisation-joined');
             $account->setBusiness($token->getAccount());
-
+            return;
         }
+
+
+
     }
 
 }
