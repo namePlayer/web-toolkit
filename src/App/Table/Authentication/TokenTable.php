@@ -15,9 +15,13 @@ class TokenTable extends AbstractTable
         $values = [
             'type' => $token->getType(),
             'account' => $token->getAccount(),
-            'expiry' => $token->getExpiry()->format(Software::DATABASE_TIME_FORMAT),
             'token' => $token->getToken()
         ];
+
+        if($token->getExpiry() !== NULL)
+        {
+            $values['expiry'] = $token->getExpiry()->format(Software::DATABASE_TIME_FORMAT);
+        }
 
         return $this->query->insertInto($this->getTableName())->values($values)->executeWithoutId();
     }
@@ -31,6 +35,15 @@ class TokenTable extends AbstractTable
     {
         return $this->query->update($this->getTableName())->where('id', $token)->set(['used' => $used ? 1 : 0]
         )->execute();
+    }
+
+    public function findAllByAccountAndType(int $account, int $type)
+    {
+        $where = [
+            'account' => $account,
+            'type' => $type
+        ];
+        return $this->query->from($this->getTableName())->where($where)->fetchAll();
     }
 
 }

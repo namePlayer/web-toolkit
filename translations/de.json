@@ -24,6 +24,7 @@
   "public-string": "Öffentlich",
   "private-string": "Privat",
   "amount-string": "Anzahl",
+  "never-string": "Nie",
 
   "homepage-content-create-shortlink-title": "Kurzlink erstellen",
   "homepage-content-create-shortlink-description": "Erstelle einen Kurzen Link, welcher einfach zu teilen ist. Dieser ist Beispielsweise Sinnvoll, solltest du auf deinem SmartTV eine Webseite öffnen wollen, welche eine Lange URL hat.",

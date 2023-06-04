@@ -52,4 +52,9 @@ readonly class TokenService
         $this->tokenTable->updateUsed($token, true);
     }
 
+    public function getTokensByTypeAndAccount(int $type, int $account): array
+    {
+        return $this->tokenTable->findAllByAccountAndType($account, $type);
+    }
+
 }

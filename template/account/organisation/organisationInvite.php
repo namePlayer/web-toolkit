@@ -58,20 +58,32 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php foreach($inviteList as $invite): ?>
                         <tr>
-                            <th scope="row">default</th>
-                            <td>28.05.2023</td>
-                            <td>Never</td>
+                            <th scope="row"><?= $invite['token'] ?></th>
                             <td>
-                                <a href="#" class="text-decoration-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-slash-circle me-1" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                        <path d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"/>
-                                    </svg>
-                                    <?= $this->translate('organisation-settings-invite-table-action-disable') ?>
-                                </a>
+                                <?= (new DateTime($invite['created']))->format($this->translate('dateTime-format')) ?>
+                            </td>
+                            <td>
+                                <?= $invite['expiry'] === NULL
+                                    ? $this->translate('never-string')
+                                    : (new DateTime($invite['expiry']))->format($this->translate('dateTime-format'))
+                                ?>
+                            </td>
+                            <td>
+                                <?php if($invite['used'] === 1): ?>
+                                <?php else: ?>
+                                    <a href="#" class="text-decoration-none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-slash-circle me-1" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                            <path d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"/>
+                                        </svg>
+                                        <?= $this->translate('organisation-settings-invite-table-action-disable') ?>
+                                    </a>
+                                <?php endif; ?>
                             </td>
                         </tr>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
