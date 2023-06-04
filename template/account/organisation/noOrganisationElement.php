@@ -13,7 +13,7 @@
             <label for="organisationJoinInviteCode" class="form-label">
                 <?= $this->translate('organisation-settings-invite-code-label') ?>
             </label>
-            <input type="text" class="form-control" id="organisationJoinInviteCode">
+            <input type="text" class="form-control" id="organisationJoinInviteCode" name="organisationJoinInviteCode">
         </div>
         <div class="col-md-2 d-flex align-items-end">
             <button type="submit" class="btn btn-primary w-100">

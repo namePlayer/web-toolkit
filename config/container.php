@@ -73,7 +73,8 @@ $container->add(\App\Controller\Account\AllowIpAddressController::class)
 
 $container->add(\App\Controller\Account\OrganisationController::class)
     ->addArgument(\League\Plates\Engine::class)
-    ->addArgument(\App\Service\Authentication\AccountService::class);
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Service\Authentication\TokenService::class);
 
 $container->add(\App\Controller\Account\OrganisationInviteController::class)
     ->addArgument(\League\Plates\Engine::class)

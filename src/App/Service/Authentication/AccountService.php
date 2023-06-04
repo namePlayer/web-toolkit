@@ -221,4 +221,9 @@ readonly class AccountService
         return false;
     }
 
+    public function setAccountOrganisation(int $account, ?int $organisation): void
+    {
+        $this->accountTable->updateAccountOrganisation($account, $organisation);
+    }
+
 }

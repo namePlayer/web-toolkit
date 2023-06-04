@@ -90,4 +90,9 @@ class AccountTable extends AbstractTable
         )->where($search)->orderBy('Account.registered DESC')->fetchAll();
     }
 
+    public function updateAccountOrganisation(int $account, ?int $organisation): bool|array|string|int
+    {
+        return $this->query->update($this->getTableName())->where('id', $account)->set('business', $organisation)->execute();
+    }
+
 }
