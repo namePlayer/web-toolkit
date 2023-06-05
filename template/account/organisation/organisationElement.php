@@ -5,7 +5,9 @@
         <span>
             <?= $isOwner ? 'Organisationseigentümer' : 'Deine zugehörige Organisation' ?>:
         </span>
-        <h4><?= $organisation['name'] ?></h4>
+        <h4>
+            <?= $organisation['name'] ?>
+        </h4>
     </div>
     <div class="col-3 d-flex align-items-end">
         <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#leaveOrganisationModal"
