@@ -3,7 +3,7 @@
 
     <div class="col-9">
         <span>
-            <?= $isOwner ? 'Organisationseigentümer' : 'Deine zugehörige Organisation' ?>:
+            <?= $isOwner ? $this->translate('organisation-owner') : $this->translate('organisation-member') ?>:
         </span>
         <h4>
             <?= $organisation['name'] ?>

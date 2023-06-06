@@ -182,6 +182,8 @@
   "account-settings-navigation-security-allow-ip-address-title": "IP-Adresse verifizieren",
   "account-settings-navigation-security-allow-ip-address-note": "Um die Anzahl an Anmeldeinformationen zu verringern, kannst du hier deine IP-Adresse freischalten. Solltest du dich dann über diese Anmelden, wirst du keine E-Mail erhalten.",
 
+  "organisation-owner": "Organisationseigentümer",
+  "organisation-member": "Organisationsmitglied",
   "organisation-settings-invite-no-organisation-member": "Sie sind kein Mitglied einer Organisation. Sie können einer Organisation mit einem Einladungscode beitreten.",
   "organisation-settings-invite-code-label": "Organisationseinladung",
   "organisation-settings-invite-join-label": "Beitreten",
