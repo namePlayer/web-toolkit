@@ -1,6 +1,5 @@
 <hr>
 <div class="row">
-
     <div class="col-9">
         <span>
             <?= $isOwner ? $this->translate('organisation-owner') : $this->translate('organisation-member') ?>:
@@ -19,7 +18,6 @@
             <?= $this->translate('leave-button') ?>
         </button>
     </div>
-
 </div>
 
 <form action="" method="post">
