@@ -202,6 +202,7 @@
   "organisation-settings-invite-modal-expiry-label": "Ablauf der Einladung",
   "organisation-settings-leave-organisation-modal-label": "Organisation verlassen",
   "organisation-settings-leave-organisation-notice": "Wenn du deine Organisation verlässt, kannst du dieser solange nicht mehr beitreten, bis du erneut eine Einladung erhältst.",
+  "organisation-settings-leave-organisation-created-by-organisation": "Dein Konto wurde von deiner Organisation erstellt, diese muss dein Konto löschen.",
 
   "support-tab-title": "Support",
   "support-create-ticket-button": "Ticket erstellen",

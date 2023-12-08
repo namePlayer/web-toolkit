@@ -8,7 +8,7 @@
             <?= $organisation['name'] ?>
         </h4>
     </div>
-    <div class="col-3 d-flex align-items-end">
+    <div class="col-3 <?= $account->isCreatedByOrganisation() ? '' : 'd-flex align-items-end' ?>">
         <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#leaveOrganisationModal"
             <?= $account->isCreatedByOrganisation() || $account->getId() == $organisation['id'] ? 'disabled' : '' ?>>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -17,6 +17,7 @@
             </svg>
             <?= $this->translate('leave-button') ?>
         </button>
+        <?= $account->isCreatedByOrganisation() ? '<small>' . $this->translate('organisation-settings-leave-organisation-created-by-organisation').'</small>' : '' ?>
     </div>
 </div>
 
