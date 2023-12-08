@@ -6,6 +6,7 @@ class Tool
 {
 
     public const TOOL_URL_SHORTENER = 1;
+    public const TOOL_FORMS = 2;
 
     private int $id;
     private ?int $level;

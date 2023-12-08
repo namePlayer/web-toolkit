@@ -23,9 +23,12 @@ readonly class MailerFactory
         $this->mailer->Password = $_ENV['MAILER_PASSWORD'];
         $this->mailer->Port = $_ENV['MAILER_PORT'];
         $this->mailer->setFrom($_ENV['MAILER_DISPLAY_EMAIL'], $_ENV['MAILER_DISPLAY_FROM']);
+        $this->mailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 
         $this->mailer->CharSet = 'UTF-8';
         $this->mailer->Encoding = 'base64';
+
+        $this->mailer->Timeout = 60;
 
         return $this->mailer;
     }

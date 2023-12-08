@@ -70,7 +70,6 @@ class MailerService
                 $this->successSent++;
                 $this->logger->info('Mail Sending took ' . microtime(true) - $time . 'ms (' . $this->successSent . '/' . $amount . ')');
             } catch (Exception) {
-                $this->mailTable->updateMailSentById($mail['id']);
                 $this->logger->error('Mail Sending failed after ' . microtime(true) - $time . 'ms', [$this->mailer->getMailer()->ErrorInfo]);
             }
 
