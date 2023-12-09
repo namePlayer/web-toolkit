@@ -5,11 +5,6 @@
         </button>
     </li>
     <li class="nav-item" role="presentation">
-        <button class="nav-link" id="adminAccountViewTabSettings" data-bs-toggle="tab" data-bs-target="#adminAccountViewTabSettingsPane" type="button" role="tab" aria-controls="adminAccountViewTabSettingsPane" aria-selected="false">
-            <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-title')) ?>
-        </button>
-    </li>
-    <li class="nav-item" role="presentation">
         <button disabled class="nav-link" id="adminAccountViewTabSettings" data-bs-toggle="tab" data-bs-target="#adminAccountViewTabSettingsPane" type="button" role="tab" aria-controls="adminAccountViewTabSettingsPane" aria-selected="false">
             <?= $this->e($this->translate('admin-account-view-navigation-licenses-tab-title')) ?>
         </button>

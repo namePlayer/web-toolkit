@@ -38,43 +38,21 @@ $this->layout('basetemplate') ?>
             <div class="tab-content" id="adminAccountViewTabContent">
                 <div class="tab-pane fade show active" id="adminAccountViewTabInformationPane" role="tabpanel" aria-labelledby="adminAccountViewTabInformation" tabindex="0">
 
-                    <div class="card">
+                    <div class="card mb-3">
                         <div class="card-body row">
-
-                            <div class="col-md-4 text-center mb-4">
-                                <span><?= $this->e($this->translate('admin-account-view-info-tab-account-title')) ?></span>
-                                <h4>
-                                    <?= $account->getName(); ?>
-                                </h4>
-                            </div>
-                            <div class="col-md-4 text-center mb-4">
-                                <span><?= $this->e($this->translate('admin-account-view-info-tab-subscription-title')) ?></span>
-                                <h4>
-                                    <?= $this->e($this->translate($level['title'])) ?>
-                                </h4>
-                            </div>
-                            <div class="col-md-4 text-center mb-4">
-                                <span><?= $this->e($this->translate('admin-account-view-info-tab-status-title')) ?></span>
-                                <h4>
-                                    <?= $account->isActive()
-                                        ? $this->e($this->translate('admin-account-view-info-tab-status-active'))
-                                        : $this->e($this->translate('admin-account-view-info-tab-status-disabled'))
-                                    ?>
-                                </h4>
-                            </div>
-                            <div class="col-md-4 text-center mb-3">
+                            <div class="col-md-4 text-center mb-lg-3">
                                 <span><?= $this->e($this->translate('admin-account-view-info-tab-organisation-title')) ?></span>
                                 <h4>
                                     <?= $this->e($this->translate('admin-account-view-info-tab-organisation-none')) ?>
                                 </h4>
                             </div>
-                            <div class="col-md-4 text-center mb-3">
+                            <div class="col-md-4 text-center mb-lg-3">
                                 <span><?= $this->e($this->translate('admin-account-view-info-tab-registered-title')) ?></span>
                                 <h4>
                                     <?= $account->getRegistered()->format($this->translate('dateTime-format')) ?>
                                 </h4>
                             </div>
-                            <div class="col-md-4 text-center mb-3">
+                            <div class="col-md-4 text-center mb-lg-3">
                                 <span><?= $this->e($this->translate('admin-account-view-info-tab-last-login-title')) ?></span>
                                 <h4>
                                     <?= $account->getLastLogin() === NULL
@@ -83,12 +61,9 @@ $this->layout('basetemplate') ?>
                                     ?>
                                 </h4>
                             </div>
-
                         </div>
                     </div>
 
-                </div>
-                <div class="tab-pane fade" id="adminAccountViewTabSettingsPane" role="tabpanel" aria-labelledby="adminAccountViewTabSettings" tabindex="0">
                     <form method="post">
                         <div class="row">
                             <div class="col-md-12 mb-3">
@@ -127,7 +102,7 @@ $this->layout('basetemplate') ?>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="adminAccountTabSettingsActive"
                                         <?= $account->isAdmin() ? 'onclick="this.checked=!this.checked;" ' : '' ?>
@@ -137,7 +112,7 @@ $this->layout('basetemplate') ?>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="adminAccountTabSettingsSupport"
                                         <?= $account->isSupport() || $account->isAdmin() ? 'checked' : '' ?> disabled>
@@ -146,7 +121,7 @@ $this->layout('basetemplate') ?>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" name="adminAccountTabSettingsAdmin"
                                         <?= $account->isAdmin() ? 'checked' : '' ?>>
@@ -155,6 +130,7 @@ $this->layout('basetemplate') ?>
                                     </label>
                                 </div>
                             </div>
+                            <div class="col-1"></div>
                             <div class="col-2">
 
                                 <button type="submit" class="w-100 btn btn-primary" name="adminAccountTabSettingsSaveButton">
@@ -162,10 +138,11 @@ $this->layout('basetemplate') ?>
                                 </button>
 
                             </div>
-                            <div class="col-1"></div>
                         </div>
 
                     </form>
+
+                    <hr>
 
                     <form class="row mt-3" method="post">
                         <div class="col-3">
@@ -199,6 +176,7 @@ $this->layout('basetemplate') ?>
                     </form>
 
                 </div>
+
                 <div class="tab-pane fade" id="adminAccountViewTabOrganisationPane" role="tabpanel" aria-labelledby="adminAccountViewTabOrganisation" tabindex="0">
 
                 </div>
