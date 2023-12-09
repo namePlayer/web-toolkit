@@ -480,6 +480,13 @@
 
   "qrcode-generator-title": "QR Code Generator",
   "qrcode-generator-description": "Erstelle deine eigenen QR Codes direkt im Browser. Ganz nach deinen Wünschen anpassbar!",
-  "qrcode-generator-creation-pane-title": "QR-Code erstellen"
+  "qrcode-generator-creation-pane-title": "QR-Code erstellen",
+  "qrcode-generator-creation-create-button": "QR-Code generieren",
+  "qrcode-generator-creation-customize-pane-title": "Anpassen",
+  "qrcode-generator-preset-title-text": "Text",
+  "qrcode-generator-preset-title-website": "Link",
+  "qrcode-generator-preset-title-wifi": "WLAN-Netzwerk",
+  "qrcode-generator-preset-title-contact": "Kontakt",
+  "qrcode-generator-preset-title-email": "E-Mail"
 
 }
