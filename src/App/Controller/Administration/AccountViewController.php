@@ -7,6 +7,7 @@ use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Authentication\Token;
 use App\Model\Mail\MailType;
+use App\Service\Account\SecurityService;
 use App\Service\Authentication\AccountService;
 use App\Service\MailerService;
 use App\Table\Authentication\AccountLevelTable;
@@ -23,7 +24,8 @@ readonly class AccountViewController
         private Engine            $template,
         private AccountService    $accountService,
         private AccountLevelTable $accountLevelTable,
-        private MailerService     $mailerService
+        private MailerService     $mailerService,
+        private SecurityService     $securityService
     )
     {
     }
@@ -123,6 +125,25 @@ readonly class AccountViewController
             )->send();
 
             MESSAGES->add('success', 'admin-account-reset-mail-successful');
+        }
+
+        if (isset($_POST['adminAccountTabSettingsResetTFAButton'])) {
+
+            $removedCount = 0;
+            foreach ($this->securityService->getTwoFactorByAccountID($account->getId()) as $item)
+            {
+                $this->securityService->removeTwoFactorByIdAndAccount($item['id'], $account->getId());+
+                $removedCount++;
+            }
+
+            if($removedCount > 0)
+            {
+                MESSAGES->add('success', 'admin-account-reset-mfa-successful');
+                return;
+            }
+
+            MESSAGES->add('warning', 'admin-account-reset-mfa-no-elements-removed');
+
         }
 
     }

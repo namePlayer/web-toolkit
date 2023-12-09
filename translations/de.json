@@ -320,9 +320,12 @@
   "admin-account-view-navigation-settings-tab-resend-activation-mail-button": "Aktivierungsmail versenden",
   "admin-account-view-navigation-settings-tab-send-password-mail-button": "Passwort zurücksetzen",
   "admin-account-view-navigation-settings-tab-delete-account-button": "Konto löschen",
+  "admin-account-view-navigation-settings-tab-reset-two-factor-button": "MFA zurücksetzen",
   "admin-account-view-navigation-licenses-tab-title": "Lizenzen",
   "admin-account-view-navigation-support-tab-title": "Support",
   "admin-account-view-navigation-organisation-tab-title": "Organisation",
+  "admin-account-reset-mfa-successful": "Alle 2FA Optionen des Nutzers wurden dem Konto entfernt.",
+  "admin-account-reset-mfa-no-elements-removed": "Der Nutzer hatte keine 2FA Optionen in seinem Konto hinterlegt.",
 
   "administration-dashboard-registered-accounts-card-title": "Registrierte Konten",
   "administration-dashboard-active-licenses-card-title": "Aktive Lizenzen",

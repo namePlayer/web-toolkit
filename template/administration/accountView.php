@@ -184,6 +184,13 @@ $this->layout('basetemplate') ?>
                         </div>
                         <div class="col-3">
 
+                            <button type="submit" class="w-100 btn btn-danger" name="adminAccountTabSettingsResetTFAButton">
+                                <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-reset-two-factor-button')) ?>
+                            </button>
+
+                        </div>
+                        <div class="col-3">
+
                             <button type="submit" class="w-100 btn btn-danger" name="adminAccountTabSettingsDeleteAccountButton" <?= $account->isAdmin() ? 'disabled' : '' ?>>
                                 <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-delete-account-button')) ?>
                             </button>
