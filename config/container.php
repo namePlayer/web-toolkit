@@ -174,6 +174,10 @@ $container->add(\App\Controller\Forms\FormPublicController::class)
     ->addArgument(\App\Service\Forms\FormFieldService::class)
     ->addArgument(\App\Service\Forms\FormEntryService::class);
 
+$container->add(\App\Controller\QrCode\GenerateController::class)
+    ->addArgument(\App\Factory\QrCodeGeneratorFactory::class)
+    ->addArgument(\League\Plates\Engine::class);
+
 #
 # Services
 #
@@ -401,6 +405,8 @@ $container->add(\App\Factory\MailerFactory::class)
 
 $container->add(\PHPMailer\PHPMailer\PHPMailer::class)
     ->addArgument(true);
+
+$container->add(\App\Factory\QrCodeGeneratorFactory::class);
 
 $responseFactory = (new \Laminas\Diactoros\ResponseFactory());
 $jsonStrategy = (new \League\Route\Strategy\JsonStrategy($responseFactory))->setContainer($container);

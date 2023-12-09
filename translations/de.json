@@ -476,6 +476,10 @@
   "forms-tool-form-entry-header": "Formular Einträge",
   "forms-tool-form-editor-header-nav": "Editor",
   "forms-tool-form-entry-header-nav": "Formular Einträge",
-  "forms-tool-form-entry-all-entries": "Alle Einträge"
+  "forms-tool-form-entry-all-entries": "Alle Einträge",
+
+  "qrcode-generator-title": "QR Code Generator",
+  "qrcode-generator-description": "Erstelle deine eigenen QR Codes direkt im Browser. Ganz nach deinen Wünschen anpassbar!",
+  "qrcode-generator-creation-pane-title": "QR-Code erstellen"
 
 }

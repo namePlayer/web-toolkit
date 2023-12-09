@@ -170,6 +170,11 @@ $router->post('/form/{uuid}/{context}', 'App\Controller\Forms\FormPublicControll
 $router->get('/form/{uuid}', 'App\Controller\Forms\FormPublicController::load');
 $router->post('/form/{uuid}', 'App\Controller\Forms\FormPublicController::load');
 
+$router->get('/tool/qrcodegen', 'App\Controller\QrCode\GenerateController::load')
+    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/tool/qrcodegen', 'App\Controller\QrCode\GenerateController::load')
+    ->lazyMiddlewares([\App\Middleware\ToolMiddleware::class, \App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
 $router->get('/api/shortlink', 'Api\UrlShortener\OpenLinkApiController::access')
     ->lazyMiddlewares([\App\Middleware\ApiAuthenticationMiddleware::class])
     ->setStrategy($jsonStrategy);
