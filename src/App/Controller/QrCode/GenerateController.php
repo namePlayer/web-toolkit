@@ -20,14 +20,22 @@ readonly class GenerateController
     {
     }
 
-    public function load(ServerRequestInterface $request): ResponseInterface
+    public function load(ServerRequestInterface $request, array $args): ResponseInterface
     {
         /* @var $account Account */
         /* @var $tool Tool */
         $account = $request->getAttribute(Account::class);
         $tool = $request->getAttribute(Tool::class);
 
-        return new HtmlResponse($this->template->render('qrCodeGenerator/generate', ['tool' => $tool]));
+        $modules = ['text', 'website', 'wifi', 'contact', 'email'];
+        $module = 'text';
+        if(isset($args['module']) && in_array($args['module'], $modules))
+        {
+            $module = $args['module'];
+        }
+
+
+        return new HtmlResponse($this->template->render('qrCodeGenerator/generate', ['tool' => $tool, 'module' => $module]));
     }
 
 }

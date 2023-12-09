@@ -4,7 +4,6 @@ namespace App\Factory;
 
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
-use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\SvgWriter;
 
 readonly class QrCodeGeneratorFactory

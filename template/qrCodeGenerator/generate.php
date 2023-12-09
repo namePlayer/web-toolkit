@@ -20,7 +20,7 @@
 
                     <div class="card-body">
 
-                        <?= $this->insert('qrCodeGenerator/forms/textForm') ?>
+                        <?= $this->insert('qrCodeGenerator/forms/'.$module.'Form') ?>
 
                         <div class="row">
                             <div class="col-8">
