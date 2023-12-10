@@ -4,7 +4,7 @@ namespace App\Service\QrCodeGenerator;
 
 use App\Factory\QrCodeGeneratorFactory;
 
-class QrCodeGeneratorService
+readonly class QrCodeGeneratorService
 {
 
     public function __construct(
@@ -18,8 +18,8 @@ class QrCodeGeneratorService
 
         $builder = $this->codeGeneratorFactory->createGenerator(true);
         $result = $builder->data($data)
-            ->size(300)
-            ->margin(10)
+            ->size(550)
+            ->margin(0)
             ->build();
 
         return $result->getDataUri();
