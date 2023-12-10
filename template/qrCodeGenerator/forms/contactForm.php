@@ -39,6 +39,14 @@
             <input type="text" name="qrcodeGeneratorContactWebsite" id="qrcodeGeneratorContactWebsite" class="form-control" placeholder="">
         </div>
     </div>
+    <div class="col-md-12">
+        <div class="mb-3">
+            <label for="qrcodeGeneratorContactEmail" class="form-label">
+                <?= $this->e($this->translate('qrcode-generator-preset-contact-email-label')) ?>
+            </label>
+            <input type="email" name="qrcodeGeneratorContactEmail" id="qrcodeGeneratorContactEmail" class="form-control" placeholder="">
+        </div>
+    </div>
     <hr>
     <div class="col-md-6">
         <div class="mb-3">

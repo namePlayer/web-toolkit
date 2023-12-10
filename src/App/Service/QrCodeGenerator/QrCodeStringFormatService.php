@@ -26,7 +26,7 @@ readonly class QrCodeStringFormatService
             "TEL;TYPE=work,VOICE:" . $contactQrCodeDTO->getPhoneLandline() . "\n" .
             "TEL;TYPE=home,VOICE:" . $contactQrCodeDTO->getPhoneMobile() . "\n" .
             "TEL;TYPE=fax:" . $contactQrCodeDTO->getFax() . "\n" .
-            "EMAIL:" . "placeholder@text.de" . "\n" .
+            "EMAIL:" . $contactQrCodeDTO->getEmail() . "\n" .
             "ORG:" . $contactQrCodeDTO->getOrganisation() . "\n" .
             "TITLE:" . $contactQrCodeDTO->getJob() . "\n" .
             "ADR;TYPE=WORK,PREF:;;" . $contactQrCodeDTO->getStreet() . ";" . $contactQrCodeDTO->getCity() .

@@ -102,6 +102,7 @@ readonly class GenerateController
             $contactDto->setOrganisation($_POST['qrcodeGeneratorContactOrganisation']);
             $contactDto->setJob($_POST['qrcodeGeneratorContactJobTitle']);
             $contactDto->setWebsite($_POST['qrcodeGeneratorContactWebsite']);
+            $contactDto->setEmail($_POST['qrcodeGeneratorContactEmail']);
             $contactDto->setPhoneMobile($_POST['qrcodeGeneratorContactMobilePhoneNumber']);
             $contactDto->setPhoneLandline($_POST['qrcodeGeneratorContactHomePhoneNumber']);
             $contactDto->setFax($_POST['qrcodeGeneratorContactFaxNumber']);

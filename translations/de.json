@@ -504,6 +504,7 @@
   "qrcode-generator-preset-contact-organisation-label": "Organisation",
   "qrcode-generator-preset-contact-job-label": "Beruf",
   "qrcode-generator-preset-contact-website-label": "Webseite",
+  "qrcode-generator-preset-contact-email-label": "E-Mail Adresse",
   "qrcode-generator-preset-contact-phone-mobile-label": "Telefon (Mobil)",
   "qrcode-generator-preset-contact-phone-landline-label": "Telefon (Privat)",
   "qrcode-generator-preset-contact-fax-label": "Fax",

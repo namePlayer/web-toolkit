@@ -10,6 +10,7 @@ class ContactQrCodeDTO
     private string $organisation;
     private string $job;
     private string $website;
+    private string $email;
     private string $phoneMobile;
     private string $phoneLandline;
     private string $fax;
@@ -67,6 +68,16 @@ class ContactQrCodeDTO
     public function setWebsite(string $website): void
     {
         $this->website = $website;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
 
     public function getPhoneMobile(): string
