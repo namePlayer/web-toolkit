@@ -53,7 +53,7 @@
             <label for="qrcodeGeneratorContactHomePhoneNumber" class="form-label">
                 <?= $this->e($this->translate('qrcode-generator-preset-contact-phone-landline-label')) ?>
             </label>
-            <input type="tel" name="qrcodeGeneratorContactMobilePhoneNumber" id="qrcodeGeneratorContactMobilePhoneNumber" class="form-control" placeholder="">
+            <input type="tel" name="qrcodeGeneratorContactHomePhoneNumber" id="qrcodeGeneratorContactHomePhoneNumber" class="form-control" placeholder="">
         </div>
     </div>
     <div class="col-md-6">

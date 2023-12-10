@@ -275,6 +275,9 @@ $container->add(\App\Service\Forms\FormEntryService::class)
     ->addArgument(\App\Table\Forms\FormEntryFieldTable::class)
     ->addArgument(\App\Service\Forms\FormFieldService::class);
 
+$container->add(\App\Service\QrCodeGenerator\QrCodeGeneratorService::class)
+    ->addArgument(\App\Factory\QrCodeGeneratorFactory::class);
+
 #
 # Repositories
 #

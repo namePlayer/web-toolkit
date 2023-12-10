@@ -6,6 +6,7 @@ use App\Factory\QrCodeGeneratorFactory;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
 use App\Model\Tool\Tool;
+use App\Service\QrCodeGenerator\QrCodeGeneratorService;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -14,7 +15,7 @@ readonly class GenerateController
 {
 
     public function __construct(
-        private QrCodeGeneratorFactory $qrGenerator,
+        private QrCodeGeneratorService $qrCodeGeneratorService,
         private Engine $template
     )
     {
@@ -34,8 +35,14 @@ readonly class GenerateController
             $module = $args['module'];
         }
 
+        return new HtmlResponse($this->template->render('qrCodeGenerator/generate',
+            ['tool' => $tool, 'module' => $module]
+        ));
+    }
 
-        return new HtmlResponse($this->template->render('qrCodeGenerator/generate', ['tool' => $tool, 'module' => $module]));
+    public function create(ServerRequestInterface $request, string $module)
+    {
+
     }
 
 }
