@@ -484,6 +484,7 @@
   "qrcode-generator-creation-create-button": "QR-Code generieren",
   "qrcode-generator-creation-customize-pane-title": "Anpassen",
   "qrcode-generator-raw-data-pane-title": "Rohdaten des QR-Codes",
+  "qrcode-generator-no-qr-display-text": "Hier wird der generierte QR-Code angezeigt",
   "qrcode-generator-preset-title-text": "Text",
   "qrcode-generator-preset-text-input-label": "Text",
   "qrcode-generator-preset-text-input-placeholder": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam...",

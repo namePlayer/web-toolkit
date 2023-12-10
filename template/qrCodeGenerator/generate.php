@@ -65,7 +65,9 @@
 
                     <?php else: ?>
 
-                        <h4 class="text-center m-5">Hier wird der generierte QR-Code angezeigt</h4>
+                        <h4 class="text-center m-5">
+                            <?= $this->e($this->translate('qrcode-generator-no-qr-display-text')) ?>
+                        </h4>
 
                     <?php endif; ?>
 
