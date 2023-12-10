@@ -13,4 +13,16 @@ class QrCodeGeneratorService
     {
     }
 
+    public function createBase64QrCodeFromString(string $data): string
+    {
+
+        $builder = $this->codeGeneratorFactory->createGenerator(true);
+        $result = $builder->data($data)
+            ->size(300)
+            ->margin(10)
+            ->build();
+
+        return $result->getDataUri();
+    }
+
 }

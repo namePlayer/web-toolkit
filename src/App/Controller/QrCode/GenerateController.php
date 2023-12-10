@@ -44,15 +44,15 @@ readonly class GenerateController
 
         if($request->getMethod() === "POST")
         {
-            $this->create($request, $module);
+            $qrCode = $this->create($request, $module);
         }
 
         return new HtmlResponse($this->template->render('qrCodeGenerator/generate',
-            ['tool' => $tool, 'module' => $module]
+            ['tool' => $tool, 'module' => $module, 'result' => $qrCode ?? '']
         ));
     }
 
-    public function create(ServerRequestInterface $request, string $module): void
+    public function create(ServerRequestInterface $request, string $module): ?string
     {
 
         $qrCodeData = '';
@@ -125,7 +125,7 @@ readonly class GenerateController
             $qrCodeData = $this->qrCodeStringFormatService->createEmailFormatString($emailDto);
         }
 
-        var_dump($qrCodeData);
+        return $this->qrCodeGeneratorService->createBase64QrCodeFromString($qrCodeData);
 
     }
 

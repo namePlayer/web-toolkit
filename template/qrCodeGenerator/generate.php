@@ -59,10 +59,12 @@
             <div class="card">
                 <div class="card-body">
 
-
+                    <img class="w-100" src="<?= $result ?>">
 
                 </div>
             </div>
+
+            
 
         </div>
 

@@ -12,7 +12,7 @@
             <label for="qrcodeGeneratorEmailFormSubjectInput" class="form-label">
                 <?= $this->e($this->translate('qrcode-generator-preset-email-subject-label')) ?>
             </label>
-            <input type="email" class="form-control" name="qrcodeGeneratorEmailFormSubjectInput" id="qrcodeGeneratorEmailFormSubjectInput" placeholder="<?= $this->e($this->translate('qrcode-generator-preset-email-subject-placeholder')) ?>">
+            <input type="text" class="form-control" name="qrcodeGeneratorEmailFormSubjectInput" id="qrcodeGeneratorEmailFormSubjectInput" placeholder="<?= $this->e($this->translate('qrcode-generator-preset-email-subject-placeholder')) ?>">
         </div>
     </div>
     <div class="col-12">
