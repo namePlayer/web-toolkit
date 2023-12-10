@@ -36,7 +36,7 @@ readonly class QrCodeStringFormatService
             $vcard .= "TITLE:" . $contactQrCodeDTO->getJob() . "\n";
         }
 
-        if(!empty($contactQrCodeDTO->getJob()))
+        if(!empty($contactQrCodeDTO->getWebsite()))
         {
             $vcard .=  "URL:" . $contactQrCodeDTO->getWebsite() . "\n";
         }
