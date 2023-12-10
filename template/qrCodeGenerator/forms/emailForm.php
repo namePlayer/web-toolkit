@@ -17,7 +17,7 @@
     </div>
     <div class="col-12">
         <div class="mb-3">
-            <label for="qrcodeGeneratorEmailFormMessageInput" class="form-label">
+            <label for="qrcodeGeneratorEmailFormMessage" class="form-label">
                 <?= $this->e($this->translate('qrcode-generator-preset-email-message-label')) ?>
             </label>
             <textarea name="qrcodeGeneratorEmailFormMessage" rows="3" id="qrcodeGeneratorEmailFormMessage" class="form-control" placeholder="<?= $this->e($this->translate('qrcode-generator-preset-email-message-placeholder')) ?>"></textarea>

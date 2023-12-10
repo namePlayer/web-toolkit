@@ -175,7 +175,8 @@ $container->add(\App\Controller\Forms\FormPublicController::class)
     ->addArgument(\App\Service\Forms\FormEntryService::class);
 
 $container->add(\App\Controller\QrCode\GenerateController::class)
-    ->addArgument(\App\Factory\QrCodeGeneratorFactory::class)
+    ->addArgument(\App\Service\QrCodeGenerator\QrCodeGeneratorService::class)
+    ->addArgument(\App\Service\QrCodeGenerator\QrCodeStringFormatService::class)
     ->addArgument(\League\Plates\Engine::class);
 
 #
@@ -277,6 +278,8 @@ $container->add(\App\Service\Forms\FormEntryService::class)
 
 $container->add(\App\Service\QrCodeGenerator\QrCodeGeneratorService::class)
     ->addArgument(\App\Factory\QrCodeGeneratorFactory::class);
+
+$container->add(\App\Service\QrCodeGenerator\QrCodeStringFormatService::class);
 
 #
 # Repositories

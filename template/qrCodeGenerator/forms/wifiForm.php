@@ -14,8 +14,8 @@
             </label>
             <select id="qrcodeGeneratorWifiFormEncryptionSelect" name="qrcodeGeneratorWifiFormEncryptionSelect" class="form-select">
                 <option selected><?= $this->e($this->translate('qrcode-generator-preset-wifi-network-encryption-none')) ?></option>
-                <option value="1"><?= $this->e($this->translate('qrcode-generator-preset-wifi-network-encryption-wep')) ?></option>
-                <option value="2"><?= $this->e($this->translate('qrcode-generator-preset-wifi-network-encryption-wpa')) ?></option>
+                <option value="WEP"><?= $this->e($this->translate('qrcode-generator-preset-wifi-network-encryption-wep')) ?></option>
+                <option value="WPA"><?= $this->e($this->translate('qrcode-generator-preset-wifi-network-encryption-wpa')) ?></option>
             </select>
         </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="col-md-4">
         <div class="mb-3">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="qrcodeGeneratorWifiFormHiddenNetwork">
+                <input class="form-check-input" type="checkbox" value="" id="qrcodeGeneratorWifiFormHiddenNetwork" name="qrcodeGeneratorWifiFormHiddenNetwork">
                 <label class="form-check-label" for="qrcodeGeneratorWifiFormHiddenNetwork">
                     <?= $this->e($this->translate('qrcode-generator-preset-wifi-network-visibility-label')) ?>
                 </label>
