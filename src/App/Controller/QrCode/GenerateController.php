@@ -49,7 +49,7 @@ readonly class GenerateController
         }
 
         return new HtmlResponse($this->template->render('qrCodeGenerator/generate',
-            ['tool' => $tool, 'module' => $module, 'qrCode' => $qrCode['base64Img'] ?? '', 'data' => $qrCode['data'] ?? '']
+            ['tool' => $tool, 'module' => $module, 'qrCode' => $qrCode['base64Img'] ?? '', 'data' => $qrCode['data'] ?? '', 'object' => $qrCode['object'] ?? '']
         ));
     }
 
@@ -58,6 +58,7 @@ readonly class GenerateController
 
         $qrCode = [];
         $qrCode['data'] = '';
+        $qrCode['object'] = null;
 
         if($module === 'text')
         {
@@ -65,12 +66,16 @@ readonly class GenerateController
             $textDto->setText($_POST['qrcodeGeneratorTextFormTextareaInput']);
 
             $qrCode['data']  = $textDto->getText();
+            $qrCode['object'] = $textDto;
         }
 
         if($module === 'website')
         {
             $websiteDto = new WebsiteQrCodeDTO();
             $websiteDto->setWebsite($_POST['qrcodeGeneratorWebsiteInput']);
+
+            $qrCode['data'] = $websiteDto->getWebsite();
+            $qrCode['object'] = $websiteDto;
         }
 
         if($module === "wifi")
@@ -94,6 +99,7 @@ readonly class GenerateController
             $wifiDto->setHidden(isset($_POST['qrcodeGeneratorWifiFormHiddenNetwork']));
 
             $qrCode['data'] = $this->qrCodeStringFormatService->createWifiFormatString($wifiDto);
+            $qrCode['object'] = $wifiDto;
         }
 
         if($module === "contact")
@@ -115,6 +121,7 @@ readonly class GenerateController
             $contactDto->setCountry($_POST['qrcodeGeneratorContactCountry']);
 
             $qrCode['data'] = $this->qrCodeStringFormatService->createContactFormatString($contactDto);
+            $qrCode['object'] = $contactDto;
         }
 
         if($module === "email")
@@ -125,6 +132,7 @@ readonly class GenerateController
             $emailDto->setMessage($_POST['qrcodeGeneratorEmailFormMessage']);
 
             $qrCode['data'] = $this->qrCodeStringFormatService->createEmailFormatString($emailDto);
+            $qrCode['object'] = $emailDto;
         }
 
         $qrCode['base64Img'] = $this->qrCodeGeneratorService->createBase64QrCodeFromString($qrCode['data']);
