@@ -521,6 +521,7 @@
   "qrcode-generator-preset-email-subject-label": "Betreff",
   "qrcode-generator-preset-email-subject-placeholder": "Lorem ipsum",
   "qrcode-generator-preset-email-message-label": "Nachricht",
-  "qrcode-generator-preset-email-message-placeholder": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam..."
+  "qrcode-generator-preset-email-message-placeholder": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam...",
+  "qrcode-generator-generation-successful": "Der QR-Code wurde erstellt."
 
 }

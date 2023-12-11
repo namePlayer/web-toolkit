@@ -63,7 +63,7 @@ readonly class GenerateController
         if($module === 'text')
         {
             $textDto = new TextQrCodeDTO();
-            $textDto->setText($_POST['qrcodeGeneratorTextFormTextareaInput']);
+            $textDto->setText(trim($_POST['qrcodeGeneratorTextFormTextareaInput']));
 
             $qrCode['data']  = $textDto->getText();
             $qrCode['object'] = $textDto;
@@ -72,7 +72,7 @@ readonly class GenerateController
         if($module === 'website')
         {
             $websiteDto = new WebsiteQrCodeDTO();
-            $websiteDto->setWebsite($_POST['qrcodeGeneratorWebsiteInput']);
+            $websiteDto->setWebsite(trim($_POST['qrcodeGeneratorWebsiteInput']));
 
             $qrCode['data'] = $websiteDto->getWebsite();
             $qrCode['object'] = $websiteDto;
@@ -81,7 +81,7 @@ readonly class GenerateController
         if($module === "wifi")
         {
             $wifiDto = new WifiQrCodeDTO();
-            $wifiDto->setNetworkName($_POST['qrcodeGeneratorWifiFormNetworkNameInput']);
+            $wifiDto->setNetworkName(trim($_POST['qrcodeGeneratorWifiFormNetworkNameInput']));
 
             switch ($_POST['qrcodeGeneratorWifiFormEncryptionSelect'])
             {
@@ -95,7 +95,7 @@ readonly class GenerateController
                     $wifiDto->setEncryption('nopass');
             }
 
-            $wifiDto->setPassword($_POST['qrcodeGeneratorWifiFormPasswordInput']);
+            $wifiDto->setPassword(trim($_POST['qrcodeGeneratorWifiFormPasswordInput']));
             $wifiDto->setHidden(isset($_POST['qrcodeGeneratorWifiFormHiddenNetwork']));
 
             $qrCode['data'] = $this->qrCodeStringFormatService->createWifiFormatString($wifiDto);
@@ -105,20 +105,20 @@ readonly class GenerateController
         if($module === "contact")
         {
             $contactDto = new ContactQrCodeDTO();
-            $contactDto->setForename($_POST['qrcodeGeneratorContactForename']);
-            $contactDto->setSurname($_POST['qrcodeGeneratorContactSurname']);
-            $contactDto->setOrganisation($_POST['qrcodeGeneratorContactOrganisation']);
-            $contactDto->setJob($_POST['qrcodeGeneratorContactJobTitle']);
-            $contactDto->setWebsite($_POST['qrcodeGeneratorContactWebsite']);
-            $contactDto->setEmail($_POST['qrcodeGeneratorContactEmail']);
-            $contactDto->setPhoneMobile($_POST['qrcodeGeneratorContactMobilePhoneNumber']);
-            $contactDto->setPhoneLandline($_POST['qrcodeGeneratorContactHomePhoneNumber']);
-            $contactDto->setFax($_POST['qrcodeGeneratorContactFaxNumber']);
-            $contactDto->setStreet($_POST['qrcodeGeneratorContactStreet']);
-            $contactDto->setZipCode($_POST['qrcodeGeneratorContactZipCode']);
-            $contactDto->setCity($_POST['qrcodeGeneratorContactCity']);
-            $contactDto->setState($_POST['qrcodeGeneratorContactState']);
-            $contactDto->setCountry($_POST['qrcodeGeneratorContactCountry']);
+            $contactDto->setForename(trim($_POST['qrcodeGeneratorContactForename']));
+            $contactDto->setSurname(trim($_POST['qrcodeGeneratorContactSurname']));
+            $contactDto->setOrganisation(trim($_POST['qrcodeGeneratorContactOrganisation']));
+            $contactDto->setJob(trim($_POST['qrcodeGeneratorContactJobTitle']));
+            $contactDto->setWebsite(trim($_POST['qrcodeGeneratorContactWebsite']));
+            $contactDto->setEmail(trim($_POST['qrcodeGeneratorContactEmail']));
+            $contactDto->setPhoneMobile(trim($_POST['qrcodeGeneratorContactMobilePhoneNumber']));
+            $contactDto->setPhoneLandline(trim($_POST['qrcodeGeneratorContactHomePhoneNumber']));
+            $contactDto->setFax(trim($_POST['qrcodeGeneratorContactFaxNumber']));
+            $contactDto->setStreet(trim($_POST['qrcodeGeneratorContactStreet']));
+            $contactDto->setZipCode(trim($_POST['qrcodeGeneratorContactZipCode']));
+            $contactDto->setCity(trim($_POST['qrcodeGeneratorContactCity']));
+            $contactDto->setState(trim($_POST['qrcodeGeneratorContactState']));
+            $contactDto->setCountry(trim($_POST['qrcodeGeneratorContactCountry']));
 
             $qrCode['data'] = $this->qrCodeStringFormatService->createContactFormatString($contactDto);
             $qrCode['object'] = $contactDto;
@@ -127,15 +127,17 @@ readonly class GenerateController
         if($module === "email")
         {
             $emailDto = new EmailQrCodeDTO();
-            $emailDto->setRecipient($_POST['qrcodeGeneratorEmailFormEmailRecipientAddressInput']);
-            $emailDto->setSubject($_POST['qrcodeGeneratorEmailFormSubjectInput']);
-            $emailDto->setMessage($_POST['qrcodeGeneratorEmailFormMessage']);
+            $emailDto->setRecipient(trim($_POST['qrcodeGeneratorEmailFormEmailRecipientAddressInput']));
+            $emailDto->setSubject(trim($_POST['qrcodeGeneratorEmailFormSubjectInput']));
+            $emailDto->setMessage(trim($_POST['qrcodeGeneratorEmailFormMessage']));
 
             $qrCode['data'] = $this->qrCodeStringFormatService->createEmailFormatString($emailDto);
             $qrCode['object'] = $emailDto;
         }
 
         $qrCode['base64Img'] = $this->qrCodeGeneratorService->createBase64QrCodeFromString($qrCode['data']);
+
+        MESSAGES->add('success', 'qrcode-generator-generation-successful');
 
         return $qrCode;
 
