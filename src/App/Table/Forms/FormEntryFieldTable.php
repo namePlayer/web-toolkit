@@ -19,9 +19,9 @@ class FormEntryFieldTable extends AbstractTable
         return $this->query->insertInto($this->getTableName())->values($values)->executeWithoutId();
     }
 
-    public function findEntriesByUuid(string $uuid): array|false
+    public function findFieldEntryByEntryAndFieldId(int $entryId, int $fieldId): array|false
     {
-        return $this->query->from($this->getTableName())->where('uuid', $uuid)->fetchAll();
+        return $this->query->from($this->getTableName())->where(['entry' => $entryId, 'field' => $fieldId])->fetch();
     }
 
 }

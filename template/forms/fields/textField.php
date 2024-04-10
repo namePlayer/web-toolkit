@@ -25,7 +25,7 @@
                 <?php endif; ?>
             </div>
             <input type="text" name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>" class="form-control"
-                <?= isset($editView) ? 'readonly' : '' ?>
+                <?= (isset($editView) || !empty($value)) ? 'readonly' : '' ?> value="<?= $value ?? '' ?>"
                    placeholder="<?= $field['options']['placeholder'] ?? $this->translate('forms-text-field-default-placeholder') ?>">
         </div>
     </div>

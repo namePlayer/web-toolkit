@@ -74,6 +74,28 @@ class FormEntryService
         return (int)$this->formEntryTable->countEntriesByFormId($form);
     }
 
+    public function findFormEntryFieldsByEntryID(int $entryId): array
+    {
+        $fieldEntryList = [];
+
+        $entry = $this->formEntryTable->findById($entryId);
+        if($entry === FALSE)
+        {
+            return [];
+        }
+
+        $entryFields = $this->formFieldService->getAllFieldsForForm($entry['form']);
+
+        foreach ($entryFields as $entryField) {
+
+            $value = $this->formEntryFieldTable->findFieldEntryByEntryAndFieldId($entry['id'], $entryField['id']);
+            $fieldEntryList[] = array_merge($entryField, ['value' => $value['value'] ?? '']);
+
+        }
+
+        return $fieldEntryList;
+    }
+
     private function generateEntryUuid(): string
     {
         do {

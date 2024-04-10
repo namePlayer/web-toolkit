@@ -77,7 +77,7 @@
                 </div>
                 <div class="tab-pane fade <?= $selectedEntry !== null ? 'show active' : ''?>" id="formEditorEntriesTabContent" role="tabpanel" aria-labelledby="formEditorEntriesTab" tabindex="0">
 
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-4">
                             <span class="align-middle fs-4"><?= $this->translate('forms-tool-form-entry-header') ?></span> <br>
                             <span class="align-middle"><?= $this->translate('amount-string') ?>: <b><?= $formEntryCount ?></b></span>
@@ -102,6 +102,23 @@
                         </div>
                     </div>
 
+                    <hr class="mb-4 mt-4">
+
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <?php if($selectedEntry !== FALSE): ?>
+
+                                <?php foreach ($selectedEntryFields as $field): ?>
+
+                                    <?= $this->insert('forms/fields/'.$field['template'], ['field' => $field, 'value' => $field['value']]) ?>
+
+                                <?php endforeach; ?>
+
+                            <?php endif; ?>
+                        </div>
+                        <div class="col-2"></div>
+                    </div>
                 </div>
             </div>
         </div>

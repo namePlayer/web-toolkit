@@ -27,7 +27,7 @@
             </div>
             <textarea name="<?= $field['uuid'] ?>" id="<?= $field['uuid'] ?>" class="form-control"
                       <?= isset($editView) ? 'readonly' : '' ?>
-                      placeholder="<?= $field['options']['placeholder'] ?? $this->translate('forms-textarea-field-default-placeholder') ?>"></textarea>
+                      placeholder="<?= $field['options']['placeholder'] ?? $this->translate('forms-textarea-field-default-placeholder') ?>"><?= $value ?? '' ?></textarea>
         </div>
     </div>
 

@@ -23,7 +23,7 @@ class FormEditController
         private readonly Engine           $template,
         private readonly FormService      $formService,
         private readonly FormFieldService $formFieldService,
-        private readonly FormEntryService $formEntryService,
+        private readonly FormEntryService $formEntryService
     )
     {
     }
@@ -51,6 +51,10 @@ class FormEditController
         if(isset($_GET['entry']))
         {
             $entry = $this->formEntryService->getEntryByUuid($_GET['entry']);
+            if($entry !== FALSE)
+            {
+                $entryFields = $this->formEntryService->findFormEntryFieldsByEntryID($entry['id']);
+            }
         }
 
         return new HtmlResponse($this->template->render('forms/editFormPage', [
@@ -60,7 +64,8 @@ class FormEditController
             'fields' => $this->formFieldService->getAllFieldsForForm($form['id']),
             'formEntryList' => $this->formEntryService->getEntryListForFormId($form['id']),
             'formEntryCount' => $this->formEntryService->getFormEntryCount($form['id']),
-            'selectedEntry' => $entry ?? null
+            'selectedEntry' => $entry ?? null,
+            'selectedEntryFields' => $entryFields ?? null
         ]));
     }
 
