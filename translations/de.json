@@ -206,6 +206,8 @@
 
   "support-tab-title": "Support",
   "support-create-ticket-button": "Ticket erstellen",
+  "support-ticket-created-successfully": "Das Support Ticket wurde erfolgreich erstellt.",
+  "support-ticket-creation-failed": "Das Support Ticket konnte nicht angelegt werden.",
 
   "admin-navigation-general-tab-title": "Allgemein",
   "admin-navigation-general-tab-user-management-title": "Kontoverwaltung",

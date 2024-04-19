@@ -35,7 +35,14 @@ $router->post('/authentication/twoFactor', 'App\Controller\Authentication\TwoFac
 
 $router->get('/authentication/logout', 'App\Controller\Authentication\LogoutController::load');
 
+$router->get('/support/ticket/{id}', 'App\Controller\Support\SupportTicketManageController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/support/ticket/{id}', 'App\Controller\Support\SupportTicketManageController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
 $router->get('/support', 'App\Controller\Support\SupportController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/support', 'App\Controller\Support\SupportController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 
 $router->get('/account/security', 'App\Controller\Account\SecurityController::load')

@@ -41,7 +41,12 @@ $container->add(\App\Controller\Authentication\TwoFactorController::class)
     ->addArgument(\App\Service\Account\SecurityService::class);
 
 $container->add(\App\Controller\Support\SupportController::class)
-    ->addArgument(\League\Plates\Engine::class);
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Support\SupportTicketService::class);
+
+$container->add(\App\Controller\Support\SupportTicketManageController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Support\SupportTicketService::class);
 
 $container->add(\App\Controller\Account\AccountController::class)
     ->addArgument(\League\Plates\Engine::class)
@@ -281,6 +286,10 @@ $container->add(\App\Service\QrCodeGenerator\QrCodeGeneratorService::class)
 
 $container->add(\App\Service\QrCodeGenerator\QrCodeStringFormatService::class);
 
+$container->add(\App\Service\Support\SupportTicketService::class)
+    ->addArgument(\App\Table\Support\SupportTicketTable::class)
+    ->addArgument(\App\Table\Support\SupportTicketMessageTable::class);
+
 #
 # Repositories
 #
@@ -330,6 +339,12 @@ $container->add(\App\Table\Forms\FormEntryTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\Forms\FormEntryFieldTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\Support\SupportTicketTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\Support\SupportTicketMessageTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #
