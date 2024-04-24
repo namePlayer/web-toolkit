@@ -5,8 +5,7 @@
 <div class="container mt-3">
     <div class="row">
 
-        <div class="col-12">
-            <h2><?= $this->e($this->translate($this->timeOfDayGreeting())) ?>, <?= $this->getAccountInformation()['name'] ?></h2>
+        <div class="col-12 text-center mb-3">
             <small class="text-muted">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -16,16 +15,38 @@
             </small>
         </div>
 
-        <hr class="mt-3 mb-3">
+        <?= $this->insert('administration/element/supportNavigation', [
+                'currentPage' => $currentPage, 'openTickets' => $allOpenTickets
+        ]) ?>
 
-        <?= $this->insert('element/adminNavigation') ?>
+        <div class="col-md-12">
 
-        <div class="col-md-9">
-            <h4 class="mb-3">Support</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Erstellt</th>
+                        <th scope="col">Letztes Update</th>
+                        <th scope="col">Betreff</th>
+                        <th scope="col">Benutzer</th>
+                        <th scope="col">Zugewiesener Tech</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($openTickets as $ticket): ?>
+                        <tr onclick="window.location='/admin/support/ticket/<?= $ticket['id'] ?>';" style="cursor: pointer;">
+                            <th scope="row"><?= $ticket['id'] ?></th>
+                            <td><?= (new DateTime($ticket['created']))->format('d.m.Y H:i') ?></td>
+                            <td><?= (new DateTime($ticket['updated']))->format('d.m.Y H:i') ?></td>
+                            <td><?= $ticket['title'] ?></td>
+                            <td><?= $ticket['ticketCreatorFirstname'] . ' ' . $ticket['ticketCreatorSurname'] ?></td>
+                            <td><?= $ticket['assignedTechAccount'] !== null ? $ticket['techFirstname'] . ' ' . $ticket['techSurname'] : 'Keiner' ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
 
-            <div class="row">
-
-            </div>
+        </div>
 
     </div>
 

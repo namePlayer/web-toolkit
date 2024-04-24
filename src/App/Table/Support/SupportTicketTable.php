@@ -36,4 +36,39 @@ class SupportTicketTable extends AbstractTable
         return $query->fetchAll();
     }
 
+    public function findAllOpenTickets(int $accountId = null): array
+    {
+        $query = $this->query->from($this->getTableName());
+        if($accountId !== null) {
+            $query->where('assignedTechAccount', $accountId);
+        }
+        $query->select('acCreator.firstname AS ticketCreatorFirstname, acCreator.surname AS ticketCreatorSurname');
+        $query->select('acTech.firstname AS techFirstname, acTech.surname AS techSurname');
+        $query->where('status = ? OR status = ? OR status = ?', [0, 1, 255]);
+        $query->leftJoin('Account acCreator ON acCreator.id = SupportTicket.account');
+        $query->leftJoin('Account acTech ON acTech.id = SupportTicket.assignedTechAccount');
+
+        return $query->fetchAll();
+    }
+
+    public function countAllTicketsWithStatus(int $status): string|int
+    {
+        $query = $this->query->from($this->getTableName())
+            ->select(null)
+            ->select('COUNT(*)')
+            ->where('status', $status);
+
+        return $query->fetchColumn();
+    }
+
+    public function countAllTechTicketsWithStatus(int $tech, int $status): string
+    {
+        $query = $this->query->from($this->getTableName())
+            ->select(null)
+            ->select('COUNT(*)')
+            ->where(['status', 'tech'], [$status, $tech]);
+
+        return $query->fetchColumn();
+    }
+
 }

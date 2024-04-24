@@ -23,7 +23,7 @@ class SupportTicketService
         $supportTicket->setStatus(0);
         $supportTicketId = $this->supportTicketTable->insert($supportTicket);
         if(is_numeric($supportTicketId)){
-            $supportTicket->setId($supportTicketId);
+            $supportTicket->setId((int)$supportTicketId);
             $supportTicketMessage->setTicket($supportTicket->getId());
             $this->createTicketMessageReply($supportTicketMessage);
             return 0;
@@ -40,6 +40,18 @@ class SupportTicketService
     public function updateTicketStatus(int $ticketId, int $status): bool
     {
         return (int)$this->supportTicketTable->updateTicketStatusByTicketId($ticketId, $status) > 0;
+    }
+
+    public function countAllOpenTickets(): int
+    {
+        $open = (int)$this->supportTicketTable->countAllTicketsWithStatus(0);
+        $onHold = (int)$this->supportTicketTable->countAllTicketsWithStatus(1);
+        return $open+$onHold;
+    }
+
+    public function getAllOpenTickets(int $user = null): array
+    {
+        return $this->supportTicketTable->findAllOpenTickets($user);
     }
 
     public function getAllTicketsForUser(int $userId): array

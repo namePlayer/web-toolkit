@@ -64,18 +64,27 @@
 
                 <div class="row mb-3">
                     <div class="col-2"></div>
-                    <div class="col-4">
+                    <div class="col">
                         <form action="" method="post">
-                            <button type="submit" name="ticketUserChangeStatus" class="btn btn-outline-danger w-100">
-                                Ticket schließen
-                            </button>
+                            <?php if($ticketData['status'] === 0 || $ticketData['status'] === 1): ?>
+                                <button type="submit" name="ticketUserChangeStatus" class="btn btn-outline-danger w-100">
+                                    Ticket schließen
+                                </button>
+
+                            <?php else: ?>
+                                <button type="submit" name="ticketUserChangeStatus" class="btn btn-outline-success w-100">
+                                    Ticket erneut öffnen
+                                </button>
+                            <?php endif; ?>
                         </form>
                     </div>
-                    <div class="col-4">
-                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#addTicketResponseModal">
-                            Antworten
-                        </button>
-                    </div>
+                    <?php if($ticketData['status'] === 0 || $ticketData['status'] === 1): ?>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#addTicketResponseModal">
+                                Antworten
+                            </button>
+                        </div>
+                    <?php endif; ?>
                     <div class="col-2"></div>
                 </div>
 

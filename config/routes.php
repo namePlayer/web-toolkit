@@ -137,6 +137,11 @@ $router->get('/admin/mails', 'App\Controller\Administration\MailController::load
 $router->post('/admin/mails', 'App\Controller\Administration\MailController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
+$router->get('/admin/support/{module}', 'App\Controller\Administration\Support\SupportController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+$router->post('/admin/support/{module}', 'App\Controller\Administration\Support\SupportController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
+
 $router->get('/admin/support', 'App\Controller\Administration\Support\SupportController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 $router->post('/admin/support', 'App\Controller\Administration\Support\SupportController::load')
