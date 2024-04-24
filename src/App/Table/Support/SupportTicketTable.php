@@ -20,6 +20,15 @@ class SupportTicketTable extends AbstractTable
         return $query->execute();
     }
 
+    public function updateTicketStatusByTicketId(int $ticketId, int $status): string|int
+    {
+        $query = $this->query->update($this->getTableName())
+            ->where('id', $ticketId)
+            ->set('status', $status);
+
+        return $query->execute();
+    }
+
     public function findAllTicketsByAccountId(int $accountId): array|bool
     {
         $query = $this->query->from($this->getTableName())

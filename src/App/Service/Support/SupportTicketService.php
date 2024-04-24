@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Service\Support;
 
@@ -24,11 +25,21 @@ class SupportTicketService
         if(is_numeric($supportTicketId)){
             $supportTicket->setId($supportTicketId);
             $supportTicketMessage->setTicket($supportTicket->getId());
-            $this->supportTicketMessageTable->insert($supportTicketMessage);
+            $this->createTicketMessageReply($supportTicketMessage);
             return 0;
         }
 
         return 255;
+    }
+
+    public function createTicketMessageReply(SupportTicketMessage $supportTicketMessage): bool
+    {
+        return is_numeric($this->supportTicketMessageTable->insert($supportTicketMessage));
+    }
+
+    public function updateTicketStatus(int $ticketId, int $status): bool
+    {
+        return (int)$this->supportTicketTable->updateTicketStatusByTicketId($ticketId, $status) > 0;
     }
 
     public function getAllTicketsForUser(int $userId): array

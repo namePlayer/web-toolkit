@@ -12,9 +12,16 @@
 
         <div class="row col-12">
 
-            <div class="col-6 mb-3">
-                <h4 class="align-items-center"><?= $ticketData['title'] ?></h4>
-                <p class="text-muted align-items-center">Ticket #<?= $ticketData['id'] ?></p>
+            <div class="col-6 d-flex align-items-center">
+                <h3>
+                    <a href="/support"  style="text-decoration: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                        </svg>
+                    </a>
+                    <?= $this->e($ticketData['title']) ?>
+                </h3>
+                <p class="ms-1 text-muted align-items-center"> #<?= $ticketData['id'] ?></p>
             </div>
 
             <div class="col-6 row">
@@ -55,11 +62,28 @@
             <div class="col-1"></div>
             <div class="col-10">
 
+                <div class="row mb-3">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <form action="" method="post">
+                            <button type="submit" name="ticketUserChangeStatus" class="btn btn-outline-danger w-100">
+                                Ticket schließen
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#addTicketResponseModal">
+                            Antworten
+                        </button>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+
                 <?php foreach ($ticketMessages as $message): ?>
 
                     <div class="card mb-3">
                         <div class="card-body">
-                            <?= $message['message'] ?>
+                            <?= nl2br($message['message']) ?>
                         </div>
                         <div class="card-footer">
                             <b><?= $message['accountFirstname'] ?> <?= $message['accountSurname'] ?></b>
@@ -79,27 +103,23 @@
 
 </div>
 
-<div class="modal modal-lg fade" id="createTicketModal" tabindex="-1" aria-labelledby="createTicketModalLabel" aria-hidden="true">
+<div class="modal modal-lg fade" id="addTicketResponseModal" tabindex="-1" aria-labelledby="addTicketResponseModalLabel" aria-hidden="true">
     <form action="" method="post">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="createTicketModalLabel">Neues Ticket erstellen</h1>
+                    <h1 class="modal-title fs-5" id="addTicketResponseModalLabel">Auf Ticket antworten</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="createTicketTitle" class="form-label">Betreff</label>
-                        <input type="text" class="form-control" id="createTicketTitle" name="createTicketTitle">
-                    </div>
-                    <div class="mb-3">
-                        <label for="createTicketMessage" class="form-label">Nachricht</label>
-                        <textarea class="form-control" id="createTicketMessage" name="createTicketMessage" rows="5"></textarea>
+                        <label for="addTicketResponseModalLabelMessage" class="form-label">Nachricht</label>
+                        <textarea class="form-control" id="addTicketResponseModalLabelMessage" name="addTicketResponseModalLabelMessage" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Abbruch</button>
-                    <button type="submit" class="btn btn-primary">Erstellen</button>
+                    <button type="submit" class="btn btn-primary">Antworten</button>
                 </div>
             </div>
         </div>

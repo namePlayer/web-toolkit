@@ -208,6 +208,9 @@
   "support-create-ticket-button": "Ticket erstellen",
   "support-ticket-created-successfully": "Das Support Ticket wurde erfolgreich erstellt.",
   "support-ticket-creation-failed": "Das Support Ticket konnte nicht angelegt werden.",
+  "support-ticket-reply-successful": "Die Antwort auf das Ticket wurde erfolgreich gespeichert.",
+  "support-ticket-status-change-close-successful": "Das Ticket wurde erfolgreich geschlossen.",
+  "support-ticket-status-change-open-successful": "Das Ticket wurde erfolgreich erneut eröffnet.",
 
   "admin-navigation-general-tab-title": "Allgemein",
   "admin-navigation-general-tab-user-management-title": "Kontoverwaltung",
