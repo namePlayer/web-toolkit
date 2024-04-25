@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+use App\Service\Support\SupportTicketService;
 use League\Container\Container;
 
 $container = new Container();
@@ -162,6 +163,10 @@ $container->add(\App\Controller\Administration\MailController::class)
 $container->add(\App\Controller\Administration\Support\SupportController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\Support\SupportTicketService::class);
+
+$container->add(\App\Controller\Administration\Support\SupportTicketController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(SupportTicketService::class);
 
 $container->add(\App\Controller\Administration\ToolOverviewController::class)
     ->addArgument(\League\Plates\Engine::class)

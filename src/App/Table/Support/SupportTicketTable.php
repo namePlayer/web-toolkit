@@ -47,6 +47,7 @@ class SupportTicketTable extends AbstractTable
         $query->where('status = ? OR status = ? OR status = ?', [0, 1, 255]);
         $query->leftJoin('Account acCreator ON acCreator.id = SupportTicket.account');
         $query->leftJoin('Account acTech ON acTech.id = SupportTicket.assignedTechAccount');
+        $query->orderBy('updated DESC');
 
         return $query->fetchAll();
     }
