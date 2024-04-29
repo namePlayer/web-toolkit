@@ -13,6 +13,8 @@ class SupportTicket
     private string $title;
     private \DateTime $created;
     private \DateTime $updated;
+    private bool $waitingForCustomerResponse;
+    private bool $onHold;
 
     public function getId(): int
     {
@@ -82,6 +84,26 @@ class SupportTicket
     public function setUpdated(\DateTime $updated): void
     {
         $this->updated = $updated;
+    }
+
+    public function isWaitingForCustomerResponse(): bool
+    {
+        return $this->waitingForCustomerResponse;
+    }
+
+    public function setWaitingForCustomerResponse(bool $waitingForCustomerResponse): void
+    {
+        $this->waitingForCustomerResponse = $waitingForCustomerResponse;
+    }
+
+    public function isOnHold(): bool
+    {
+        return $this->onHold;
+    }
+
+    public function setOnHold(bool $onHold): void
+    {
+        $this->onHold = $onHold;
     }
 
 }

@@ -53,13 +53,17 @@
                         <?php foreach ($ticketList as $ticket): ?>
                             <tr class="align-middle">
                                 <th scope="row"><?= $ticket['id'] ?></th>
-                                <td><?= $ticket['title'] ?></td>
+                                <td>
+                                    <?php if($ticket['waitingForCustomerResponse'] === 1): ?>
+                                        <span class="badge rounded-pill text-bg-danger p-1">
+                                        </span>
+                                    <?php endif?>
+                                    <?= $ticket['title'] ?>
+                                </td>
                                 <td>
                                     <?php if($ticket['status'] === 0): ?>
                                         <span class="badge rounded-pill text-bg-success">Eröffnet</span>
                                     <?php elseif($ticket['status'] === 1): ?>
-                                        <span class="badge rounded-pill text-bg-warning">On-Hold</span>
-                                    <?php elseif($ticket['status'] === 2): ?>
                                         <span class="badge rounded-pill text-bg-danger">Geschlossen</span>
                                     <?php endif; ?>
                                 </td>

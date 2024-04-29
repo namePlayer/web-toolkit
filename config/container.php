@@ -166,7 +166,8 @@ $container->add(\App\Controller\Administration\Support\SupportController::class)
 
 $container->add(\App\Controller\Administration\Support\SupportTicketController::class)
     ->addArgument(\League\Plates\Engine::class)
-    ->addArgument(SupportTicketService::class);
+    ->addArgument(SupportTicketService::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
 
 $container->add(\App\Controller\Administration\ToolOverviewController::class)
     ->addArgument(\League\Plates\Engine::class)

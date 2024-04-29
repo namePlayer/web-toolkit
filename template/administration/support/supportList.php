@@ -35,10 +35,15 @@
                 <tbody>
                     <?php foreach ($openTickets as $ticket): ?>
                         <tr onclick="window.location='/admin/support/ticket/<?= $ticket['id'] ?>';" style="cursor: pointer;">
-                            <th scope="row"><?= $ticket['id'] ?></th>
+                            <th scope="row">
+                                <?= $ticket['onHold'] === 1 ? '<span class="badge rounded-pill text-bg-warning p-1"> </span>' : '' ?>
+                                <?= $ticket['id'] ?>
+                            </th>
                             <td><?= (new DateTime($ticket['created']))->format('d.m.Y H:i') ?></td>
                             <td><?= (new DateTime($ticket['updated']))->format('d.m.Y H:i') ?></td>
-                            <td><?= $ticket['title'] ?></td>
+                            <td>
+                                <?= $ticket['title'] ?>
+                            </td>
                             <td><?= $ticket['ticketCreatorFirstname'] . ' ' . $ticket['ticketCreatorSurname'] ?></td>
                             <td><?= $ticket['assignedTechAccount'] !== null ? $ticket['techFirstname'] . ' ' . $ticket['techSurname'] : 'Keiner' ?></td>
                         </tr>

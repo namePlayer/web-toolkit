@@ -226,4 +226,14 @@ readonly class AccountService
         $this->accountTable->updateAccountOrganisation($account, $organisation);
     }
 
+    public function getAccountListWithSupportPermissions(): array
+    {
+        $table = $this->accountTable->findAllWithSupportOrAdmin();
+        if(is_array($table))
+        {
+            return $table;
+        }
+        return [];
+    }
+
 }

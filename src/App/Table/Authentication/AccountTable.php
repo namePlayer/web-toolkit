@@ -95,4 +95,10 @@ class AccountTable extends AbstractTable
         return $this->query->update($this->getTableName())->where('id', $account)->set('business', $organisation)->execute();
     }
 
+    public function findAllWithSupportOrAdmin(): bool|array
+    {
+        $query = $this->query->from($this->getTableName())->where('isSupport = 1 OR isAdmin = 1');
+        return $query->fetchAll();
+    }
+
 }

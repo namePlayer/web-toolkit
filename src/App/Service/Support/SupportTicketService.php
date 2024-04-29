@@ -42,6 +42,12 @@ class SupportTicketService
         return (int)$this->supportTicketTable->updateTicketStatusByTicketId($ticketId, $status) > 0;
     }
 
+    public function updateTicketWaitingForCustomerResponse(int $ticket, bool $waiting): bool
+    {
+        $result = $this->supportTicketTable->updateTicketWaitingForCustomerResponse($ticket, $waiting);
+        return is_numeric($result) && $result > 0;
+    }
+
     public function countAllOpenTickets(): int
     {
         $open = (int)$this->supportTicketTable->countAllTicketsWithStatus(0);
@@ -73,6 +79,18 @@ class SupportTicketService
     public function getAllTicketMessagesByTicketId(int $ticketId): array
     {
         return $this->supportTicketMessageTable->findAllByTicketId($ticketId);
+    }
+
+    public function setLastUpdatedTime(int $ticketId, \DateTime $updated): bool
+    {
+        $result = $this->supportTicketTable->updateTicketLastUpdated($ticketId, $updated);
+        return is_numeric($result) && $result > 0;
+    }
+
+    public function updateTicketDetails(SupportTicket $supportTicket): bool
+    {
+        $result = $this->supportTicketTable->updateTicketDetails($supportTicket);
+        return is_numeric($result) && $result > 0;
     }
 
 }

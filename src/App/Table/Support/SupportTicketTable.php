@@ -44,7 +44,7 @@ class SupportTicketTable extends AbstractTable
         }
         $query->select('acCreator.firstname AS ticketCreatorFirstname, acCreator.surname AS ticketCreatorSurname');
         $query->select('acTech.firstname AS techFirstname, acTech.surname AS techSurname');
-        $query->where('status = ? OR status = ? OR status = ?', [0, 1, 255]);
+        $query->where('status = ?', [1]);
         $query->leftJoin('Account acCreator ON acCreator.id = SupportTicket.account');
         $query->leftJoin('Account acTech ON acTech.id = SupportTicket.assignedTechAccount');
         $query->orderBy('updated DESC');
@@ -70,6 +70,38 @@ class SupportTicketTable extends AbstractTable
             ->where(['status', 'tech'], [$status, $tech]);
 
         return $query->fetchColumn();
+    }
+
+    public function updateTicketWaitingForCustomerResponse(int $ticket, bool $new): int|string|bool
+    {
+        $query = $this->query->update($this->getTableName())
+            ->set('waitingForCustomerResponse', $new ? 1 : 0)
+            ->where('id', $ticket);
+
+        return $query->execute();
+    }
+
+    public function updateTicketLastUpdated(int $ticket, \DateTime $lastUpdated): int|string|bool
+    {
+        $query = $this->query->update($this->getTableName())
+            ->set('updated', $lastUpdated->format('Y-m-d H:i:s'))
+            ->where('id', $ticket);
+        return $query->execute();
+    }
+
+    public function updateTicketDetails(SupportTicket $supportTicket): int|string|bool
+    {
+        $update = [
+            'status' => $supportTicket->getStatus() ? 1 : 0,
+            'assignedTechAccount' => $supportTicket->getAssignedTechAccount(),
+            'onHold' => $supportTicket->isOnHold() ? 1 : 0
+        ];
+
+        $query = $this->query->update($this->getTableName())
+            ->where('id', $supportTicket->getId())
+            ->set($update);
+
+        return $query->execute();
     }
 
 }
