@@ -15,6 +15,7 @@
   "disable-button": "Deaktivieren",
   "verify-button": "Verifizieren",
   "leave-button": "Verlassen",
+  "back-button": "Zurück",
 
   "active-string": "Aktiviert",
   "inactive-string": "Inaktiv",
@@ -532,6 +533,20 @@
   "admin-support-reply-successful": "Die Antwort wurde erfolgreich gespeichert.",
   "admin-support-reply-failed": "Die Antwort konnte nicht gespeichert werden",
   "admin-support-ticket-update-successful": "Das Ticket wurde erfolgreich aktualisiert",
-  "admin-support-ticket-update-failed": "Das Ticket konnte nicht aktualisiert werden"
+  "admin-support-ticket-update-failed": "Das Ticket konnte nicht aktualisiert werden",
+  "admin-support-ticket-properties-title": "Ticket Details",
+  "admin-support-ticket-created-row": "Erstellt",
+  "admin-support-ticket-updated-row": "Aktualisiert",
+  "admin-support-ticket-status-row": "Status",
+  "admin-support-ticket-waiting-row": "Wartet",
+  "admin-support-management-myTickets-Tab-Title": "Meine Tickets",
+  "admin-support-management-allTickets-Tab-Title": "Alle Tickets",
+  "admin-support-management-searchTicket-Tab-Title": "Ticket Suche",
+  "admin-support-management-list-ticketId-header": "#",
+  "admin-support-management-list-created-header": "Erstellt",
+  "admin-support-management-list-updated-header": "Aktualisiert",
+  "admin-support-management-list-subject-header": "Betreff",
+  "admin-support-management-list-account-header": "Nutzer",
+  "admin-support-management-list-assignedTech-header": "Zugewiesener Tech"
 
 }

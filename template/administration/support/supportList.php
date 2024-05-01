@@ -24,12 +24,24 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Erstellt</th>
-                        <th scope="col">Letztes Update</th>
-                        <th scope="col">Betreff</th>
-                        <th scope="col">Benutzer</th>
-                        <th scope="col">Zugewiesener Tech</th>
+                        <th scope="col">
+                            <?= $this->e($this->translate('admin-support-management-list-ticketId-header')) ?>
+                        </th>
+                        <th scope="col">
+                            <?= $this->e($this->translate('admin-support-management-list-created-header')) ?>
+                        </th>
+                        <th scope="col">
+                            <?= $this->e($this->translate('admin-support-management-list-updated-header')) ?>
+                        </th>
+                        <th scope="col">
+                            <?= $this->e($this->translate('admin-support-management-list-subject-header')) ?>
+                        </th>
+                        <th scope="col">
+                            <?= $this->e($this->translate('admin-support-management-list-account-header')) ?>
+                        </th>
+                        <th scope="col">
+                            <?= $this->e($this->translate('admin-support-management-list-assignedTech-header')) ?>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

@@ -30,30 +30,30 @@
         <div class="col-md-3 mb-3">
             <div class="card mb-3">
                 <div class="card-header">
-                    Eigenschaften
+                    <?= $this->e($this->translate('admin-support-ticket-properties-title')) ?>
                 </div>
                 <div class="card-body">
 
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                Erstellt:
+                                <?= $this->e($this->translate('admin-support-ticket-created-row')) ?>
                             </div>
                             <span>
-                                <?= (new DateTime($ticketData['created']))->format('d.m.Y H:i') ?>
+                                <?= (new DateTime($ticketData['created']))->format($this->translate('dateTime-format')) ?>
                             </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                Geändert:
+                                <?= $this->e($this->translate('admin-support-ticket-updated-row')) ?>
                             </div>
                             <span>
-                                <?= (new DateTime($ticketData['updated']))->format('d.m.Y H:i') ?>
+                                <?= (new DateTime($ticketData['updated']))->format($this->translate('dateTime-format')) ?>
                             </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                Status:
+                                <?= $this->e($this->translate('admin-support-ticket-status-row')) ?>
                             </div>
                             <?php if($ticketData['status'] === 1): ?>
                                 <span class="badge rounded-pill text-bg-success">
@@ -67,7 +67,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                Wartet:
+                                <?= $this->e($this->translate('admin-support-ticket-waiting-row')) ?>
                             </div>
                             <?php if($ticketData['waitingForCustomerResponse'] === 0): ?>
                                 <span>
@@ -171,7 +171,7 @@
                         </span>
                         am
                         <span class="<?= $ticketMessage['account'] === $ticketData['account'] ? 'fw-bolder' : '' ?>">
-                            <?= (new DateTime($ticketMessage['created']))->format('d.m.Y H:i') ?>
+                            <?= (new DateTime($ticketMessage['created']))->format($this->translate('dateTime-format')) ?>
                         </span>
                     </div>
                 </div>
