@@ -55,13 +55,13 @@
                             <div class="ms-2 me-auto">
                                 <?= $this->e($this->translate('admin-support-ticket-status-row')) ?>
                             </div>
-                            <?php if($ticketData['status'] === 1): ?>
+                            <?php if($ticketData['status'] === 0): ?>
                                 <span class="badge rounded-pill text-bg-success">
-                                    Geöffnet
+                                    <?= $this->e($this->translate('support-ticket-status-open')) ?>
                                 </span>
                             <?php else: ?>
                                 <span class="badge rounded-pill text-bg-danger">
-                                    Geschlossen
+                                    <?= $this->e($this->translate('support-ticket-status-closed')) ?>
                                 </span>
                             <?php endif; ?>
                         </li>
@@ -71,11 +71,11 @@
                             </div>
                             <?php if($ticketData['waitingForCustomerResponse'] === 0): ?>
                                 <span>
-                                    Antwort von Support
+                                    <?= $this->e($this->translate('admin-support-ticket-waiting-support')) ?>
                                 </span>
                             <?php else: ?>
                                 <span>
-                                    Antwort von Kunden
+                                    <?= $this->e($this->translate('admin-support-ticket-waiting-customer')) ?>
                                 </span>
                             <?php endif; ?>
                         </li>
@@ -86,14 +86,14 @@
 
             <div class="card">
                 <div class="card-header">
-                    Kundeninformationen
+                    <?= $this->e($this->translate('admin-support-ticket-customer-information')) ?>
                 </div>
                 <div class="card-body">
 
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                Kundennummer:
+                                <?= $this->e($this->translate('customer-id-string')) ?>
                             </div>
                             <span>
                                 <a href="/admin/account/<?= $customerInformation['id'] ?>" class="text-decoration-none">
@@ -107,26 +107,22 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                Kontoname:
+                                <?= $this->e($this->translate('account-name')) ?>
                             </div>
                             <span>
-                                <?= $customerInformation['name'] ?>
-                            </span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                Name:
-                            </div>
-                            <span>
+                                <?= $customerInformation['name'] ?> <br>
                                 <?= $customerInformation['firstname'] . ' ' . $customerInformation['surname'] ?>
                             </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                Organisation:
+                                <?= $this->e($this->translate('organisation-string')) ?>
                             </div>
                             <span>
-                                <?= $customerInformation['business'] !== null ? 'Ja (' . $customerInformation['business'] . ')' : 'Nein' ?>
+                                <?= $customerInformation['business'] !== null ? $this->e($this->translate('yes-string'))
+                                    . ' (' . $customerInformation['business'] . ')'
+                                    : $this->e($this->translate('no-string'))
+                                ?>
                             </span>
                         </li>
                         <?php if($customerInformation['business'] !== null): ?>
@@ -135,7 +131,9 @@
                                     Erstellt von Organisation
                                 </div>
                                     <span>
-                                    <?= $customerInformation['createdByOrganisation'] === 1 ? 'Ja' : 'Nein' ?>
+                                    <?= $customerInformation['createdByOrganisation'] === 1
+                                        ? $this->e($this->translate('yes-string'))
+                                        : $this->e($this->translate('no-string')) ?>
                                 </span>
                             </li>
                         <?php endif; ?>
@@ -149,12 +147,12 @@
 
             <div class="row mb-3">
                 <div class="col-8">
-                    <h3><small>Ticket #<?= $ticketData['id'] ?>:</small> <?= $this->e($ticketData['title']) ?></h3>
+                    <h3><small><?= $this->e($this->translate('support-ticket')) ?> #<?= $ticketData['id'] ?>:</small> <?= $this->e($ticketData['title']) ?></h3>
                 </div>
                 <div class="col-4">
                     <button type="button" class="btn btn-outline-primary w-100"
                             data-bs-toggle="modal" data-bs-target="#addNewTechResponseModal">
-                        Antwort erstellen
+                        <?= $this->e($this->translate('answer-button')) ?>
                     </button>
                 </div>
             </div>
@@ -169,7 +167,7 @@
                         <span class="<?= $ticketMessage['account'] === $ticketData['account'] ? 'fw-bolder' : '' ?>">
                             <?= $ticketMessage['accountFirstname'] . ' ' . $ticketMessage['accountSurname'] ?>
                         </span>
-                        am
+                        <?= $this->e($this->translate('day-at-string')) ?>
                         <span class="<?= $ticketMessage['account'] === $ticketData['account'] ? 'fw-bolder' : '' ?>">
                             <?= (new DateTime($ticketMessage['created']))->format($this->translate('dateTime-format')) ?>
                         </span>
@@ -185,13 +183,15 @@
             <div class="card">
 
                 <div class="card-header">
-                    Aktionen
+                    <?= $this->e($this->translate('actions-string')) ?>
                 </div>
                 <div class="card-body">
 
                     <form action="" method="post">
                         <div class="mb-3">
-                            <label for="disabledSelect" class="form-label">Zuständiger Tech</label>
+                            <label for="disabledSelect" class="form-label">
+                                <?= $this->e($this->translate('admin-support-ticket-manage-assigned-tech')) ?>
+                            </label>
                             <select id="disabledSelect" class="form-select" name="ticketSettingAssignedTech">
                                 <option value=""></option>
                                 <?php foreach ($supportPermissionUserList as $user): ?>
@@ -203,23 +203,35 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="disabledSelect" class="form-label">Status</label>
+                            <label for="disabledSelect" class="form-label">
+                                <?= $this->e($this->translate('support-ticket-status')) ?>
+                            </label>
                             <select id="disabledSelect" class="form-select" name="ticketSettingStatus">
-                                <option value="1" <?= $ticketData['status'] === 1 ? 'selected' : '' ?>>Geöffnet</option>
-                                <option value="0" <?= $ticketData['status'] === 0 ? 'selected' : '' ?>>Geschlossen</option>
+                                <option value="1" <?= $ticketData['status'] === 0 ? 'selected' : '' ?>>
+                                    <?= $this->e($this->translate('support-ticket-status-open')) ?>
+                                </option>
+                                <option value="0" <?= $ticketData['status'] === 1 ? 'selected' : '' ?>>
+                                    <?= $this->e($this->translate('support-ticket-status-closed')) ?>
+                                </option>
                             </select>
                         </div>
 
                         <div class="mb-3">
-                            <label for="disabledSelect" class="form-label">On Hold</label>
+                            <label for="disabledSelect" class="form-label">
+                                <?= $this->e($this->translate('support-ticket-on-hold-title')) ?>
+                            </label>
                             <select id="disabledSelect" class="form-select" name="ticketSettingOnHold">
-                                <option value="1" <?= $ticketData['onHold'] === 1 ? 'selected' : '' ?>>Setzen</option>
-                                <option value="0" <?= $ticketData['onHold'] === 0 ? 'selected' : '' ?>>Nicht setzen</option>
+                                <option value="1" <?= $ticketData['onHold'] === 1 ? 'selected' : '' ?>>
+                                    <?= $this->e($this->translate('admin-support-ticket-on-hold-set')) ?>
+                                </option>
+                                <option value="0" <?= $ticketData['onHold'] === 0 ? 'selected' : '' ?>>
+                                    <?= $this->e($this->translate('admin-support-ticket-on-hold-unset')) ?>
+                                </option>
                             </select>
                         </div>
 
                         <button type="submit" class="btn btn-outline-primary w-100" name="ticketSettingsSave">
-                            Speichern
+                            <?= $this->e($this->translate('save-button')) ?>
                         </button>
 
                     </form>
@@ -239,18 +251,26 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="addNewTechResponseModalLabel">Auf Ticket antworten</h1>
+                    <h1 class="modal-title fs-5" id="addNewTechResponseModalLabel">
+                        <?= $this->e($this->translate('support-ticket-answer-modal-title')) ?>
+                    </h1>
                     <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="addNewTechResponseModalText" class="form-label">Antwort</label>
+                        <label for="addNewTechResponseModalText" class="form-label">
+                            <?= $this->e($this->translate('support-ticket-message')) ?>
+                        </label>
                         <textarea class="form-control" id="addNewTechResponseModalText" name="addNewTechResponseModalText" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-                    <button type="submit" class="btn btn-primary">Antworten</button>
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <?= $this->e($this->translate('abort-button')) ?>
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <?= $this->e($this->translate('answer-button')) ?>
+                    </button>
                 </div>
             </div>
         </div>

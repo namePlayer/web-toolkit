@@ -20,12 +20,12 @@
 
             <div class="card mb-3">
                 <div class="card-body text-center">
-                    <h5>Support-PIN</h5>
-                    <span class="align-middle">
-                        000000
-                    </span>
-                    <button type="button" class="btn btn-secondary btn-sm ms-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                    <h5><?= $this->e($this->translate('support-pin-title')) ?></h5>
+                    <p class="align-middle">000000</p>
+                    <button type="button" class="btn btn-secondary btn-sm">
+                        <?= $this->e($this->translate('support-pin-regenerate-button')) ?>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-repeat ms-1" viewBox="0 0 16 16">
                             <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
                             <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
                         </svg>
@@ -42,10 +42,18 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Ticket ID</th>
-                            <th scope="col">Titel</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Erstellt</th>
+                            <th scope="col">
+                                <?= $this->e($this->translate('support-ticket-table-header-ticket-id')) ?>
+                            </th>
+                            <th scope="col">
+                                <?= $this->e($this->translate('support-ticket-table-header-subject')) ?>
+                            </th>
+                            <th scope="col">
+                                <?= $this->e($this->translate('support-ticket-table-header-status')) ?>
+                            </th>
+                            <th scope="col">
+                                <?= $this->e($this->translate('support-ticket-table-header-created')) ?>
+                            </th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -62,9 +70,13 @@
                                 </td>
                                 <td>
                                     <?php if($ticket['status'] === 0): ?>
-                                        <span class="badge rounded-pill text-bg-success">Eröffnet</span>
+                                        <span class="badge rounded-pill text-bg-success">
+                                            <?= $this->e($this->translate('support-ticket-status-open')) ?>
+                                        </span>
                                     <?php elseif($ticket['status'] === 1): ?>
-                                        <span class="badge rounded-pill text-bg-danger">Geschlossen</span>
+                                        <span class="badge rounded-pill text-bg-danger">
+                                            <?= $this->e($this->translate('support-ticket-status-closed')) ?>
+                                        </span>
                                     <?php endif; ?>
                                 </td>
                                 <td><?= (new DateTime($ticket['created']))->format('d.m.Y H:i') ?></td>
@@ -94,22 +106,32 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="createTicketModalLabel">Neues Ticket erstellen</h1>
+                    <h1 class="modal-title fs-5" id="createTicketModalLabel">
+                        <?= $this->translate('support-ticket-create-new-ticket-title') ?>
+                    </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="createTicketTitle" class="form-label">Betreff</label>
+                        <label for="createTicketTitle" class="form-label">
+                            <?= $this->e($this->translate('support-ticket-subject')) ?>
+                        </label>
                         <input type="text" class="form-control" id="createTicketTitle" name="createTicketTitle">
                     </div>
                     <div class="mb-3">
-                        <label for="createTicketMessage" class="form-label">Nachricht</label>
+                        <label for="createTicketMessage" class="form-label">
+                            <?= $this->e($this->translate('support-ticket-message')) ?>
+                        </label>
                         <textarea class="form-control" id="createTicketMessage" name="createTicketMessage" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Abbruch</button>
-                    <button type="submit" class="btn btn-primary">Erstellen</button>
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <?= $this->translate($this->e('abort-button')) ?>
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <?= $this->translate($this->e('create-button')) ?>
+                    </button>
                 </div>
             </div>
         </div>

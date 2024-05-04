@@ -44,7 +44,7 @@ class SupportTicketTable extends AbstractTable
         }
         $query->select('acCreator.firstname AS ticketCreatorFirstname, acCreator.surname AS ticketCreatorSurname');
         $query->select('acTech.firstname AS techFirstname, acTech.surname AS techSurname');
-        $query->where('status = ?', [1]);
+        $query->where('status = ?', [0]);
         $query->leftJoin('Account acCreator ON acCreator.id = SupportTicket.account');
         $query->leftJoin('Account acTech ON acTech.id = SupportTicket.assignedTechAccount');
         $query->orderBy('updated DESC');

@@ -28,29 +28,34 @@
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body text-center">
-                            <b>Erstellt am</b>
-                            <span><?= (new DateTime($ticketData['created']))->format('d.m.Y H:i') ?></span>
+                            <b>
+                                <?= $this->e($this->translate('support-ticket-created')) ?>
+                            </b>
+                            <span><?= (new DateTime($ticketData['created']))->format($this->translate('dateTime-format')) ?></span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body text-center">
-                            <b>Letztes Update</b>
-                            <span><?= (new DateTime($ticketData['updated']))->format('d.m.Y H:i') ?></span>
+                            <b>
+                                <?= $this->e($this->translate('support-ticket-updated')) ?>
+                            </b>
+                            <span><?= (new DateTime($ticketData['updated']))->format($this->translate('dateTime-format')) ?></span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <div class="card-body text-center">
-                            <b>Status</b> <br>
+                            <b>
+                                <?= $this->e($this->translate('support-ticket-status')) ?>
+                            </b>
+                            <br>
                             <?php if($ticketData['status'] === 0): ?>
-                                <span class="badge rounded-pill text-bg-success">Eröffnet</span>
-                            <?php elseif ($ticketData['status'] === 1): ?>
-                                <span class="badge rounded-pill text-bg-warning">On-Hold</span>
-                            <?php elseif ($ticketData['status'] === 2): ?>
-                                <span class="badge rounded-pill text-bg-danger">Geschlossen</span>
+                                <?= $this->e($this->translate('support-ticket-status-open')) ?>
+                            <?php else: ?>
+                                <?= $this->e($this->translate('support-ticket-status-closed')) ?>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -68,12 +73,12 @@
                         <form action="" method="post">
                             <?php if($ticketData['status'] === 0 || $ticketData['status'] === 1): ?>
                                 <button type="submit" name="ticketUserChangeStatus" class="btn btn-outline-danger w-100">
-                                    Ticket schließen
+                                    <?= $this->e($this->translate('support-ticket-close-ticket-button')) ?>
                                 </button>
 
                             <?php else: ?>
                                 <button type="submit" name="ticketUserChangeStatus" class="btn btn-outline-success w-100">
-                                    Ticket erneut öffnen
+                                    <?= $this->e($this->translate('support-ticket-reopen-ticket-button')) ?>
                                 </button>
                             <?php endif; ?>
                         </form>
@@ -81,7 +86,7 @@
                     <?php if($ticketData['status'] === 0 || $ticketData['status'] === 1): ?>
                         <div class="col-4">
                             <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#addTicketResponseModal">
-                                Antworten
+                                <?= $this->e($this->translate('answer-button')) ?>
                             </button>
                         </div>
                     <?php endif; ?>
@@ -96,8 +101,8 @@
                         </div>
                         <div class="card-footer">
                             <b><?= $message['accountFirstname'] ?> <?= $message['accountSurname'] ?></b>
-                            um
-                            <?= (new DateTime($message['created']))->format('d.m.Y H:i') ?>
+                            -
+                            <?= (new DateTime($message['created']))->format($this->translate('dateTime-format')) ?>
                         </div>
                     </div>
 
@@ -117,18 +122,26 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="addTicketResponseModalLabel">Auf Ticket antworten</h1>
+                    <h1 class="modal-title fs-5" id="addTicketResponseModalLabel">
+                        <?= $this->e($this->translate('support-ticket-answer-modal-title')) ?>
+                    </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="addTicketResponseModalLabelMessage" class="form-label">Nachricht</label>
+                        <label for="addTicketResponseModalLabelMessage" class="form-label">
+                            <?= $this->e($this->translate('support-ticket-message')) ?>
+                        </label>
                         <textarea class="form-control" id="addTicketResponseModalLabelMessage" name="addTicketResponseModalLabelMessage" rows="5"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Abbruch</button>
-                    <button type="submit" class="btn btn-primary">Antworten</button>
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <?= $this->e($this->translate('abort-button')) ?>
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <?= $this->e($this->translate('answer-button')) ?>
+                    </button>
                 </div>
             </div>
         </div>
