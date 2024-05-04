@@ -43,6 +43,7 @@
                                 <?= (new DateTime($ticketData['created']))->format($this->translate('dateTime-format')) ?>
                             </span>
                         </li>
+
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <?= $this->e($this->translate('admin-support-ticket-updated-row')) ?>
@@ -51,6 +52,7 @@
                                 <?= (new DateTime($ticketData['updated']))->format($this->translate('dateTime-format')) ?>
                             </span>
                         </li>
+
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <?= $this->e($this->translate('admin-support-ticket-status-row')) ?>
@@ -65,6 +67,7 @@
                                 </span>
                             <?php endif; ?>
                         </li>
+
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <?= $this->e($this->translate('admin-support-ticket-waiting-row')) ?>
@@ -207,10 +210,10 @@
                                 <?= $this->e($this->translate('support-ticket-status')) ?>
                             </label>
                             <select id="disabledSelect" class="form-select" name="ticketSettingStatus">
-                                <option value="1" <?= $ticketData['status'] === 0 ? 'selected' : '' ?>>
+                                <option value="0" <?= $ticketData['status'] === 0 ? 'selected' : '' ?>>
                                     <?= $this->e($this->translate('support-ticket-status-open')) ?>
                                 </option>
-                                <option value="0" <?= $ticketData['status'] === 1 ? 'selected' : '' ?>>
+                                <option value="1" <?= $ticketData['status'] === 1 ? 'selected' : '' ?>>
                                     <?= $this->e($this->translate('support-ticket-status-closed')) ?>
                                 </option>
                             </select>

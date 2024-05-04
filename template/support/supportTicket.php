@@ -71,7 +71,7 @@
                     <div class="col-2"></div>
                     <div class="col">
                         <form action="" method="post">
-                            <?php if($ticketData['status'] === 0 || $ticketData['status'] === 1): ?>
+                            <?php if($ticketData['status'] === 0): ?>
                                 <button type="submit" name="ticketUserChangeStatus" class="btn btn-outline-danger w-100">
                                     <?= $this->e($this->translate('support-ticket-close-ticket-button')) ?>
                                 </button>
@@ -83,7 +83,7 @@
                             <?php endif; ?>
                         </form>
                     </div>
-                    <?php if($ticketData['status'] === 0 || $ticketData['status'] === 1): ?>
+                    <?php if($ticketData['status'] === 0): ?>
                         <div class="col-4">
                             <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#addTicketResponseModal">
                                 <?= $this->e($this->translate('answer-button')) ?>

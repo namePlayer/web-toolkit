@@ -47,17 +47,17 @@ class SupportTicketManageController
     {
         if(isset($_POST['ticketUserChangeStatus']))
         {
-            if($ticketData['status'] === 0 || $ticketData['status'] === 1)
+            if($ticketData['status'] === 0)
             {
-                if($this->supportTicketService->updateTicketStatus($ticketData['id'], 2))
+                if($this->supportTicketService->updateTicketStatus($ticketData['id'], 1))
                 {
                     MESSAGES->add('success', 'support-ticket-status-change-close-successful');
-                    $ticketData['status'] = 2;
+                    $ticketData['status'] = 1;
                     return;
                 }
             }
 
-            if($ticketData['status'] === 2)
+            if($ticketData['status'] === 1)
             {
                 if($this->supportTicketService->updateTicketStatus($ticketData['id'], 0))
                 {

@@ -88,7 +88,7 @@ readonly class SupportTicketController
         if(isset($_POST['ticketSettingsSave']))
         {
 
-            $newStatus = 1;
+            $newStatus = 0;
             if(!empty($_POST['ticketSettingStatus']))
             {
                 $newStatus = (int)$_POST['ticketSettingStatus'];
