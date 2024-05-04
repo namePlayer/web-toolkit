@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 
-use App\Service\Support\SupportTicketService;
 use League\Container\Container;
 
 $container = new Container();
@@ -139,7 +138,8 @@ $container->add(\App\Controller\Administration\ApiKeyDetailController::class)
 
 $container->add(\App\Controller\Administration\DashboardController::class)
     ->addArgument(\League\Plates\Engine::class)
-    ->addArgument(\App\Service\Authentication\AccountService::class);
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Service\Support\SupportTicketService::class);
 
 $container->add(\App\Controller\Administration\ApiKeyController::class)
     ->addArgument(\League\Plates\Engine::class)
@@ -166,7 +166,7 @@ $container->add(\App\Controller\Administration\Support\SupportController::class)
 
 $container->add(\App\Controller\Administration\Support\SupportTicketController::class)
     ->addArgument(\League\Plates\Engine::class)
-    ->addArgument(SupportTicketService::class)
+    ->addArgument(\App\Service\Support\SupportTicketService::class)
     ->addArgument(\App\Service\Authentication\AccountService::class);
 
 $container->add(\App\Controller\Administration\ToolOverviewController::class)

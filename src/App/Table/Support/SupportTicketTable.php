@@ -48,6 +48,7 @@ class SupportTicketTable extends AbstractTable
         $query->leftJoin('Account acCreator ON acCreator.id = SupportTicket.account');
         $query->leftJoin('Account acTech ON acTech.id = SupportTicket.assignedTechAccount');
         $query->orderBy('updated DESC');
+        $query->orderBy('waitingForCustomerResponse ASC');
 
         return $query->fetchAll();
     }

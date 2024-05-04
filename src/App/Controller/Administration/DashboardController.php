@@ -6,6 +6,7 @@ namespace App\Controller\Administration;
 
 use App\Http\HtmlResponse;
 use App\Service\Authentication\AccountService;
+use App\Service\Support\SupportTicketService;
 use League\Plates\Engine;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,7 +16,8 @@ readonly class DashboardController
 
     public function __construct(
         private Engine         $template,
-        private AccountService $accountService
+        private AccountService $accountService,
+        private SupportTicketService $supportTicketService
     )
     {
     }
@@ -26,7 +28,8 @@ readonly class DashboardController
             $this->template->render(
                 'administration/dashboard',
                 [
-                    'accountCount' => $this->accountService->getAllAccountsCount()
+                    'accountCount' => $this->accountService->getAllAccountsCount(),
+                    'supportTicketCount' => $this->supportTicketService->countAllOpenTickets()
                 ]
             )
         );

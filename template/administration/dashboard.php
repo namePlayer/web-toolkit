@@ -50,7 +50,7 @@
                             <span class="text-start">
                                 <?= $this->e($this->translate('administration-dashboard-open-support-tickets-card-title')) ?>
                             </span>
-                            <h4 class="text-end">0</h4>
+                            <h4 class="text-end"><?= $supportTicketCount ?></h4>
                         </div>
                     </div>
                 </div>

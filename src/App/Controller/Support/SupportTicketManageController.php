@@ -63,6 +63,7 @@ class SupportTicketManageController
                 {
                     MESSAGES->add('success', 'support-ticket-status-change-open-successful');
                     $ticketData['status'] = 0;
+                    $this->supportTicketService->setLastUpdatedTime((int)$ticketData['id'], new \DateTime());
                     return;
                 }
             }
@@ -79,6 +80,8 @@ class SupportTicketManageController
 
             if($this->supportTicketService->createTicketMessageReply($supportTicketResponse))
             {
+                $this->supportTicketService->updateTicketWaitingForCustomerResponse((int)$ticketData['id'], false);
+                $this->supportTicketService->setLastUpdatedTime((int)$ticketData['id'], new \DateTime());
                 MESSAGES->add('success', 'support-ticket-reply-successful');
                 return;
             }

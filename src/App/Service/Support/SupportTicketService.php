@@ -51,8 +51,7 @@ class SupportTicketService
     public function countAllOpenTickets(): int
     {
         $open = (int)$this->supportTicketTable->countAllTicketsWithStatus(0);
-        $onHold = (int)$this->supportTicketTable->countAllTicketsWithStatus(1);
-        return $open+$onHold;
+        return $open;
     }
 
     public function getAllOpenTickets(int $user = null): array
