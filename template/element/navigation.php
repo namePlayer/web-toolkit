@@ -27,9 +27,11 @@
                     <li class="nav-item me-3">
                         <a class="nav-link" href="/authentication/login"><?= $this->e($this->translate('navigation-login')) ?></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-light" href="/authentication/registration"><?= $this->e($this->translate('navigation-register')) ?></a>
-                    </li>
+                    <?php if(($_ENV['SOFTWARE_ENABLE_REGISTRATION'] ?? true) === true): ?>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary text-light" href="/authentication/registration"><?= $this->e($this->translate('navigation-register')) ?></a>
+                        </li>
+                    <?php endif; ?>
                 <?php else: ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,6 +40,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/account"><?= $this->e($this->translate('navigation-account-settings')) ?></a></li>
                             <li><a class="dropdown-item" href="/support"><?= $this->e($this->translate('navigation-account-support')) ?></a></li>
+                            <li><a class="dropdown-item" href="/authentication/logout"><?= $this->e($this->translate('navigation-account-logout')) ?></a></li>
                             <?php if($this->getAccountInformation()['isSupport'] === 1 || $this->getAccountInformation()['isAdmin'] === 1): ?>
                                 <hr>
                                 <li><a class="dropdown-item" href="/admin/support"><?= $this->e($this->translate('navigation-support-dashboard')) ?></a></li>
@@ -45,13 +48,8 @@
                                     <li><a class="dropdown-item link-danger" href="/admin/dashboard"><?= $this->e($this->translate('navigation-admin-dashboard')) ?></a></li>
                                 <?php endif; ?>
                             <?php endif; ?>
-                            <hr>
-                            <li><a class="dropdown-item" href="/authentication/logout"><?= $this->e($this->translate('navigation-account-logout')) ?></a></li>
                         </ul>
                     </li>
-                    <a class="nav-link">
-                        <span class="badge rounded-pill text-bg-<?= $this->getLevelBadge()['color'] ?>"><?= $this->translate($this->getLevelBadge()['label']) ?></span>
-                    </a>
                 <?php endif; ?>
             </ul>
         </div>

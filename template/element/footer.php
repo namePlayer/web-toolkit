@@ -1,33 +1,53 @@
-<div class="container mb-5 mt-5">
-
-    <hr>
-
-    <div class="d-flex align-items-center flex-wrap text-center">
-
-        <div class="p-2 flex-fill order-1">
-            Web-Toolkit v<?= \App\Software::VERSION ?> Build <?= \App\Software::BUILD . '-' . \App\Software::TYPE?> <br>
-            <span>Github: <a href="https://github.com/namePlayer/web-toolkit" class="link-secondary text-decoration-none">namePlayer/web-toolkit</a></span>
-        </div>
-        <div class="p-2 flex-fill order-3">
-            <a href="<?= $_ENV['LEGAL_IMPRINT_URL'] ?>" class="text-center text-decoration-none fw-lighter"><?= $this->e($this->translate('homepage-footer-imprint-title')) ?></a>
-        </div>
-        <div class="p-2 flex-fill order-3">
-            <a href="<?= $_ENV['LEGAL_PRIVACY_URL'] ?>" class="text-center text-decoration-none fw-lighter"><?= $this->e($this->translate('homepage-footer-privacy-title')) ?></a> <br>
-        </div>
-        <div class="p-2 flex-fill order-3">
-            <a href="<?= $_ENV['LEGAL_TERMS_URL'] ?>" class="text-center text-decoration-none fw-lighter"><?= $this->e($this->translate('homepage-footer-terms-title')) ?></a>
-        </div>
-        <div class="p-2 flex-fill order-3">
-            <a href="#" class="text-center text-decoration-none fw-lighter"><?= $this->e($this->translate('homepage-footer-support-title')) ?></a> <br>
-        </div>
-        <div class="p-2 flex-fill order-3">
-            <a href="#" class="text-center text-decoration-none fw-lighter"><?= $this->e($this->translate('homepage-footer-status-title')) ?></a>
-        </div>
-        <div class="p-2 flex-fill order-3">
-            <a href="<?= \App\Software::DISCORD_INVITE ?>" class="text-center text-decoration-none fw-lighter">
-                <?= $this->e($this->translate('homepage-footer-discord-title')) ?>
-            </a>
+<footer class="footer mt-auto">
+    <div class="container">
+        <hr class="mt-4 mb-4">
+        <div class="row">
+            <div class="col-12 col-md">
+                Web-Toolkit v<?= \App\Software::VERSION ?> <br> Build <?= \App\Software::BUILD . '-' . \App\Software::TYPE?> <br>
+                <small class="d-block mb-3 text-body-secondary">© <?= (new DateTime())->format('Y') ?></small> <br>
+            </div>
+            <div class="col-6 col-md">
+            </div>
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li>
+                        <a href="#" class="text-center text-decoration-none fw-lighter">
+                            <?= $this->e($this->translate('homepage-footer-support-title')) ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= \App\Software::DISCORD_INVITE ?>" class="text-center text-decoration-none fw-lighter">
+                            <?= $this->e($this->translate('homepage-footer-discord-title')) ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-center text-decoration-none fw-lighter">
+                            <?= $this->e($this->translate('homepage-footer-status-title')) ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Legal</h5>
+                <ul class="list-unstyled text-small">
+                    <li>
+                        <a href="<?= $_ENV['LEGAL_IMPRINT_URL'] ?>" class="text-center text-decoration-none fw-lighter">
+                            <?= $this->e($this->translate('homepage-footer-imprint-title')) ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= $_ENV['LEGAL_PRIVACY_URL'] ?>" class="text-center text-decoration-none fw-lighter">
+                            <?= $this->e($this->translate('homepage-footer-privacy-title')) ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= $_ENV['LEGAL_TERMS_URL'] ?>" class="text-center text-decoration-none fw-lighter">
+                            <?= $this->e($this->translate('homepage-footer-terms-title')) ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-
-</div>
+</footer>

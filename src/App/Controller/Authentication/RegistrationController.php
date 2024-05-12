@@ -38,6 +38,11 @@ readonly class RegistrationController
 
     private function register(ServerRequestInterface $request): void
     {
+        if(($_ENV['SOFTWARE_ENABLE_REGISTRATION'] ?? true) === false)
+        {
+            return;
+        }
+
         if (isset($_POST['account-type'], $_POST['account-name'], $_POST['email'], $_POST['password'])) {
             $account = new Account();
             $account->setName(trim($_POST['account-name']));

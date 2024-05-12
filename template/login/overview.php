@@ -18,10 +18,8 @@
             <?php endif; ?>
         </div>
     </div>
-    <hr>
 
-    <h4><?= $this->e($this->translate('your-products-list-title')) ?></h4>
-    <div class="row mt-3">
+    <div class="row mt-4">
         <?php foreach ($availableTools as $tool): ?>
 
             <?php $this->insert('element/productOverviewCard', ['tool' => $tool]) ?>
