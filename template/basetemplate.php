@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="dark" class="h-100">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -8,7 +8,7 @@
         <title><?= $_ENV['SOFTWARE_TITLE'] ?></title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     </head>
-    <body>
+    <body class="h-100">
 
         <?= $this->section('content') ?>
 

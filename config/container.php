@@ -197,6 +197,10 @@ $container->add(\App\Controller\QrCode\GenerateController::class)
 $container->add(\App\Controller\Account\AccountLicenseController::class)
     ->addArgument(\League\Plates\Engine::class);
 
+$container->add(\App\Controller\Account\AddressController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
+
 #
 # Services
 #

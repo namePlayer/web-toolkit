@@ -1,10 +1,15 @@
-<div class="col-md-3">
-    <div class="list-group mb-3">
-        <a href="#" class="list-group-item disabled">
+<div class="<?= isset($ignoreCol) ? 'mt-4' : 'col-md-3' ?>">
+    <div class="list-group mb-1">
+        <a class="list-group-item list-group-item-action disabled">
             <?= $this->e($this->translate('account-settings-navigation-title')) ?>
         </a>
+    </div>
+    <div class="list-group mb-3">
         <a href="/account" class="list-group-item list-group-item-action">
             <?= $this->e($this->translate('account-settings-navigation-general-tab-title')) ?>
+        </a>
+        <a href="/account/address" class="list-group-item list-group-item-action">
+            <?= $this->e($this->translate('account-settings-navigation-address-tab-title')) ?>
         </a>
         <a href="/account/security" class="list-group-item list-group-item-action">
             <?= $this->e($this->translate('account-settings-navigation-security-tab-title')) ?>

@@ -136,6 +136,7 @@
   "account-manage-title": "Konto Verwaltung",
   "account-settings-navigation-title": "Navigation",
   "account-settings-navigation-general-tab-title": "Allgemein",
+  "account-settings-navigation-address-tab-title": "Adressen",
   "account-settings-navigation-security-tab-title": "Sicherheit",
   "account-settings-navigation-organisation-tab-title": "Organisation",
   "account-settings-navigation-licenses-tab-title": "Lizenzen",
@@ -149,6 +150,9 @@
   "account-licenses-manage-title": "Lizenzverwaltung",
   "account-licenses-current-page": "Aktuelles Paket",
   "account-licenses-change-package-button": "Up-/Downgrade",
+
+  "account-address-page-title": "Adressen",
+  "account-address-page-add-new-address": "Adresse hinzufügen",
 
   "account-settings-update-successful": "Die Kontoeinstellungen wurden erfolgreich geändert.",
   "account-settings-update-failed": "Etwas ist schiefgelaufen. Es wurden keine Daten geändert.",

@@ -83,6 +83,11 @@ $router->get('/account/licenses', 'App\Controller\Account\AccountLicenseControll
 $router->post('/account/licenses', 'App\Controller\Account\AccountLicenseController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 
+$router->get('/account/address', 'App\Controller\Account\AddressController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/account/address', 'App\Controller\Account\AddressController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
 $router->get('/account', 'App\Controller\Account\AccountController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 $router->post('/account', 'App\Controller\Account\AccountController::load')
