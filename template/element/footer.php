@@ -1,4 +1,4 @@
-<footer class="footer mt-auto">
+<footer class="footer mt-auto py-3">
     <div class="container">
         <hr class="mt-4 mb-4">
         <div class="row">
@@ -9,7 +9,7 @@
             <div class="col-6 col-md">
             </div>
             <div class="col-6 col-md">
-                <h5>About</h5>
+                <h5><?= $this->e($this->translate('homepage-footer-about-header-title')) ?></h5>
                 <ul class="list-unstyled text-small">
                     <li>
                         <a href="#" class="text-center text-decoration-none fw-lighter">
@@ -29,7 +29,7 @@
                 </ul>
             </div>
             <div class="col-6 col-md">
-                <h5>Legal</h5>
+                <h5><?= $this->e($this->translate('homepage-footer-legal-header-title')) ?></h5>
                 <ul class="list-unstyled text-small">
                     <li>
                         <a href="<?= $_ENV['LEGAL_IMPRINT_URL'] ?>" class="text-center text-decoration-none fw-lighter">

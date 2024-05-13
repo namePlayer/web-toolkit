@@ -194,6 +194,9 @@ $container->add(\App\Controller\QrCode\GenerateController::class)
     ->addArgument(\App\Service\QrCodeGenerator\QrCodeStringFormatService::class)
     ->addArgument(\League\Plates\Engine::class);
 
+$container->add(\App\Controller\Account\AccountLicenseController::class)
+    ->addArgument(\League\Plates\Engine::class);
+
 #
 # Services
 #

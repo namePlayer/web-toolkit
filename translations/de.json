@@ -46,6 +46,8 @@
   "homepage-content-create-shortlink-empty-error": "Das Ziel des Kurzlinks darf nicht leer sein",
   "homepage-content-create-shortlink-unknown-error": "Beim erstellen eines Kurzlinks ist ein Fehler aufgetreten. Bitte versuche es erneut!",
 
+  "homepage-footer-legal-header-title": "Rechtliches",
+  "homepage-footer-about-header-title": "Über",
   "homepage-footer-imprint-title": "Impressum",
   "homepage-footer-privacy-title": "Datenschutz",
   "homepage-footer-terms-title": "Nutzungsbedingungen",
@@ -143,6 +145,10 @@
   "account-settings-organisation-navigation-invite-tab-title": "Einladen",
   "account-settings-organisation-navigation-policies-tab-title": "Richtlinien",
   "organisation-manage-title": "Organisationsverwaltung",
+
+  "account-licenses-manage-title": "Lizenzverwaltung",
+  "account-licenses-current-page": "Aktuelles Paket",
+  "account-licenses-change-package-button": "Up-/Downgrade",
 
   "account-settings-update-successful": "Die Kontoeinstellungen wurden erfolgreich geändert.",
   "account-settings-update-failed": "Etwas ist schiefgelaufen. Es wurden keine Daten geändert.",

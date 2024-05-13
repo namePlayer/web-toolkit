@@ -78,6 +78,11 @@ $router->get('/account/organisation', 'App\Controller\Account\OrganisationContro
 $router->post('/account/organisation', 'App\Controller\Account\OrganisationController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 
+$router->get('/account/licenses', 'App\Controller\Account\AccountLicenseController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/account/licenses', 'App\Controller\Account\AccountLicenseController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
 $router->get('/account', 'App\Controller\Account\AccountController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 $router->post('/account', 'App\Controller\Account\AccountController::load')
