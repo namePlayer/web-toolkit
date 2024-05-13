@@ -199,7 +199,8 @@ $container->add(\App\Controller\Account\AccountLicenseController::class)
 
 $container->add(\App\Controller\Account\AddressController::class)
     ->addArgument(\League\Plates\Engine::class)
-    ->addArgument(\App\Service\Authentication\AccountService::class);
+    ->addArgument(\App\Service\Authentication\AccountService::class)
+    ->addArgument(\App\Service\Authentication\AccountAddressService::class);
 
 #
 # Services
@@ -307,6 +308,10 @@ $container->add(\App\Service\Support\SupportTicketService::class)
     ->addArgument(\App\Table\Support\SupportTicketTable::class)
     ->addArgument(\App\Table\Support\SupportTicketMessageTable::class);
 
+$container->add(\App\Service\Authentication\AccountAddressService::class)
+    ->addArgument(\App\Table\Authentication\AccountAddressTable::class)
+    ->addArgument(\App\Service\Authentication\AccountService::class);
+
 #
 # Repositories
 #
@@ -362,6 +367,9 @@ $container->add(\App\Table\Support\SupportTicketTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 $container->add(\App\Table\Support\SupportTicketMessageTable::class)
+    ->addArgument(\Envms\FluentPDO\Query::class);
+
+$container->add(\App\Table\Authentication\AccountAddressTable::class)
     ->addArgument(\Envms\FluentPDO\Query::class);
 
 #

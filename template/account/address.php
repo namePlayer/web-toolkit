@@ -28,23 +28,21 @@
 
             <div class="row">
 
-                <div class="col-4 mb-3">
+                <?php foreach($addresses as $address): ?>
+                    <div class="col-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
 
-                    <div class="card">
+                                <span><b><?= $address->getFirstname() ?> <?= $address->getLastname() ?></b></span> <br>
+                                <span><?= $address->getStreet() ?> <?= $address->getHouseNumber() ?></span> <br>
+                                <span><?= $address->getZipCode() ?> <?= $address->getCity() ?></span> <br>
+                                <span><?= $address->getCountry() ?></span> <br>
 
-                        <div class="card-body">
-
-                            <span><b>Max Mustermann</b></span> <br>
-                            <span>Musterstraße 42</span> <br>
-                            <span>12345 Musterstadt</span> <br>
-                            <span>Deutschland</span> <br>
-
-                            <a href="/account/address/1" class="stretched-link"></a>
+                                <a href="/account/address/1" class="stretched-link"></a>
+                            </div>
                         </div>
-
                     </div>
-
-                </div>
+                <?php endforeach; ?>
 
             </div>
         </div>

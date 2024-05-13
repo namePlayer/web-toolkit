@@ -5,6 +5,7 @@ namespace App\Controller\Account;
 use App\DTO\Account\ChangePasswordDTO;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
+use App\Service\Authentication\AccountAddressService;
 use App\Service\Authentication\AccountService;
 use App\Validation\Authentication\ChangePasswordValidation;
 use League\Plates\Engine;
@@ -16,7 +17,8 @@ readonly class AddressController
 
     public function __construct(
         private Engine                   $template,
-        private AccountService           $accountService
+        private AccountService           $accountService,
+        private AccountAddressService    $accountAddressService
     )
     {
     }
@@ -26,10 +28,11 @@ readonly class AddressController
         /* @var $account Account */
         $account = $request->getAttribute(Account::class);
 
-        $accountData = $this->accountService->findAccountById($account->getId());
-
         return new HtmlResponse($this->template->render(
-            'account/address'
+            'account/address',
+            [
+                'addresses' => $this->accountAddressService->findAllAddressesByAccountId($account->getId())
+            ]
         ));
     }
 
