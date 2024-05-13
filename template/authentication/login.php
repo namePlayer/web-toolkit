@@ -12,7 +12,7 @@
             <div class="mb-4 text-center">
                 <h3 class="mb-3"><?= $this->e($this->translate('login-account-title')) ?></h3>
                 <span><?= $this->e($this->translate('login-account-header-text')) ?></span> <br>
-                <?php if($_ENV['SOFTWARE_DISABLE_REGISTRATION'] === false): ?>
+                <?php if($_ENV['SOFTWARE_ENABLE_REGISTRATION'] === true): ?>
                     <span><?= $this->e($this->translate('login-account-header-no-account-text')) ?> <a href="/authentication/registration"><?= $this->e($this->translate('register-button-text')) ?></a></span>
                 <?php endif; ?>
             </div>

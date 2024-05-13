@@ -93,6 +93,16 @@ $this->layout('basetemplate') ?>
                 <?php endforeach; ?>
                 </tbody>
             </table>
+
+            <?php if(empty($accounts)): ?>
+
+                <div class="text-center mt-5 mb-5">
+
+                    <span>Es konnte kein Benutzer mit den angegebenen Suchkriterien gefunden werden.</span><br>
+
+                </div>
+
+            <?php endif; ?>
         </div>
     </div>
 </div>

@@ -13,17 +13,10 @@
 
         <div class="col-md-9">
 
-            <div class="row mb-3">
-                <div class="col-9">
-                    <h4><?= $this->e($this->translate('admin-account-view-title')) ?></h4>
-                </div>
-            </div>
-
-            <?php $this->insert('administration/element/accountViewNavigation') ?>
+            <?php $this->insert('administration/element/accountViewNavigation', ['account' => $account]) ?>
 
             <?php $this->insert('element/alert') ?>
 
-            <hr >
             <div class="tab-content" id="adminAccountViewTabContent">
                 <div class="tab-pane fade show active" id="adminAccountViewTabInformationPane" role="tabpanel" aria-labelledby="adminAccountViewTabInformation" tabindex="0">
 
@@ -129,39 +122,6 @@
                             </div>
                         </div>
 
-                    </form>
-
-                    <hr>
-
-                    <form class="row mt-3" method="post">
-                        <div class="col-3">
-
-                            <button type="submit" class="w-100 btn btn-primary" name="adminAccountTabSettingsResendActivationMailButton">
-                                <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-resend-activation-mail-button')) ?>
-                            </button>
-
-                        </div>
-                        <div class="col-3">
-
-                            <button type="submit" class="w-100 btn btn-danger" name="adminAccountTabSettingsResetPasswordMailButton">
-                                <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-send-password-mail-button')) ?>
-                            </button>
-
-                        </div>
-                        <div class="col-3">
-
-                            <button type="submit" class="w-100 btn btn-danger" name="adminAccountTabSettingsResetTFAButton">
-                                <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-reset-two-factor-button')) ?>
-                            </button>
-
-                        </div>
-                        <div class="col-3">
-
-                            <button type="submit" class="w-100 btn btn-danger" name="adminAccountTabSettingsDeleteAccountButton" <?= $account->isAdmin() ? 'disabled' : '' ?>>
-                                <?= $this->e($this->translate('admin-account-view-navigation-settings-tab-delete-account-button')) ?>
-                            </button>
-
-                        </div>
                     </form>
 
                 </div>
