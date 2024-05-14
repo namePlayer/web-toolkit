@@ -25,73 +25,84 @@
                 </div>
             </div>
 
-            <div class="row">
-
-                <div class="col-md-12 mb-3">
-                    <label for="addNewAddressCompany" class="form-label">
-                        <?= $this->e($this->translate('account-address-company')) ?>
-                    </label>
-                    <input type="text" class="form-control" id="addNewAddressCompany"
-                           name="addNewAddressCompany" value="<?= $address->getCompany() ?>">
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="addNewAddressFirstname" class="form-label">
-                        <?= $this->e($this->translate('account-address-firstname')) ?>
-                    </label>
-                    <input type="text" class="form-control" id="addNewAddressFirstname"
-                           name="addNewAddressFirstname" value="<?= $address->getFirstname() ?>">
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="addNewAddressLastname" class="form-label">
-                        <?= $this->e($this->translate('account-address-lastname')) ?>
-                    </label>
-                    <input type="text" class="form-control" id="addNewAddressLastname"
-                           name="addNewAddressLastname" value="<?= $address->getLastname() ?>">
-                </div>
-                <div class="col-md-8 mb-3">
-                    <label for="addNewAddressStreet" class="form-label">
-                        <?= $this->e($this->translate('account-address-street')) ?>
-                    </label>
-                    <input type="text" class="form-control" id="addNewAddressStreet" 7
-                           name="addNewAddressStreet" value="<?= $address->getStreet() ?>">
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="addNewAddressHouseNumber" class="form-label">
-                        <?= $this->e($this->translate('account-address-house-number')) ?>
-                    </label>
-                    <input type="text" class="form-control" id="addNewAddressHouseNumber"
-                           name="addNewAddressHouseNumber" value="<?= $address->getHouseNumber() ?>">
-                </div>
-                <div class="col-md-5 mb-3">
-                    <label for="addNewAddressZipCode" class="form-label">
-                        <?= $this->e($this->translate('account-address-zip-code')) ?>
-                    </label>
-                    <input type="text" class="form-control" id="addNewAddressZipCode"
-                           name="addNewAddressZipCode" value="<?= $address->getZipCode() ?>">
-                </div>
-                <div class="col-md-7 mb-3">
-                    <label for="addNewAddressCity" class="form-label">
-                        <?= $this->e($this->translate('account-address-city')) ?>
-                    </label>
-                    <input type="text" class="form-control" id="addNewAddressCity"
-                           name="addNewAddressCity" value="<?= $address->getCity() ?>">
-                </div>
-                <div class="col-md-12 mb-3">
-                    <label for="addNewAddressCountry" class="form-label">
-                        <?= $this->e($this->translate('account-address-country')) ?>
-                    </label>
-                    <input type="text" class="form-control" id="addNewAddressCountry"
-                           name="addNewAddressCountry" value="<?= $address->getCountry() ?>">
-                </div>
-                <div class="col-md-12 mb-3">
-                    <label for="addNewAddressPhone" class="form-label">
-                        <?= $this->e($this->translate('account-address-phone')) ?>
-                    </label>
-                    <input type="text" class="form-control" id="addNewAddressPhone"
-                           name="addNewAddressPhone" value="<?= $address->getPhone() ?>">
-                </div>
-
+            <div class="col-12 mb-3">
+                <?php $this->insert('element/alert') ?>
             </div>
+
+            <form action="" method="post">
+                <div class="row">
+
+                    <div class="col-md-12 mb-3">
+                        <label for="editAddressCompany" class="form-label">
+                            <?= $this->e($this->translate('account-address-company')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="editAddressCompany"
+                               name="editAddressCompany" value="<?= $address->getCompany() ?>">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="editAddressFirstname" class="form-label">
+                            <?= $this->e($this->translate('account-address-firstname')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="editAddressFirstname"
+                               name="editAddressFirstname" value="<?= $address->getFirstname() ?>">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="editAddressLastname" class="form-label">
+                            <?= $this->e($this->translate('account-address-lastname')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="editAddressLastname"
+                               name="editAddressLastname" value="<?= $address->getLastname() ?>">
+                    </div>
+                    <div class="col-md-8 mb-3">
+                        <label for="editAddressStreet" class="form-label">
+                            <?= $this->e($this->translate('account-address-street')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="editAddressStreet" 7
+                               name="editAddressStreet" value="<?= $address->getStreet() ?>">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="editAddressHouseNumber" class="form-label">
+                            <?= $this->e($this->translate('account-address-house-number')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="editAddressHouseNumber"
+                               name="editAddressHouseNumber" value="<?= $address->getHouseNumber() ?>">
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="editAddressZipCode" class="form-label">
+                            <?= $this->e($this->translate('account-address-zip-code')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="editAddressZipCode"
+                               name="editAddressZipCode" value="<?= $address->getZipCode() ?>">
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        <label for="editAddressCity" class="form-label">
+                            <?= $this->e($this->translate('account-address-city')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="editAddressCity"
+                               name="editAddressCity" value="<?= $address->getCity() ?>">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="editAddressCountry" class="form-label">
+                            <?= $this->e($this->translate('account-address-country')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="editAddressCountry"
+                               name="editAddressCountry" value="<?= $address->getCountry() ?>">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="editAddressPhone" class="form-label">
+                            <?= $this->e($this->translate('account-address-phone')) ?>
+                        </label>
+                        <input type="text" class="form-control" id="editAddressPhone"
+                               name="editAddressPhone" value="<?= $address->getPhone() ?>">
+                    </div>
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-outline-primary w-100" name="editAddress">
+                            <?= $this->e($this->translate('save-button')) ?>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
 
     </div>

@@ -28,6 +28,17 @@ class AccountAddressService
         return false;
     }
 
+    public function update(AccountAddress $accountAddress): bool
+    {
+        $updateResult = $this->accountAddressTable->update($accountAddress);
+        if($updateResult > 0 && $updateResult !== FALSE)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public function findAllAddressesByAccountId(int $accountId): array
     {
         $addressList = $this->accountAddressTable->findAllByAccountId($accountId);

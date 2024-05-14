@@ -15,6 +15,14 @@ class AccountAddressTable extends AbstractTable
             ->values($this->createArrayFromAccountAddressModel($accountAddress))->execute();
     }
 
+    public function update(AccountAddress $accountAddress): bool|int|string
+    {
+        return $this->query->update($this->getTableName())
+            ->set($this->createArrayFromAccountAddressModel($accountAddress))
+            ->where('id', $accountAddress->getId())
+            ->execute();
+    }
+
     public function findAllByAccountId(int $accountId): array|bool
     {
         return $this->query->from($this->getTableName())->where('account', $accountId)->fetchAll();

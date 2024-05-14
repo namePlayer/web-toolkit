@@ -167,6 +167,8 @@
   "account-address-page-failed-adding": "Die Adresse konnte nicht hinzugefügt werden!",
 
   "account-address-page-view-address": "Adresse verwalten",
+  "account-address-page-update-success": "Die Adressdaten wurden erfolgreich aktualisiert.",
+  "account-address-page-update-failed": "Die Adressdaten konnten nicht aktualisiert werden.",
 
   "account-settings-update-successful": "Die Kontoeinstellungen wurden erfolgreich geändert.",
   "account-settings-update-failed": "Etwas ist schiefgelaufen. Es wurden keine Daten geändert.",

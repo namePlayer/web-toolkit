@@ -28,11 +28,16 @@
 
             <div class="row">
 
+                <div class="col-12 mb-3">
+                    <?php $this->insert('element/alert') ?>
+                </div>
+
                 <?php foreach($addresses as $address): ?>
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-body">
 
+                                <span><b><?= $address->getCompany() ?></b></span> <?= !empty($address->getCompany()) ? '<br>' : '' ?>
                                 <span><b><?= $address->getFirstname() ?> <?= $address->getLastname() ?></b></span> <br>
                                 <span><?= $address->getStreet() ?> <?= $address->getHouseNumber() ?></span> <br>
                                 <span><?= $address->getZipCode() ?> <?= $address->getCity() ?></span> <br>
