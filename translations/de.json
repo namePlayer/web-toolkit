@@ -151,8 +151,20 @@
   "account-licenses-current-page": "Aktuelles Paket",
   "account-licenses-change-package-button": "Up-/Downgrade",
 
+  "account-address-company": "Firma",
+  "account-address-firstname": "Vorname",
+  "account-address-lastname": "Nachname",
+  "account-address-street": "Straße",
+  "account-address-house-number": "Haus Nr.",
+  "account-address-zip-code": "PLZ",
+  "account-address-city": "Stadt",
+  "account-address-country": "Land",
+  "account-address-phone": "Telefon",
+
   "account-address-page-title": "Adressen",
   "account-address-page-add-new-address": "Adresse hinzufügen",
+  "account-address-page-add-new-address-modal-title": "Neue Adresse hinzufügen",
+  "account-address-page-failed-adding": "Die Adresse konnte nicht hinzugefügt werden!",
 
   "account-settings-update-successful": "Die Kontoeinstellungen wurden erfolgreich geändert.",
   "account-settings-update-failed": "Etwas ist schiefgelaufen. Es wurden keine Daten geändert.",

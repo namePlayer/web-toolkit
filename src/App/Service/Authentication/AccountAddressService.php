@@ -16,6 +16,18 @@ class AccountAddressService
     {
     }
 
+    public function create(AccountAddress $accountAddress): bool
+    {
+        $insertResult = $this->accountAddressTable->insert($accountAddress);
+        if($insertResult > 0 && $insertResult !== FALSE)
+        {
+            $accountAddress->setId((int)$insertResult);
+            return true;
+        }
+
+        return false;
+    }
+
     public function findAllAddressesByAccountId(int $accountId): array
     {
         $addressList = $this->accountAddressTable->findAllByAccountId($accountId);
