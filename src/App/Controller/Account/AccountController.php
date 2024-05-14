@@ -5,6 +5,7 @@ namespace App\Controller\Account;
 use App\DTO\Account\ChangePasswordDTO;
 use App\Http\HtmlResponse;
 use App\Model\Authentication\Account;
+use App\Service\Authentication\AccountAddressService;
 use App\Service\Authentication\AccountService;
 use App\Validation\Authentication\ChangePasswordValidation;
 use League\Plates\Engine;
@@ -17,7 +18,8 @@ readonly class AccountController
     public function __construct(
         private Engine                   $template,
         private AccountService           $accountService,
-        private ChangePasswordValidation $changePasswordValidation
+        private ChangePasswordValidation $changePasswordValidation,
+        private AccountAddressService    $accountAddressService
     )
     {
     }
@@ -36,10 +38,13 @@ readonly class AccountController
             }
         }
 
+        $accountAddresses = $this->accountAddressService->findAllAddressesByAccountId($account->getId());
+
         return new HtmlResponse($this->template->render(
             'account/account',
             [
-                'accountData' => $accountData
+                'accountData' => $accountData,
+                'addressList' => $accountAddresses
             ]
         ));
     }
@@ -80,6 +85,30 @@ readonly class AccountController
         $updateAccount->setFirstname($_POST['accountUserFirstname']);
         $updateAccount->setSurname($_POST['accountUserLastname']);
         $updateAccount->setEmail($_POST['accountUserEmail']);
+
+        $updateAccount->setDefaultShippingAddress(null);
+        if(!empty($_POST['accountUserDefaultShippingAddress']))
+        {
+            if($this->accountAddressService->findAddressByIdAndAccount(
+                (int)$_POST['accountUserDefaultShippingAddress'],
+                $updateAccount->getId()
+            ) !== NULL)
+            {
+                $updateAccount->setDefaultShippingAddress((int)$_POST['accountUserDefaultShippingAddress']);
+            }
+        }
+
+        $updateAccount->setDefaultInvoiceAddress(null);
+        if(!empty($_POST['accountUserDefaultInvoiceAddress']))
+        {
+            if($this->accountAddressService->findAddressByIdAndAccount(
+                    (int)$_POST['accountUserDefaultInvoiceAddress'],
+                    $updateAccount->getId()
+                ) !== NULL)
+            {
+                $updateAccount->setDefaultInvoiceAddress((int)$_POST['accountUserDefaultInvoiceAddress']);
+            }
+        }
 
         if ($this->accountService->updateAccount($updateAccount)) {
             return $this->accountService->findAccountById($account->getId());

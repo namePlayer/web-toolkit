@@ -54,7 +54,8 @@ $container->add(\App\Controller\Support\SupportTicketManageController::class)
 $container->add(\App\Controller\Account\AccountController::class)
     ->addArgument(\League\Plates\Engine::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
-    ->addArgument(\App\Validation\Authentication\ChangePasswordValidation::class);
+    ->addArgument(\App\Validation\Authentication\ChangePasswordValidation::class)
+    ->addArgument(\App\Service\Authentication\AccountAddressService::class);
 
 $container->add(\App\Controller\Account\SecurityController::class)
     ->addArgument(\League\Plates\Engine::class)

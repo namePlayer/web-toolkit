@@ -176,6 +176,8 @@
   "account-settings-general-firstname": "Vorname",
   "account-settings-general-lastname": "Nachname",
   "account-settings-general-email": "E-Mail Adresse",
+  "account-settings-general-default-shipping-address": "Standard Lieferadresse",
+  "account-settings-general-default-invoice-address": "Standard Rechnungsadresse",
   "account-settings-change-password-modal-title": "Passwort ändern",
   "account-settings-change-password-button": "Passwort ändern",
   "account-settings-change-password-old-password": "Altes Passwort",

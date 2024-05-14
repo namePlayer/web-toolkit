@@ -50,6 +50,40 @@
                         </label>
                         <input type="email" class="form-control" id="accountUserEmail" name="accountUserEmail" value="<?= $this->e($accountData['email']) ?>">
                     </div>
+                    <div class="col-6 mb-3">
+                        <label for="accountUserDefaultShippingAddress" class="form-label">
+                            <?= $this->e($this->translate('account-settings-general-default-shipping-address')) ?>
+                        </label>
+                        <select id="accountUserDefaultShippingAddress" name="accountUserDefaultShippingAddress" class="form-select">
+                            <option value=""></option>
+                            <?php foreach ($addressList as $address): ?>
+                                <option value="<?= $address->getId() ?>"
+                                    <?= $address->getId() == $accountData['defaultShippingAddress'] ? 'selected' : '' ?>>
+                                    <b><?= $address->getFirstname() ?> <?= $address->getLastname() ?></b>:
+                                    <?= $address->getStreet() ?> <?= $address->getHouseNumber() ?>,
+                                    <?= $address->getZipCode() ?> <?= $address->getCity() ?>,
+                                    <?= $address->getCountry() ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="accountUserDefaultInvoiceAddress" class="form-label">
+                            <?= $this->e($this->translate('account-settings-general-default-invoice-address')) ?>
+                        </label>
+                        <select id="accountUserDefaultInvoiceAddress" name="accountUserDefaultInvoiceAddress" class="form-select">
+                            <option value=""></option>
+                            <?php foreach ($addressList as $address): ?>
+                                <option value="<?= $address->getId() ?>"
+                                    <?= $address->getId() == $accountData['defaultInvoiceAddress'] ? 'selected' : '' ?>>
+                                    <b><?= $address->getFirstname() ?> <?= $address->getLastname() ?></b>:
+                                    <?= $address->getStreet() ?> <?= $address->getHouseNumber() ?>,
+                                    <?= $address->getZipCode() ?> <?= $address->getCity() ?>,
+                                    <?= $address->getCountry() ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
 
                     <div class="col-3">
                         <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#accountSettingsChangePasswordModal">

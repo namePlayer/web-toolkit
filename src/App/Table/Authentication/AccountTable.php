@@ -47,7 +47,9 @@ class AccountTable extends AbstractTable
             'business' => $account->getBusiness(),
             'active' => $account->isActive() ? 1 : 0,
             'isSupport' => $account->isSupport() ? 1 : 0,
-            'isAdmin' => $account->isAdmin() ? 1 : 0
+            'isAdmin' => $account->isAdmin() ? 1 : 0,
+            'defaultShippingAddress' => $account->getDefaultShippingAddress(),
+            'defaultInvoiceAddress' => $account->getDefaultInvoiceAddress()
         ];
 
         return $this->query->update($this->getTableName())->where('id', $account->getId())->set($value)->execute();

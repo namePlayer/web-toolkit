@@ -23,6 +23,8 @@ class Account
     private bool $admin;
     private bool $sendMailUnknownLogin;
     private bool $createdByOrganisation;
+    private ?int $defaultShippingAddress;
+    private ?int $defaultInvoiceAddress;
 
     public function getId(): int
     {
@@ -182,6 +184,26 @@ class Account
     public function setCreatedByOrganisation(bool $createdByOrganisation): void
     {
         $this->createdByOrganisation = $createdByOrganisation;
+    }
+
+    public function getDefaultShippingAddress(): ?int
+    {
+        return $this->defaultShippingAddress;
+    }
+
+    public function setDefaultShippingAddress(?int $defaultShippingAddress): void
+    {
+        $this->defaultShippingAddress = $defaultShippingAddress;
+    }
+
+    public function getDefaultInvoiceAddress(): ?int
+    {
+        return $this->defaultInvoiceAddress;
+    }
+
+    public function setDefaultInvoiceAddress(?int $defaultInvoiceAddress): void
+    {
+        $this->defaultInvoiceAddress = $defaultInvoiceAddress;
     }
 
 }
