@@ -38,11 +38,23 @@ class AccountAddressService
         return $addressModelList;
     }
 
+    public function findAddressByIdAndAccount(int $id, int $account): ?AccountAddress
+    {
+        $addressData = $this->accountAddressTable->findByIdAndAccount($id, $account);
+        if($addressData === FALSE || $addressData['account'] !== $account)
+        {
+            return null;
+        }
+
+        return $this->createAccountAddressModelFromArray($addressData);
+    }
+
     private function createAccountAddressModelFromArray(array $data): AccountAddress
     {
         $accountAddress = new AccountAddress();
         $accountAddress->setId((int)$data['id']);
         $accountAddress->setAccount((int)$data['account']);
+        $accountAddress->setCompany($data['company']);
         $accountAddress->setFirstname($data['firstname']);
         $accountAddress->setLastname($data['lastname']);
         $accountAddress->setStreet($data['street']);

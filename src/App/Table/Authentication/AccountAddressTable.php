@@ -20,6 +20,11 @@ class AccountAddressTable extends AbstractTable
         return $this->query->from($this->getTableName())->where('account', $accountId)->fetchAll();
     }
 
+    public function findByIdAndAccount(int $id, int $accountId): array|bool
+    {
+        return $this->query->from($this->getTableName())->where(['id' => $id, 'account' => $accountId])->fetch();
+    }
+
     private function createArrayFromAccountAddressModel(AccountAddress $accountAddress): array
     {
         return [

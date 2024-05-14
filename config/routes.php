@@ -83,6 +83,11 @@ $router->get('/account/licenses', 'App\Controller\Account\AccountLicenseControll
 $router->post('/account/licenses', 'App\Controller\Account\AccountLicenseController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 
+$router->get('/account/address/{id}', 'App\Controller\Account\AddressViewController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+$router->post('/account/address/{id}', 'App\Controller\Account\AddressViewController::load')
+    ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
+
 $router->get('/account/address', 'App\Controller\Account\AddressController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class]);
 $router->post('/account/address', 'App\Controller\Account\AddressController::load')
@@ -101,9 +106,9 @@ $router->get('/admin/apikeys', 'App\Controller\Administration\ApiKeyController::
 $router->post('/admin/apikeys', 'App\Controller\Administration\ApiKeyController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
-$router->get('/admin/apikey/{id}', 'App\Controller\Administration\ApiKeyDetailController::load')
+$router->get('/admin/apikey/{id:number}', 'App\Controller\Administration\ApiKeyDetailController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
-$router->post('/admin/apikey/{id}', 'App\Controller\Administration\ApiKeyDetailController::load')
+$router->post('/admin/apikey/{id:number}', 'App\Controller\Administration\ApiKeyDetailController::load')
     ->lazyMiddlewares([\App\Middleware\AuthenticationMiddleware::class, \App\Middleware\TwoFactorMiddleware::class, \App\Middleware\AdminCheckMiddleware::class]);
 
 $router->get('/admin/accounts', 'App\Controller\Administration\AccountListController::load')

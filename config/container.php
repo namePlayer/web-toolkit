@@ -202,6 +202,10 @@ $container->add(\App\Controller\Account\AddressController::class)
     ->addArgument(\App\Service\Authentication\AccountService::class)
     ->addArgument(\App\Service\Authentication\AccountAddressService::class);
 
+$container->add(\App\Controller\Account\AddressViewController::class)
+    ->addArgument(\League\Plates\Engine::class)
+    ->addArgument(\App\Service\Authentication\AccountAddressService::class);
+
 #
 # Services
 #

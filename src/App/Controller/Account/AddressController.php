@@ -30,7 +30,6 @@ readonly class AddressController
         /* @var $account Account */
         $account = $request->getAttribute(Account::class);
 
-
         if($request->getMethod() === 'POST')
         {
             $postResult = $this->process($account);

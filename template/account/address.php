@@ -11,7 +11,7 @@
         </div>
 
         <div class="col-md-9">
-            <div class="row mb-4">
+            <div class="row mb-3">
                 <div class="col-md-8 mb-3">
                     <?php $this->insert('element/loginHeader', ['pageTitle' => 'account-address-page-title']); ?>
                 </div>

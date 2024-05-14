@@ -166,6 +166,8 @@
   "account-address-page-add-new-address-modal-title": "Neue Adresse hinzufügen",
   "account-address-page-failed-adding": "Die Adresse konnte nicht hinzugefügt werden!",
 
+  "account-address-page-view-address": "Adresse verwalten",
+
   "account-settings-update-successful": "Die Kontoeinstellungen wurden erfolgreich geändert.",
   "account-settings-update-failed": "Etwas ist schiefgelaufen. Es wurden keine Daten geändert.",
   "account-settings-general-accountname": "Konto- oder Organisationsname",
