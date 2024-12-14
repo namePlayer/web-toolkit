@@ -56,6 +56,8 @@ readonly class AccountViewController
         $viewAccount->setLevel($viewAccountData['level']);
         $viewAccount->setSupport($viewAccountData['isSupport'] === 1);
         $viewAccount->setAdmin($viewAccountData['isAdmin'] === 1);
+        $viewAccount->setDefaultShippingAddress($viewAccountData['defaultShippingAddress']);
+        $viewAccount->setDefaultInvoiceAddress($viewAccountData['defaultInvoiceAddress']);
 
         if ($request->getMethod() === 'POST') {
             $this->manage($request, $viewAccount);
